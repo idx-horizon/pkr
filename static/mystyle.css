@@ -1,0 +1,288 @@
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+
+.select-selected {
+  background-color: #4CAF50;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: #4CAF50;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+#redmap {
+   height: 400px;  /* The height is 400 pixels */
+   width: 100%;  /* The width is the width of the web page */
+}
+
+title {
+	background-color: red;
+}
+
+.topnav {
+	background-color: black;
+	overflow: hidden;
+}
+
+.topnav a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	background-color: black;
+	display: inline-block;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.topnav a.hover button.active {
+	background-color: #ddd;
+	color: black;
+}
+
+.topnav a.active {
+	background-color: #4CAF50;
+	color: white;
+}
+
+.topnav-right {
+  float: right;
+}
+
+#mybutton {
+	display: inline-block;
+	padding: 3px 8px;
+	text-decoration: none;
+	background: ButtonFace;
+	color: ButtonText;
+	font-weight: Bold;
+	border-style: solid;
+	border-width: 2px;
+	border-color: ButtonHighlight;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	caption-side: bottom;
+	background-color: white;
+}
+
+tr:nth-child(odd) {background-color: #f2f2f2;}
+
+tr:hover {
+	background-color: #ffff99;
+}
+
+th {
+	background-color: #4CAF50;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+}
+table, td, th {
+	border: 1pt solid black;
+	vertical-align: center;
+	text-decoration: none;
+	padding: 5px;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background-color: lightgrey;
+}
+
+.highlight {
+	color: #4CAF50;
+	bgcolor: red;
+	background: red;
+	font-weight: Bold;
+}
+#hilite {
+	background-color: #4CAF50;
+}
+
+#hilitered {
+	background-color: red;
+}
+
+#hilitegreen {
+	background-color: #4CAF50;
+}
+
+
+/* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 17px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  text-decoration: none;
+  display: inline-block;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #4CAF50;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px; /* 160*/
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/* input[class="button"], button[type=submit] {
+	padding: 5px 15px;
+	background: #4CAF50;
+	border: 0 none;
+	cursor: pointer;
+	border-radius: 10px;
+} */
+
+.button, button[type=submit], input[class="mybutton"], input.mybutton , .mybutton {
+  /*  float: left;   */
+  background-color: #4CAF50; /* Green */
+  border: 1px solid green;
+  color: white;
+  padding: 13px 28px;
+  min-width: 120px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+input[type="text"], input[type="password"]
+{
+    font-size:20px;
+}
+
+.btn-group .button {
+  background-color: #4CAF50; /* Green */
+  border: 1px solid green;
+  color: white;
+  padding: 13px 28px;
+  min-width: 120px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+  float: left;
+}
+
+.btn-group .button:not(:last-child) {
+  /* border-right: none; */ /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  background-color: #3e8e41;
+}
+
+
+

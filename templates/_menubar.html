@@ -1,0 +1,20 @@
+<div class="topnav">
+	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
+	<a href="/runner"
+	{% if url_for(request.endpoint) == '/runner/' or
+		  url_for(request.endpoint) == '/parkrun/' %}
+		class="active"
+	{% endif %}>Runner</a>
+
+	<a href="/ele" {% if url_for(request.endpoint) == '/ele/' %}class="active"{% endif %}>Elevations</a>
+	<div class="topnav-right">
+	{% if current_user.is_anonymous %}
+		<a href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>
+	{% else %}
+		<a href="/user" {% if url_for(request.endpoint) == '/user/' %}class="active"{% endif %}>{{ current_user.username|title }}</a>
+		<a href="/logout" {% if url_for(request.endpoint) == '/logout/' %}
+			class="active"{% endif %}>Logout</a>
+	{% endif %}
+	</div>
+
+</div>
