@@ -1,5 +1,6 @@
 <div class="topnav">
 	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
+	<a href="/newruns"   {% if url_for(request.endpoint) == '/newruns/' %}class="active"{% endif %}>New Runs</a>
 	<a href="/runner"
 	{% if url_for(request.endpoint) == '/runner/' or
 		  url_for(request.endpoint) == '/parkrun/' %}

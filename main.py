@@ -38,6 +38,9 @@ def index():
 def home():
     return render_template('home.html')
 
+@app.route('/newruns/')
+def newruns():
+    return render_template('newruns.html')
 
 @app.route('/login/', methods=['POST','GET'])
 def login():
