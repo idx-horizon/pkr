@@ -5,6 +5,8 @@ from app import app, login
 from app.forms import LoginForm
 from flask_login import UserMixin
 
+import app.newruns as NR
+
 from flask_login import login_user, logout_user, current_user, login_required, UserMixin
 
 class User(UserMixin):
@@ -39,8 +41,11 @@ def home():
     return render_template('home.html')
 
 @app.route('/newruns/')
-def newruns():
-    return render_template('newruns.html')
+@app.route('/newruns/<limit>')
+def newruns(limit=10):
+    this_limit =int(limit) or 10
+    data = NR.get_last_newruns(this_limit)
+    return render_template('newruns.html', limit=this_limit, data=data)
 
 @app.route('/login/', methods=['POST','GET'])
 def login():
@@ -64,8 +69,6 @@ def login():
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
-
-#    return render_template('login.html')
 
 @app.route('/logout')
 def logout():

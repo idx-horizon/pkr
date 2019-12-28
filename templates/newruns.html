@@ -1,6 +1,20 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-New Runs
+<H1>Last {{ limit }} new runs registered in UK</H1>
+
+<table id='table' width="80%">
+		<tr>
+			<th width="10%"  align="centre">#</th>
+			<th width="90%" align="left">Name</th>
+		</tr>
+		{% for item in data %}
+            <tr>
+                <td align="center">{{ item.evid }}</td>
+                <td align="left"><a href="{{ item.url_latestresults }}">{{ item.evlongname }}</td>
+            </tr>
+		{% endfor %}
+		<P>
+</table>
 
 {% include "_footer.html" %}
