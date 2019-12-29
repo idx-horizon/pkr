@@ -33,13 +33,14 @@ def get(url):
 
 
 def getfile(refresh=False):
+    fn_events ='resources/events.json'
     if refresh:
         data = get('https://images.parkrun.com/events.json')
-        json.dump(data.json(), open('events.json', 'w'))
+        json.dump(data.json(), open(fn_events, 'w'))
         print('** refreshed')
         return data.json()
 
-    with open('events.json', 'r') as fin:
+    with open(fn_events, 'r') as fin:
         return json.load(fin)
 
 
