@@ -47,15 +47,14 @@ def getevents(js, countrycode, seriesid):
     return [x for x in js['events']['features'] if
             x['properties']['countrycode'] == countrycode and x['properties']['seriesid'] == seriesid]
 
-def get_last_newruns(lastlimit=10):
-    js = getfile(True)
+def get_last_newruns(lastlimit=10, country_code=97):
+    js = getfile(False)
 
-    uk = getevents(js, 97, cADULT)
+    uk = getevents(js, country_code, cADULT)
 
     subset = []
 
     for ev in uk[-lastlimit:]:
         subset.append(Event(ev))
-#        subset.append(Event(ev).get_dict())
 
     return subset

@@ -114,6 +114,7 @@ table {
 	width: 100%;
 	caption-side: bottom;
 	background-color: white;
+	table-layout: fixed;
 }
 
 tr:nth-child(odd) {background-color: #f2f2f2;}
