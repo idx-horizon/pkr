@@ -1,7 +1,7 @@
 from flask import Flask
 from flask import Flask, jsonify, abort, flash, make_response, render_template, redirect, request, url_for, session
 
-from app import app, login
+from app import app,login
 from app.forms import LoginForm
 from flask_login import UserMixin
 
