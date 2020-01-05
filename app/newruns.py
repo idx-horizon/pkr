@@ -33,7 +33,7 @@ def get(url):
 
 
 def getfile(refresh=False):
-    fn_events ='resources/events.json'
+    fn_events ='events.json'
     if refresh:
         data = get('https://images.parkrun.com/events.json')
         json.dump(data.json(), open(fn_events, 'w'))
