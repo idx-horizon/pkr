@@ -45,7 +45,10 @@ def home():
 def newruns(limit=10):
     this_limit =int(limit) or 10
     data = NR.get_last_newruns(this_limit)
-    return render_template('newruns.html', limit=this_limit, data=data)
+    return render_template('newruns.html', 
+                limit=this_limit, 
+                file_modified_date='22-Jan-2020',
+                data=data)
 
 @app.route('/login/', methods=['POST','GET'])
 def login():
