@@ -47,7 +47,7 @@ def newruns(limit=10):
     data = NR.get_last_newruns(this_limit)
     return render_template('newruns.html', 
                 limit=this_limit, 
-                file_modified_date='22-Jan-2020',
+                file_modified_date='TODO',
                 data=data)
 
 @app.route('/login/', methods=['POST','GET'])
