@@ -47,10 +47,11 @@ def newruns(limit=10):
     title = os.environ['USER_NAME'] + '(' + os.environ['APP_NAME'] + ')'
     this_limit =int(limit) or 10
     data = NR.get_last_newruns(this_limit)
+    file_modified_date = NR.get_last_update()
     return render_template('newruns.html',
                 title=title, 
                 limit=this_limit, 
-                file_modified_date='TODO',
+                file_modified_date=file_modified_date,
                 data=data)
 
 @app.route('/login/', methods=['POST','GET'])

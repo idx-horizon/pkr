@@ -1,5 +1,7 @@
 import requests
 import json
+import datetime
+import os
 
 cJUNIOR = 2
 cADULT = 1
@@ -30,6 +32,10 @@ def get(url):
     session = requests.Session()
     session.headers.update(headers)
     return (session.get(url))
+
+
+def get_last_update():
+    return '<modified date of events file>'
 
 
 def getfile(refresh=False):
