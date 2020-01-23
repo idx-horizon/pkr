@@ -41,6 +41,19 @@ def index():
 def home():
     return render_template('home.html')
 
+    
+@app.route('/startswith/')
+@app.route('/startswith/<suffix>')
+def starts():
+    this_suffix = suffix or 'z'
+    data=getevents_by_suffix(suffix)
+    file_modified_date = NR.get_last_update()
+    return render_template('newruns.html',
+                title='wip', 
+                suffix=this_suffix, 
+                file_modified_date=file_modified_date,
+                data=data)
+    
 @app.route('/newruns/')
 @app.route('/newruns/<limit>')
 def newruns(limit=10):
