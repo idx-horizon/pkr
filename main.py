@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask import Flask, jsonify, abort, flash, make_response, render_template, redirect, request, url_for, session
 
@@ -43,9 +44,11 @@ def home():
 @app.route('/newruns/')
 @app.route('/newruns/<limit>')
 def newruns(limit=10):
+    title = os.environ['USER_NAME'] + '(' + os.environ['APP_NAME'] + ')'
     this_limit =int(limit) or 10
     data = NR.get_last_newruns(this_limit)
-    return render_template('newruns.html', 
+    return render_template('newruns.html',
+                title=title, 
                 limit=this_limit, 
                 file_modified_date='TODO',
                 data=data)
