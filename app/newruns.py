@@ -35,7 +35,7 @@ def get(url):
 
 
 def get_last_update():
-    return '<modified date of events file>'
+    return datetime.datetime.fromtimestamp(os.path.getctime('events.json')).strftime('%d-%b-%Y %H:%M')
 
 
 def getfile(refresh=False):
