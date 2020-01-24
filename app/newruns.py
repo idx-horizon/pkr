@@ -54,7 +54,7 @@ def getevents_by_prefix(prefix):
     
     js = getevents(data, 97, cADULT)
 
-    return [i for i in js if i['properties']['eventname'].startswith(prefix)]
+    return [Event(i) for i in js if i['properties']['eventname'].startswith(prefix)]
 
 def getevents(js, countrycode, seriesid):
     return [x for x in js['events']['features'] if
