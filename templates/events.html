@@ -1,8 +1,8 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-<H1>Events ({{ data|length }}) in the UK starting with: {{ prefix }}</H1>
-<form action='/startswith/{{ filter }}/' method="POST" name="form">
+<H1>{{ data|length }} events in the UK {{ filter_method }} "{{ filter }}"</H1>
+<form action='/events/{{ filter }}/' method="POST" name="form">
 		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter" 
 		placeholder="(filter by)" value="{{ request.form['filter'] }}"></input>
                 <input type="radio" name="filter_method" value="startswith" checked> Startswith
