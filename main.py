@@ -49,13 +49,16 @@ def home():
 def starts(prefix=None):
 	
     this_prefix = prefix or ''
+    this_method = 'startswith'
     if request.method.upper() == 'POST':
       this_prefix = request.form['filter'].lower()
-    print('** Trying to filter by {} using method {}'.format(this_prefix, request.form['filter_method']  ))			
-    data=NR.getevents_by_prefix(this_prefix, 'startswith')
+      this_method = request.form['filter_method']
+      print('** Trying to filter by {} using method {}'.format(this_prefix, this_method ))
+	
+    data=NR.getevents_by_prefix(this_prefix, this_method)
     return render_template('startswith.html',
                 title=get_app_title(), 
-                prefix=this_prefix + ' startswith', 
+                prefix=this_prefix + ' ' + this_method, 
                 file_modified_date=NR.get_last_update(),
                 data=data)
     
