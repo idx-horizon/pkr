@@ -49,8 +49,9 @@ def starts(prefix='z'):
     data=NR.getevents_by_prefix(prefix)
     file_modified_date = NR.get_last_update()
     return render_template('startswith.html',
+                app_name='WIP',
                 title='wip', 
-                limit=this_prefix, 
+                prefix=this_prefix, 
                 file_modified_date=file_modified_date,
                 data=data)
     
