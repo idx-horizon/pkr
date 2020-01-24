@@ -46,7 +46,7 @@ def home():
     
 @app.route('/startswith/', methods=['POST','GET'])
 @app.route('/startswith/<prefix>', methods=['POST','GET'])
-def startswith(prefix=None):
+def starts(prefix=None):
 	
     this_prefix = prefix or ''
     if request.method.upper() == 'POST':
