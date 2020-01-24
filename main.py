@@ -20,9 +20,9 @@ class User(UserMixin):
 def load_user(id):
     return User.get(id)
 
-@app.errorhandler(404)
-def error_404(error):
-	return redirect('/error/404')
+#@app.errorhandler(404)
+#def error_404(error):
+#	return redirect('/error/404')
 
 @app.errorhandler(500)
 def error_500(error):
