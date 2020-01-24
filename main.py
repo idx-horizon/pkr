@@ -46,16 +46,16 @@ def home():
     
 @app.route('/startswith/', methods=['POST','GET'])
 @app.route('/startswith/<prefix>', methods=['POST','GET'])
-def starts(prefix=None):
+def startswith(prefix=None):
 	
     this_prefix = prefix or ''
     if request.method.upper() == 'POST':
       this_prefix = request.form['filter'].lower()
 			
-    data=NR.getevents_by_prefix(this_prefix)
+    data=NR.getevents_by_prefix(this_prefix, method=request.form['filter_method'] )
     return render_template('startswith.html',
                 title=get_app_title(), 
-                prefix=this_prefix, 
+                prefix=this_prefix + ' ' + request.form['filter_method'], 
                 file_modified_date=NR.get_last_update(),
                 data=data)
     
