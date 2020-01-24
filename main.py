@@ -51,7 +51,7 @@ def starts(prefix=None):
     this_prefix = prefix or ''
     if request.method.upper() == 'POST':
       this_prefix = request.form['filter'].lower()
-			
+    print('** Trying to filter by {} using method {}'.format(this_prefix, request.form['filter_method']  ))			
     data=NR.getevents_by_prefix(this_prefix, method=request.form['filter_method'] )
     return render_template('startswith.html',
                 title=get_app_title(), 
