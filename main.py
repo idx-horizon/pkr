@@ -46,7 +46,7 @@ def home():
     
 @app.route('/events/', methods=['POST','GET'])
 @app.route('/events/<filter>', methods=['POST','GET'])
-def starts(filter=None):
+def r_events(filter=None):
 	
     this_filter = filter or ''
     this_method = 'startswith'
@@ -58,7 +58,7 @@ def starts(filter=None):
     return render_template('events.html',
                 title=get_app_title(), 
                 filter=this_filter, 
-                method=this_method
+                filter_method=this_method
                 file_modified_date=NR.get_last_update(),
                 data=data)
     
