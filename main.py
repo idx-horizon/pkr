@@ -44,21 +44,21 @@ def home():
                 file_modified_date=NR.get_last_update())
 
     
-@app.route('/startswith/', methods=['POST','GET'])
-@app.route('/startswith/<prefix>', methods=['POST','GET'])
-def starts(prefix=None):
+@app.route('/events/', methods=['POST','GET'])
+@app.route('/events/<filter>', methods=['POST','GET'])
+def starts(filter=None):
 	
-    this_prefix = prefix or ''
+    this_filter = filter or ''
     this_method = 'startswith'
     if request.method.upper() == 'POST':
-      this_prefix = request.form['filter'].lower()
+      this_filter = request.form['filter'].lower()
       this_method = request.form['filter_method']
-      print('** Trying to filter by {} using method {}'.format(this_prefix, this_method ))
 	
-    data=NR.getevents_by_prefix(this_prefix, this_method)
-    return render_template('startswith.html',
+    data=NR.getevents_by_filter(this_filter, this_method)
+    return render_template('events.html',
                 title=get_app_title(), 
-                prefix=this_prefix + ' ' + this_method, 
+                filter=this_filter, 
+                method=this_method
                 file_modified_date=NR.get_last_update(),
                 data=data)
     
