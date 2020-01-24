@@ -49,12 +49,14 @@ def getfile(refresh=False):
     with open(fn_events, 'r') as fin:
         return json.load(fin)
 
-def getevents_by_prefix(prefix):
+def getevents_by_prefix(prefix, method='startswith'):
     data = getfile(False)
     
     js = getevents(data, 97, cADULT)
-
-    return [Event(i) for i in js if i['properties']['eventname'].startswith(prefix)]
+    if method == 'startswith':
+       return [Event(i) for i in js if i['properties']['eventname'].startswith(prefix)]
+    else:
+        return [Event(i) for i in js if prefix in i['properties']['eventname']]
 
 def getevents(js, countrycode, seriesid):
     return [x for x in js['events']['features'] if
