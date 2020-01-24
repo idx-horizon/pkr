@@ -2,7 +2,7 @@
 {% include "_menubar.html" %}
 
 <H1>Events ({{ data|length }}) in the UK starting with: {{ prefix }}</H1>
-<form action='/newruns/{{ filter }}/' method="POST" name="form">
+<form action='/startswith/{{ filter }}/' method="POST" name="form">
 		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter" 
 		placeholder="(filter by)" value="{{ request.form['filter'] }}"></input>
 		<button type="submit" name="filter" value="Filter">Filter</button>
