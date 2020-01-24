@@ -12,8 +12,8 @@
             </tr>
             {% for item in data %}
                 <tr>
-                    <td align="center">{{ item.id }}</td>
-                    <td align="left"><a href="{{ item.id }}">{{ item.properties.EventLongName }}</td>
+                    <td align="center">{{ item.evid }}</td>
+                    <td align="left"><a href="{{ item.url_latestresults }}">{{ item.evlongname }}</td>
                 </tr>
             {% endfor %}
             <P>
