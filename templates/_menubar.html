@@ -1,6 +1,7 @@
 <div class="topnav">
 	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
 	<a href="/newruns"   {% if url_for(request.endpoint) == '/newruns/' %}class="active"{% endif %}>New Runs</a>
+	<a href="/startswith"   {% if url_for(request.endpoint) == '/startswith/' %}class="active"{% endif %}>Startswith</a>
 	<div class="topnav-right">
 	{% if current_user.is_anonymous %}
 		<a href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>
