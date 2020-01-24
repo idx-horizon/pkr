@@ -49,7 +49,7 @@ def getfile(refresh=False):
     with open(fn_events, 'r') as fin:
         return json.load(fin)
 
-def getevents_by_suffix(js, suffix):
+def getevents_by_suffix(suffix):
     data = getfile(False)
     
     js = getevents(data, 97, cADULT)
