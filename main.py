@@ -50,7 +50,6 @@ def starts(prefix=''):
     this_prefix = prefix or ''
     data=NR.getevents_by_prefix(prefix)
     return render_template('startswith.html',
-                app_name='WIP',
                 title=get_app_title(), 
                 prefix=this_prefix, 
                 file_modified_date=NR.get_last_update(),
@@ -59,7 +58,6 @@ def starts(prefix=''):
 @app.route('/newruns/')
 @app.route('/newruns/<limit>')
 def newruns(limit=10):
-    title = os.environ['USER_NAME'] + '(' + os.environ['APP_NAME'] + ')'
     this_limit =int(limit) or 10
     data = NR.get_last_newruns(this_limit)
     return render_template('newruns.html',
