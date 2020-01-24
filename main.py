@@ -44,8 +44,8 @@ def home():
                 file_modified_date=NR.get_last_update())
 
     
-@app.route('/startswith/')
-@app.route('/startswith/<prefix>')
+@app.route('/startswith/', methods=['POST','GET'])
+@app.route('/startswith/<prefix>', methods=['POST','GET'])
 def starts(prefix=''):
     this_prefix = prefix or ''
     data=NR.getevents_by_prefix(prefix)
