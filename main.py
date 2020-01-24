@@ -99,7 +99,7 @@ def logout():
 
 
 def get_app_title():
-    return os.environ['USER_NAME'] + ' (' + os.environ['APP_NAME'] + ')'
+    return os.environ['APP_TITLE'] 
 
 def runapp(host='localhost', port=5000, debug=True):
     app.run(host=host, port=port, debug=debug)
