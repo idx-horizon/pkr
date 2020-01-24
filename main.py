@@ -43,14 +43,14 @@ def home():
 
     
 @app.route('/startswith/')
-@app.route('/startswith/<suffix>')
-def starts(suffix='z'):
-    this_suffix = suffix or 'z'
-    data=NR.getevents_by_suffix(suffix)
+@app.route('/startswith/<prefix>')
+def starts(prefix='z'):
+    this_prefix = prefix or 'z'
+    data=NR.getevents_by_prefix(prefix)
     file_modified_date = NR.get_last_update()
-    return render_template('newruns.html',
+    return render_template('startswith.html',
                 title='wip', 
-                limit=this_suffix, 
+                limit=this_prefix, 
                 file_modified_date=file_modified_date,
                 data=data)
     

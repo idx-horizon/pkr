@@ -1,0 +1,22 @@
+{% include "_header.html" %}
+{% include "_menubar.html" %}
+
+<H1>Events in the UK starting with: {{ prefix }}</H1>
+<H2>{{ title }} (as at {{ file_modified_date }})</H2>
+
+<div style="width:50%">
+    <table id='table'>
+            <tr>
+                <th width="10%"  align="centre">#</th>
+                <th width="90%" align="left">Name</th>
+            </tr>
+            {% for item in data %}
+                <tr>
+                    <td align="center">{{ item.id }}</td>
+                    <td align="left"><a href="{{ item.id }}">{{ item.properties.EventLongName }}</td>
+                </tr>
+            {% endfor %}
+            <P>
+    </table>
+</div>
+{% include "_footer.html" %}
