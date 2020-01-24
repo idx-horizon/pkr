@@ -58,7 +58,7 @@ def r_events(filter=None):
     return render_template('events.html',
                 title=get_app_title(), 
                 filter=this_filter, 
-                filter_method=this_method
+                filter_method=this_method,
                 file_modified_date=NR.get_last_update(),
                 data=data)
     
