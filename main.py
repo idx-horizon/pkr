@@ -40,7 +40,8 @@ def index():
 @app.route('/home/')
 def home():
     return render_template('home.html',
-                title=get_app_title())
+                title=get_app_title(),
+                file_modified_date=NR.get_last_update())
 
     
 @app.route('/startswith/')
@@ -48,12 +49,11 @@ def home():
 def starts(prefix=''):
     this_prefix = prefix or ''
     data=NR.getevents_by_prefix(prefix)
-    file_modified_date = NR.get_last_update()
     return render_template('startswith.html',
                 app_name='WIP',
                 title=get_app_title(), 
                 prefix=this_prefix, 
-                file_modified_date=file_modified_date,
+                file_modified_date=NR.get_last_update(),
                 data=data)
     
 @app.route('/newruns/')
@@ -62,11 +62,10 @@ def newruns(limit=10):
     title = os.environ['USER_NAME'] + '(' + os.environ['APP_NAME'] + ')'
     this_limit =int(limit) or 10
     data = NR.get_last_newruns(this_limit)
-    file_modified_date = NR.get_last_update()
     return render_template('newruns.html',
                 title=get_app_title(), 
                 limit=this_limit, 
-                file_modified_date=file_modified_date,
+                file_modified_date=NR.get_last_update(),
                 data=data)
 
 @app.route('/login/', methods=['POST','GET'])
