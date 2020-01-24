@@ -39,7 +39,8 @@ def index():
 
 @app.route('/home/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html',
+                title=get_app_title())
 
     
 @app.route('/startswith/')
@@ -50,7 +51,7 @@ def starts(prefix='z'):
     file_modified_date = NR.get_last_update()
     return render_template('startswith.html',
                 app_name='WIP',
-                title=get_app_title, 
+                title=get_app_title(), 
                 prefix=this_prefix, 
                 file_modified_date=file_modified_date,
                 data=data)
