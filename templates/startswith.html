@@ -5,7 +5,7 @@
 <form action='/startswith/{{ filter }}/' method="POST" name="form">
 		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter" 
 		placeholder="(filter by)" value="{{ request.form['filter'] }}"></input>
-                <input type="radio" name="filter_method" value="startswith"> Startswith
+                <input type="radio" name="filter_method" value="startswith" checked> Startswith
                 <input type="radio" name="filter_method" value="contains"> Contains
 		<button type="submit" name="filter" value="Filter">Filter</button>
 <div style="width:50%">
