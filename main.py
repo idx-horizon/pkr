@@ -45,12 +45,12 @@ def home():
 @app.route('/startswith/')
 @app.route('/startswith/<prefix>')
 def starts(prefix='z'):
-    this_prefix = prefix or 'z'
+    this_prefix = prefix or ''
     data=NR.getevents_by_prefix(prefix)
     file_modified_date = NR.get_last_update()
     return render_template('startswith.html',
                 app_name='WIP',
-                title='wip', 
+                title=get_app_title, 
                 prefix=this_prefix, 
                 file_modified_date=file_modified_date,
                 data=data)
@@ -63,7 +63,7 @@ def newruns(limit=10):
     data = NR.get_last_newruns(this_limit)
     file_modified_date = NR.get_last_update()
     return render_template('newruns.html',
-                title=title, 
+                title=get_app_title(), 
                 limit=this_limit, 
                 file_modified_date=file_modified_date,
                 data=data)
@@ -96,6 +96,9 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+
+def get_app_title():
+    return os.environ['USER_NAME'] + ' (' + os.environ['APP_NAME'] + ')'
 
 def runapp(host='localhost', port=5000, debug=True):
     app.run(host=host, port=port, debug=debug)
