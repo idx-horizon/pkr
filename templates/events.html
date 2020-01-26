@@ -23,4 +23,8 @@
             <P>
     </table>
 </div>
+{% for c in countries %}
+    {{ c }} {{ countries[c] }}<BR>
+{% endfor %}
+
 {% include "_footer.html" %}

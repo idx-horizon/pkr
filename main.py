@@ -4,6 +4,7 @@ from flask import Flask, jsonify, abort, flash, make_response, render_template, 
 
 from app import app,login
 from app.forms import LoginForm
+from app.countries import country_dict
 from flask_login import UserMixin
 
 import app.newruns as NR
@@ -46,7 +47,7 @@ def home():
     
 @app.route('/events/', methods=['POST','GET'])
 @app.route('/events/<filter>', methods=['POST','GET'])
-@app.route('/events/<filter>/', methods=['POST','GET'])
+#@app.route('/events/<filter>/', methods=['POST','GET'])
 def r_events(filter=None):
 	
     this_filter = filter or ''
@@ -61,6 +62,7 @@ def r_events(filter=None):
                 filter=this_filter, 
                 filter_method=this_method,
                 file_modified_date=NR.get_last_update(),
+                countries=country_dict,
                 data=data)
     
 @app.route('/newruns/')
