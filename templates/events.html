@@ -3,7 +3,7 @@
 
 <H1>{{ data|length }} events in {{ country|upper }} {{ filter_method }} "{{ filter_str }}"</H1>
 
-<form action='/events/{{ country_code }}/{{ filter_str }}' method="POST" name="form">
+<form action='/events/{{ country_code|string }}/{{ filter_str }}' method="POST" name="form">
  		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter_str" placeholder="(filter by)" value="{{ request.form['filter_str'] }}"></input>
         <span class="styled">
           <select name="filter_method">
