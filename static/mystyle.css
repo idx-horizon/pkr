@@ -290,14 +290,15 @@ input[type="text"], input[type="password"]
 	width: 150px;
 	font-size: 20px;
 	border: 1px solid #CCC;
-	height: 40px;
+	height: 60px;
 }
 .styled {
-	display: inline-block;
+	/* display: inline-block; */
+	background: transparent;
 	margin: 20px;
 	width: 150px;
-	height: 40px;
-	border: 1px solid #111;
+	height: 60px;
+	border: 1px solid #BBB; /* 111 */
 	border-radius: 3px;
 	overflow: hidden;
 }
