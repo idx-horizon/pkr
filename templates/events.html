@@ -2,32 +2,31 @@
 {% include "_menubar.html" %}
 
 <H1>{{ data|length }} events in the UK {{ filter_method }} "{{ filter }}"</H1>
+<div>
 <form action='/events/{{ filter_str }}' method="POST" name="form">
 		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter_str" 
-		placeholder="(filter by)" value="{{ request.form['filter'] }}"></input>
-                <input type="radio" name="filter_method" value="startswith" checked> Startswith
-                <input type="radio" name="filter_method" value="contains"> Contains
+		placeholder="(filter by)" value="{{ request.form['filter_str'] }}"></input>
         <div class="styled">
-          <select>
+          <select name="filter_method">
             <option selected>Startswith</option>
             <option>Contains</option>
           </select>
         </div>
+        <div class="styled">
+          <select name="country">
+                {% for c in countries %}
+                    <option>{{ c }}></option>
+                {% endfor %}
+          </select>
+        </div>
 		<button type="submit" name="filter" value="Filter">Filter</button>
-		
-<div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-    <a href="#">Startswith</a>
-    <a href="#">Contains</a>
-  </div>
-</div>
-		
-<div style="width:50%">
+</form>
+</div>				
+<div style="width:80%">
     <table id='table'>
             <tr>
-                <th width="10%"  align="centre">#</th>
-                <th width="90%" align="left">Name</th>
+                <th width="20%"  align="centre">#</th>
+                <th width="80%" align="left">Name</th>
             </tr>
             {% for item in data|sort(attribute='evlongname') %}
                 <tr>
