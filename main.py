@@ -50,7 +50,7 @@ def home():
 @app.route('/events/<filter_str>/', methods=['POST','GET'])
 def r_events(filter_str=None):
 	
-    this_filter = filter or ''
+    this_filter = filter_str or ''
     this_method = 'startswith'
     if request.method.upper() == 'POST':
       this_filter = str(request.form['filter_str']).lower()
