@@ -56,10 +56,8 @@ def home():
 
     
 @app.route('/events/', methods=['POST','GET'])
-@app.route('/events/<int:country>', methods=['POST','GET'])
-@app.route('/events/<int:country>/', methods=['POST','GET'])
-@app.route('/events/<int:country>/<filter_str>', methods=['POST','GET'])
-@app.route('/events/<int:country>/<filter_str>/', methods=['POST','GET'])
+@app.route('/events/<country>/', methods=['POST','GET'])
+@app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None):
 
     this_country = country or 97	

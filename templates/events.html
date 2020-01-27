@@ -2,9 +2,9 @@
 {% include "_menubar.html" %}
 
 <H1>{{ data|length }} events in {{ country|upper }} {{ filter_method }} "{{ filter_str }}"</H1>
-<div>
-<form action='/events/{{ country_code }}/{{ filter_str }}/' method="POST" name="form">
 
+<form action='/events/{{ country_code }}/{{ filter_str }}/' method="POST" name="form">
+<div display: inline-block>
  		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter_str" placeholder="(filter by)" value="{{ request.form['filter_str'] }}"></input>
         <div class="styled">
           <select name="filter_method">
@@ -21,8 +21,9 @@
           </select>
         </div>
 		<button type="submit" name="filter_btn" value="Filter">Filter</button>
+</div>		
 </form>
-</div>				
+				
 <div style="width:80%">
     <table id='table'>
             <tr>
