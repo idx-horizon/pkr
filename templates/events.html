@@ -15,7 +15,8 @@
         <div class="styled">
           <select name="country">
                 {% for c in countries %}
-                    <option {% if c=="uk" selected %}>{{ c }}</option>
+                    <option {% if c=="uk" %}selected{% endif %}
+                      >{{ c }}</option>
                 {% endfor %}
           </select>
         </div>
