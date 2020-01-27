@@ -10,8 +10,10 @@
             <option selected value="startswith">Startswith</option>
             <option value="contains">Contains</option>
           </select>
+        </div>
  		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter_str" 
 		placeholder="(filter by)" value="{{ request.form['filter_str'] }}"></input>
+		<div>
           <select name="country">
                 {% for c in countries %}
                     <option {% if c=="uk" %}selected{% endif %}
