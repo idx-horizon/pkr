@@ -2,11 +2,17 @@
 {% include "_menubar.html" %}
 
 <H1>{{ data|length }} events in the UK {{ filter_method }} "{{ filter }}"</H1>
-<form action='/events/{{ filter }}' method="POST" name="form">
-		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter" 
+<form action='/events/{{ filter_str }}' method="POST" name="form">
+		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter_str" 
 		placeholder="(filter by)" value="{{ request.form['filter'] }}"></input>
                 <input type="radio" name="filter_method" value="startswith" checked> Startswith
                 <input type="radio" name="filter_method" value="contains"> Contains
+        <div class="styled">
+          <select>
+            <option selected>Startswith</option>
+            <option>Contains</option>
+          </select>
+        </div>
 		<button type="submit" name="filter" value="Filter">Filter</button>
 		
 <div class="dropdown">

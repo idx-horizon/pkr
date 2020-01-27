@@ -285,5 +285,20 @@ input[type="text"], input[type="password"]
   background-color: #3e8e41;
 }
 
+.styled select {
+	background: transparent;
+	width: 150px;
+	font-size: 16px;
+	border: 1px solid #CCC;
+	height: 34px;
+}
+.styled {
+	margin: 50px;
+	width: 120px;
+	height: 34px;
+	border: 1px solid #111;
+	border-radius: 3px;
+	overflow: hidden;
+}
 
 
