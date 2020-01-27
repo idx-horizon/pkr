@@ -23,6 +23,7 @@ def load_user(id):
 
 @app.errorhandler(404)
 def error_404(error):
+    print(error)
 	return redirect('/error/404')
 
 @app.errorhandler(500)
@@ -49,15 +50,18 @@ def home():
 @app.route('/events/<country>/<filter_str>', methods=['POST','GET'])
 @app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None):
+
     this_country = country or 97	
     this_filter = filter_str or ''
     this_method = 'startswith'
+    
     if request.method.upper() == 'POST':
-      this_filter = str(request.form['filter_str']).lower()
-      this_method = str(request.form['filter_method'])
+      this_filter  = str(request.form['filter_str']).lower()
+      this_method  = str(request.form['filter_method'])
       this_country = str(request.form['country'])
 	
-    print('** method {} string {}'.format(this_method, this_filter))
+    print('** method {} country {} string {}'.format(this_method, this_country, this_filter))
+    
     data=NR.getevents_by_filter(this_filter, this_country, this_method)
     return render_template('events.html',
                 title=get_app_title(), 
