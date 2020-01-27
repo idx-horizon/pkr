@@ -1,7 +1,7 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-<H1>{{ data|length }} events in {{ country }} {{ filter_method }} "{{ filter_str }}"</H1>
+<H1>{{ data|length }} events in {{ country|upper }} {{ filter_method }} "{{ filter_str }}"</H1>
 <div>
 <form action='/events/{{ country }}/{{ filter_str }}' method="POST" name="form">
 

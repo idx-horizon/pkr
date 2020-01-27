@@ -18,7 +18,7 @@ class User(UserMixin):
         return 'ian'
 
 try:
-    print('URL request: {}'.format(request.url_rule))
+    print('URL request: {}'.format(request))
 except:
     pass
     
@@ -29,7 +29,7 @@ def load_user(id):
 @app.errorhandler(404)
 def error_404(error):
     try:
-        print('URL request: {}'.format(request.url_rule))
+        print('URL request: {}'.format(request))
     except:
         pass
     print('** Error: {}'.format(error))
@@ -78,7 +78,7 @@ def r_events(country=None, filter_str=None):
                 filter_method=this_method,
                 file_modified_date=NR.get_last_update(),
                 countries=country_dict,
-                country=this_country,
+                country='uk',
                 data=data)
     
 @app.route('/newruns/')
