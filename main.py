@@ -24,11 +24,11 @@ def load_user(id):
 @app.errorhandler(404)
 def error_404(error):
     print('** Error: {}'.format(error))
-	return redirect('/error/404')
+    return redirect('/error/404')
 
 @app.errorhandler(500)
 def error_500(error):
-	return redirect('/error/500')
+    return redirect('/error/500')
 
 @app.route('/error/')
 @app.route('/error/<code>')
