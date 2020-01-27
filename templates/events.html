@@ -13,10 +13,10 @@
         </span>
 		<span class="styled">
           <select name="country_code">
-                {% for c in countries %}
-                    <option {% if c=="uk" %}selected{% endif %}
-                      value="{{ countries[c] }}">{{ c }}</option>
-                {% endfor %}
+            {% for c in countries %}
+                <option {% if c=="uk" %}selected{% endif %}
+                  value="{{ countries[c] }}">{{ c }}</option>
+            {% endfor %}
           </select>
         </span>
 		<button type="submit" name="filter_btn" value="Filter">Filter</button>
