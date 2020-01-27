@@ -46,9 +46,9 @@ def home():
 
     
 @app.route('/events/', methods=['POST','GET'])
-@app.route('/events/<filter>', methods=['POST','GET'])
+@app.route('/events/<filter_str>', methods=['POST','GET'])
 #@app.route('/events/<filter>/', methods=['POST','GET'])
-def r_events(filter=None):
+def r_events(filter_str=None):
 	
     this_filter = filter or ''
     this_method = 'startswith'
