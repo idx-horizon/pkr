@@ -3,18 +3,18 @@
 
 <H1>{{ data|length }} events in {{ country|upper }} {{ filter_method }} "{{ filter_str }}"</H1>
 <div>
-<form action='/events/{{ country }}/{{ filter_str }}' method="POST" name="form">
+<form action='/events/{{ country_code }}/{{ filter_str }}' method="POST" name="form">
 
+ 		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter_str" 
+		placeholder="(filter by)" value="{{ request.form['filter_str'] }}"></input>
         <div class="styled">
           <select name="filter_method">
             <option selected value="startswith">Startswith</option>
             <option value="contains">Contains</option>
           </select>
         </div>
- 		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter_str" 
-		placeholder="(filter by)" value="{{ request.form['filter_str'] }}"></input>
 		<div>
-          <select name="country">
+          <select name="country_code">
                 {% for c in countries %}
                     <option {% if c=="uk" %}selected{% endif %}
                       value="{{ countries[c] }}">{{ c }}</option>
