@@ -47,16 +47,17 @@ def home():
     
 @app.route('/events/', methods=['POST','GET'])
 @app.route('/events/<filter_str>', methods=['POST','GET'])
-#@app.route('/events/<filter>/', methods=['POST','GET'])
+@app.route('/events/<filter>/', methods=['POST','GET'])
 def r_events(filter_str=None):
 	
     this_filter = filter or ''
     this_method = 'startswith'
     if request.method.upper() == 'POST':
-      this_filter = request.form['filter_str'].lower()
-      this_method = request.form['filter_method']
+      this_filter = str(request.form['filter_str']).lower()
+      this_method = str(request.form['filter_method'])
 	
-    data=NR.getevents_by_filter(this_filter, this_method)
+	print('** method {} string {}'.format(this_method, this_filter))
+    data=NR.getevents_by_filter(this_filter, 97, this_method)
     return render_template('events.html',
                 title=get_app_title(), 
                 filter=this_filter, 

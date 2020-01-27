@@ -49,10 +49,10 @@ def getfile(refresh=False):
     with open(fn_events, 'r') as fin:
         return json.load(fin)
 
-def getevents_by_filter(filter, method='startswith'):
+def getevents_by_filter(filter, country=97, method='startswith'):
     data = getfile(False)
     
-    js = getevents(data, 97, cADULT)
+    js = getevents(data, country, cADULT)
     if method == 'startswith':
        return [Event(i) for i in js if i['properties']['eventname'].startswith(filter)]
     else:
