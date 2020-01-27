@@ -17,12 +17,21 @@ class User(UserMixin):
     def get(self):
         return 'ian'
 
+try:
+    print('URL request: {}'.format(request.url_rule))
+except:
+    pass
+    
 @login.user_loader
 def load_user(id):
     return User.get(id)
 
 @app.errorhandler(404)
 def error_404(error):
+    try:
+        print('URL request: {}'.format(request.url_rule))
+    except:
+        pass
     print('** Error: {}'.format(error))
     return redirect('/error/404')
 
@@ -47,8 +56,8 @@ def home():
 
     
 @app.route('/events/', methods=['POST','GET'])
-@app.route('/events/<country>/<filter_str>', methods=['POST','GET'])
-@app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
+@app.route('/events/<int:country>/<filter_str>', methods=['POST','GET'])
+@app.route('/events/<int:country>/<filter_str>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None):
 
     this_country = country or 97	
