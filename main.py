@@ -68,8 +68,9 @@ def r_events(country=None, filter_str=None):
       this_filter  = str(request.form['filter_str']).lower()
       this_method  = str(request.form['filter_method'])
       this_country = str(request.form['country'])
-	
-    print('** method {} country {} string {}'.format(this_method, this_country, this_filter))
+      
+    print('** Request: [{}] [{}]'.format(request.url, request.method))
+    print('** method [{}] country [{}] string [{}]'.format(this_method, this_country, this_filter))
     
     data=NR.getevents_by_filter(this_filter, this_country, this_method)
     return render_template('events.html',
