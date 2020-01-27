@@ -56,7 +56,7 @@ def r_events(filter_str=None):
       this_filter = str(request.form['filter_str']).lower()
       this_method = str(request.form['filter_method'])
 	
-	print('** method {} string {}'.format(this_method, this_filter))
+    print('** method {} string {}'.format(this_method, this_filter))
     data=NR.getevents_by_filter(this_filter, 97, this_method)
     return render_template('events.html',
                 title=get_app_title(), 
