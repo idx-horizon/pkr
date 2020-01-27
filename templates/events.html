@@ -8,8 +8,8 @@
 		placeholder="(filter by)" value="{{ request.form['filter_str'] }}"></input>
         <div class="styled">
           <select name="filter_method">
-            <option selected>Startswith</option>
-            <option>Contains</option>
+            <option selected value="startswith">Startswith</option>
+            <option value="contains">Contains</option>
           </select>
         </div>
         <div class="styled">
