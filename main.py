@@ -53,7 +53,7 @@ def r_events(filter=None):
     this_filter = filter or ''
     this_method = 'startswith'
     if request.method.upper() == 'POST':
-      this_filter = request.form['filter'].lower()
+      this_filter = request.form['filter_str'].lower()
       this_method = request.form['filter_method']
 	
     data=NR.getevents_by_filter(this_filter, this_method)

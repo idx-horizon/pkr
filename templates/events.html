@@ -15,7 +15,7 @@
         <div class="styled">
           <select name="country">
                 {% for c in countries %}
-                    <option>{{ c }}></option>
+                    <option {% if c=="uk" selected %}>{{ c }}</option>
                 {% endfor %}
           </select>
         </div>
@@ -37,8 +37,5 @@
             <P>
     </table>
 </div>
-{% for c in countries %}
-    {{ c }} {{ countries[c] }}<BR>
-{% endfor %}
 
 {% include "_footer.html" %}
