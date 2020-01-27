@@ -73,12 +73,12 @@ def r_events(country=None, filter_str=None):
     
     data=NR.getevents_by_filter(this_filter, this_country, this_method)
     return render_template('events.html',
-                title=get_app_title(), 
+                title=get_app_title() + '[' + this_filter + ']', 
                 filter=this_filter, 
                 filter_method=this_method,
                 file_modified_date=NR.get_last_update(),
                 countries=country_dict,
-                country='uk',
+                country=this_country,
                 data=data)
     
 @app.route('/newruns/')
