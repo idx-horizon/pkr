@@ -288,14 +288,14 @@ input[type="text"], input[type="password"]
 .styled select {
 	background: transparent;
 	width: 150px;
-	font-size: 16px;
+	font-size: 20px;
 	border: 1px solid #CCC;
-	height: 34px;
+	height: 40px;
 }
 .styled {
 	margin: 50px;
-	width: 120px;
-	height: 34px;
+	width: 150px;
+	height: 40px;
 	border: 1px solid #111;
 	border-radius: 3px;
 	overflow: hidden;
