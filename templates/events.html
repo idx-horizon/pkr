@@ -8,8 +8,16 @@
 
         <span class="styled">
           <select name="filter_method">
-            <option selected value="startswith">Startswith</option>
-            <option value="contains">Contains</option>
+            <option {% if request.form['filter_method']=='startswith' %}
+                    selected
+                    {% endif %}
+                    value="startswith">Startswith
+            </option>
+            <option {% if request.form['filter_method']=='contains' %}
+                    selected
+                    {% endif %}
+                    value="contains">Contains
+            </option>
           </select>
         </span>
 		<span class="styled">
