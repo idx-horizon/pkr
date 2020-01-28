@@ -60,7 +60,7 @@ def home():
 @app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None):
     print('r_events {} - method {}'.format( request.url, request.method))
-    this_country = country_dict[country or 'uk']	
+    this_country = country or 'uk'	
     this_filter = filter_str or ''
     this_method = 'startswith'
     
@@ -72,14 +72,14 @@ def r_events(country=None, filter_str=None):
     print('** Request: [{}] [{}]'.format(request.url, request.method))
     print('** method [{}] country [{}] string [{}]'.format(this_method, this_country, this_filter))
     
-    data=NR.getevents_by_filter(this_filter, this_country, this_method)
+    data=NR.getevents_by_filter(this_filter, coountry_dict[this_country], this_method)
     return render_template('events.html',
                 title=get_app_title() + '[' + str(this_country) + ' | ' + this_filter + ']', 
                 filter=this_filter, 
                 filter_method=this_method,
                 file_modified_date=NR.get_last_update(),
                 countries=country_dict,
-                country=country,
+                country=this_country,
                 data=data)
     
 @app.route('/newruns/')
