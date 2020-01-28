@@ -27,7 +27,7 @@
 		<span class="styled">
           <select name="country_code">
             {% for c in countries|sort %}
-                <option {% if c=={{ this_country }} %}selected{% endif %}
+                <option {% if c==country %}selected{% endif %}
                   value={{ c }}>{{ c }}</option>
             {% endfor %}
           </select>
