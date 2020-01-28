@@ -79,7 +79,7 @@ def r_events(country=None, filter_str=None):
                 filter_method=this_method,
                 file_modified_date=NR.get_last_update(),
                 countries=country_dict,
-                country=country_dict[this_country],
+                country=this_country,
                 data=data)
     
 @app.route('/newruns/')
