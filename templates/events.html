@@ -26,13 +26,15 @@
         
 		<span class="styled">
           <select name="country_code">
-            {% for c in countries %}
-                <option {% if c==request.form['country_code'] %}selected{% endif %}
+            {% for c in countries|sort %}
+                <option {% if c=={{ this_country }} %}selected{% endif %}
                   value={{ c }}>{{ c }}</option>
             {% endfor %}
           </select>
         </span>
+        <span>
 		<button type="submit" name="filter_btn" value="Filter">Filter</button>
+		<span>
 </form>
 				
 <div style="width:80%">
