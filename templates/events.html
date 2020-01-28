@@ -19,7 +19,7 @@
 		<span class="styled">
           <select name="country_code">
             {% for c in countries %}
-                <option {% if c=="uk" %}selected{% endif %}
+                <option {% if c==request.form['country_code'] %}selected{% endif %}
                   value={{ c }}>{{ c }}</option>
             {% endfor %}
           </select>
