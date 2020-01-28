@@ -72,7 +72,7 @@ def r_events(country=None, filter_str=None):
     print('** Request: [{}] [{}]'.format(request.url, request.method))
     print('** method [{}] country [{}] string [{}]'.format(this_method, this_country, this_filter))
     
-    data=NR.getevents_by_filter(this_filter, coountry_dict[this_country], this_method)
+    data=NR.getevents_by_filter(this_filter, country_dict[this_country], this_method)
     return render_template('events.html',
                 title=get_app_title() + '[' + str(this_country) + ' | ' + this_filter + ']', 
                 filter=this_filter, 
