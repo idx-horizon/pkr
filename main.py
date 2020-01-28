@@ -60,7 +60,7 @@ def home():
 @app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None):
     print('r_events {} - method {}'.format( request.url, request.method))
-    this_country = str(country or 97)	
+    this_country = country_dict[country or 'uk']	
     this_filter = filter_str or ''
     this_method = 'startswith'
     
@@ -79,7 +79,7 @@ def r_events(country=None, filter_str=None):
                 filter_method=this_method,
                 file_modified_date=NR.get_last_update(),
                 countries=country_dict,
-                country=this_country,
+                country=country,
                 data=data)
     
 @app.route('/newruns/')

@@ -1,7 +1,8 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-<H1>{{ data|length }} events in {{ country|upper }} {{ filter_method }} "{{ request.form['filter_str'] }}"</H1>
+<H1>{{ data|length }} events in {{ country|upper }} 
+{% if request.form['filter_str']|length > 0 %}{{ filter_method }} "{{ request.form['filter_str'] }}"{% endif %}</H1>
 
 <form action='/events/{{ country_code }}/{{ filter_str }}' method="POST" name="form">
 
@@ -19,7 +20,7 @@
           <select name="country_code">
             {% for c in countries %}
                 <option {% if c=="uk" %}selected{% endif %}
-                  value={{ countries[c] }}>{{ c }}</option>
+                  value={{ c }}>{{ c }}</option>
             {% endfor %}
           </select>
         </span>
