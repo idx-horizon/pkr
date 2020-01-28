@@ -51,7 +51,6 @@ def getfile(refresh=False):
 
 def getevents_by_filter(filter_str, countrycode='97', method='startswith'):
     data = getfile(False)
-    print('DATA:', data[0])
     
     c_events = getevents(data, int(countrycode), cADULT)
     
