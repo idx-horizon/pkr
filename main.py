@@ -60,7 +60,7 @@ def home():
 @app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None):
 
-    this_country = country or 97	
+    this_country = str(country or 97)	
     this_filter = filter_str or ''
     this_method = 'startswith'
     
