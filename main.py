@@ -74,7 +74,7 @@ def r_events(country=None, filter_str=None):
     
     data=NR.getevents_by_filter(this_filter, this_country, this_method)
     return render_template('events.html',
-                title=get_app_title() + '[' + this_country + ' | ' + this_filter + ']', 
+                title=get_app_title() + '[' + str(this_country) + ' | ' + this_filter + ']', 
                 filter=this_filter, 
                 filter_method=this_method,
                 file_modified_date=NR.get_last_update(),
