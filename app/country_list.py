@@ -1,0 +1,21 @@
+c_dict = {
+    'au': {'id': 3,  'name': 'Australia'},
+    'ca': {'id': 14, 'name': 'Canada'},
+    'dk': {'id': 23, 'name': 'Denmark'},
+    'fi': {'id': 30, 'name': 'Finland'},
+    'fr': {'id': 31, 'name': 'Francce'},
+    'de': {'id': 32, 'name': 'Germany'},
+    'ie': {'id': 42, 'name': 'Ireland'},
+    'it': {'id': 44, 'name': 'Italy'},
+    'jp': {'id': 46, 'name': 'Japan'},
+    'my': {'id': 57, 'name': 'Malaysia'},
+    'nz': {'id': 65, 'name': 'New Zealand'},
+    'no': {'id': 67, 'name': 'Norway'},
+    'pl': {'id': 74, 'name': 'Poland'},
+    'ru': {'id': 79, 'name': 'Russia'},
+    'sg': {'id': 82, 'name': 'Australia'},
+    'za': {'id': 85, 'name': 'South Africa'},
+    'se': {'id': 88, 'name': 'Sweden'},
+    'uk': {'id': 97, 'name': 'UK'},
+    'us': {'id': 98, 'name': 'USA'}
+}
