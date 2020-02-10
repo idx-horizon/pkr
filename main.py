@@ -83,7 +83,7 @@ def r_events(country=None, filter_str=None):
                 country=this_country,
                 data=data)
 
-@app.roure('/stats/')
+@app.route('/stats/')
 @app.route('/stats/<runnerid>')
 def runner_stats(runnerid=184594):
     rid = utils.Runner(runnerid)
