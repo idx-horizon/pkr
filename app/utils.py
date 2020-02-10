@@ -1,7 +1,7 @@
 import requests
 import os
 import datetime
-import extract as e
+import app.extract as e
 import json
 from collections import Counter
 import string
