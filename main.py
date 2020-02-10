@@ -8,6 +8,7 @@ from app.countries import country_dict
 from flask_login import UserMixin
 
 import app.newruns as NR
+import app.utils as utils
 
 from flask_login import login_user, logout_user, current_user, login_required, UserMixin
 
@@ -81,6 +82,13 @@ def r_events(country=None, filter_str=None):
                 countries=country_dict,
                 country=this_country,
                 data=data)
+
+@app.roure('/stats/')
+@app.route('/stats/<runnerid>')
+def runner_stats(runnerid=184594):
+    rid = utils.Runner(runnerid)
+    rid.get_runs(False)
+    print(rid)
     
 @app.route('/newruns/')
 @app.route('/newruns/<limit>')
