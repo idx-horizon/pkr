@@ -93,6 +93,7 @@ class Runner():
 				set(range(1,max(rn)))
 				-set(rn)))[0]-1
 		challenges['Wilson-index'] = wix
+		
 		challenges['Parkrun birthday'] = self.runs[-1]['Run Date']
 		challenges['Years running'] = 'tbc'						
 		challenges['Tourist Quotient'] = '{:%}'.format(
@@ -104,7 +105,7 @@ class Runner():
 		
 		for k,v in [('Time', 'Time'), ('AgeGrade','Age grading'), ('Pos', 'Position')]:
 			element = ['{:>4}'.format(t[k]) for t in self.runs]	
-			challenges[v + ' - best to worst'] = '{} --> {}'.format(min(element).strip(), max(element).strip())
+			challenges[v + ' (range)'] = '{} --> {}'.format(min(element).strip(), max(element).strip())
 		
 		times = [sum(x * int(t) for x, t in zip([60, 1], ele['Time'].split(":"))) for ele in self.runs]
 		challenges['Average run time'] = '{}'.format(datetime.timedelta(seconds=round(statistics.mean(times))))
