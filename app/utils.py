@@ -55,12 +55,7 @@ class Runner():
 		
 		self.stats = self.get_stats()
 		self.challenges = self.get_challenges()
-		
-#		self.stopwatch_ticks = 'Seconds: {} out of 60'.format(
-#							len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')})
-#						)
-#		self.stopwatch_missing = ','.join({x for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})
-	
+			
 	def get_challenges(self):
 		challenges = {}
 		challenges['Stopwatch'] = '{} out of 60 (missing {})'.format(
@@ -69,7 +64,7 @@ class Runner():
 						)
 		challenges['Alphabet'] = '{} letters (missing {})'.format(
 							len(self.letters),
-							','.join(self.missing)
+							', '.join(sorted(self.missing))
 						)
 		challenges['Total number of runs'] = self.run_count
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
