@@ -90,10 +90,10 @@ class Runner():
 		ev = sorted([self.stats[x] for x in self.stats if x.startswith('_EVENT_')], reverse=True)
 		for ix, element in enumerate(ev):
 			if element>ix:
-				pix = ix
+				pix = ix+1
 			else:
 				break		
-		challenges['p-index'] = pix-1
+		challenges['p-index'] = pix
 		
 		rn = sorted(set([int(x['Run Number']) for x in self.runs]))
 		wix = sorted(list(
