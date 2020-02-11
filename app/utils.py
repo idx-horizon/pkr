@@ -102,7 +102,10 @@ class Runner():
 		challenges['Wilson-index'] = wix
 		
 		challenges['Parkrun birthday'] = self.runs[-1]['Run Date']
-		challenges['Years running'] = 'tbc'						
+		
+		yr = sorted([x.replace('_YR_',,) for x in self.stats if x.startswith('_YR_')])
+		challenges['Years running'] = '{} ({} to {})'.format(len(yr), yr[0], yr[-1])
+			
 		challenges['Tourist Quotient'] = '{:%}'.format(
 												len([x for x in self.stats if x.startswith('_EVENT_')]) / self.run_count
 											)
