@@ -91,7 +91,7 @@ def runner_stats(runnerid=184594):
     print(rid)
     return render_template('stats.html',
                 title=get_app_title(), 
-                data=data)
+                data=rid)
         
 @app.route('/newruns/')
 @app.route('/newruns/<limit>')
