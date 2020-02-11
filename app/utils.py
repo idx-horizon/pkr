@@ -102,8 +102,17 @@ class Runner():
 		challenges['Years running'] = '{} ({} to {})'.format(len(yr), yr[0], yr[-1])
 			
 		challenges['Tourist Quotient'] = '{:%}'.format(
-												len([x for x in self.stats if x.startswith('_EVENT_')]) / self.run_count
-											)
+							len([x for x in self.stats if x.startswith('_EVENT_')]) / self.run_count
+							)
+		streak = 0
+		seen = []
+		for ele in [x['Event'] for x in self.runs]:
+  			if ele in seen: break
+  			else:
+    			streak+=1
+    			seen.append(ele)
+    
+		challenges['Current tourism streak'] = streak
 		challenges['Longest tourism streak'] = 'tbc'
 		challenges['Total distance travelled'] = 'tbc'
 		challenges['Countries visited'] = 'tbc'		
