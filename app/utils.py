@@ -87,7 +87,7 @@ class Runner():
 		challenges['Singleton events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==1]))
 		
 		pix = 0
-		ev = sorted([ss[self.runs] for x in self.runs if x.startswith('_EVENT_')], reverse=True)
+		ev = sorted([ss[self.stats] for x in self.stats if x.startswith('_EVENT_')], reverse=True)
 		for ix, element in enumerate(ev):
 			if element>ix:
 				pix = ix
