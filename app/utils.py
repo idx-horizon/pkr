@@ -103,7 +103,7 @@ class Runner():
 		
 		challenges['Parkrun birthday'] = self.runs[-1]['Run Date']
 		
-		yr = sorted([x.replace('_YR_',,) for x in self.stats if x.startswith('_YR_')])
+		yr = sorted([x.replace('_YR_','') for x in self.stats if x.startswith('_YR_')])
 		challenges['Years running'] = '{} ({} to {})'.format(len(yr), yr[0], yr[-1])
 			
 		challenges['Tourist Quotient'] = '{:%}'.format(
