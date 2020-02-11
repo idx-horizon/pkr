@@ -85,8 +85,15 @@ class Runner():
 																		key=lambda key: self.stats[key])		
 		challenges['Most common event'] = '{} at {}'.format(self.stats[key], key.replace('_EVENT_',''))
 		challenges['Singleton events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==1]))
-				
-		challenges['p-index'] = 'tbc'
+		
+		pix = 0
+		ev = sorted([ss[self.runs] for x in self.runs if x.startswith('_EVENT_')], reverse=True)
+		for ix, element in enumerate(ev):
+			if element>ix:
+				pix = ix
+			else:
+				break		
+		challenges['p-index'] = pix-1
 		
 		rn = sorted(set([int(x['Run Number']) for x in self.runs]))
 		wix = sorted(list(
