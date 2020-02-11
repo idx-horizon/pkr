@@ -89,9 +89,10 @@ def runner_stats(runnerid=184594):
     rid = utils.Runner(runnerid)
     rid.get_runs(False)
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
-#    print(rid)
+
     return render_template('stats.html',
                 title=get_app_title(), 
+                file_modified_date=NR.get_last_update(),
                 data=rid)
         
 @app.route('/newruns/')
