@@ -2,7 +2,6 @@
 {% include "_menubar.html" %}
 
 <H1>{{ data.name }} - total runs {{ data.run_count }} </H1>
-<H2>(updated as at {{ data.updated_dt }})</H2>
 
 <div style="width:90%">
     <table id='table'>
@@ -19,5 +18,6 @@
             <P>
     </table>
 </div>
+<P>
 Updated: {{ data.updated_dt }}<P>
 {% include "_footer.html" %}
