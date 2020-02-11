@@ -2,6 +2,7 @@
 	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
 	<a href="/newruns"   {% if url_for(request.endpoint) == '/newruns/' %}class="active"{% endif %}>New Runs</a>
 	<a href="/events/uk"   {% if url_for(request.endpoint) == '/events/' %}class="active"{% endif %}>Events</a>
+	<a href="/stats"   {% if url_for(request.endpoint) == '/stats/' %}class="active"{% endif %}>Stats</a>
 	<div class="topnav-right">
 	{% if current_user.is_anonymous %}
 		<a href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>

@@ -89,7 +89,10 @@ def runner_stats(runnerid=184594):
     rid = utils.Runner(runnerid)
     rid.get_runs(False)
     print(rid)
-    
+    return render_template('stats.html',
+                title=get_app_title(), 
+                data=data)
+        
 @app.route('/newruns/')
 @app.route('/newruns/<limit>')
 def newruns(limit=10):
