@@ -110,6 +110,7 @@ class Runner():
 		times = [sum(x * int(t) for x, t in zip([60, 1], ele['Time'].split(":"))) for ele in self.runs]
 		challenges['Average run time'] = '{}'.format(datetime.timedelta(seconds=round(statistics.mean(times))))
 		challenges['Total run time']   = '{}'.format(str(datetime.timedelta(seconds=sum(times))))
+		challenges['Last run'] = self.runs[0]['Run Date']
 
 		return challenges
 					

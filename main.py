@@ -88,7 +88,8 @@ def r_events(country=None, filter_str=None):
 def runner_stats(runnerid=184594):
     rid = utils.Runner(runnerid)
     rid.get_runs(False)
-    print(rid)
+    rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
+#    print(rid)
     return render_template('stats.html',
                 title=get_app_title(), 
                 data=rid)
