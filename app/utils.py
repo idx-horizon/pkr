@@ -49,9 +49,9 @@ class Runner():
 		self.runs = data['runs']
 		self.caption = data['caption']
 		
-		if self.name.lower() == 'ian': self.threshold = 32
-		if self.name.lower() == 'caroline': self.threshold = 35
-		if self.name.lower() == 'michael': self.threshold = 25
+		if self.name.lower() == 'ian': self.threshold = '32:00'
+		if self.name.lower() == 'caroline': self.threshold = '35:00'
+		if self.name.lower() == 'michael': self.threshold = '25:00'
 				
 		
 		event_counter = self.count_by()
