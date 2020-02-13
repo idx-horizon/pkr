@@ -94,6 +94,20 @@ def runner_stats(runnerid=184594):
                 title=get_app_title(), 
                 file_modified_date=NR.get_last_update(),
                 data=rid)
+
+@app.route('/runs/')
+@app.route('/runs/<runnerid>')
+def runner_runs(runnerid=184594):
+    rid = utils.Runner(runnerid)
+    rid.get_runs(False)
+    rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
+
+    return render_template('runs.html',
+                title=get_app_title(), 
+                file_modified_date=NR.get_last_update(),
+                data=rid)
+
+
         
 @app.route('/newruns/')
 @app.route('/newruns/<limit>')
