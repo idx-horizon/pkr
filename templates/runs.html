@@ -1,7 +1,7 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-<H1><a href="/runs/{{ data.name }}">{{ data.name }}</a> - total runs {{ data.run_count }} </H1>
+<H1>{{ data.name }}<a href="/stats/{{ data.name | lower }}">(show stats)</a> - total runs {{ data.run_count }} </H1>
 
 <div>
 
