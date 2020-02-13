@@ -17,7 +17,7 @@
 		</tr>
 		{% for item in data %}
 				<tr>
-					<td>{{ item.Event }}</td>
+					<td>{{ item['Event'] }}</td>
 					<td align="center">{{ item['Run Date'] }}</td>
 					<td align="center">{{ '%4s' % item['Run Number'] }}</td>
 					<td align="center">{{ '%4s' % item['Pos'] }}</td>
