@@ -105,7 +105,8 @@ def runner_runs(runnerid=184594):
     return render_template('runs.html',
                 title=get_app_title(), 
                 file_modified_date=NR.get_last_update(),
-                data=rid.runs)
+                data=rid.runs,
+                threshold=rid.threshold)
 
 
         

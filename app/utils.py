@@ -47,7 +47,12 @@ class Runner():
 		self.fullname = data['title'][:data['title'].index('-')].strip()
 		self.name = self.fullname[:self.fullname.index(' ')]
 		self.runs = data['runs']
-		self.caption = data['caption']		
+		self.caption = data['caption']
+		
+		if self.name.lower() == 'ian': self.threshold = 32
+		if self.name.lower() == 'caroline': self.threshold = 35
+		if self.name.lower() == 'michael': self.threshold = 25
+				
 		
 		event_counter = self.count_by()
 		self.missing = {x.upper() for x in event_counter if event_counter[x]==0}
