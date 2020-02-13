@@ -106,7 +106,7 @@ def runner_runs(runnerid=184594):
                 title=get_app_title(), 
                 file_modified_date=NR.get_last_update(),
                 data=rid.runs,
-                threshold=rid.threshold)
+                threshold=int(rid.threshold))
 
 
         
