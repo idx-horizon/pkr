@@ -15,7 +15,7 @@
 			<th onclick="sortTable(5)" width="10%" align="center">Age Grading</th>			
 			<th onclick="sortTable(6)" width="5%"  align="center">PB</th>			
 		</tr>
-		{% for item in data %}
+		{% for item in data.runs %}
 				<tr>
 					<td>{{ item['Event'] }}</td>
 					<td align="center">{{ item['Run Date'] }}</td>
@@ -27,7 +27,7 @@
 							{% endif %}>
 							{{ item['Time'] }}</b>
 						</td>
-					<td align="center">{{ item['Age Grade'] }}</td>
+					<td align="center">{{ item['AgeGrade'] }}</td>
 					<td align="center">{{ item['PB?'] }}</td>
 	{% endfor %}
 		<P>
