@@ -1,8 +1,8 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-<H1>{{ data.name }}<a href="/stats/{{ data.name | lower }}">(show stats)</a> - total runs {{ data.run_count }} </H1>
-<button class="button" onclick="location.href = '/stats/{{ data.name | lower }}'">Stats</button>
+<H2>{{ data.name }} - total runs {{ data.run_count }} </H1>
+<button class="button" onclick="location.href = '/stats/{{ data.name | lower }}'">Stats</button></H2>
 <div>
 
 <table id='table'>
