@@ -49,6 +49,7 @@ class Runner():
 		self.runs = data['runs']
 		self.caption = data['caption']
 		
+		self.threshold = '00:00'
 		if self.name.lower() == 'ian': self.threshold = '32:00'
 		if self.name.lower() == 'caroline': self.threshold = '35:00'
 		if self.name.lower() == 'michael': self.threshold = '25:00'
