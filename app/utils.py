@@ -37,9 +37,11 @@ class Runner():
 			data = e.extract_tables(page)[3]
 #			s = json.dumps(data)
 			self.cached = 'new'
-			save_local(json.dumps(data))
+			#save_local(json.dumps(data))
+			save_local(json.dumps((countries, data)))
+
 		else:
-			data = get_local()
+			countries, data = get_local()
 			self.cached = 'cached'
 		
 		self.updated_dt = get_file_details(local_fname)
@@ -47,6 +49,7 @@ class Runner():
 		self.fullname = data['title'][:data['title'].index('-')].strip()
 		self.name = self.fullname[:self.fullname.index(' ')]
 		self.runs = data['runs']
+		self.countries = countries
 		self.caption = data['caption']
 		
 		self.threshold = '00:00'
@@ -121,7 +124,7 @@ class Runner():
 		challenges['Current tourism streak'] = streak
 		challenges['Longest tourism streak'] = 'tbc'
 		challenges['Total distance travelled'] = 'tbc'
-		challenges['Countries visited'] = 'tbc'		
+		challenges['Countries visited'] = len(self.countries)		
 		
 		for k,v in [('Time', 'Time'), ('AgeGrade','Age grading'), ('Pos', 'Position')]:
 			element = ['{:>4}'.format(t[k]) for t in self.runs]	

@@ -6,6 +6,19 @@ def get_chunk_as_tuples(datalist, n):
     for i in range(0, len(datalist), n):
         yield tuple(datalist[i:i + n])
 
+def get_run_links(pagetext):
+	soup = bs4.BeautifulSoup(pagetext,'html5lib')
+	y = soup.find_all('table')[2]
+	ass = y.find_all('a')
+	links = []
+	for link in set([x for x in ass if 'runSeqNumber' in x.get('href')]): 
+		href = link.get('href').split('/')[2]
+		if href not in links:
+			links.append(href)
+	
+	return links
+
+
 def extract_tables(html_text):
 	table_pattern = r'(<table[^>]*>(?:.|\n)*?<\/table>)' 
 	header_pattern = r'(<th[^e/]*>(?:.|\n)*?<\/th>)'
