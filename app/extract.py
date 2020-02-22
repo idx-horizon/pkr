@@ -1,6 +1,6 @@
 import re
 import bs4
-import country_list
+import app.country_list
 
 def get_chunk_as_tuples(datalist, n):
     """Yield successive n-sized chunks as tuple from datalist"""
