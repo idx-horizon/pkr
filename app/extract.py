@@ -14,7 +14,7 @@ def get_run_links(pagetext):
 	links = []
 	for link in set([x for x in ass if 'runSeqNumber' in x.get('href')]): 
 		href = link.get('href').split('/')[2].split('.')[-1]
-		country = country_list.c_dict[href]['name']
+		country = app.country_list.c_dict[href]['name']
 		if country not in links:
 			links.append(country)
 	
