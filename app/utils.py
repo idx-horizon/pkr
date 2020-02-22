@@ -124,7 +124,7 @@ class Runner():
 		challenges['Current tourism streak'] = streak
 		challenges['Longest tourism streak'] = 'tbc'
 		challenges['Total distance travelled'] = 'tbc'
-		challenges['Countries visited'] = len(self.countries)		
+		challenges['Countries visited'] = '{} ({})'.format(len(self.countries),  ', '.join(self.countries))
 		
 		for k,v in [('Time', 'Time'), ('AgeGrade','Age grading'), ('Pos', 'Position')]:
 			element = ['{:>4}'.format(t[k]) for t in self.runs]	
