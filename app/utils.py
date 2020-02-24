@@ -64,6 +64,20 @@ class Runner():
 		
 		self.stats = self.get_stats()
 		self.challenges = self.get_challenges()
+
+	def holiday_runs(self, month, day):
+		dts = [datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y') for x in self.runs]
+		
+		yrs = []
+		for i in range(min(dts).year, max(dts).year):
+ 			if datetime.datetime(i, month, day, 0, 0) in dts: 
+ 				yrs.append(str(i))
+ 				
+		if len(yrs) == 0:
+			return '-'
+		else:
+			return '{} ({})'.format(len(yrs), ', '.join(yrs))
+
 			
 	def get_challenges(self):
 		challenges = {}
@@ -133,7 +147,11 @@ class Runner():
 		times = [sum(x * int(t) for x, t in zip([60, 1], ele['Time'].split(":"))) for ele in self.runs]
 		challenges['Average run time'] = '{}'.format(datetime.timedelta(seconds=round(statistics.mean(times))))
 		challenges['Total run time']   = '{}'.format(str(datetime.timedelta(seconds=sum(times))))
-		challenges['Last run'] = '{} at {}'.format(self.runs[0]['Run Date'], self.runs[0]['Event']) 
+		challenges['Last run'] = '{} at {}'.format(self.runs[0]['Run Date'], self.runs[0]['Event'])
+		
+		challenges['Christmas Day'] = self.holiday_runs(12,25)
+		challenges['New Year Day'] = self.holiday_runs(1,1)
+		
 
 		return challenges
 					
