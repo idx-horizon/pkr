@@ -152,9 +152,51 @@ class Runner():
 		
 		challenges['Christmas Day'] = self.holiday_runs(12,25)
 		challenges['New Year Day'] = self.holiday_runs(1,1)
-		
 
+		challenges['Current series'] = self.current_series()
+		
 		return challenges
+
+	def run_gen(self):
+		ix = -1
+		
+		while True:
+			ix+=1
+			yield self.runs[ix]
+	
+	def convert_date(self, strdate, format='%d/%m/%Y'):
+		return datetime.datetime.strptime(strdate,format)
+		
+	def current_series(self):
+		diff = 0 
+		num_runs = 0
+		seq = self.run_gen()
+		first_run = next(seq)
+		current_run = first_run
+		current_dt = self.convert_date(current_run['Run Date'])
+		
+		while diff < 8:
+			num_runs += 1
+			prev_run = next(seq)
+			prev_dt = self.convert_date(prev_run['Run Date'])
+			diff = (current_dt - prev_dt).days
+			
+			current_run = prev_run
+			current_dt = prev_dt
+		
+		if num_runs == 1:
+			return '{} - {} ({})'.format(num_runs, 
+																#datetime.datetime.strftime(prev_dt,'%d/%m/%Y'), 
+																datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d/%m/%Y'),
+																first_run['Event'])	
+		else:
+			return '{} - {} ({}) to {} ({})'.format(num_runs, 
+#																				datetime.datetime.strftime(prev_dt,'%d/%m/%Y'),
+																				datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d/%m/%Y'),
+																				current_run['Event'], 
+																				self.runs[0]['Run Date'],
+																				self.runs[0]['Event'])	
+
 					
 	def __str__(self):
 		challenges = ''
