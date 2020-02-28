@@ -6,6 +6,7 @@ import json
 from collections import Counter
 import string
 import statistics
+import re
 
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
@@ -154,6 +155,8 @@ class Runner():
 		challenges['New Year Day'] = self.holiday_runs(1,1)
 
 		challenges['Current series'] = self.current_series()
+
+		challenges['Bushy Pilgrimage'] = sorted(set([x['Run Date'] for x in self.runs if re.search('bushy', x['Event'], re.IGNORECASE)]))[0]
 		
 		return challenges
 
