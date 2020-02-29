@@ -161,7 +161,7 @@ class Runner():
 #			challenges['Bushy Pilgrimage'] = bushy_dates[0]
 #		else:
 #			challenges['Bushy Pilgrimage'] = '-'
-		challenges['Bushy Pilgrimage'] = self.regex_test('bushy','Run date')
+		challenges['Bushy Pilgrimage'] = self.regex_test('bushy','Run Date')
 		return challenges
 
 	def regex_test(self, pattern, attribute):
