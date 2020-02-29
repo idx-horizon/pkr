@@ -156,14 +156,18 @@ class Runner():
 
 		challenges['Current series'] = self.current_series()
 
-		bushy_dates = sorted(set([x['Run Date'] for x in self.runs if re.search('bushy', x['Event'], re.IGNORECASE)]))
-		if len(bushy_dates) >0:
-			challenges['Bushy Pilgrimage'] = bushy_dates[0]
-		else:
-			challenges['Bushy Pilgrimage'] = ''
-		
+#		bushy_dates = sorted(set([x['Run Date'] for x in self.runs if re.search('bushy', x['Event'], re.IGNORECASE)]))
+#		if len(bushy_dates) >0:
+#			challenges['Bushy Pilgrimage'] = bushy_dates[0]
+#		else:
+#			challenges['Bushy Pilgrimage'] = '-'
+		challenges['Bushy Pilgrimage'] = self.regex_test('bushy','Run date')
 		return challenges
 
+	def regex_test(self, pattern, attribute):
+		lst = sorted(set([x[attribute] for x in self.runs if re.search(pattern, x['Event'], re.IGNORECASE)]))	
+		return lst[0] if len(lst> > 0 else return '-'
+				
 	def run_gen(self):
 		ix = -1
 		
