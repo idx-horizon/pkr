@@ -156,7 +156,11 @@ class Runner():
 
 		challenges['Current series'] = self.current_series()
 
-		challenges['Bushy Pilgrimage'] = sorted(set([x['Run Date'] for x in self.runs if re.search('bushy', x['Event'], re.IGNORECASE)]))[0]
+		bushy_dates = sorted(set([x['Run Date'] for x in self.runs if re.search('bushy', x['Event'], re.IGNORECASE)]))
+		if len(bushy_dates) >0:
+			challenges['Bushy Pilgrimage'] = bushy_dates[0]
+		else:
+			challenges['Bushy Pilgrimage'] = ''
 		
 		return challenges
 
