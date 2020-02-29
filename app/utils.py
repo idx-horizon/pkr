@@ -166,7 +166,7 @@ class Runner():
 
 	def regex_test(self, pattern, attribute):
 		lst = sorted(set([x[attribute] for x in self.runs if re.search(pattern, x['Event'], re.IGNORECASE)]))	
-		return lst[0] if len(lst) > 0 else return '-'
+		return lst[0] if len(lst) > 0 else '-'
 				
 	def run_gen(self):
 		ix = -1
