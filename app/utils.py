@@ -165,7 +165,7 @@ class Runner():
 		
 		return challenges
 
-	def regex_test(self, pattern, attribute):
+	def regex_test(self, pattern, attribute, returntype):
 		lst = sorted(set([x[attribute] for x in self.runs if re.search(pattern, x['Event'], re.IGNORECASE)]))	
 		if returntype == 'single':
 			return lst[0] if len(lst) > 0 else '-'
