@@ -2,6 +2,7 @@ import requests
 import json
 import datetime
 import os
+from country_list import country_dict
 
 cJUNIOR = 2
 cADULT = 1
@@ -13,7 +14,8 @@ class Event():
         self.evname = event['properties']['eventname']
         self.evshortname = event['properties']['EventShortName']
         self.evlongname = event['properties']['EventLongName']
-        self.domain = 'https://www.parkrun.org.uk/'
+        self.domain = [country_dict[ele]['base'] for ele in country_dict if country_dict[ele]['id']==event['properties']['countrycode']][0]
+#        self.domain = 'https://www.parkrun.org.uk/'
         self.url_latestresults =  self.domain + self.evname + '/results/latestresults/'
         self.url_course =  self.domain + self.evname + '/course/'
 
