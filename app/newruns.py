@@ -15,6 +15,7 @@ class Event():
         self.evlongname = event['properties']['EventLongName']
         self.domain = 'https://www.parkrun.org.uk/'
         self.url_latestresults =  self.domain + self.evname + '/results/latestresults/'
+        self.url_course =  self.domain + self.evname + '/course/'
 
     def print(self):
         print('{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_latestresults))
