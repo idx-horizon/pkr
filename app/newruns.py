@@ -2,7 +2,7 @@ import requests
 import json
 import datetime
 import os
-from country_list import country_dict
+from app.country_list import country_dict
 
 cJUNIOR = 2
 cADULT = 1
