@@ -2,11 +2,18 @@ import requests
 import json
 import datetime
 import os
-from app.country_list import country_dict
-#from country_list import country_dict
+import pprint as pp
+
+try:
+	from app.country_list import country_dict
+	from app.geo import measure
+except:
+	from country_list import country_dict
+	from geo import measure
+
 cJUNIOR = 2
 cADULT = 1
-
+BROMLEY = (51.386539,0.022874)
 
 class Event():
     def __init__(self, event):
@@ -20,10 +27,16 @@ class Event():
 #        self.domain = 'https://www.parkrun.org.uk/'
         self.url_latestresults =  self.domain + self.evname + '/results/latestresults/'
         self.url_course =  self.domain + self.evname + '/course/'
+        self.distance_from_bromley = measure((self.latitude, self.longitude), BROMLEY)
 
+    def __repr__(self):
+    	#return '{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_course)
+    	return str(self.__dict__)
+    	
     def print(self):
-        print('{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_latestresults))
-
+        #print('{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_latestresults))
+        pp.pprint(self.__dict__)
+        
     def get_dict(self):
         return {'id': self.evid, 'name': self.evshortname, 'latest_result': self.url_latestresults}
 
@@ -43,13 +56,12 @@ def get(url):
 def get_last_update():
     return datetime.datetime.fromtimestamp(os.path.getctime('events.json')).strftime('%d-%b-%Y %H:%M')
 
-
 def getfile(refresh=False):
     fn_events ='events.json'
     if refresh:
         data = get('https://images.parkrun.com/events.json')
         json.dump(data.json(), open(fn_events, 'w'))
-        print('** refreshed')
+        print('** refreshed at {}'.format(get_last_update()))
         return data.json()
 
     with open(fn_events, 'r') as fin:
