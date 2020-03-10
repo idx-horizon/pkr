@@ -258,7 +258,9 @@ body {
   cursor: pointer;
 }
 
-input[type="text"], input[type="password"]
+
+
+input[type="text"], input[type="password"], inpiut[type="datalist"]
 {
     font-size:20px;
     height: 40px;
