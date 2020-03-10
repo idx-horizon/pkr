@@ -27,7 +27,7 @@ class Event():
 #        self.domain = 'https://www.parkrun.org.uk/'
         self.url_latestresults =  self.domain + self.evname + '/results/latestresults/'
         self.url_course =  self.domain + self.evname + '/course/'
-        self.distance_from_bromley = measure((self.latitude, self.longitude), BROMLEY)
+        self.distance = measure((self.latitude, self.longitude), BROMLEY)
 
     def __repr__(self):
     	#return '{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_course)
@@ -67,7 +67,7 @@ def getfile(refresh=False):
     with open(fn_events, 'r') as fin:
         return json.load(fin)
 
-def getevents_by_filter(filter_str, countrycode='97', method='startswith'):
+def getevents_by_filter(filter_str, countrycode='97', method='startswith', centre_on='bromley'):
     data = getfile(False)
     
     c_events = getevents(data, int(countrycode), cADULT)
