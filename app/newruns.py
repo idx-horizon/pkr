@@ -20,7 +20,7 @@ centres = {
         }
 
 class Event():
-    def __init__(self, event, centre_on):
+    def __init__(self, event, centre_on='bromley'):
         self.evid = event['id']
         self.evname = event['properties']['eventname']
         self.evshortname = event['properties']['EventShortName']
