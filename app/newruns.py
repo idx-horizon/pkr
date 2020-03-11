@@ -14,7 +14,7 @@ except:
 cJUNIOR = 2
 cADULT = 1
 centres = {
-        'bromley': (51.386539,0.022874)
+        'bromley': (51.386539,0.022874),
 		'banstead': (51.307648, -0.184225),
 		'lloyd':    (51.364807,-0.079973)
         }
