@@ -27,7 +27,7 @@ class Event():
 #        self.domain = 'https://www.parkrun.org.uk/'
         self.url_latestresults =  self.domain + self.evname + '/results/latestresults/'
         self.url_course =  self.domain + self.evname + '/course/'
-        self.distance_from_bromley = measure((self.latitude, self.longitude), BROMLEY)
+        self.distance = measure((self.latitude, self.longitude), BROMLEY)
 
     def __repr__(self):
     	#return '{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_course)
