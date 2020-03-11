@@ -83,7 +83,7 @@ def r_events(country=None, filter_str=None):
                 countries=country_dict,
                 country=this_country,
                 data=data,
-                sort='distance')
+                event_sort='distance')
 
 @app.route('/stats/')
 @app.route('/stats/<runnerid>')
