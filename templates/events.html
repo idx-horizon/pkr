@@ -54,7 +54,7 @@
                 <th width="10%" align="center">Map</th>
                 
             </tr>
-            {% for item in data|sort(attribute='evlongname') %}
+            {% for item in data|sort(attribute='distance') %}
                 <tr>
                     <td align="center">{{ item.evid }}</td>
                     <td align="left"><a target="_blank" href="{{ item.url_course }}">{{ item.evlongname }}</td>
