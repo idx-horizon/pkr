@@ -13,10 +13,14 @@ except:
 
 cJUNIOR = 2
 cADULT = 1
-BROMLEY = (51.386539,0.022874)
+centres = {
+        'bromley': (51.386539,0.022874)
+		'banstead': (51.307648, -0.184225),
+		'lloyd':    (51.364807,-0.079973)
+        }
 
 class Event():
-    def __init__(self, event):
+    def __init__(self, event, centre_on):
         self.evid = event['id']
         self.evname = event['properties']['eventname']
         self.evshortname = event['properties']['EventShortName']
@@ -27,7 +31,7 @@ class Event():
 #        self.domain = 'https://www.parkrun.org.uk/'
         self.url_latestresults =  self.domain + self.evname + '/results/latestresults/'
         self.url_course =  self.domain + self.evname + '/course/'
-        self.distance = measure((self.latitude, self.longitude), BROMLEY)
+        self.distance = measure((self.latitude, self.longitude), centres[centre_on])
 
     def __repr__(self):
     	#return '{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_course)
