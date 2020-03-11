@@ -74,7 +74,7 @@ def r_events(country=None, filter_str=None):
       this_centre_on = str(request.form['centre_on'])
     
     data=NR.getevents_by_filter(this_filter, country_dict[this_country], this_method)
-    sorted_data = sorted(data, key=attrgetter('distance'))
+    sorted(data, key=attrgetter('distance'))
     return render_template('events.html',
                 title=get_app_title() + '[' + str(this_country) + ' | ' + this_filter + ']', 
                 filter=this_filter, 
@@ -82,7 +82,7 @@ def r_events(country=None, filter_str=None):
                 file_modified_date=NR.get_last_update(),
                 countries=country_dict,
                 country=this_country,
-                data=sorted_data)
+                data=data)
 
 @app.route('/stats/')
 @app.route('/stats/<runnerid>')
