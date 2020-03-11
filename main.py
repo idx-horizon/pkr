@@ -1,6 +1,7 @@
 import os
 from flask import Flask
 from flask import Flask, jsonify, abort, flash, make_response, render_template, redirect, request, url_for, session
+from operator import attrgetter
 
 from app import app,login
 from app.forms import LoginForm
@@ -76,6 +77,8 @@ def r_events(country=None, filter_str=None):
     print('** method [{}] country [{}] string [{}] Centre [{}]'.format(this_method, this_country, this_filter, this_centre_on))
     
     data=NR.getevents_by_filter(this_filter, country_dict[this_country], this_method, this_centre_on)
+    
+    sorted(data, key=attrgetter('distance'))
     return render_template('events.html',
                 title=get_app_title() + '[' + str(this_country) + ' | ' + this_filter + ']', 
                 filter=this_filter, 
