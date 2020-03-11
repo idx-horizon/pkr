@@ -73,7 +73,7 @@ def r_events(country=None, filter_str=None):
       this_country = str(request.form['country_code'])
       this_centre_on = str(request.form['centre_on'])
     
-    data=sorted(NR.getevents_by_filter(this_filter, country_dict[this_country], this_method, this_centre_on), key=attrgetter('distance'))
+    data=sorted(NR.getevents_by_filter(this_filter, country_dict[this_country], this_method, this_centre_on)), key=attrgetter('distance')
     
     return render_template('events.html',
                 title=get_app_title() + '[' + str(this_country) + ' | ' + this_filter + ']', 
