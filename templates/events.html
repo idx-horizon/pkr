@@ -5,7 +5,7 @@
 {% if request.form['filter_str']|length > 0 %}{{ filter_method }} "{{ request.form['filter_str'] }}"{% endif %}</H1>
 
 
-<form action='/events/{{ country_code }}/{{ filter_str }}' method="POST" name="form">
+<form action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on }}' method="POST" name="form">
 
         <span class="styled">
           <select name="filter_method">

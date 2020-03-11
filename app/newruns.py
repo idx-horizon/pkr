@@ -67,7 +67,7 @@ def getfile(refresh=False):
     with open(fn_events, 'r') as fin:
         return json.load(fin)
 
-def getevents_by_filter(filter_str, countrycode='97', method='startswith'):
+def getevents_by_filter(filter_str, countrycode='97', method='startswith', centre_on='bromley'):
     data = getfile(False)
     
     c_events = getevents(data, int(countrycode), cADULT)
