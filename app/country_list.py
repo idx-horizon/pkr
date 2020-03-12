@@ -20,3 +20,10 @@ country_dict = {
     'uk': {'id': 97, 'name': 'UK', 'base': 'parkrun.org.uk'},
     'us': {'id': 98, 'name': 'USA', 'base': 'parkrun.us'}
 }
+
+centres = {
+        'bromley': (51.386539,0.022874),
+		'banstead': (51.307648, -0.184225),
+		'lloyd':    (51.364807,-0.079973),
+		'wepre': (53.205552,-3.056846)
+        }

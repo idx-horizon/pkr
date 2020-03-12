@@ -5,7 +5,7 @@ from operator import attrgetter
 
 from app import app,login
 from app.forms import LoginForm
-from app.countries import country_dict
+from app.countries import country_dict, centres
 from flask_login import UserMixin
 
 import app.newruns as NR
@@ -86,7 +86,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                 file_modified_date=NR.get_last_update(),
                 countries=country_dict,
                 country=this_country,
-                centres=['bromley','banstead', 'lloyd'],
+                centres=centres.keys(),
                 centre_on=this_centre_on,
                 data=data)
 

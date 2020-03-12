@@ -5,19 +5,19 @@ import os
 import pprint as pp
 
 try:
-	from app.country_list import country_dict
+	from app.country_list import country_dict, centres
 	from app.geo import measure
 except:
-	from country_list import country_dict
+	from country_list import country_dict, centres
 	from geo import measure
 
 cJUNIOR = 2
 cADULT = 1
-centres = {
-        'bromley': (51.386539,0.022874),
-		'banstead': (51.307648, -0.184225),
-		'lloyd':    (51.364807,-0.079973)
-        }
+#centres = {
+#        'bromley': (51.386539,0.022874),
+#		'banstead': (51.307648, -0.184225),
+#		'lloyd':    (51.364807,-0.079973)
+#        }
 
 class Event():
     def __init__(self, event, centre_on='bromley'):
