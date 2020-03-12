@@ -60,12 +60,12 @@ def home():
 @app.route('/events/', methods=['POST','GET'])
 @app.route('/events/<country>/', methods=['POST','GET'])
 @app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
-@app.route('/events/<country>/<filter_str>/<centre_on>/', methods=['POST','GET'])
-def r_events(country=None, filter_str=None, centre_on=None):
+@app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
+def r_events(country=None, filter_str=None, centre_on_code=None):
     print('r_events {} - method {} - centre {}'.format( 
             request.url, 
             request.method,
-            centre_on))
+            centre_on_code))
     this_country = country or 'uk'	
     this_filter = filter_str or ''
     this_method = 'startswith'
@@ -75,7 +75,7 @@ def r_events(country=None, filter_str=None, centre_on=None):
       this_filter  = str(request.form['filter_str']).lower()
       this_method  = str(request.form['filter_method'])
       this_country = str(request.form['country_code'])
-      this_centre_on = str(request.form['centre_on'])
+      this_centre_on = str(request.form['centre_on_code'])
     
     data=NR.getevents_by_filter(this_filter, country_dict[this_country], this_method, this_centre_on)
     data = sorted(data, key=attrgetter('distance'))
