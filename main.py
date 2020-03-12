@@ -5,7 +5,8 @@ from operator import attrgetter
 
 from app import app,login
 from app.forms import LoginForm
-from app.countries import country_dict, centres
+from app.countries import country_dict
+from app.country_list import centres
 from flask_login import UserMixin
 
 import app.newruns as NR
