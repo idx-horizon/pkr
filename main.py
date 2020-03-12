@@ -117,7 +117,7 @@ def runner_runs(runnerid=184594):
 def newruns(limit=10):
     this_limit =int(limit) or 10
     data = NR.get_last_newruns(this_limit)
-    sorted(data, key=attrgetter('distance')
+    sorted(data, key=attrgetter('distance'))
     return render_template('newruns.html',
                 title=get_app_title(), 
                 limit=this_limit, 
