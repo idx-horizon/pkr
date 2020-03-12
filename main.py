@@ -60,13 +60,13 @@ def home():
 @app.route('/events/', methods=['POST','GET'])
 @app.route('/events/<country>/', methods=['POST','GET'])
 @app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
-@app.route('/events/<country>/<filter_str>/<centre_on>', methods=['POST','GET'])
+@app.route('/events/<country>/<filter_str>/<centre_on>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None, centre_on=None):
     print('r_events {} - method {}'.format( request.url, request.method))
     this_country = country or 'uk'	
     this_filter = filter_str or ''
     this_method = 'startswith'
-    this_centre_on = 'bromley'
+    this_centre_on = centre_on or 'bromley'
     
     if request.method.upper() == 'POST':
       this_filter  = str(request.form['filter_str']).lower()
@@ -117,6 +117,7 @@ def runner_runs(runnerid=184594):
 def newruns(limit=10):
     this_limit =int(limit) or 10
     data = NR.get_last_newruns(this_limit)
+    sorted(data, key=attrgetter('distance')
     return render_template('newruns.html',
                 title=get_app_title(), 
                 limit=this_limit, 
