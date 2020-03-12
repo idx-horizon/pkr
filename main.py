@@ -69,7 +69,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     this_country = country or 'uk'	
     this_filter = filter_str or ''
     this_method = 'startswith'
-    this_centre_on = centre_on or 'bromley'
+    this_centre_on = centre_on_code or 'bromley'
     
     if request.method.upper() == 'POST':
       this_filter  = str(request.form['filter_str']).lower()
