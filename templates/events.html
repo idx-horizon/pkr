@@ -5,7 +5,7 @@
 {% if request.form['filter_str']|length > 0 %}{{ filter_method }} "{{ request.form['filter_str'] }}"{% endif %}</H1>
 
 
-<form action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on }}' method="POST" name="form">
+<form action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on_code }}' method="POST" name="form">
 
         <span class="styled">
           <select name="filter_method">
@@ -34,10 +34,11 @@
           </select>
         </span>
         <span class="styled" width=200px>
-          <select name="centre_on">
-            <option value="bromley">Bromley</option>
-            <option value="banstead">Banstead Woods</option>
-            <option value="lloyd">Lloyd</option>
+          <select name="centre_on_code">
+          {% for con in centres|sort %}
+                <option {% if con==centre_on %}selected{% endif %}
+                  value={{ con }}>{{ con }}</option>
+          {% endfor %}
           </select>
         </span>
         <span>

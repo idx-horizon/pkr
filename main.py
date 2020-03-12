@@ -78,7 +78,7 @@ def r_events(country=None, filter_str=None, centre_on=None):
       this_centre_on = str(request.form['centre_on'])
     
     data=NR.getevents_by_filter(this_filter, country_dict[this_country], this_method, this_centre_on)
-    sorted(data, key=attrgetter('distance'))
+    data = sorted(data, key=attrgetter('distance'))
     return render_template('events.html',
                 title=get_app_title() + '[' + str(this_country) + ' | ' + this_filter + ']', 
                 filter=this_filter, 
@@ -86,6 +86,8 @@ def r_events(country=None, filter_str=None, centre_on=None):
                 file_modified_date=NR.get_last_update(),
                 countries=country_dict,
                 country=this_country,
+                centres=['bromley','banstead', 'lloyd'],
+                centre_on=this_centre_on,
                 data=data)
 
 @app.route('/stats/')
@@ -120,7 +122,7 @@ def runner_runs(runnerid=184594):
 def newruns(limit=10):
     this_limit =int(limit) or 10
     data = NR.get_last_newruns(this_limit)
-    sorted(data, key=attrgetter('distance'))
+    data = sorted(data, key=attrgetter('distance'))
     return render_template('newruns.html',
                 title=get_app_title(), 
                 limit=this_limit, 
