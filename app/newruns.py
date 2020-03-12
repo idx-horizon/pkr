@@ -77,9 +77,9 @@ def getevents_by_filter(filter_str, countrycode='97', method='startswith', centr
     c_events = getevents(data, int(countrycode), cADULT)
     
     if method == 'startswith':
-       return [Event(i) for i in c_events if i['properties']['eventname'].startswith(filter_str)]
+       return [Event(i,centre_on) for i in c_events if i['properties']['eventname'].startswith(filter_str)]
     else:
-        return [Event(i) for i in c_events if filter_str in i['properties']['eventname']]
+        return [Event(i,centre_on) for i in c_events if filter_str in i['properties']['eventname']]
 
 
 def getevents(js, countrycode, seriesid):
