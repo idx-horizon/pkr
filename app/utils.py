@@ -7,6 +7,7 @@ from collections import Counter
 import string
 import statistics
 import re
+import datetime
 
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
@@ -83,7 +84,7 @@ class Runner():
 			
 	def get_challenges(self):
 		challenges = {}
-		challenges['Last run'] = '{} at {}'.format(self.runs[0]['Run Date'], self.runs[0]['Event'])
+		challenges['Last run'] = '{} at {}'.format(fdate(self.runs[0]['Run Date']), self.runs[0]['Event'])
 		challenges['Current series'] = self.current_series()
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
 		challenges['Total number of runs'] = self.run_count
@@ -202,12 +203,12 @@ class Runner():
 		if num_runs == 1:
 			return '{} - {} ({})'.format(num_runs, 
 																#datetime.datetime.strftime(prev_dt,'%d/%m/%Y'), 
-																datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d/%m/%Y'),
+																datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
 																first_run['Event'])	
 		else:
 			return '{} - {} ({}) to {} ({})'.format(num_runs, 
 #																				datetime.datetime.strftime(prev_dt,'%d/%m/%Y'),
-																				datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d/%m/%Y'),
+																				datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
 																				current_run['Event'], 
 																				self.runs[0]['Run Date'],
 																				self.runs[0]['Event'])	
@@ -257,7 +258,9 @@ def get(url):
 def get_file_details(fname):
 	t = os.path.getmtime(fname)
 	return datetime.datetime.fromtimestamp(t)
-	
+
+def fdate(src, src_format='%d/%m/%Y',target_format='%d-%b-%Y'):
+	return datetime.datetime.strptime(str, src_format).strftime(target_format)
 # -----------
 # MAIN
 # -----------
