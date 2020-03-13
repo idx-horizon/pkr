@@ -125,7 +125,10 @@ class Runner():
 				-set(rn)))[0]-1
 		challenges['Wilson-index'] = wix
 		
-		challenges['Parkrun birthday'] = '{} at {}'.format(self.runs[-1]['Run Date'], self.runs[-1]['Event'])
+		challenges['Parkrun birthday'] = '{} at {}'.format(
+						fdate(self.runs[-1]['Run Date']), 
+						self.runs[-1]['Event']
+						)
 		
 		yr = sorted([x.replace('_YR_','') for x in self.stats if x.startswith('_YR_')])
 		challenges['Years running'] = '{} ({} to {})'.format(len(yr), yr[0], yr[-1])
@@ -157,7 +160,7 @@ class Runner():
 		challenges['Christmas Day'] = self.holiday_runs(12,25)
 		challenges['New Year Day'] = self.holiday_runs(1,1)
 
-		challenges['Bushy Pilgrimage'] = self.regex_test('bushy','Run Date', 'single')
+		challenges['Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
 		challenges['Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
 		challenges['Pirates'] = self.regex_test('^C|^R', 'Event','list')
 		challenges['Compass'] = self.regex_test('north|east|south|east', 'Event', 'list')
@@ -201,17 +204,19 @@ class Runner():
 			current_dt = prev_dt
 		
 		if num_runs == 1:
-			return '{} - {} ({})'.format(num_runs, 
-																#datetime.datetime.strftime(prev_dt,'%d/%m/%Y'), 
-																datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
-																first_run['Event'])	
+			return '{} - {} at {}'.format(
+					num_runs, 
+					datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
+					first_run['Event']
+					)	
 		else:
-			return '{} - {} ({}) to {} ({})'.format(num_runs, 
-#																				datetime.datetime.strftime(prev_dt,'%d/%m/%Y'),
-																				datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
-																				current_run['Event'], 
-																				self.runs[0]['Run Date'],
-																				self.runs[0]['Event'])	
+			return '{} - {} at {} to {} at {}'.format(
+					num_runs,	
+					datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
+					current_run['Event'],
+					fdate(self.runs[0]['Run Date']),
+					self.runs[0]['Event']
+					)	
 
 					
 	def __str__(self):
