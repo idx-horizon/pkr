@@ -8,6 +8,7 @@ import string
 import statistics
 import re
 import datetime
+import math
 
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
