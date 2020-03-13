@@ -93,7 +93,7 @@ class Runner():
 							len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')}),
 							', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
-		challenges['Alphabet'] = '{} letters (missing {})'.format(
+		challenges['Alphabet'] = '{}~letters (missing {})'.format(
 							len(self.letters),
 							', '.join(sorted(self.missing))
 						)
