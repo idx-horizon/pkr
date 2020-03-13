@@ -79,7 +79,7 @@ class Runner():
 		if len(yrs) == 0:
 			return '-'
 		else:
-			return '{} ({})'.format(len(yrs), ', '.join(yrs))
+			return '{}~{}'.format(len(yrs), ', '.join(yrs))
 
 			
 	def get_challenges(self):
@@ -89,11 +89,11 @@ class Runner():
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
 		challenges['Total number of runs'] = self.run_count
 
-		challenges['Stopwatch'] = '{} out of 60 (missing {})'.format(
+		challenges['Stopwatch'] = '{} out of 60~Missing: {}'.format(
 							len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')}),
 							', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
-		challenges['Alphabet'] = '{}~letters (missing {})'.format(
+		challenges['Alphabet'] = '{} letters~Missing: {}'.format(
 							len(self.letters),
 							', '.join(sorted(self.missing))
 						)
@@ -174,7 +174,7 @@ class Runner():
 		if returntype == 'single':
 			return lst[0] if len(lst) > 0 else '-'
 		else:
-			return ', '.join(lst) if len(lst) > 0 else '-'
+			return '~'.join(lst) if len(lst) > 0 else '-'
 				
 	def run_gen(self):
 		ix = -1
@@ -210,7 +210,7 @@ class Runner():
 					first_run['Event']
 					)	
 		else:
-			return '{} - {} at {} to {} at {}'.format(
+			return '{}~From: {} at {} to {} at {}'.format(
 					num_runs,	
 					datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
 					current_run['Event'],
