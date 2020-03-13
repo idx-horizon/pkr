@@ -14,7 +14,10 @@
             {% for item in data.challenges %}
                 <tr>
                     <td align="left">{{ item }}</td>
-                    <td align="left">{{ data.challenges[item] | replace('~','<BR>') }}</td>
+                    <td align="left">{% autoescape false %}
+        {{ data.challenges[item] | replace('~','<BR/>') }}
+        {% endautoescape %}
+        </td>
                 </tr>
             {% endfor %}
             <P>
@@ -23,3 +26,6 @@
 <P>
 Runner data as at {{ data.updated_dt }}<P>
 {% include "_footer.html" %}
+{% autoescape false %}
+  {{ 'item1|item2|item3' | replace("|", "<br/>") }}
+{% endautoescape %}
