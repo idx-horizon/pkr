@@ -26,6 +26,3 @@
 <P>
 Runner data as at {{ data.updated_dt }}<P>
 {% include "_footer.html" %}
-{% autoescape false %}
-  {{ 'item1|item2|item3' | replace("|", "<br/>") }}
-{% endautoescape %}
