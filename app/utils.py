@@ -176,13 +176,14 @@ class Runner():
 				  1: 'Quarter',
 				  2: 'Half',
 				  3: 'Three quarter'
-				  }
-	    evs = len([x for x in self.stats if x.startswith('_EVENT_')])
-	    
-	    if evs > 99: 
-	    	return 'Full'
+		}
+				  
+		evs = len([x for x in self.stats if x.startswith('_EVENT_')]
 
-		return levels[math.floor(evs/25)]
+		if evs > 99: 
+			return 'Full'
+		else:
+			return levels[math.floor(evs/25)]
 			
 	def regex_test(self, pattern, attribute, returntype):
 		lst = sorted(set([x[attribute] for x in self.runs if re.search(pattern, x['Event'], re.IGNORECASE)]))	
