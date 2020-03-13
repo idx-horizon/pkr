@@ -260,7 +260,7 @@ def get_file_details(fname):
 	return datetime.datetime.fromtimestamp(t)
 
 def fdate(src, src_format='%d/%m/%Y',target_format='%d-%b-%Y'):
-	return datetime.datetime.strptime(str, src_format).strftime(target_format)
+	return datetime.datetime.strptime(src, src_format).strftime(target_format)
 # -----------
 # MAIN
 # -----------
