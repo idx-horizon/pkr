@@ -88,6 +88,8 @@ class Runner():
 		challenges['Current series'] = self.current_series()
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
 		challenges['Total number of runs'] = self.run_count
+		challenges['Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
+		challenges['Cowell Club'] = self.cowell()
 
 		challenges['Stopwatch'] = '{} out of 60~Missing: {}'.format(
 							len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')}),
@@ -99,7 +101,6 @@ class Runner():
 						)
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		challenges['Number of PBs'] = self.stats['_PB']
-		challenges['Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
 		
 		key = max({x for x in self.stats if x.startswith('_YR_')}, 
 																		key=lambda key: self.stats[key])
@@ -169,6 +170,20 @@ class Runner():
 		
 		return challenges
 
+	def cowell(self):
+		levels = {0: '-',
+				  1: 'Quarter',
+				  2: 'Half',
+				  3: 'Three quarter',
+				  4: 'Full
+				  }
+	    evs = len([x for x in self.stats if x.startswith('_EVENT_')])
+	    
+	    try:
+			return levels[math.floor(evs/25)]
+		except:
+			return 'Full'
+			
 	def regex_test(self, pattern, attribute, returntype):
 		lst = sorted(set([x[attribute] for x in self.runs if re.search(pattern, x['Event'], re.IGNORECASE)]))	
 		if returntype == 'single':
