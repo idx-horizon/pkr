@@ -83,6 +83,11 @@ class Runner():
 			
 	def get_challenges(self):
 		challenges = {}
+		challenges['Last run'] = '{} at {}'.format(self.runs[0]['Run Date'], self.runs[0]['Event'])
+		challenges['Current series'] = self.current_series()
+		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
+		challenges['Total number of runs'] = self.run_count
+
 		challenges['Stopwatch'] = '{} out of 60 (missing {})'.format(
 							len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')}),
 							', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
@@ -91,7 +96,6 @@ class Runner():
 							len(self.letters),
 							', '.join(sorted(self.missing))
 						)
-		challenges['Total number of runs'] = self.run_count
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		challenges['Number of PBs'] = self.stats['_PB']
 		challenges['Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
@@ -99,7 +103,6 @@ class Runner():
 		key = max({x for x in self.stats if x.startswith('_YR_')}, 
 																		key=lambda key: self.stats[key])
 		challenges['Most parkruns in a year'] = '{} in {}'.format(self.stats[key], key.replace('_YR_',''))
-		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
 				
 		key = max({x for x in self.stats if x.startswith('_EVENT_')}, 
 																		key=lambda key: self.stats[key])		
@@ -149,12 +152,9 @@ class Runner():
 		times = [sum(x * int(t) for x, t in zip([60, 1], ele['Time'].split(":"))) for ele in self.runs]
 		challenges['Average run time'] = '{}'.format(datetime.timedelta(seconds=round(statistics.mean(times))))
 		challenges['Total run time']   = '{}'.format(str(datetime.timedelta(seconds=sum(times))))
-		challenges['Last run'] = '{} at {}'.format(self.runs[0]['Run Date'], self.runs[0]['Event'])
 		
 		challenges['Christmas Day'] = self.holiday_runs(12,25)
 		challenges['New Year Day'] = self.holiday_runs(1,1)
-
-		challenges['Current series'] = self.current_series()
 
 		challenges['Bushy Pilgrimage'] = self.regex_test('bushy','Run Date', 'single')
 		challenges['Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
