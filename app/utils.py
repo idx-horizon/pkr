@@ -178,7 +178,7 @@ class Runner():
 				  3: 'Three quarter'
 		}
 				  
-		evs = len([x for x in self.stats if x.startswith('_EVENT_')]
+		evs = len([x for x in self.stats if x.startswith('_EVENT_')])
 
 		if evs > 99: 
 			return 'Full'
