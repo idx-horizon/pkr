@@ -180,7 +180,7 @@ class Runner():
 				  
 		evs = len([x for x in self.stats if x.startswith('_EVENT_')])
 
-		if evs > 99: 
+		if evs > 99:
 			return 'Full'
 		else:
 			return levels[math.floor(evs/25)]
