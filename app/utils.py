@@ -92,7 +92,7 @@ class Runner():
 		challenges['Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
 		challenges['Cowell Club'] = self.cowell()
 		
-		bingo = Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in me.runs])
+		bingo = Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
 		challenges['Calendar Bingo'] = '{} (Most common: () times on {})'.format(
 						len(bingo), 
 						bingo.most_common(1)[0][1], 
