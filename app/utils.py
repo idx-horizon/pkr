@@ -91,7 +91,9 @@ class Runner():
 		challenges['Total number of runs'] = self.run_count
 		challenges['Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
 		challenges['Cowell Club'] = self.cowell()
-
+		
+		challenges['Calendar Bingo'] = len(set([x['Run Date'][3:5] + x['Run Date'][0:2] for x in self.runs])); 
+		
 		challenges['Stopwatch'] = '{} out of 60~Missing: {}'.format(
 							len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')}),
 							', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
