@@ -6,28 +6,28 @@
 
 <table class="table table-hover table-light table-striped">
 		<tr>
-			<th onclick="sortTable(0)" width="40%" align="left">Run</th>
-			<th onclick="sortTable(1)" width="15%" align="center">Date</th>
-			<th onclick="sortTable(2)" width="10%" align="center">No</th>
-			<th onclick="sortTable(3)" width="10%" align="center">Pos</th>
-			<th onclick="sortTable(4)" width="10%" align="center">Time</th>			
-			<th onclick="sortTable(5)" width="10%" align="center">Age Grading</th>			
-			<th onclick="sortTable(6)" width="5%"  align="center">PB</th>			
+			<th onclick="sortTable(0)" width="40%">Run</th>
+			<th onclick="sortTable(1)" width="15%">Date</th>
+			<th onclick="sortTable(2)" width="10%">No</th>
+			<th onclick="sortTable(3)" width="10%">Pos</th>
+			<th onclick="sortTable(4)" width="10%">Time</th>
+			<th onclick="sortTable(5)" width="10%">Age Grading</th>
+			<th onclick="sortTable(6)" width="5%">PB</th>
 		</tr>
 		{% for item in data.runs %}
 				<tr>
 					<td>{{ item['Event'] }}</td>
-					<td align="center">{{ item['Run Date'] }}</td>
-					<td align="center">{{ '%4s' % item['Run Number'] }}</td>
-					<td align="center">{{ '%4s' % item['Pos'] }}</td>
-						<td align="center" 
+					<td>{{ item['Run Date'] }}</td>
+					<td>{{ '%4s' % item['Run Number'] }}</td>
+					<td>{{ '%4s' % item['Pos'] }}</td>
+						<td
 							{% if item['Time'] < threshold %} 
 								id="hilite"
 							{% endif %}>
 							{{ item['Time'] }}</b>
 						</td>
-					<td align="center">{{ item['AgeGrade'] }}</td>
-					<td align="center">{{ item['PB?'] }}</td>
+					<td>{{ item['AgeGrade'] }}</td>
+					<td>{{ item['PB?'] }}</td>
 	{% endfor %}
 		<P>
 	</table>{{ threshold }}
