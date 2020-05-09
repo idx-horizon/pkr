@@ -93,7 +93,7 @@ class Runner():
 		challenges['Cowell Club'] = self.cowell()
 		
 		bingo = Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
-		challenges['Calendar Bingo'] = '{}~Most common date: {} times on {})'.format(
+		challenges['Calendar Bingo'] = '{}~Most common date: {} times on {}'.format(
 						len(bingo), 
 						bingo.most_common(1)[0][1], 
 						bingo.most_common(1)[0][0]) 
