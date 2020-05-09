@@ -4,21 +4,23 @@
 <div class="container-fluid p-3 bg-dark text-white">
 <H1>Last {{ data|length }} new runs registered in UK</H1>
 
-<table class="table table-hover table-success table-striped">
-        <tr>
-            <th width="15%"  align="centre">#</th>
-            <th width="60%" align="left">Name</th>
-            <th width="15%" align="left">Distance</th>
-            <th width="10%" align="left">Map</th>
+<table class="table table-hover table-light table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th width="15%"  align="center">#</th>
+        <th width="60%" align="left">Name</th>
+        <th width="15%" align="left">Distance</th>
+        <th width="10%" align="left">Map</th>
         </tr>
-        {% for item in data %}
-            <tr>
-                <td align="center">{{ item.evid }}</td>
-                <td align="left"><a target="_blank", href="{{ item.url_course }}">{{ item.evlongname }}</td>
-                <td align="right">{{ item.distance }}</td>
-                <td align="center"><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
-            </tr>
-       {% endfor %}
+    </thead>
+    {% for item in data %}
+        <tr>
+            <td align="center">{{ item.evid }}</td>
+            <td align="left"><a target="_blank", href="{{ item.url_course }}">{{ item.evlongname }}</td>
+            <td align="right">{{ item.distance }}</td>
+            <td align="center"><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
+        </tr>
+   {% endfor %}
         <P>
 </table>
 <P>
