@@ -6,24 +6,22 @@
 <button class="button" onclick="location.href = '/runs/{{ data.name | lower }}'">Runs</button>
 
 
-<div style="width:90%">
-    <table id='table'>
+<table class="table table-hover table-success table-striped">
+        <tr>
+            <th width="40%"  align="centre">Challenge</th>
+            <th width="60%" align="left"></th>
+        </tr>
+        {% for item in data.challenges %}
             <tr>
-                <th width="40%"  align="centre">Challenge</th>
-                <th width="60%" align="left"></th>
+                <td align="left">{{ item }}</td>
+                <td align="left">{% autoescape false %}
+                {{ data.challenges[item] | replace('~','<BR/>') }}
+                {% endautoescape %}
+                </td>
             </tr>
-            {% for item in data.challenges %}
-                <tr>
-                    <td align="left">{{ item }}</td>
-                    <td align="left">{% autoescape false %}
-        {{ data.challenges[item] | replace('~','<BR/>') }}
-        {% endautoescape %}
-        </td>
-                </tr>
-            {% endfor %}
-            <P>
-    </table>
-</div>
+        {% endfor %}
+    <P>
+</table>
 <P>
 Runner data as at {{ data.updated_dt }}<P>
 </div>

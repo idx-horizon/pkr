@@ -3,9 +3,8 @@
 <div class="container-fluid">
 <H1>{{ data.name }} - total runs {{ data.run_count }} </H1>
 <button class="button" onclick="location.href = '/stats/{{ data.name | lower }}'">Stats</button>
-<div>
 
-<table id='table'>
+<table class="table table-hover table-success table-striped">
 		<tr>
 			<th onclick="sortTable(0)" width="40%" align="left">Run</th>
 			<th onclick="sortTable(1)" width="15%" align="center">Date</th>
@@ -35,8 +34,6 @@
 	<P>
 
 
-
-</div>
 
 <P>
 Runner data as at {{ data.updated_dt }}<P>

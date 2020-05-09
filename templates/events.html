@@ -47,25 +47,24 @@
 		<button type="submit" name="filter_btn" value="Filter">Filter</button>
 		</span>
 </form>
-				
-        <table class="table table-hover table-success table-striped">
-            <tr>
-                <th width="15%"  align="center">#</th>
-                <th width="60%" align="left">Name</th>
-                <th width="15%" align="right">Distance</th>
-                <th width="10%" align="center">Map</th>
-                
-            </tr>
-            {% for item in data %}
-                <tr>
-                    <td align="center">{{ item.evid }}</td>
-                    <td align="left"><a target="_blank" href="{{ item.url_course }}">{{ item.evlongname }}</td>
-                    <td align="right">{{ item.distance|round(1,'floor') }}</td>
-                    <td align="center"><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
-                </tr>
-            {% endfor %}
-            <P>
-    </table>
+<table class="table table-hover table-success table-striped">
+    <tr>
+        <th width="15%"  align="center">#</th>
+        <th width="60%" align="left">Name</th>
+        <th width="15%" align="right">Distance</th>
+        <th width="10%" align="center">Map</th>
+
+    </tr>
+    {% for item in data %}
+        <tr>
+            <td align="center">{{ item.evid }}</td>
+            <td align="left"><a target="_blank" href="{{ item.url_course }}">{{ item.evlongname }}</td>
+            <td align="right">{{ item.distance|round(1,'floor') }}</td>
+            <td align="center"><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
+        </tr>
+    {% endfor %}
+    <P>
+</table>
 <P>
 Events data as at {{ file_modified_date }}
 </div>
