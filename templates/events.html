@@ -1,7 +1,9 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-<H1>{{ data|length }} events in {{ country|upper }}
+<div class="container">
+
+    <H1>{{ data|length }} events in {{ country|upper }}
 {% if request.form['filter_str']|length > 0 %}{{ filter_method }} "{{ request.form['filter_str'] }}"{% endif %}</H1>
 
 
@@ -67,5 +69,6 @@
     </table>
 </div>
 <P>
-Events data as at {{ file_modified_date }}<P>
+Events data as at {{ file_modified_date }}
+</div>
 {% include "_footer.html" %}

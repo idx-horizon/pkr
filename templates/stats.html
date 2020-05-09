@@ -1,6 +1,7 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
+<div class="container">
 <H2>{{ data.name }} - total runs {{ data.run_count }} </H2>
 <button class="button" onclick="location.href = '/runs/{{ data.name | lower }}'">Runs</button>
 
@@ -25,4 +26,5 @@
 </div>
 <P>
 Runner data as at {{ data.updated_dt }}<P>
+</div>
 {% include "_footer.html" %}
