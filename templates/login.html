@@ -1,6 +1,10 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
+<div class="container">
+  <h1>{{ title }}</h1>
+
+
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <ul>
@@ -35,5 +39,7 @@
     </form>
 <br>
 {% endblock %}
+</div>
+
 <br>
 {% include "_footer.html" %}
