@@ -6,25 +6,25 @@
 
 <ul class="navbar-nav">
 	<li class="nav-item">
-	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
+	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="nav-link"{% endif %}>Home</a>
 	</li>
 	<li class="nav-item">
-	<a href="/newruns"   {% if url_for(request.endpoint) == '/newruns/' %}class="active"{% endif %}>New Runs</a>
+	<a href="/newruns"   {% if url_for(request.endpoint) == '/newruns/' %}class="nav-link"{% endif %}>New Runs</a>
 	</li>
 	<li class="nav-item">
-	<a href="/events/uk"   {% if url_for(request.endpoint) == '/events/' %}class="active"{% endif %}>Events</a>
+	<a href="/events/uk"   {% if url_for(request.endpoint) == '/events/' %}class="nav-link"{% endif %}>Events</a>
 	</li>
 	<li class="nav-item">
-	<a href="/stats"   {% if url_for(request.endpoint) == '/stats/' %}class="active"{% endif %}>Stats</a>
+	<a href="/stats"   {% if url_for(request.endpoint) == '/stats/' %}class="nav-link"{% endif %}>Stats</a>
 	</li>
 	<li class="nav-item">
 	<div class="topnav-right">
 	{% if current_user.is_anonymous %}
-		<a href="/login" {% if url_for(request.endpoint) == '/login/' %}class="active"{% endif %}>Login</a>
+		<a href="/login" {% if url_for(request.endpoint) == '/login/' %}class="nav-link"{% endif %}>Login</a>
 	{% else %}
-		<a href="/user" {% if url_for(request.endpoint) == '/user/' %}class="active"{% endif %}>{{ current_user.username|title }}</a>
+		<a href="/user" {% if url_for(request.endpoint) == '/user/' %}class="nav-link"{% endif %}>{{ current_user.username|title }}</a>
 		<a href="/logout" {% if url_for(request.endpoint) == '/logout/' %}
-			class="active"{% endif %}>Logout</a>
+			class="nav-link"{% endif %}>Logout</a>
 	{% endif %}
 	</div>
 	</li>
