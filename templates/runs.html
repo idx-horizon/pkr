@@ -1,7 +1,7 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
-<div class="container">
-<H2>{{ data.name }} - total runs {{ data.run_count }} </H2>
+<div class="container-fluid">
+<H1>{{ data.name }} - total runs {{ data.run_count }} </H1>
 <button class="button" onclick="location.href = '/stats/{{ data.name | lower }}'">Stats</button>
 <div>
 
