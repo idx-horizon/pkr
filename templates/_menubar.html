@@ -1,4 +1,7 @@
 <div class="topnav">
+	<a class="navbar-brand" href="#">
+		<img src="'pkr.jpg" alt="PKR" style="width:40px"
+	</a>
 	<a href="/home"   {% if url_for(request.endpoint) == '/home/' %}class="active"{% endif %}>Home</a>
 	<a href="/newruns"   {% if url_for(request.endpoint) == '/newruns/' %}class="active"{% endif %}>New Runs</a>
 	<a href="/events/uk"   {% if url_for(request.endpoint) == '/events/' %}class="active"{% endif %}>Events</a>
