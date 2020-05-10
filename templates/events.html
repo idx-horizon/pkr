@@ -10,7 +10,7 @@
 <form action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on_code }}' method="POST" name="form">
 
         <span class="styled">
-          <select class="selectpicker form-control" data-width="20%" name="filter_method">
+          <select class="selectpicker form-control" width="20%" name="filter_method">
             <option {% if request.form['filter_method']=='startswith' %}
                     selected
                     {% endif %}
