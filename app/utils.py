@@ -80,7 +80,7 @@ class Runner():
 		if len(yrs) == 0:
 			return '-'
 		else:
-			return '{}~{}'.format(len(yrs), ', '.join(yrs))
+			return '{}~{}'.format(len(yrs), '~'.join(yrs))
 
 			
 	def get_challenges(self):
