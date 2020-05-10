@@ -8,14 +8,14 @@
 	<li class="nav-item">
 	<a href="/home" class="nav-link text-dark">Home</a>
 	</li>
-	<li class="nav-item text-dark">
-	<a href="/newruns" class="nav-link">New Runs</a>
+	<li class="nav-item">
+	<a href="/newruns" class="nav-link text-dark">New Runs</a>
 	</li>
-	<li class="nav-item text-dark">
-	<a href="/events/uk" class="nav-link">Events</a>
+	<li class="nav-item">
+	<a href="/events/uk" class="nav-link text-dark">Events</a>
 	</li>
-	<li class="nav-item text-dark">
-	<a href="/stats" class="nav-link">Stats</a>
+	<li class="nav-item">
+	<a href="/stats" class="nav-link text-dark">Stats</a>
 	</li>
 </ul>
 </div>
@@ -24,10 +24,10 @@
 <ul class="nav navbar-nav navbar-right">
 	<li class="nav-item">
 	{% if current_user.is_anonymous %}
-		<a href="/login" class="nav-link text-danger">Login</a>
+		<a href="/login" class="nav-link text-dark">Login</a>
 	{% else %}
-		<a href="/user" class="nav-link">{{ current_user.username|title }}</a>
-		<a href="/logout" class="nav-link">Logout</a>
+		<a href="/user" class="nav-link text-dark">{{ current_user.username|title }}</a>
+		<a href="/logout" class="nav-link text-dark">Logout</a>
 	{% endif %}
 	</li>
 </ul>
