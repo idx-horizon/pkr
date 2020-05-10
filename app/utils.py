@@ -72,7 +72,7 @@ class Runner():
 		dts = [datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y') for x in self.runs]
 		
 		yrs = []
-		for i in range(min(dts).year, max(dts).year):
+		for i in range(min(dts).year, max(dts).year + 1 ):
  			if datetime.datetime(i, month, day, 0, 0) in dts: 
  				runs = [x['Event'] for x in self.runs if x['Run Date'] == '{:02d}/{:02d}/{}'.format(day, month, i)]
  				yrs.append('{}: {}'.format(i, ', '.join(runs)))
