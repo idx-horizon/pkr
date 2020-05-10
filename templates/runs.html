@@ -4,7 +4,7 @@
 <div class="container-fluid p-3 bg-dark text-white">
 
 <H1>{{ data.name }} - total runs {{ data.run_count }} </H1>
-<button class="button" onclick="location.href = '/stats/{{ data.name | lower }}'">Stats</button>
+<button type="button" class="btn btn-success" onclick="location.href = '/stats/{{ data.name | lower }}'">Stats</button>
 
 <table class="table table-hover table-light table-striped">
     <thead class="thead-light">
