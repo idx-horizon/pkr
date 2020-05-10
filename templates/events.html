@@ -21,7 +21,12 @@
                     value="contains">Contains
             </option>
           </select>
- 		<input type="text" autocomplete="off" autocapitalize="off" spellcheck="off" name="filter_str" placeholder="(filter by)" value="{{ request.form['filter_str'] }}"></input>
+ 		<input type="text" class="form-control" style="width:300px" autocomplete="off"
+               autocapitalize="off"
+               spellcheck="off"
+               name="filter_str"
+               placeholder="(filter by)"
+               value="{{ request.form['filter_str'] }}"></input>
 
 		<span class="styled">
           <select name="country_code">
