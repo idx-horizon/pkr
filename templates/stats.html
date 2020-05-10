@@ -3,14 +3,16 @@
 
 <div class="container-fluid p-3 bg-dark text-white">
 <H1>{{ data.name }} - total runs {{ data.run_count }} </H1>
-<button class="button" onclick="location.href = '/runs/{{ data.name | lower }}'">Runs</button>
+<button type="button" class="btn btn-success" onclick="location.href = '/runs/{{ data.name | lower }}'">Runs</button>
 
 
 <table class="table table-hover table-light table-striped">
+        <thead>
         <tr>
             <th width="40%">Challenge</th>
             <th width="60%"></th>
         </tr>
+        </thead>
         {% for item in data.challenges %}
             <tr>
                 <td>{{ item }}</td>
