@@ -9,7 +9,7 @@
 
 <form class="form-inline" action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on_code }}' method="POST" name="form">
 
-          <select class="selectpicker form-control" style="width:150px" name="filter_method">
+          <select class="form-control" style="width:150px" name="filter_method">
             <option {% if request.form['filter_method']=='startswith' %}
                     selected
                     {% endif %}
@@ -21,32 +21,29 @@
                     value="contains">Contains
             </option>
           </select>
- 		<input type="text" class="form-control" style="width:300px" autocomplete="off"
+ 		<input type="text" c style="width:300px" autocomplete="off"
                autocapitalize="off"
                spellcheck="off"
                name="filter_str"
                placeholder="(filter by)"
                value="{{ request.form['filter_str'] }}"></input>
 
-		<span class="styled">
-          <select name="country_code">
+          <select class="form-control" name="country_code">
             {% for c in countries|sort %}
                 <option {% if c==country %}selected{% endif %}
                   value={{ c }}>{{ c }}</option>
             {% endfor %}
           </select>
-        </span>
-        <span class="styled" width=200px>
-          <select name="centre_on_code">
+
+          <select class="form-control" name="centre_on_code">
           {% for con in centres|sort %}
                 <option {% if con==centre_on %}selected{% endif %}
                   value={{ con }}>{{ con }}</option>
           {% endfor %}
           </select>
-        </span>
-        <span>
+
 		<button type="submit" class="btn btn-success" name="filter_btn" value="Filter">Filter</button>
-		</span>
+
 </form>
 <table class="table table-hover table-light table-striped">
     <tr>
