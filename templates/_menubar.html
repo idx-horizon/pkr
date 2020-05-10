@@ -17,15 +17,15 @@
 	<li class="nav-item">
 	<a href="/stats" class="nav-link">Stats</a>
 	</li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
 	<li class="nav-item">
-	<div class="topnav-right">
 	{% if current_user.is_anonymous %}
 		<a href="/login" class="nav-link">Login</a>
 	{% else %}
 		<a href="/user" class="nav-link">{{ current_user.username|title }}</a>
 		<a href="/logout" class="nav-link">Logout</a>
 	{% endif %}
-	</div>
 	</li>
 </ul>
 </nav>
