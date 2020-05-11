@@ -4,3 +4,8 @@
 .form-inline > * {
     margin:10px 5px !important;
 }
+#demo img {
+width: auto;
+height: 225px;
+max-height: 225px;
+}
