@@ -28,14 +28,14 @@
                placeholder="(filter by)"
                value="{{ request.form['filter_str'] }}"></input>
 
-          <select class="form-control" style="width:50px" name="country_code">
+          <select class="form-control" style="width:75px" name="country_code">
             {% for c in countries|sort %}
                 <option {% if c==country %}selected{% endif %}
                   value={{ c }}>{{ c }}</option>
             {% endfor %}
           </select>
 
-          <select class="form-control" name="centre_on_code">
+          <select class="form-control" style="width:300px" name="centre_on_code">
           {% for con in centres|sort %}
                 <option {% if con==centre_on %}selected{% endif %}
                   value={{ con }}>{{ con }}</option>
