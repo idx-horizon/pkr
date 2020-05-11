@@ -4,3 +4,4 @@
 .form-inline > * {
     margin:10px 5px !important;
 }
+.carousel { width:640px; height:360px; }
