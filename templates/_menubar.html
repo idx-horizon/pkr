@@ -4,21 +4,19 @@
 
   </a>
   
-  stats"   {% if url_for(request.endpoint) == '/stats/' %}class="active"{% endif %}
-
 <div>
 <ul class="navbar-nav">
 	<li class="nav-item">
-	<a href="/home" class="nav-link text-dark {% if url_for(request.endpoint) == '/home/' %}active{% endif %}">Home</a>
+	<a href="/home" class="nav-link text-dark {% if url_for(request.endpoint) == '/home/' %}active {% endif %}">Home</a>
 	</li>
 	<li class="nav-item">
-	<a href="/newruns" class="nav-link text-dark {% if url_for(request.endpoint) == '/newruns/' %}active{% endif %}">New Runs</a>
+	<a href="/newruns" class="nav-link text-dark {% if url_for(request.endpoint) == '/newruns/' %}active {% endif %}">New Runs</a>
 	</li>
 	<li class="nav-item">
-	<a href="/events/uk" class="nav-link text-dark {% if url_for(request.endpoint) == '/events/uk/' %}active{% endif %}">Events</a>
+	<a href="/events/uk" class="nav-link text-dark {% if url_for(request.endpoint) == '/events/uk/' %}active {% endif %}">Events</a>
 	</li>
 	<li class="nav-item">
-	<a href="/stats" class="nav-link text-dark {% if url_for(request.endpoint) == '/stats/' %}active{% endif %}">Stats</a>
+	<a href="/stats" class="nav-link text-dark {% if url_for(request.endpoint) == '/stats/' %}active {% endif %}">Stats</a>
 	</li>
 </ul>
 </div>

@@ -11,4 +11,6 @@ max-height: 100px;
 }
 .active {
     background-color: white;
+    text-decoration: underline;
+    
 }
