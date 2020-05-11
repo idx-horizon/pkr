@@ -5,7 +5,7 @@
     margin:10px 5px !important;
 }
 #demo-ignore img {
-width: auto;
-height: 100px;
+width: 100%;
+height: auto;
 max-height: 100px;
 }
