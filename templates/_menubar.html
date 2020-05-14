@@ -16,7 +16,7 @@
 	<a href="/events/uk" class="nav-link text-dark {% if url_for(request.endpoint) == '/events/' %}active {% endif %}">Events</a>
 	</li>
 	<li class="nav-item">
-	<a href="/stats" class="nav-link text-dark {% if url_for(request.endpoint) == '/stats/' %}active {% endif %}">Stats</a>
+	<a href="/stats" class="nav-link text-dark {% if (url_for(request.endpoint) == '/stats/') or (url_for(request.endpoint) == '/runs/') %}active {% endif %}">Stats/Runs</a>
 	</li>
 </ul>
 </div>
