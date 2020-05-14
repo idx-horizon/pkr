@@ -10,7 +10,6 @@ height: auto;
 max-height: 100px;
 }
 .active {
-    background-color: white;
-    text-decoration: underline;
-    
+    font-weight: bold;
+    text-decoration: underline overline;    
 }
