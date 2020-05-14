@@ -11,5 +11,5 @@ max-height: 100px;
 }
 .active {
     font-weight: bold;
-    text-decoration: underline overline;    
+    text-decoration: underline;    
 }
