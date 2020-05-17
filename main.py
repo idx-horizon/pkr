@@ -126,7 +126,7 @@ def r_newruns(limit=10):
     if request.method.upper() == 'POST':
       this_limit = str(request.form['limit'])
     
-    data = NR.get_last_newruns(this_limit)
+    data = NR.get_last_newruns(int(this_limit))
     data = sorted(data, key=attrgetter('distance'))
     return render_template('newruns.html',
                 title=get_app_title(), 
