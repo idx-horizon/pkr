@@ -5,7 +5,7 @@
 <H2>Last {{ data|length }} new runs registered in UK</H2>
 
 
-<form class="form-inline" action='/events/{{ limit }}' method="POST" name="form">
+<form class="form-inline" action='/newruns/{{ limit }}' method="POST" name="form">
 
           <select class="form-control" style="width:75px" name="country_code">
             {% for c in countries|sort %}
