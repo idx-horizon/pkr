@@ -2,7 +2,7 @@
 {% include "_menubar.html" %}
 </div>
 <div class="container-fluid p-3 bg-dark text-white">
-<H2>Last {{ data|length }} new runs registered in {{ country }}</H2>
+<H2>Last {{ data|length }} new runs registered in {{ country|upper }}</H2>
 
 
 <form class="form-inline" action='/newruns/{{ country }}/{{ limit }}' method="POST" name="form">
