@@ -119,7 +119,7 @@ def runner_runs(runnerid=184594):
 
         
 @app.route('/newruns/')
-@app.route('/newruns/<limit>')
+@app.route('/newruns/<limit>/')
 def newruns(limit=10):
     this_limit =int(limit) or 10
     data = NR.get_last_newruns(this_limit)
@@ -128,6 +128,7 @@ def newruns(limit=10):
                 title=get_app_title(), 
                 limit=this_limit, 
                 countries=country_dict,
+                country='uk',
                 file_modified_date=NR.get_last_update(),
                 data=data)
 
