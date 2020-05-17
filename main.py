@@ -119,14 +119,20 @@ def runner_runs(runnerid=184594):
 
         
 @app.route('/newruns/', methods=['POST','GET'])
-@app.route('/newruns/<limit>/', methods=['POST','GET'])
+@app.route('/newruns/<country>/', methods=['POST','GET'])
+@app.route('/newruns/<country>/<limit>/', methods=['POST','GET'])
+
 def r_newruns(limit=10):
     this_limit =int(limit) or 10
+    this_country = country or 'uk'	
+
     
     if request.method.upper() == 'POST':
       this_limit = str(request.form['limit'])
+      this_country = str(request.form['country_code'])
     
-    data = NR.get_last_newruns(int(this_limit))
+    data = NR.get_last_newruns(int(this_limit), country_dict[this_country])
+    
     data = sorted(data, key=attrgetter('distance'))
     return render_template('newruns.html',
                 title=get_app_title(), 
