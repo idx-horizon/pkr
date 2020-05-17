@@ -122,6 +122,10 @@ def runner_runs(runnerid=184594):
 @app.route('/newruns/<limit>/', methods=['POST','GET'])
 def r_newruns(limit=10):
     this_limit =int(limit) or 10
+    
+    if request.method.upper() == 'POST':
+      this_limit = str(request.form['limit'])
+    
     data = NR.get_last_newruns(this_limit)
     data = sorted(data, key=attrgetter('distance'))
     return render_template('newruns.html',
