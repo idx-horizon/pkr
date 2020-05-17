@@ -122,7 +122,7 @@ def runner_runs(runnerid=184594):
 @app.route('/newruns/<country>/', methods=['POST','GET'])
 @app.route('/newruns/<country>/<limit>/', methods=['POST','GET'])
 
-def r_newruns(limit=10):
+def r_newruns(limit=10, country=None):
     this_limit =int(limit) or 10
     this_country = country or 'uk'	
 
