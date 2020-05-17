@@ -138,7 +138,7 @@ def r_newruns(limit=10, country=None):
                 title=get_app_title(), 
                 limit=this_limit, 
                 countries=country_dict,
-                country='uk',
+                country=this_country,
                 file_modified_date=NR.get_last_update(),
                 data=data)
 
