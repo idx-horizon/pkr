@@ -2,10 +2,10 @@
 {% include "_menubar.html" %}
 </div>
 <div class="container-fluid p-3 bg-dark text-white">
-<H2>Last {{ data|length }} new runs registered in UK</H2>
+<H2>Last {{ data|length }} new runs registered in {{ country }}</H2>
 
 
-<form class="form-inline" action='/newruns/{{ limit }}' method="POST" name="form">
+<form class="form-inline" action='/newruns/{{ country }}/{{ limit }}' method="POST" name="form">
 
           <select class="form-control disabled" style="width:75px" name="country_code">
             {% for c in countries|sort %}
