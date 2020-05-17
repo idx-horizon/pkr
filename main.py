@@ -127,6 +127,7 @@ def newruns(limit=10):
     return render_template('newruns.html',
                 title=get_app_title(), 
                 limit=this_limit, 
+                countries=country_dict,
                 file_modified_date=NR.get_last_update(),
                 data=data)
 

@@ -5,7 +5,7 @@
 <H2>Last {{ data|length }} new runs registered in UK</H2>
 
 
-<form class="form-inline" action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on_code }}' method="POST" name="form">
+<form class="form-inline" action='/events/{{ limit }}' method="POST" name="form">
 
           <select class="form-control" style="width:75px" name="country_code">
             {% for c in countries|sort %}
@@ -13,19 +13,21 @@
                   value={{ c }}>{{ c }}</option>
             {% endfor %}
           </select>
-<div class="input-group">
+          
+        <div class="input-group">
           <span class="input-group-btn">
-              <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+              <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="limit">
                   <span class="glyphicon glyphicon-minus"></span>
               </button>
           </span>
-          <input type="text" name="quant[1]" class="form-control input-number" value="1" min="1" max="10">
+          <input type="text" name="limit" class="form-control input-number" value="10" min="1" max="100">
           <span class="input-group-btn">
-              <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[1]">
+              <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="limit">
                   <span class="glyphicon glyphicon-plus"></span>
               </button>
           </span>
       </div>
+      
 		<button type="submit" class="btn btn-success" name="filter_btn" value="Filter">Filter</button>
 
 </form>
