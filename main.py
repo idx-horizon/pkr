@@ -134,6 +134,7 @@ def r_newruns(limit=10, country=None):
     data = NR.get_last_newruns(int(this_limit), country_dict[this_country])
     
     data = sorted(data, key=attrgetter('distance'))
+    data = sorted(data, key=attrgetter('id'))
     return render_template('newruns.html',
                 title=get_app_title(), 
                 limit=this_limit, 
