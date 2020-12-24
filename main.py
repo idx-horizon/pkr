@@ -66,7 +66,7 @@ def apilog():
                'count': GLOBAL_COUNT
                }
 
-    if request.method.upper() == 'POST'
+    if request.method.upper() == 'POST':
         return jsonify(payload)
     else:
         return render_template('apilog.html', payload)
