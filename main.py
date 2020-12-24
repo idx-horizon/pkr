@@ -14,6 +14,8 @@ import app.utils as utils
 
 from flask_login import login_user, logout_user, current_user, login_required, UserMixin
 
+GLOBAL_COUNT = 0
+
 class User(UserMixin):
     def __init__(self, id):
         self.id = id
@@ -54,10 +56,16 @@ def index():
         
 @app.route('/api/v1/meta', methods=['POST','GET'])
 def apilog():
+    if request.method.upper() = 'POST':
+        GLOBAL_COUNT += 1
+
     payload = [{'name': 'PKR API',
-               'version': 1
+               'version': '1.0',
+               'count': GLOBAL_COUNT
                }
               ]
+
+#    elif request.method.upper() = 'GET'
     return jsonify(payload)
 #    return render_template('apilog.html')
 
