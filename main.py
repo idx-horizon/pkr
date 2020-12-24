@@ -56,7 +56,7 @@ def index():
         
 @app.route('/api/v1/meta', methods=['POST','GET'])
 def apilog():
-    if request.method.upper() = 'POST':
+    if request.method.upper() == 'POST':
         GLOBAL_COUNT += 1
 
     payload = [{'name': 'PKR API',
