@@ -56,6 +56,8 @@ def index():
         
 @app.route('/api/v1/meta', methods=['POST','GET'])
 def apilog():
+    global GLOBAL_COUNT
+    
     if request.method.upper() == 'POST':
         GLOBAL_COUNT += 1
 
