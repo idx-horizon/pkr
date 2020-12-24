@@ -52,9 +52,14 @@ def index():
 	return redirect('/home/')
 
         
-@app.route('/api/log', methods=['POST','GET'])
+@app.route('/api/v1/meta', methods=['POST','GET'])
 def apilog():
-    return render_template('apilog.html')
+    payload = [{'name': 'PKR API',
+               'version': 1
+               }
+              ]
+    return jsonify(payload)
+#    return render_template('apilog.html')
 
 
 @app.route('/home/')
