@@ -67,9 +67,9 @@ def apilog():
                }
 
     if request.method.upper() == 'POST':
-        return jsonify(payload=payload)
+        return jsonify(payload)
     else:
-        return render_template('apilog.html', payload)
+        return render_template('apilog.html', payload=payload)
 
 
 @app.route('/home/')
