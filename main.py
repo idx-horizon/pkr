@@ -51,6 +51,12 @@ def error(code=None):
 def index():
 	return redirect('/home/')
 
+        
+@app.route('/api/log', methods=['POST','GET'])
+def apilog():
+    return render_template('apilog.html')
+
+
 @app.route('/home/')
 def home():
     return render_template('home.html',
