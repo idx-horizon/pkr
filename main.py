@@ -61,15 +61,15 @@ def apilog():
     if request.method.upper() == 'POST':
         GLOBAL_COUNT += 1
 
-    payload = [{'name': 'PKR API',
+    payload = {'name': 'PKR API',
                'version': '1.0',
                'count': GLOBAL_COUNT
                }
-              ]
 
-#    elif request.method.upper() = 'GET'
-    return jsonify(payload)
-#    return render_template('apilog.html')
+    if request.method.upper() == 'POST'
+        return jsonify(payload)
+    else:
+        return render_template('apilog.html', payload)
 
 
 @app.route('/home/')
