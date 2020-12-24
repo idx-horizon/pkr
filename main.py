@@ -67,7 +67,7 @@ def apilog():
                }
 
     if request.method.upper() == 'POST':
-        return jsonify(payload)
+        return jsonify(payload=payload)
     else:
         return render_template('apilog.html', payload)
 
