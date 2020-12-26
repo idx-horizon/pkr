@@ -61,7 +61,7 @@ def apilog():
     
     app_TRACKER.update(request)
 
-    payload = app_TRACKER['meta']
+    payload = app_TRACKER.meta
 
     if request.method.upper() == 'POST':
         return jsonify(payload)
