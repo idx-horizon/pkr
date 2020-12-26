@@ -16,4 +16,4 @@ class Tracker:
         Tracker.meta['total_visits'] += 1
         Tracker.meta['last_visit'] = datetime.datetime.now()
         Tracker.meta[request.method.upper()] += 1
-        Tracker.meta['last_ip'] = request.headers.get('X-Forwarded-For', 'Unknown'),
+        Tracker.meta['last_ip'] = str(request.headers.get('X-Forwarded-For', 'Unknown'))
