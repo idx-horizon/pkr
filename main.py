@@ -64,7 +64,7 @@ def apilog():
     payload = {'name': 'PKR API',
                'version': '1.0',
                'count': GLOBAL_COUNT,
-               'ip': request.remote_addr
+               'ip': request.headers.get('X-Forwarded-For', 'Unknown')
                }
 
     if request.method.upper() == 'POST':
