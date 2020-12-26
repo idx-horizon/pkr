@@ -4,7 +4,7 @@ class Tracker:
     meta = {'name': 'PKR API',
             'version': '1.0',
             'last_visit': datetime.datetime.now(),
-            'last_ip': request.headers.get('X-Forwarded-For', 'Unknown')
+            'last_ip': request.headers.get('X-Forwarded-For', 'Unknown'),
             'total_visits': 0,
             'POST': 0,
             'GET': 0,
