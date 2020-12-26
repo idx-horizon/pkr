@@ -6,6 +6,7 @@ from operator import attrgetter
 from app import app,login
 from app.forms import LoginForm
 from app.countries import country_dict
+from app.track import Tracker
 from app.country_list import centres
 from flask_login import UserMixin
 
@@ -14,7 +15,7 @@ import app.utils as utils
 
 from flask_login import login_user, logout_user, current_user, login_required, UserMixin
 
-GLOBAL_COUNT = 0
+app_TRACKER = Tracker()
 
 class User(UserMixin):
     def __init__(self, id):
@@ -56,16 +57,11 @@ def index():
         
 @app.route('/api/v1/meta', methods=['POST','GET'])
 def apilog():
-    global GLOBAL_COUNT
+    global app_TRACKER
     
-    if request.method.upper() == 'POST':
-        GLOBAL_COUNT += 1
+    app_TRACKER.update(request.method.upper())
 
-    payload = {'name': 'PKR API',
-               'version': '1.0',
-               'count': GLOBAL_COUNT,
-               'ip': request.headers.get('X-Forwarded-For', 'Unknown')
-               }
+    payload = app_TRACKER['meta']
 
     if request.method.upper() == 'POST':
         return jsonify(payload)
