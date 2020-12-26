@@ -2,12 +2,13 @@
 {% include "_menubar.html" %}
 
 <h1>API</h1>
+Last visit: {{ payload.last_visit }}<P>
 Name: {{ payload.name }}<P>
 Version: {{ payload.version }}<P>
-Count: {{ payload.total_visits }}<P>
+Total visits: {{ payload.total_visits }}<P>
 Last IP: {{ payload.last_ip }}<P>
 Last visit: {{ payload.last_visit }}<P>
-POST: {{ payload.POST }}<P>
-GET: {{ payload.GET }}<P>
+POST count: {{ payload.POST }}<P>
+GET count: {{ payload.GET }}<P>
 <p>
 {% include "_footer.html" %}
