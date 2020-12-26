@@ -59,7 +59,7 @@ def index():
 def apilog():
     global app_TRACKER
     
-    app_TRACKER.update(request.method.upper())
+    app_TRACKER.update(request)
 
     payload = app_TRACKER['meta']
 
