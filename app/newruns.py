@@ -92,8 +92,8 @@ def get_last_newruns(lastlimit=10, country_code=97, centre_on='bromley'):
     uk = getevents(js, country_code, cADULT)
 
     subset = []
-
-    for ev in uk[-lastlimit:]:
+	for ev in sorted(uk, key=lambda k: k['id'])[-lastlimit:]:
+#    for ev in uk[-lastlimit:]:
         subset.append(Event(ev,centre_on))
 
     return subset
