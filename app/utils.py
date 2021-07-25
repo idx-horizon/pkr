@@ -91,6 +91,7 @@ class Runner():
 		challenges['Total number of runs'] = self.run_count
 		challenges['Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
 		challenges['Cowell Club'] = self.cowell()
+		challenges['Lockdown'] = self.lockdown()
 		
 		bingo = Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
 		challenges['Calendar Bingo'] = '{}~Most common date: {} times on {}'.format(
@@ -177,6 +178,17 @@ class Runner():
 		
 		return challenges
 
+	def lockdown(self):
+		evs = [x['Run Date'] for x in self.runs if x['Run Date'] in ('14/03/2020', '24/07/2021')
+		if len(evs) == 2:
+			return 'Last & First'
+		elif len(evs) == 1 and evs[0].endswith('2020'):
+			return 'Last before lockdown'
+		elif  len(evs) == 1 and evs[0].endswith('2021'):
+			return 'First after lockdown'
+		else:
+			return '-'
+		
 	def cowell(self):
 		levels = {0: '-',
 				  1: 'Quarter',
