@@ -25,7 +25,7 @@ class Runner():
 		self.fullname = None
 		self.name = None
 				
-	def get_runs(self, refresh=True):
+	def get_runs(self, filter=None, refresh=True):
 		local_fname = '{}.pkr'.format(self.id)
 		def save_local(data):
 			with open(local_fname, 'w', encoding='utf-8') as fh:
@@ -51,7 +51,11 @@ class Runner():
 		self.run_count = len(data['runs'])
 		self.fullname = data['title'][:data['title'].index('-')].strip()
 		self.name = self.fullname[:self.fullname.index(' ')]
-		self.runs = data['runs']
+		if not filter:
+			self.runs = data['runs']
+		else:
+			self.runs = [x for x in data['runs'] if x[evName].startswith(filter)]
+			
 		self.countries = countries
 		self.caption = data['caption']
 		
