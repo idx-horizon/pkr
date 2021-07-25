@@ -21,7 +21,7 @@ class User(UserMixin):
     def __init__(self, id):
         self.id = id
     def get(self):
-        return self.id #current_user #'ian'
+        return 'ian' #self.id #current_user #'ian'
 
 try:
     print('URL request: {}'.format(request))
