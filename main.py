@@ -171,6 +171,7 @@ def r_newruns(limit=10, country=None):
 @app.route('/login/', methods=['POST','GET'])
 def login():
     if current_user.is_authenticated:
+        print('**USERNAME:', current_user, '**', dir(current_user))
         return redirect(url_for('home'))
 
     HOME_RUN = None
