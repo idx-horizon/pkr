@@ -6,7 +6,7 @@
 <H2>{{ data.name }} - total runs {{ data.run_count }}
 <button type="button" class="btn btn-success" onclick="location.href = '/stats/{{ data.name | lower }}'">Stats</button>
 </H2>
-<form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form">
+<form class="form-inline" action='/runs/{{ data.name }}/{{ filter_str }}' method="POST" name="form">
 		<input class="form-inline" type="text" style="width:300px" autocomplete="off"
                autocapitalize="off"
                spellcheck="off"
