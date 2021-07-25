@@ -29,7 +29,7 @@
 	</li>
 	{% else %}
 	<li class="nav-item">
-		<a href="/user" class="nav-link text-dark">User: {{ current_user.username|title }}</a>
+		<a href="/user" class="nav-link text-dark">User: {{ current_user.username | title }} ZZ {{ form.username.data.id }}</a>
 	</li>
 	<li class="nav-item">
 		<a href="/logout" class="nav-link text-dark">Logout</a>
