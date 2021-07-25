@@ -179,7 +179,7 @@ class Runner():
 		return challenges
 
 	def lockdown(self):
-		evs = [x['Run Date'] for x in self.runs if x['Run Date'] in ('14/03/2020', '24/07/2021')
+		evs = [x['Run Date'] for x in self.runs if x['Run Date'] in ('14/03/2020', '24/07/2021')]
 		if len(evs) == 2:
 			return 'Last & First'
 		elif len(evs) == 1 and evs[0].endswith('2020'):
