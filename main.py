@@ -122,7 +122,7 @@ def runner_stats(runnerid=184594):
                 data=rid)
 
 @app.route('/runs/', methods=['POST','GET'])
-@app.route('/runs/<runnerid>', methods=['POST','GET'])
+@app.route('/runs/<runnerid>/', methods=['POST','GET'])
 @app.route('/runs/<runnerid>/<filter_str>/', methods=['POST','GET'])
 
 def runner_runs(runnerid=184594, filter_str=None):
