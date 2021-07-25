@@ -121,8 +121,8 @@ def runner_stats(runnerid=184594):
                 file_modified_date=NR.get_last_update(),
                 data=rid)
 
-@app.route('/runs/')
-@app.route('/runs/<runnerid>')
+@app.route('/runs/', methods=['POST','GET'])
+@app.route('/runs/<runnerid>', methods=['POST','GET'])
 @app.route('/runs/<runnerid>/<filter_str>/', methods=['POST','GET'])
 
 def runner_runs(runnerid=184594, filter_str=None):
