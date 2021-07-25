@@ -89,6 +89,9 @@ class Runner():
 			
 	def get_challenges(self):
 		challenges = {}
+		if len(self.runs) == 0
+			return challenges
+			
 		challenges['Last run'] = '{} at {}'.format(fdate(self.runs[0]['Run Date']), self.runs[0]['Event'])
 		challenges['Current series'] = self.current_series()
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
