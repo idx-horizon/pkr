@@ -54,7 +54,7 @@ class Runner():
 		if not filter:
 			self.runs = data['runs']
 		else:
-			self.runs = [x for x in data['runs'] if x[evName].startswith(filter)]
+			self.runs = [x for x in data['runs'] if x['Event'].lower().startswith(filter.lower())]
 			
 		self.countries = countries
 		self.caption = data['caption']
