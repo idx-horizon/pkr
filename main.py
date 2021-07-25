@@ -123,7 +123,7 @@ def runner_stats(runnerid=184594):
 
 @app.route('/runs/')
 @app.route('/runs/<runnerid>')
-@app.route('/runs/<filter_str>/', methods=['POST','GET'])
+@app.route('/runs/<runnerid>/<filter_str>/', methods=['POST','GET'])
 
 def runner_runs(runnerid=184594, filter_str=None):
     this_filter = filter_str or ''
