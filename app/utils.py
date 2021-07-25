@@ -225,37 +225,39 @@ class Runner():
 		return datetime.datetime.strptime(strdate,format)
 		
 	def current_series(self):
-		diff = 0 
-		num_runs = 0
-		seq = self.run_gen()
-		first_run = next(seq)
-		current_run = first_run
-		current_dt = self.convert_date(current_run['Run Date'])
-		
-		while diff < 8:
-			num_runs += 1
-			prev_run = next(seq)
-			prev_dt = self.convert_date(prev_run['Run Date'])
-			diff = (current_dt - prev_dt).days
+		try:
+			diff = 0 
+			num_runs = 0
+			seq = self.run_gen()
+			first_run = next(seq)
+			current_run = first_run
+			current_dt = self.convert_date(current_run['Run Date'])
 			
-			current_run = prev_run
-			current_dt = prev_dt
-		
-		if num_runs == 1:
-			return '{} - {} at {}'.format(
-					num_runs, 
-					datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
-					first_run['Event']
-					)	
-		else:
-			return '{}~From: {} at {} to {} at {}'.format(
-					num_runs,	
-					datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
-					current_run['Event'],
-					fdate(self.runs[0]['Run Date']),
-					self.runs[0]['Event']
-					)	
-
+			while diff < 8:
+				num_runs += 1
+				prev_run = next(seq)
+				prev_dt = self.convert_date(prev_run['Run Date'])
+				diff = (current_dt - prev_dt).days
+				
+				current_run = prev_run
+				current_dt = prev_dt
+			
+			if num_runs == 1:
+				return '{} - {} at {}'.format(
+						num_runs, 
+						datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
+						first_run['Event']
+						)	
+			else:
+				return '{}~From: {} at {} to {} at {}'.format(
+						num_runs,	
+						datetime.datetime.strftime(prev_dt+datetime.timedelta(days=diff),'%d-%b-%Y'),
+						current_run['Event'],
+						fdate(self.runs[0]['Run Date']),
+						self.runs[0]['Event']
+						)	
+		except Exception as e:
+			return 'Unavailable'
 					
 	def __str__(self):
 		challenges = ''
