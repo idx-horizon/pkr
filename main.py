@@ -21,7 +21,7 @@ class User(UserMixin):
     def __init__(self, id):
         self.id = id
     def get(self):
-        return 'ian'
+        return currentuser #'ian'
 
 try:
     print('URL request: {}'.format(request))
@@ -171,7 +171,6 @@ def r_newruns(limit=10, country=None):
 @app.route('/login/', methods=['POST','GET'])
 def login():
     if current_user.is_authenticated:
-        print('**USERNAME:', current_user, '**', dir(current_user))
         return redirect(url_for('home'))
 
     HOME_RUN = None
