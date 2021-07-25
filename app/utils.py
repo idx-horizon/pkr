@@ -315,9 +315,9 @@ if __name__ == '__main__':
 	runners = []
 	for r in (184594,4327482,6594419, 2564629):
 		o = Runner(r)
-		o.get_runs(False)
+		o.get_runs(None,False)
 		runners.append(o)
 #		runner.append Runner(r)
 		#print(runner)
-#		runner.get_runs(False)
+#		runner.get_runs(None, False)
 		print(o)
