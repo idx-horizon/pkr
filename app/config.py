@@ -1,4 +1,5 @@
 import os
+from flask_sqlalchemy import SQLAlchemy
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -8,8 +9,9 @@ class Config(object):
     APPNAME = 'PKR' #os.environ.get('RR_NAME') or 'Unknown'
 
  
-    #REPOSITORY = 'REPOSITORY.db'
+    REPOSITORY = APPNAME + '_static.db'
 
-    #SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-    #    'sqlite:///' + os.path.join(basedir, '../REPOSITORY.db')
-    #SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+        'sqlite:///' + os.path.join(basedir, REPOSITORY)
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
