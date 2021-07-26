@@ -12,7 +12,7 @@ from app import models
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config.from_object(Config)
 
-db = SQLAlchemy(app)
+flaskdb = SQLAlchemy(app)
 #migrate = Migrate(app, flaskdb)
 
 #bootstrap = Bootstrap(app)
