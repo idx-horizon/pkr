@@ -15,6 +15,7 @@ import app.utils as utils
 
 from flask_login import login_user, logout_user, current_user, login_required, UserMixin
 
+from app.models import User
 app_TRACKER = Tracker()
 
 #class User(UserMixin):
