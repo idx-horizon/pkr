@@ -8,7 +8,6 @@ from app.forms import LoginForm
 from app.countries import country_dict
 from app.track import Tracker
 from app.country_list import centres
-#from flask_login import UserMixin
 
 import app.newruns as NR
 import app.utils as utils
@@ -18,11 +17,11 @@ from flask_login import login_user, logout_user, current_user, login_required, U
 from app.models import User
 app_TRACKER = Tracker()
 
-#class User(UserMixin):
-#    def __init__(self, id):
-#        self.id = id
-#    def get(self):
-#       return 'ian' #self.id #current_user #'ian'
+class User(UserMixin):
+    def __init__(self, id):
+        self.id = id
+    def get(self):
+       return 'ian' #self.id #current_user #'ian'
 
 try:
     print('URL request: {}'.format(request))
