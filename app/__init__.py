@@ -4,7 +4,7 @@ from flask_login import LoginManager
 from app.config import Config
 
 from flask_sqlalchemy import SQLAlchemy
-#from flask_migrate import Migrate
+from flask_migrate import Migrate
 #from flask_bootstrap import Bootstrap
 
 
@@ -12,7 +12,7 @@ app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config.from_object(Config)
 
 flaskdb = SQLAlchemy(app)
-#migrate = Migrate(app, flaskdb)
+migrate = Migrate(app, flaskdb)
 
 #bootstrap = Bootstrap(app)
 
