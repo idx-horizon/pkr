@@ -17,6 +17,13 @@ from flask_login import login_user, logout_user, current_user, login_required, U
 from app.models import User
 app_TRACKER = Tracker()
 
+from app import app, flaskdb
+from app.models import User
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 'User': User}
+
 class User(UserMixin):
     def __init__(self, id):
         self.id = id
