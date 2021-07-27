@@ -3,7 +3,7 @@ from flask import Flask
 from flask import Flask, jsonify, abort, flash, make_response, render_template, redirect, request, url_for, session
 from operator import attrgetter
 
-from app import app,login
+from app import app,login,flaskdb
 from app.forms import LoginForm
 from app.countries import country_dict
 from app.track import Tracker
@@ -17,12 +17,7 @@ from flask_login import login_user, logout_user, current_user, login_required, U
 from app.models import User
 app_TRACKER = Tracker()
 
-from app import app, flaskdb
-from app.models import User
 
-@app.shell_context_processor
-def make_shell_context():
-    return {'db': db, 'User': User}
 
 class User(UserMixin):
     def __init__(self, id):
@@ -34,6 +29,11 @@ try:
     print('URL request: {}'.format(request))
 except:
     pass
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': flaskdb, 'User': User}
+
     
 @login.user_loader
 def load_user(id):
