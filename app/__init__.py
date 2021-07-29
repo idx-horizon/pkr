@@ -11,8 +11,8 @@ from flask_migrate import Migrate
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config.from_object(Config)
 
-flaskdb = SQLAlchemy(app)
-migrate = Migrate(app, flaskdb)
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 #bootstrap = Bootstrap(app)
 

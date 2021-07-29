@@ -1,16 +1,16 @@
 from datetime import datetime
-from app import login, flaskdb
+from app import login, db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(UserMixin):
-    id            = flaskdb.Column(flaskdb.Integer, primary_key=True)
-    username      = flaskdb.Column(flaskdb.String(64), index=True, unique=True)
-    rid           = flaskdb.Column(flaskdb.String(10), index=True, unique=True)
-    email         = flaskdb.Column(flaskdb.String(120), index=True, unique=True)
-    password_hash = flaskdb.Column(flaskdb.String(128))
-    home_run      = flaskdb.Column(flaskdb.String(50))
-    home_postcode = flaskdb.Column(flaskdb.String(50))
+    id            = db.Column(db.Integer, primary_key=True)
+    username      = db.Column(db.String(64), index=True, unique=True)
+    rid           = db.Column(db.String(10), index=True, unique=True)
+    email         = db.Column(db.String(120), index=True, unique=True)
+    password_hash = db.Column(db.String(128))
+    home_run      = db.Column(db.String(50))
+    home_postcode = db.Column(db.String(50))
 
     def __repr__(self):
         return '<User {} {}>'.format(self.username, self.email)
