@@ -59,7 +59,7 @@
             <td><a target="_blank" href="{{ item.url_course }}">{{ item.evlongname }}</td>
             <td>{{ item.distance|round(1,'floor') }}</td>
             <td><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
-            <td>{%if {{ item.hasrun }}=='Yes'%}✅
+            <td>{%if {{ item.hasrun }}=="Yes" %}✅
                {% else %}❌
                {% endif %}</td>
         </tr>
