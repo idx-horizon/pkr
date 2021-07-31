@@ -35,13 +35,18 @@
             {% endfor %}
           </select>
 
-          <select class="form-control" style="width:300px" name="centre_on_code">
+          <select class="form-control" style="width:225px" name="centre_on_code">
           {% for con in centres|sort %}
                 <option {% if con==centre_on %}selected{% endif %}
                   value={{ con }}>{{ con }}</option>
           {% endfor %}
           </select>
-
+        <select class="form-control" style="width:75px" name="has_run">
+        {% for opt in ['Any','Yes','No'] %}
+             <option value={{ opt }}>{{ opt }}</option>
+        {% endfor %}
+        
+        </select>
 		<button type="submit" class="btn btn-success" name="filter_btn" value="Filter">Filter</button>
 
 </form>
