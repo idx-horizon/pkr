@@ -19,11 +19,11 @@ app_TRACKER = Tracker()
 
 
 
-#class User(UserMixin):
-#    def __init__(self, id):
-#        self.id = id
-#    def get(self):
-#       return 'ian' #self.id #current_user #'ian'
+class User(UserMixin):
+    def __init__(self, id):
+        self.id = id
+    def get(self):
+       return 'ian' #self.id #current_user #'ian'
 
 try:
     print('URL request: {}'.format(request))
