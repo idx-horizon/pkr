@@ -110,6 +110,10 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     rid = utils.Runner(str(base_runner).lower())
     rid.get_runs(this_filter, False)
 
+    for d in data:
+        if d.evshortname in [x['Event'] for x in rid.runs]:
+            d.set_hasrun('Yes')
+        
     return render_template('events.html',
                 title=get_app_title() + '[' + str(this_country) + ' | ' + this_filter + ']', 
                 filter=this_filter, 
