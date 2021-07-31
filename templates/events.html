@@ -58,9 +58,9 @@
         <th width="15%">Distance</th>
         <th width="10%">Map</th>
         {% if current_user.is_anonymous %}
-             <th width="10%">Run?</th>
-        {% else %}
              <th width="10%"></th>
+        {% else %}
+             <th width="10%">Has Run</th>
         {% endif %}
  
     </tr>
@@ -71,7 +71,7 @@
             <td>{{ item.distance|round(1,'floor') }}</td>
             <td><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
             {% if current_user.is_anonymous %}
-                 <td>-</td>
+                 <td></td>
             {% else %}
                  <td>{%if item.hasrun == "Yes" %}✅
                     {% else %}❌
