@@ -32,6 +32,7 @@ class Event():
         self.url_latestresults =  self.domain + self.evname + '/results/latestresults/'
         self.url_course =  self.domain + self.evname + '/course/'
         self.distance = measure((self.latitude, self.longitude), centres[centre_on])
+        self.hasrun = None
 
     def __repr__(self):
     	#return '{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_course)
@@ -46,6 +47,9 @@ class Event():
 
     def get_details(self):
         return '{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_latestresults)
+        
+    def set_hasrun(self,value):
+        self.hasrun = value
 
 def get(url):
     headers = {
