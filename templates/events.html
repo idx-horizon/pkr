@@ -48,10 +48,10 @@
 <table class="table table-hover table-light table-striped text-left">
     <tr>
         <th width="10%">#</th>
-        <th width="60%">Name</th>
+        <th width="55%">Name</th>
         <th width="15%">Distance</th>
-        <th width="15%">Map</th>
-
+        <th width="10%">Map</th>
+        <th width="10%">Run?</th>
     </tr>
     {% for item in data %}
         <tr>
@@ -59,6 +59,7 @@
             <td><a target="_blank" href="{{ item.url_course }}">{{ item.evlongname }}</td>
             <td>{{ item.distance|round(1,'floor') }}</td>
             <td><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
+            <td>-</td>
         </tr>
     {% endfor %}
     <P>
