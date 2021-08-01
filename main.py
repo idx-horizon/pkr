@@ -96,7 +96,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     this_filter = filter_str or ''
     this_method = 'startswith'
     this_centre_on = centre_on_code or 'bromley'
-    
+
     if request.method.upper() == 'POST':
       this_filter  = str(request.form['filter_str']).lower()
       this_method  = str(request.form['filter_method'])
@@ -107,7 +107,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     data = sorted(data, key=attrgetter('distance'))
 
     if current_user:
-        base_runner = 184594
+        base_runner = current_user.rid #184594
         rid = utils.Runner(str(base_runner).lower())
         rid.get_runs(this_filter, False)
 
