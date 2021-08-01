@@ -106,7 +106,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     data=NR.getevents_by_filter(this_filter, country_dict[this_country], this_method, this_centre_on)
     data = sorted(data, key=attrgetter('distance'))
 
-    if current_user:
+    if not current_user.is_anonymous:
         base_runner = current_user.rid 
         rid = utils.Runner(str(base_runner).lower())
         rid.get_runs(this_filter, False)
@@ -129,7 +129,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
 @app.route('/stats/')
 #@app.route('/stats/<runnerid>')
 def runner_stats(runnerid=184594):
-    if current_user:
+    if current_user.is_anonymous:
         rid = utils.Runner(str(current_user.rid).lower())
     else:
         redirect(url_for('login'))
@@ -147,7 +147,7 @@ def runner_stats(runnerid=184594):
 @app.route('/runs/<runnerid>/<filter_str>/', methods=['POST','GET'])
 
 def runner_runs(runnerid=184594, filter_str=None):
-    if current_user:
+    if current_user.is_anonymous:
         rid = utils.Runner(str(current_user.rid).lower())
     else:
         redirect(url_for('login'))
