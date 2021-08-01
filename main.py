@@ -158,7 +158,7 @@ def runner_runs(runnerid=184594, filter_str=None):
     if request.method.upper() == 'POST':
       this_filter  = str(request.form['filter_str']).lower()
 
-    rid = utils.Runner(str(runnerid).lower())
+#    rid = utils.Runner(str(runnerid).lower())
     rid.get_runs(this_filter, False)
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
 

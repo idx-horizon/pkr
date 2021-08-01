@@ -3,7 +3,7 @@
 
 <div class="container-fluid p-3 bg-dark text-white">
 
-<H2>{{ data.name }} {{current_user }} - total runs {{ data.run_count }}
+<H2>{{ data.name }} ({{current_user | title }}) - total runs {{ data.run_count }}
 <button type="button" class="btn btn-success" onclick="location.href = '/stats'">Stats</button>
 </H2>
 <form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form">
