@@ -25,14 +25,14 @@
 <ul class="nav navbar-nav navbar-right">
 	{% if current_user.is_anonymous %}	
 	<li class="nav-item">
-		<a href="/login" class="nav-link text-dark">Login</a>
+		<a href="/login" class="nav-link navbar-right text-dark">Login</a>
 	</li>
 	{% else %}
 	<li class="nav-item">
-		<a href="/user" class="nav-link text-dark">User: {{ current_user | title }}</a>
+		<a href="/user" class="nav-link navbar-right text-dark">User: {{ current_user | title }}</a>
 	</li>
 	<li class="nav-item">
-		<a href="/logout" class="nav-link text-dark">Logout</a>
+		<a href="/logout" class="nav-link navvar-right text-dark">Logout</a>
 	</li>
 	{% endif %}
 </ul>
