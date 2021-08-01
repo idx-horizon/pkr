@@ -212,6 +212,10 @@ def logout():
     logout_user()
     return redirect(url_for('home'))
 
+@app.route('/user')
+def user_details():
+    return render_template('user.html')
+
 
 def get_app_title():
     return os.environ['APP_TITLE'] 
