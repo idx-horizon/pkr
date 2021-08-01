@@ -126,10 +126,10 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                 centre_on=this_centre_on,
                 data=data)
 
-@app.route('/stats/')
+@app.route('/stats', methods=['POST','GET'])
 #@app.route('/stats/<runnerid>')
 def runner_stats(runnerid=184594):
-    if current_user.is_anonymous:
+    if not current_user.is_anonymous:
         rid = utils.Runner(str(current_user.rid).lower())
     else:
         redirect(url_for('login'))
@@ -142,12 +142,13 @@ def runner_stats(runnerid=184594):
                 file_modified_date=NR.get_last_update(),
                 data=rid)
 
-@app.route('/runs/', methods=['POST','GET'])
-@app.route('/runs/<runnerid>/', methods=['POST','GET'])
-@app.route('/runs/<runnerid>/<filter_str>/', methods=['POST','GET'])
+@app.route('/runs', methods=['POST','GET'])
+#@app.route('/runs/<runnerid>/', methods=['POST','GET'])
+#@app.route('/runs/<runnerid>/<filter_str>/', methods=['POST','GET'])
+@app.route('/runs/<filter_str>/', methods=['POST','GET'])
 
 def runner_runs(runnerid=184594, filter_str=None):
-    if current_user.is_anonymous:
+    if not current_user.is_anonymous:
         rid = utils.Runner(str(current_user.rid).lower())
     else:
         redirect(url_for('login'))
