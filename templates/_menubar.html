@@ -21,15 +21,15 @@
 
 <ul class="nav navbar-nav ml-auto">
 	{% if current_user.is_anonymous %}	
-	<li>
-		<a href="/login" class="text-dark">Login</a>
+	<li class="nav-item">
+		<a href="/login" class="nav-link text-dark">Login</a>
 	</li>
 	{% else %}
-	<li>
-		<a href="/user" class="text-dark">User: {{ current_user | title }}</a>
+	<li class="nav-item">
+		<a href="/user" class="nav-link text-dark">User: {{ current_user | title }}</a>
 	</li>
-	<li>
-		<a href="/logout" class="text-dark">Logout</a>
+	<li class="nav-item">
+		<a href="/logout" class="nav-link text-dark">Logout</a>
 	</li>
 	{% endif %}
 </ul>
