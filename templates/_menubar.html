@@ -18,9 +18,7 @@
 	<a href="/stats" class="nav-link text-dark {% if (url_for(request.endpoint) == '/stats/') or (url_for(request.endpoint) == '/runs/') %}active {% endif %}">Stats/Runs</a>
 	</li>
 </ul>
-</div>
 
-<div>
 <ul class="nav navbar-nav ml-auto">
 	{% if current_user.is_anonymous %}	
 	<li>
