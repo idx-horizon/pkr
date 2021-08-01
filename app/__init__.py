@@ -5,7 +5,7 @@ from app.config import Config
 
 from flask_sqlalchemy import SQLAlchemy
 #from flask_migrate import Migrate
-#from flask_bootstrap import Bootstrap
+from flask_bootstrap import Bootstrap
 
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
