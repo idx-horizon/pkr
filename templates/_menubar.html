@@ -23,14 +23,14 @@
 <div>
 <ul class="nav navbar-nav ml-auto">
 	{% if current_user.is_anonymous %}	
-	<li class="nav-item">
+	<li>
 		<a href="/login" class="nav-link text-dark">Login</a>
 	</li>
 	{% else %}
-	<li class="nav-item">
+	<li>
 		<a href="/user" class="nav-link text-dark">User: {{ current_user | title }}</a>
 	</li>
-	<li class="nav-item">
+	<li>
 		<a href="/logout" class="nav-link text-dark">Logout</a>
 	</li>
 	{% endif %}
@@ -38,5 +38,5 @@
 </div>
 
 </nav>
-
+ class="nav-item"
 </div>
