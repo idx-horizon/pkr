@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-success navbar-dark">
   <a class="navbar-brand" href="/home">
     <img src="{{url_for('static', filename='pkr.jpg')}}" alt="PKR" style="width:40px;">
-
   </a>
   
 <div>
@@ -22,20 +21,22 @@
 </div>
 
 <div>
-<ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav ml-auto">
 	{% if current_user.is_anonymous %}	
 	<li class="nav-item">
-		<a href="/login" class="nav-link nav navbar-nav navbar-right text-dark">Login</a>
+		<a href="/login" class="nav-link text-dark">Login</a>
 	</li>
 	{% else %}
 	<li class="nav-item">
-		<a href="/user" class="nav-link nav navbar-nav navbar-right text-dark">User: {{ current_user | title }}</a>
+		<a href="/user" class="nav-link text-dark">User: {{ current_user | title }}</a>
 	</li>
-	<li class="nav-item nav navbar-nav navbar-right">
-		<a href="/logout" class="nav-link nav navbar-nav navbar-right text-dark">Logout</a>
+	<li class="nav-item">
+		<a href="/logout" class="nav-link text-dark">Logout</a>
 	</li>
 	{% endif %}
 </ul>
 </div>
+
 </nav>
+
 </div>
