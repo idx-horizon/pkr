@@ -3,7 +3,7 @@ from app import login, db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class User(UserMixin):
+class User(UserMixin, db.Model):
     id            = db.Column(db.Integer, primary_key=True)
     username      = db.Column(db.String(64), index=True, unique=True)
     rid           = db.Column(db.String(10), index=True, unique=True)
@@ -14,7 +14,7 @@ class User(UserMixin):
 
     def __repr__(self):
         return '<User {} {}>'.format(self.username, self.email)
-
+     
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
