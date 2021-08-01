@@ -35,9 +35,9 @@ def make_shell_context():
     return {'db': db, 'User': User}
 
     
-@login.user_loader
-def load_user(id):
-    return User.get(id)
+#@login.user_loader
+#def load_user(id):
+#    return User.get(id)
 
 @app.errorhandler(404)
 def error_404(error):
