@@ -106,13 +106,14 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     data=NR.getevents_by_filter(this_filter, country_dict[this_country], this_method, this_centre_on)
     data = sorted(data, key=attrgetter('distance'))
 
-    base_runner = 184594
-    rid = utils.Runner(str(base_runner).lower())
-    rid.get_runs(this_filter, False)
+    if current_user:
+        base_runner = 184594
+        rid = utils.Runner(str(base_runner).lower())
+        rid.get_runs(this_filter, False)
 
-    for d in data:
-        if d.evshortname in [x['Event'] for x in rid.runs]:
-            d.set_hasrun('Yes')
+        for d in data:
+            if d.evshortname in [x['Event'] for x in rid.runs]:
+                d.set_hasrun('Yes')
         
     return render_template('events.html',
                 title=get_app_title() + '[' + str(this_country) + ' | ' + this_filter + ']', 
