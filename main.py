@@ -132,7 +132,7 @@ def runner_stats(runnerid=184594):
     if not current_user.is_anonymous:
         rid = utils.Runner(str(current_user.rid).lower())
     else:
-        redirect(url_for('login'))
+        return redirect(url_for('login'))
 
     rid.get_runs(None,False)
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
@@ -151,7 +151,7 @@ def runner_runs(runnerid=184594, filter_str=None):
     if not current_user.is_anonymous:
         rid = utils.Runner(str(current_user.rid).lower())
     else:
-        redirect(url_for('login'))
+        return redirect(url_for('login'))
 
     this_filter = filter_str or ''
 
