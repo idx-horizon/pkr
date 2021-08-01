@@ -107,7 +107,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     data = sorted(data, key=attrgetter('distance'))
 
     if current_user:
-        base_runner = current_user.rid #184594
+        base_runner = current_user.rid 
         rid = utils.Runner(str(base_runner).lower())
         rid.get_runs(this_filter, False)
 
@@ -127,9 +127,13 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                 data=data)
 
 @app.route('/stats/')
-@app.route('/stats/<runnerid>')
+#@app.route('/stats/<runnerid>')
 def runner_stats(runnerid=184594):
-    rid = utils.Runner(str(runnerid).lower())
+    if current_user:
+        rid = utils.Runner(str(current_user.rid).lower())
+    else:
+        redirect(url_for('login'))
+
     rid.get_runs(None,False)
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
 
@@ -143,6 +147,11 @@ def runner_stats(runnerid=184594):
 @app.route('/runs/<runnerid>/<filter_str>/', methods=['POST','GET'])
 
 def runner_runs(runnerid=184594, filter_str=None):
+    if current_user:
+        rid = utils.Runner(str(current_user.rid).lower())
+    else:
+        redirect(url_for('login'))
+
     this_filter = filter_str or ''
 
     if request.method.upper() == 'POST':
