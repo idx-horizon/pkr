@@ -95,8 +95,11 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     this_country = country or 'uk'	
     this_filter = filter_str or ''
     this_method = 'startswith'
-    this_centre_on = centre_on_code or current_user.home_run or 'bushy'
-
+    if not current_user.is_anonymous:
+        this_centre_on = centre_on_code or current_user.home_run
+    else:
+        this_centre_on = centre_on_code or 'bushy'
+    
     if request.method.upper() == 'POST':
       this_filter  = str(request.form['filter_str']).lower()
       this_method  = str(request.form['filter_method'])
