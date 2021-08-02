@@ -169,7 +169,6 @@ def runner_runs(filter_str=None):
 @app.route('/newevents/', methods=['POST','GET'])
 @app.route('/newevents/<country>/', methods=['POST','GET'])
 @app.route('/newevents/<country>/<limit>/', methods=['POST','GET'])
-
 def r_newevents(limit=10, country=None):
     this_limit =int(limit) or 10
     this_country = country or 'uk'	
@@ -183,7 +182,7 @@ def r_newevents(limit=10, country=None):
     
 #    data = sorted(data, key=attrgetter('distance'))
     data = sorted(data, key=attrgetter('evid'))
-    return render_template('newruns.html',
+    return render_template('newevents.html',
                 title=get_app_title(), 
                 limit=this_limit, 
                 countries=country_dict,
