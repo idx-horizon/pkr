@@ -200,9 +200,8 @@ def login():
     if form.validate_on_submit():
         print('Validating: [{}] [{}]'.format(form.username.data, form.password.data))
         #user = User(form.username.data)
-        user = User.query.filter_by(username=form.username.data).first()
+        user = User.query.filter_by(username=form.username.data.lower()).first()
         if user is None or not user.check_password(form.password.data):
-#        if user.id.lower() not in ('ian','michael','caroline') or form.password.data != 'p':
             flash('Invalid username or password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
