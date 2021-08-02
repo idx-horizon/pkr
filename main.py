@@ -143,11 +143,8 @@ def runner_stats():
 
 @app.route('/runs', methods=['POST','GET'])
 @app.route('/runs/', methods=['POST','GET'])
-#@app.route('/runs/<runnerid>/', methods=['POST','GET'])
-#@app.route('/runs/<runnerid>/<filter_str>/', methods=['POST','GET'])
 @app.route('/runs/<filter_str>/', methods=['POST','GET'])
-
-def runner_runs(runnerid=184594, filter_str=None):
+def runner_runs(filter_str=None):
     if not current_user.is_anonymous:
         rid = utils.Runner(str(current_user.rid).lower())
     else:
@@ -158,7 +155,6 @@ def runner_runs(runnerid=184594, filter_str=None):
     if request.method.upper() == 'POST':
       this_filter  = str(request.form['filter_str']).lower()
 
-#    rid = utils.Runner(str(runnerid).lower())
     rid.get_runs(this_filter, False)
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
 
@@ -170,11 +166,11 @@ def runner_runs(runnerid=184594, filter_str=None):
 
 
         
-@app.route('/newruns/', methods=['POST','GET'])
-@app.route('/newruns/<country>/', methods=['POST','GET'])
-@app.route('/newruns/<country>/<limit>/', methods=['POST','GET'])
+@app.route('/newevents/', methods=['POST','GET'])
+@app.route('/newevents/<country>/', methods=['POST','GET'])
+@app.route('/newevents/<country>/<limit>/', methods=['POST','GET'])
 
-def r_newruns(limit=10, country=None):
+def r_newevents(limit=10, country=None):
     this_limit =int(limit) or 10
     this_country = country or 'uk'	
 
