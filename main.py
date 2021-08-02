@@ -229,6 +229,22 @@ def r_year_summary():
     return render_template('year_summary.html', 
                             title='Year Summary', 
                             data=data)
+
+@app.route('/summaries/event')
+def r_year_summary():
+    if not current_user.is_anonymous:
+        rid = utils.Runner(str(current_user.rid).lower())
+    else:
+        return redirect(url_for('login'))
+        
+    rid.get_runs(None, False)
+
+    data = summaries.year_summary(rid.runs)
+    return render_template('event_summary.html', 
+                            title='Event Summary', 
+                            data=data)
+
+
 @app.route('/logout')
 def logout():
     logout_user()

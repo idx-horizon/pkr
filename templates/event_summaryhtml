@@ -4,7 +4,7 @@
 <div class="container-fluid p-3 bg-dark text-white">
 <H2>{{ title }}</H2>
 
-<table width="50%" class="table table-hover table-light table-striped">
+<table class="table table-hover table-light table-striped">
     <thead class="thead-light text-left">
     <tr>
         <th width="30%">Year</th>
@@ -13,7 +13,7 @@
     </thead>
     {% for item in data %}
         <tr>
-            <td>{{ item.event }}</td>
+            <td>{{ item.year }}</td>
             <td>{{ item.count }}</td>
         </tr>
    {% endfor %}
