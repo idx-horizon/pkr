@@ -222,6 +222,8 @@ def r_year_summary():
         rid = utils.Runner(str(current_user.rid).lower())
     else:
         return redirect(url_for('login'))
+        
+    rid.get_runs(None, False)
 
     data = summaries.year_summary(rid.runs)
     return render_template('year_summary', 
