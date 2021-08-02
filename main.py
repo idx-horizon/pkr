@@ -226,7 +226,7 @@ def r_year_summary():
     rid.get_runs(None, False)
 
     data = summaries.year_summary(rid.runs)
-    return render_template('year_summary', 
+    return render_template('year_summary.html', 
                             title='Year Summary', 
                             data=data)
 @app.route('/logout')
