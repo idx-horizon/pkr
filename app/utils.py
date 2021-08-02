@@ -106,10 +106,12 @@ class Runner():
 		challenges['Cowell Club'] = self.cowell()
 		challenges['Lockdown'] = self.lockdown()
 		
+		challenges['Number of PBs'] = self.stats['_PB']
 		last_PB_ix = find_in_list_dict(self.runs,'PB?','PB')
-		challenges['Last PB'] = '{} on {}'.format(
+		challenges['Last PB'] = '{} at {} ({} runs ago)'.format(
+									fdate(self.runs[last_PB_ix]['Run Date']),
 									self.runs[last_PB_ix]['Event'],
-									self.runs[last_PB_ix]['Run Date']) 
+									last_PB_ix) 
 		
 		bingo = Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
 		challenges['Calendar Bingo'] = '{}~Most common date: {} times on {}'.format(
@@ -126,7 +128,6 @@ class Runner():
 							', '.join(sorted(self.missing))
 						)
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
-		challenges['Number of PBs'] = self.stats['_PB']
 		
 		key = max({x for x in self.stats if x.startswith('_YR_')}, 
 																		key=lambda key: self.stats[key])
