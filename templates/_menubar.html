@@ -3,7 +3,7 @@
     <img src="{{url_for('static', filename='pkr.jpg')}}" alt="PKR" style="width:40px;">
   </a>
   
-<div class="collapse navbar-collapse" id="navbarNav">
+<div class="collapse navbar-collapse navbar-default" id="navbarNav">
 <ul class="navbar-nav mr-auto">
 	<li class="nav-item">
 	<a href="/home" class="nav-link text-dark {% if url_for(request.endpoint) == '/home/' %}active {% endif %}">Home</a>
