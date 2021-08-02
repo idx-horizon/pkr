@@ -239,7 +239,7 @@ def r_event_summary():
         
     rid.get_runs(None, False)
 
-    data = summaries.year_summary(rid.runs)
+    data = summaries.event_summary(rid.runs)
     return render_template('event_summary.html', 
                             title='Event Summary', 
                             data=data)
