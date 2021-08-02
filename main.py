@@ -127,8 +127,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                 data=data)
 
 @app.route('/stats', methods=['POST','GET'])
-#@app.route('/stats/<runnerid>')
-def runner_stats(runnerid=184594):
+def runner_stats():
     if not current_user.is_anonymous:
         rid = utils.Runner(str(current_user.rid).lower())
     else:
@@ -143,6 +142,7 @@ def runner_stats(runnerid=184594):
                 data=rid)
 
 @app.route('/runs', methods=['POST','GET'])
+@app.route('/runs/', methods=['POST','GET'])
 #@app.route('/runs/<runnerid>/', methods=['POST','GET'])
 #@app.route('/runs/<runnerid>/<filter_str>/', methods=['POST','GET'])
 @app.route('/runs/<filter_str>/', methods=['POST','GET'])
