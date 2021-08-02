@@ -12,6 +12,12 @@ import math
 
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
+def find_in_list_dict(lst, key, value):
+    for i, dic in enumerate(lst):
+        if dic[key] == value:
+            return i
+    return None
+    
 class Runner():
 	
 	base = 'https://www.parkrun.org.uk/results/athleteeventresultshistory/?athleteNumber={}&eventNumber=0'
@@ -99,6 +105,11 @@ class Runner():
 		challenges['Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
 		challenges['Cowell Club'] = self.cowell()
 		challenges['Lockdown'] = self.lockdown()
+		
+		last_PB_ix = find_in_list_dict(self.runs,'PB?','PB')
+		challenges['Last PB'] = '{} on {}'.format(
+									self.runs[last_PB_ix]['Event'],
+									self.runs[last_PB_ix]['Run Date']) 
 		
 		bingo = Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
 		challenges['Calendar Bingo'] = '{}~Most common date: {} times on {}'.format(
