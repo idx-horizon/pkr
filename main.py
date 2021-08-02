@@ -231,7 +231,7 @@ def r_year_summary():
                             data=data)
 
 @app.route('/summaries/event')
-def r_year_summary():
+def r_event_summary():
     if not current_user.is_anonymous:
         rid = utils.Runner(str(current_user.rid).lower())
     else:
