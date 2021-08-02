@@ -15,6 +15,16 @@
     <li class="nav-item">
 		<a href="/user" class="nav-link text-dark">Runner: {{ current_user | title }}</a>
     </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Runner: {{ current_user | title }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuRunner">
+          <a class="dropdown-item" href="/stats">Stats & Challenges</a>
+          <a class="dropdown-item" href="/runs">Runs</a>
+          <a class="dropdown-item" href="/logout">logout</a>
+        </div>
+      </li>
 	<li class="nav-item">
 		<a href="/logout" class="nav-link text-dark">Logout</a>
 	</li>
@@ -30,16 +40,19 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/stats">Stat & Runs</a>
+        <a class="nav-link" href="/stats">Stats</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/newruns">New Runs</a>
+        <a class="nav-link" href="/runs">Runs</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/events">Events</a>
+        <a class="nav-link" href="/events">All Events</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/newruns">New Events</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
