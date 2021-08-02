@@ -11,6 +11,7 @@ from app.country_list import centres
 
 import app.newruns as NR
 import app.utils as utils
+import app.summaries as summaries
 
 from flask_login import login_user, logout_user, current_user, login_required, UserMixin
 
@@ -215,6 +216,17 @@ def login():
 
     return render_template('login.html', title='Login', form=form)
 
+@app.route('/summaries/year')
+def r_year_summary():
+    if not current_user.is_anonymous:
+        rid = utils.Runner(str(current_user.rid).lower())
+    else:
+        return redirect(url_for('login'))
+
+    data = summaries.year_summary(rid.runs)
+    return render_template('year_summary', 
+                            title='Year Summary', 
+                            data=data)
 @app.route('/logout')
 def logout():
     logout_user()

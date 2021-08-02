@@ -1,0 +1,24 @@
+{% include "_header.html" %}
+{% include "_menubar.html" %}
+</div>
+<div class="container-fluid p-3 bg-dark text-white">
+<H2>Year Summary</H2>
+
+<table class="table table-hover table-light table-striped">
+    <thead class="thead-light text-left">
+    <tr>
+        <th width="30%">Year</th>
+        <th width="20%">#</th>
+        </tr>
+    </thead>
+    {% for item in data %}
+        <tr>
+            <td>{{ item.evid }}</td>
+            <td>{{ item.distance }}</td>
+        </tr>
+   {% endfor %}
+        <P>
+</table>
+<P>
+</div>
+{% include "_footer.html" %}
