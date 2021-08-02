@@ -184,7 +184,7 @@ def r_newevents(limit=10, country=None):
     data = NR.get_last_newruns(int(this_limit), country_dict[this_country])
     
 #    data = sorted(data, key=attrgetter('distance'))
-    data = sorted(data, key=attrgetter('evid'))
+    data = sorted(data, reverse=True, key=attrgetter('evid'))
     return render_template('newevents.html',
                 title=get_app_title(), 
                 limit=this_limit, 
