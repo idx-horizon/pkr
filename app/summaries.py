@@ -1,4 +1,4 @@
-from counters import Counter
+from collections import Counter
 
 def year_summary(runs):
     c = Counter()
