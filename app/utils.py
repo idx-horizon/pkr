@@ -107,7 +107,7 @@ class Runner():
 		challenges['Lockdown'] = self.lockdown()
 		
 		challenges['Number of PBs'] = self.stats['_PB']
-		last_PB_ix = find_in_list_dict(self.runs,'PB?','PB')
+		last_PB_ix = find_in_list_dict(self.runs,'PB?','PB')  or 0
 		challenges['Last PB'] = '{} at {} ({} runs ago)'.format(
 									fdate(self.runs[last_PB_ix]['Run Date']),
 									self.runs[last_PB_ix]['Event'],
