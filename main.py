@@ -217,11 +217,12 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 @app.route('/summaries/year')
+@login_required
 def r_year_summary():
-    if not current_user.is_anonymous:
-        rid = utils.Runner(str(current_user.rid).lower())
-    else:
-        return redirect(url_for('login'))
+    #if not current_user.is_anonymous:
+    rid = utils.Runner(str(current_user.rid).lower())
+    #else:
+    #    return redirect(url_for('login'))
         
     rid.get_runs(None, False)
 
@@ -231,11 +232,12 @@ def r_year_summary():
                             data=data)
 
 @app.route('/summaries/event')
+@login_required
 def r_event_summary():
-    if not current_user.is_anonymous:
-        rid = utils.Runner(str(current_user.rid).lower())
-    else:
-        return redirect(url_for('login'))
+    #if not current_user.is_anonymous:
+    rid = utils.Runner(str(current_user.rid).lower())
+    #else:
+    #    return redirect(url_for('login'))
         
     rid.get_runs(None, False)
 
