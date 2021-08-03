@@ -19,14 +19,6 @@ from flask_login import login_user, logout_user, current_user, login_required, U
 from app.models import User
 app_TRACKER = Tracker()
 
-
-
-#class User(UserMixin):
-#    def __init__(self, id):
-#        self.id = id
-#    def get(self):
-#       return 'ian' #self.id #current_user #'ian'
-
 try:
     print('URL request: {}'.format(request))
 except:
@@ -37,10 +29,6 @@ def make_shell_context():
     return {'db': db, 'User': User}
 
     
-#@login.user_loader
-#def load_user(id):
-#    return User.get(id)
-
 @app.errorhandler(404)
 def error_404(error):
     try:
@@ -132,11 +120,9 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                 data=data)
 
 @app.route('/stats', methods=['POST','GET'])
+@login_required
 def runner_stats():
-    if not current_user.is_anonymous:
-        rid = utils.Runner(str(current_user.rid).lower())
-    else:
-        return redirect(url_for('login'))
+    rid = utils.Runner(str(current_user.rid).lower())
 
     rid.get_runs(None,False)
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
@@ -149,11 +135,9 @@ def runner_stats():
 @app.route('/runs', methods=['POST','GET'])
 @app.route('/runs/', methods=['POST','GET'])
 @app.route('/runs/<filter_str>/', methods=['POST','GET'])
+@login_required
 def runner_runs(filter_str=None):
-    if not current_user.is_anonymous:
-        rid = utils.Runner(str(current_user.rid).lower())
-    else:
-        return redirect(url_for('login'))
+    rid = utils.Runner(str(current_user.rid).lower())
 
     this_filter = filter_str or ''
 
@@ -220,11 +204,7 @@ def login():
 @app.route('/summaries/year')
 @login_required
 def r_year_summary():
-    #if not current_user.is_anonymous:
     rid = utils.Runner(str(current_user.rid).lower())
-    #else:
-    #    return redirect(url_for('login'))
-        
     rid.get_runs(None, False)
 
     data = summaries.year_summary(rid.runs)
@@ -235,10 +215,7 @@ def r_year_summary():
 @app.route('/summaries/event')
 @login_required
 def r_event_summary():
-    #if not current_user.is_anonymous:
     rid = utils.Runner(str(current_user.rid).lower())
-    #else:
-    #    return redirect(url_for('login'))
         
     rid.get_runs(None, False)
 
@@ -254,6 +231,7 @@ def logout():
     return redirect(url_for('home'))
 
 @app.route('/user')
+@login_required
 def user_details():
     return render_template('user.html')
 
