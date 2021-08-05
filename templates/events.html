@@ -74,11 +74,8 @@
                  <td></td>
             {% else %}
                  <td>{%if item.hasrun == "Yes" %}
-            <button type="button" class="btn btn-light">
                <span class="badge badge-pill badge-success">{{item.occurrences }}</span>
-            </button>        
                     {% else %}
-            <button type="button" class="btn btn-light">
                <span class="badge badge-pill badge-danger">Never</span>
           
                     {% endif %}</td>
