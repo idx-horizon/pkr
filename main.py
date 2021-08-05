@@ -108,8 +108,8 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
             if d.evshortname in [x['Event'] for x in rid.runs]:
                 d.set_hasrun('Yes')
                 try:
-                    occ = max([x['occurrences'] for x in rid.runs if x['Event']==d.evshortname]))
-                  d.set_occurrences(occ)
+                    occ = max([x['occurrences'] for x in rid.runs if x['Event']==d.evshortname])
+                    d.set_occurrences(occ)
                 except:
                     pass
                     
