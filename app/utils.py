@@ -75,6 +75,10 @@ class Runner():
 		self.missing = {x.upper() for x in event_counter if event_counter[x]==0}
 		self.letters = {x:event_counter[x] for x in event_counter if event_counter[x]!=0}
 		
+		event_occ = Counter(x['Event'] for x in self.runs)
+		for x in u.runs:
+ 			x['occurences'] = event_occ[x['Event']]		
+		
 		self.stats = self.get_stats()
 		self.challenges = self.get_challenges()
 
