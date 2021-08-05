@@ -33,6 +33,7 @@ class Event():
         self.url_course =  self.domain + self.evname + '/course/'
         self.distance = measure((self.latitude, self.longitude), centres[centre_on])
         self.hasrun = None
+        self.occurrences = None
 
     def __repr__(self):
     	#return '{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_course)
@@ -50,6 +51,10 @@ class Event():
         
     def set_hasrun(self,value):
         self.hasrun = value
+
+    def set_occurrences(self,value):
+        self.occurrences = value
+
 
 def get(url):
     headers = {

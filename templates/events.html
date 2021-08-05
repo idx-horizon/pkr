@@ -73,7 +73,8 @@
             {% if current_user.is_anonymous %}
                  <td></td>
             {% else %}
-                 <td>{%if item.hasrun == "Yes" %}✅
+                 <td>{%if item.hasrun == "Yes" %}
+                    ✅ {{item.occurrences }}
                     {% else %}❌
                     {% endif %}</td>
             {% endif %}   
