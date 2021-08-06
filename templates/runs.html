@@ -39,16 +39,15 @@
 				<td>{{ item['Run Date'] }}</td>
 				<td>{{ '%4s' % item['Run Number'] }}</td>
 				<td>{{ '%4s' % item['Pos'] }}</td>
-					<td
+				<td
 						{% if item['Time'] < threshold %} 
 							id="hilite"
-						{% endif %}
-						 >
+						{% endif %}>
 						{% if item['PB?'] == 'PB' %}
-						  🎉 {{ item['Time'] }} {{ item['PB?'] }} 🎉 
+						  {{ item['Time'] }} {{ item['PB?'] }} 🎉 
 						{% else %}
   						  {{ item['Time'] }}
-		  			    {% endif %}>
+		  			    {% endif %}
 					</td>
 				<td>{{ item['AgeGrade'] }}</td>
 	{% endfor %}
