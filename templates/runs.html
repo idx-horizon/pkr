@@ -4,7 +4,8 @@
 <div class="container-fluid p-3 bg-dark text-white">
 
 <H2>Total runs
-    <span class="badge badge-pill badge-success">{{ data.run_count }}</span>
+	<a href="/runs" class="badge badge-pill badge-success">{{ data.run.count }}</a>	
+
 </H2>
 <form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form">
 		<input class="form-inline" type="text" style="width:300px" autocomplete="off"
@@ -41,7 +42,7 @@
 						{% if item['Time'] < threshold %} 
 							id="hilite"
 						{% endif %}>
-						{{ item['Time'] }} {{ item['PB?'] }}</b>
+						{{ item['Time'] }} <B>{{ item['PB?'] </B>}}</b>
 					</td>
 				<td>{{ item['AgeGrade'] }}</td>
 	{% endfor %}
