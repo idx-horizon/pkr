@@ -61,11 +61,12 @@
         <th width="10%">Map</th>
  
     </tr>
+
     {% for item in data %}
         <tr>
             {% if not current_user.is_anonymous %}
                  <td>{%if item.hasrun == "Yes" %}
-               <span class="badge badge-pill badge-success">{{item.occurrences }}</span>
+               <a href="/runs/{{ item.evshortname }}" class="badge badge-pill badge-success">{{item.occurrences }}</a>
                     {% else %}
                <span class="badge badge-pill badge-danger">Never</span>
           
