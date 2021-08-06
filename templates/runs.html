@@ -39,7 +39,9 @@
 	{% for item in data.runs %}
 			<tr>
 				<td>{{ item['Event'] }}
-				    <a href="/runs/{{ item['Event'] }}" class="badge badge-pill badge-success">{{ item['occurrences'] }}</a>	
+				    <a href="/runs/{{ item['Event'] }}" class="badge badge-pill badge-success">{{ item['occurrences'] }}</a>
+					{% if item['PB?'] == 'PB' %}
+<span class="badge badge-pill badge-primary">PB</span>				    					{% endif %}
 				</td>
 				<td>{{ item['Run Date'] }}</td>
 				<td
