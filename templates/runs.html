@@ -8,19 +8,20 @@
 
 </H3>
 <form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form">
-		<input class="form-inline" type="text" style="width:300px" autocomplete="off"
-               autocapitalize="off"
-               spellcheck="off"
-               name="filter_str"
-               placeholder="(filter by)"
-               value="{{ filter }}"></input>
 	{% if data.run_count == data.runs | length %}
 	<span class="badge badge-pill badge-success">All: {{ data.run_count }}</span>	
 
 	{% else %}
 	
 	<span class="badge badge-pill badge-success">Showing {{ data.runs | length }} of {{ data.run_count }}</span>	
-	<a href="/runs" class="badge badge-pill badge-success">Clear filter</a>	
+	<a href="/runs" class="btn btn-success">Clear filter</a>	
+
+		<input class="form-inline" type="text" style="width:250px" autocomplete="off"
+               autocapitalize="off"
+               spellcheck="off"
+               name="filter_str"
+               placeholder="(filter by)"
+               value="{{ filter }}"></input>
 
 	{% endif %}
 
