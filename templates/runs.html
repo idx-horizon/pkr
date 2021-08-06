@@ -3,8 +3,9 @@
 
 <div class="container-fluid p-3 bg-dark text-white">
 
-<H2>Total runs {{ data.run_count }}
-	<a href="/runs" class="badge badge-pill badge-success">{{ data.runs | length }}</a>	
+<H2>Number of runs
+	<a href="/runs" class="badge badge-pill badge-success">All {{ data.run_count }}</a>	
+	<a href="#" class="badge badge-pill badge-success">Filtered {{ data.runs | length }}</a>	
 
 </H2>
 <form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form">
@@ -42,7 +43,10 @@
 						{% if item['Time'] < threshold %} 
 							id="hilite"
 						{% endif %}>
-						{{ item['Time'] }} <B>{{ item['PB?'] }}</B>
+						{{ item['Time'] }} 
+						{% if item['PB?'] = 'PB' %}
+						  🎉 {{ item['PB?'] }}
+						{% endif %}>
 					</td>
 				<td>{{ item['AgeGrade'] }}</td>
 	{% endfor %}
