@@ -23,11 +23,11 @@
 <table class="table table-hover table-light table-striped">
     <thead class="thead-light text-left">
 	<tr>
-		<th onclick="sortTable(0)" width="35%">Run</th>
+		<th onclick="sortTable(0)" width="40%">Run</th>
 		<th onclick="sortTable(1)" width="15%">Date</th>
-		<th onclick="sortTable(2)" width="10%">No</th>
-		<th onclick="sortTable(3)" width="10%">Pos</th>
-		<th onclick="sortTable(4)" width="10%">Time</th>
+		<th onclick="sortTable(2)" width="5%">No</th>
+		<th onclick="sortTable(3)" width="5%">Pos</th>
+		<th onclick="sortTable(4)" width="15%">Time</th>
 		<th onclick="sortTable(5)" width="10%">Age Grading</th>
 	</tr>
 	</thead>
@@ -42,11 +42,13 @@
 					<td
 						{% if item['Time'] < threshold %} 
 							id="hilite"
-						{% endif %}>
-						{{ item['Time'] }} 
+						{% endif %}
+						 
 						{% if item['PB?'] == 'PB' %}
-						  🎉 {{ item['PB?'] }}
-						{% endif %}>
+						  🎉 {{ item['Time'] }} {{ item['PB?'] }} 🎉 
+						{% else %}
+  						  {{ item['Time'] }}
+		  			    {% endif %}>
 					</td>
 				<td>{{ item['AgeGrade'] }}</td>
 	{% endfor %}
