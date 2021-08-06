@@ -13,8 +13,11 @@
 
 	{% else %}
 	
-	<span class="badge badge-pill badge-success">Showing {{ data.runs | length }} of {{ data.run_count }}</span>	
+	<span class="badge badge-pill badge-success">
+		Showing {{ data.runs | length }} of {{ data.run_count }}
+	</span>	
 	<a href="/runs" class="btn btn-success">Clear filter</a>	
+	{% endif %}
 
 		<input class="form-inline" type="text" style="width:250px" autocomplete="off"
                autocapitalize="off"
@@ -23,7 +26,6 @@
                placeholder="(filter by)"
                value="{{ filter }}"></input>
 
-	{% endif %}
 
 <button type="submit" class="btn btn-success" name="filter_btn" value="Filter">Filter</button>
 
