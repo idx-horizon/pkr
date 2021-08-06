@@ -25,10 +25,10 @@
 	<tr>
 		<th onclick="sortTable(0)" width="40%">Run</th>
 		<th onclick="sortTable(1)" width="15%">Date</th>
-		<th onclick="sortTable(2)" width="5%">No</th>
-		<th onclick="sortTable(3)" width="5%">Pos</th>
-		<th onclick="sortTable(4)" width="15%">Time</th>
-		<th onclick="sortTable(5)" width="10%">Age Grading</th>
+		<th onclick="sortTable(2)" width="15%">Time</th>
+		<th onclick="sortTable(3)" width="10%">Age Grading</th>
+		<th onclick="sortTable(4)" width="10%">No</th>
+		<th onclick="sortTable(5)" width="10%">Pos</th>
 	</tr>
 	</thead>
 	{% for item in data.runs %}
@@ -37,8 +37,6 @@
 				    <a href="/runs/{{ item['Event'] }}" class="badge badge-pill badge-success">{{ item['occurrences'] }}</a>	
 				</td>
 				<td>{{ item['Run Date'] }}</td>
-				<td>{{ '%4s' % item['Run Number'] }}</td>
-				<td>{{ '%4s' % item['Pos'] }}</td>
 				<td
 						{% if item['Time'] < threshold %} 
 							id="hilite"
@@ -50,6 +48,8 @@
 		  			    {% endif %}
 					</td>
 				<td>{{ item['AgeGrade'] }}</td>
+				<td>{{ '%4s' % item['Run Number'] }}</td>
+				<td>{{ '%4s' % item['Pos'] }}</td>
 	{% endfor %}
 		<P>
 
