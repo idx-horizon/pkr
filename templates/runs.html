@@ -3,7 +3,9 @@
 
 <div class="container-fluid p-3 bg-dark text-white">
 
-<H2>Total runs {{ data.run_count }}</H2>
+<H2>Total runs
+    <span class="badge badge-pill badge-success">{{ data.run_count }}</span>
+</H2>
 <form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form">
 		<input class="form-inline" type="text" style="width:300px" autocomplete="off"
                autocapitalize="off"
@@ -26,12 +28,13 @@
 		<th onclick="sortTable(4)" width="10%">Time</th>
 		<th onclick="sortTable(5)" width="10%">Age Grading</th>
 		<th onclick="sortTable(6)" width="5%">PB</th>
-		<th onclick="sortTable(7)" width="10%">Occ</th>
 	</tr>
 	</thead>
 	{% for item in data.runs %}
 			<tr>
-				<td>{{ item['Event'] }}</td>
+				<td>{{ item['Event'] }}
+				    <span class="badge badge-pill badge-success">{{ item['occurrences'] }}</				
+				</td>
 				<td>{{ item['Run Date'] }}</td>
 				<td>{{ '%4s' % item['Run Number'] }}</td>
 				<td>{{ '%4s' % item['Pos'] }}</td>
@@ -43,7 +46,6 @@
 					</td>
 				<td>{{ item['AgeGrade'] }}</td>
 				<td>{{ item['PB?'] }}</td>
-				<td>{{ item['occurrences'] }}</td>
 	{% endfor %}
 		<P>
 
