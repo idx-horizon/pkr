@@ -21,7 +21,9 @@ def find_in_list_dict(lst, key, value):
 class Runner():
 	
 	base = 'https://www.parkrun.org.uk/results/athleteeventresultshistory/?athleteNumber={}&eventNumber=0'
-	
+	def run(self):
+		pass
+		
 	def __init__(self, id):
 		self.id = id
 		self.url = Runner.base.format(self.id)
