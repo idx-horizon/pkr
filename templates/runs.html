@@ -3,9 +3,9 @@
 
 <div class="container-fluid p-3 bg-dark text-white">
 
-<H2>Number of runs
-	<a href="/runs" class="badge badge-pill badge-success">All {{ data.run_count }}</a>	
-	<a href="#" class="badge badge-pill badge-success">Filtered {{ data.runs | length }}</a>	
+<H2>{{ current_user.username | title }}'s runs
+	<a href="/runs" class="badge badge-pill badge-success">All: {{ data.run_count }}</a>	
+	<a href="#" class="badge badge-pill badge-success">Filtered: {{ data.runs | length }}</a>	
 
 </H2>
 <form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form">
