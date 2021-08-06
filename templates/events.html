@@ -53,23 +53,18 @@
 </form>
 <table class="table table-hover table-light table-striped text-left">
     <tr>
-        <th width="10%">#</th>
-        <th width="45%">Name</th>
-        <th width="15%">Distance</th>
-        <th width="10%">Map</th>
         {% if current_user.is_anonymous %}
              <th width="10%"></th>
         {% else %}
-             <th width="20%">Has Run</th>
+             <th width="10%">Has Run</th>
         {% endif %}
+        <th width="45%">Name</th>
+        <th width="15%">Distance</th>
+        <th width="10%">Map</th>
  
     </tr>
     {% for item in data %}
         <tr>
-            <td>{{ item.evid }}</td>
-            <td><a target="_blank" href="{{ item.url_course }}">{{ item.evlongname }}</td>
-            <td>{{ item.distance|round(1,'floor') }}</td>
-            <td><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
             {% if current_user.is_anonymous %}
                  <td></td>
             {% else %}
@@ -80,6 +75,9 @@
           
                     {% endif %}</td>
             {% endif %}   
+            <td><a target="_blank" href="{{ item.url_course }}">{{ item.evshortname }}</td>
+            <td>{{ item.distance|round(1,'floor') }}</td>
+            <td><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
         </tr>
     {% endfor %}
     <P>
