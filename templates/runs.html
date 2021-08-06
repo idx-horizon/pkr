@@ -4,8 +4,13 @@
 <div class="container-fluid p-3 bg-dark text-white">
 
 <H2>{{ current_user.username | title }}'s runs
+	{% if data.run_count == data.runs | length %}
 	<a href="/runs" class="badge badge-pill badge-success">All: {{ data.run_count }}</a>	
-	<a href="#" class="badge badge-pill badge-success">Filtered: {{ data.runs | length }}</a>	
+
+	{% else %}
+	
+	<a href="#" class="badge badge-pill badge-success">Filtered: {{ data.runs | length }} of {{ data.run_count }}</a>	
+	{% endif %}
 
 </H2>
 <form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form">
