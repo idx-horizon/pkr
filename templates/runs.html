@@ -5,15 +5,6 @@
 
 <H2>Runs</H2>
 <H3>
-	{% if data.run_count == data.runs | length %}
-	<span class="badge badge-pill badge-success">All: {{ data.run_count }}</span>	
-
-	{% else %}
-	
-	<span class="badge badge-pill badge-success">Showing {{ data.runs | length }} of {{ data.run_count }}</span>	
-	<a href="/runs" class="badge badge-pill badge-success">Clear filter</a>	
-
-	{% endif %}
 
 </H3>
 <form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form">
@@ -23,6 +14,15 @@
                name="filter_str"
                placeholder="(filter by)"
                value="{{ filter }}"></input>
+	{% if data.run_count == data.runs | length %}
+	<span class="badge badge-pill badge-success">All: {{ data.run_count }}</span>	
+
+	{% else %}
+	
+	<span class="badge badge-pill badge-success">Showing {{ data.runs | length }} of {{ data.run_count }}</span>	
+	<a href="/runs" class="badge badge-pill badge-success">Clear filter</a>	
+
+	{% endif %}
 
 <button type="submit" class="btn btn-success" name="filter_btn" value="Filter">Filter</button>
 
@@ -54,7 +54,7 @@
 							id="hilite"
 						{% endif %}>
 						{% if item['PB?'] == 'PB' %}
-						  {{ item['Time'] }} {{ item['PB?'] }} 🎉 
+						  {{ item['Time'] }} 🎉 
 						{% else %}
   						  {{ item['Time'] }}
 		  			    {% endif %}
