@@ -9,6 +9,7 @@
 ID: {{current_user.id }}<P>
 Username: {{ current_user.username | title }}<P>
 Runner ID: {{ current_user.rid }}<P>
-Home Run: {{ current_user.home_run }}<P>
+Home Run: {{ current_user.home_run | title }}<P>
+Email: {{ current_user.email  }}<P>
 </div>
 {% include "_footer.html" %}

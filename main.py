@@ -229,8 +229,14 @@ def r_event_summary():
     return render_template('summary_event.html', 
                             title='Event Summary', 
                             data=data)
+@app.route('/changepwd')
+@login_required
+def change_pwd():
+    user = User.query.filter_by(username=current_user.username.lower()).first()
+    user.email = 'test'
+    return redirect(url_for('home'))
 
-
+    
 @app.route('/logout')
 def logout():
     logout_user()
