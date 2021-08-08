@@ -1,28 +1,29 @@
 import os
-from flask import Flask
 from flask import Flask, jsonify, abort, flash, make_response, render_template, redirect, request, url_for, session
+from flask_login import login_user, logout_user, current_user, login_required, UserMixin
+
 from operator import attrgetter
 from werkzeug.urls import url_parse
 
 from app import app,login,db
-from app.forms import LoginForm
-#from app.countries import country_dict
 from app.track import Tracker
-#from app.country_list import centres
+from app.models import User, Country, Location
+from app.forms import LoginForm
 from app.resources import country_dict, centres
 import app.newruns as NR
 import app.utils as utils
 import app.summaries as summaries
 
-from flask_login import login_user, logout_user, current_user, login_required, UserMixin
+#from app.countries import country_dict
+#from app.country_list import centres
 
-from app.models import User, Country, Location
+
 app_TRACKER = Tracker()
 
-try:
-    print('URL request: {}'.format(request))
-except:
-    pass
+#try:
+#    print('URL request: {}'.format(request))
+#except:
+#    pass
 
 @app.shell_context_processor
 def make_shell_context():
