@@ -32,7 +32,7 @@ class User(UserMixin, db.Model):
     home_postcode = db.Column(db.String(50))
 
     def __repr__(self):
-        return '{} ({}) - {}'.format(self.username, self.rid, self.home_run)
+        return '{} ({})'.format(self.username, self.rid)
      
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)

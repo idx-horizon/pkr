@@ -21,7 +21,7 @@
                     value="contains">Contains
             </option>
           </select>
- 		<input class="form-inline" type="text" style="width:300px" autocomplete="off"
+ 		<input class="form-inline" type="text" style="width:200px" autocomplete="off"
                autocapitalize="off"
                spellcheck="off"
                name="filter_str"
@@ -31,7 +31,7 @@
           <select class="form-control" style="width:75px" name="country_code">
             {% for c in countries|sort %}
                 <option {% if c==country %}selected{% endif %}
-                  value={{ c }}>{{ c }}</option>
+                  value={{ c }}>{{ c.name }}</option>
             {% endfor %}
           </select>
 
