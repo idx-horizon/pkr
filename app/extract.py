@@ -1,6 +1,7 @@
 import re
 import bs4
-import app.country_list
+#import app.country_list
+import app.resources
 
 def get_chunk_as_tuples(datalist, n):
     """Yield successive n-sized chunks as tuple from datalist"""
@@ -14,7 +15,8 @@ def get_run_links(pagetext):
 	links = []
 	for link in set([x for x in ass if 'runSeqNumber' in x.get('href')]): 
 		href = link.get('href').split('/')[2].split('.')[-1]
-		country = app.country_list.c_dict[href]['name']
+#		country = app.country_list.c_dict[href]['name']
+		country = app.resources.c_dict[href]['name']
 		if country not in links:
 			links.append(country)
 	
