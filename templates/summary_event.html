@@ -8,13 +8,20 @@
     <thead class="thead-light text-left">
     <tr>
         <th width="30%">Year</th>
-        <th width="70%">#</th>
+        <th width="40%">#</th>
+        <th width="10%">Average</th>
+        <th width="10%">Fastest</th>
+        <th width="10%">Slowest</th>
         </tr>
     </thead>
     {% for item in data %}
         <tr>
             <td>{{ item.event }}</td>
             <td>{{ item.count }}</td>
+            <td>{{ item.average }}</td>
+            <td>{{ item.fastest }}</td>
+            <td>{{ item.slowest }}</td>
+
         </tr>
    {% endfor %}
         <P>

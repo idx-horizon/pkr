@@ -80,7 +80,10 @@ class Runner():
 		event_occ = Counter(x['Event'] for x in self.runs)
 		for x in self.runs:
  			x['occurrences'] = event_occ[x['Event']]		
-		
+		self.fastest = '-'
+		self.slowest = '-'
+		self.average = '-'
+		  		
 		self.stats = self.get_stats()
 		self.challenges = self.get_challenges()
 
