@@ -5,10 +5,12 @@ import os
 import pprint as pp
 
 try:
-	from app.country_list import country_dict, centres
+	from app.resources import country_dict, centres
+#	from app.country_list import country_dict, centres
 	from app.geo import measure
 except:
-	from country_list import country_dict, centres
+	from resources import country_dict, centres
+#	from country_list import country_dict, centres
 	from geo import measure
 
 cJUNIOR = 2
