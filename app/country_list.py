@@ -21,6 +21,7 @@ country_dict = {
     'us': {'id': 98, 'name': 'USA', 'base': 'parkrun.us'}
 }
 
+
 centres = {
         'bromley': (51.386539,0.022874),
         'bushy': (51.410992,-0.335791),
@@ -30,3 +31,9 @@ centres = {
 		'woking': (51.311708,-0.556204),
 		'southnorwood' : (51.396111, -0.059908)
         }
+from app.models import Location
+def centrelist():
+    c = Location.query.all()
+    return c
+    
+    

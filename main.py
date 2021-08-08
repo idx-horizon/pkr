@@ -16,7 +16,7 @@ import app.summaries as summaries
 
 from flask_login import login_user, logout_user, current_user, login_required, UserMixin
 
-from app.models import User
+from app.models import User, Country, Location
 app_TRACKER = Tracker()
 
 try:
