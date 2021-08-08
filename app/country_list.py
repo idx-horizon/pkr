@@ -22,7 +22,18 @@ country_dict = {
 }
 
 
-from app.models import Location
+from app.models import Location, Country
+def get_countries():
+    countries = Country.query.all()
+    d={}
+    for c in countries:
+       d[c.cy_code] = {
+            'id': c.cy_id,
+            'name': c.cy_name,
+            'base': c.cy_base_url
+           }
+    return d
+
 def get_centres():
     locations = Location.query.all()
     d={}
@@ -31,7 +42,7 @@ def get_centres():
     return d
 
 centres = get_centres()
-
+country_dict = get_countries()
 
 #centres = {
 #        'bromley': (51.386539,0.022874),
