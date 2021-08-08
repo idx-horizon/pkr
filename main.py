@@ -96,7 +96,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
       this_country = str(request.form['country_code'])
       this_centre_on = str(request.form['centre_on_code'])
     
-    data=NR.getevents_by_filter(this_filter, country_dict[this_country], this_method, this_centre_on)
+    data=NR.getevents_by_filter(this_filter, country_dict[this_country]['id'], this_method, this_centre_on)
     data = sorted(data, key=attrgetter('distance'))
 
     if not current_user.is_anonymous:
@@ -173,7 +173,7 @@ def r_newevents(limit=10, country=None):
       this_limit = str(request.form['limit'])
       this_country = str(request.form['country_code'])
     
-    data = NR.get_last_newruns(int(this_limit), country_dict[this_country])
+    data = NR.get_last_newruns(int(this_limit), country_dict[this_country]['id'])
     
 #    data = sorted(data, key=attrgetter('distance'))
     data = sorted(data, reverse=True, key=attrgetter('evid'))
