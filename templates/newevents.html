@@ -7,10 +7,10 @@
 
 <form class="form-inline" action='/newevents/{{ country }}/{{ limit }}' method="POST" name="form">
 
-          <select class="form-control disabled" style="width:75px" name="country_code">
+          <select class="form-control disabled" style="width:225px" name="country_code">
             {% for c in countries|sort %}
                 <option {% if c==country %}selected{% endif %}
-                  value={{ c }}>{{ c }}</option>
+                  value={{ c }}>{{ countries[c]['name'] }}</option>
             {% endfor %}
           </select>
           

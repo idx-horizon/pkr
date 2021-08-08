@@ -21,14 +21,14 @@
                     value="contains">Contains
             </option>
           </select>
- 		<input class="form-inline" type="text" style="width:200px" autocomplete="off"
+ 		<input class="form-inline" type="text" style="width:175px" autocomplete="off"
                autocapitalize="off"
                spellcheck="off"
                name="filter_str"
                placeholder="(filter by)"
                value="{{ request.form['filter_str'] }}"></input>
 
-          <select class="form-control" style="width:75px" name="country_code">
+          <select class="form-control" style="width:225px" name="country_code">
             {% for c in countries|sort %}
                 <option {% if c==country %}selected{% endif %}
                   value={{ c }}>{{ countries[c]['name'] }}</option>
