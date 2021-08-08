@@ -3,6 +3,25 @@ from app import login, db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
+class Country(db.Model):
+    id            = db.Column(db.Integer, primary_key=True)
+    cy_code       = db.Column(db.String(2), index=True, unique=True)
+    cy_id         = db.Column(db.Integer, index=True, unique=True)
+    cy_name       = db.Column(db.String(20), index=True, unique=True)
+    cy_base_url   = db.Column(db.String(50), index=True, unique=True)
+
+    def __repr__(self):
+        return '{} ({}) - {}'.format(self.cy_code, self.cy_id, self.cy_name)
+    
+class Location(db.Model):
+    id            = db.Column(db.Integer, primary_key=True)
+    ln_name       = db.Column(db.String(20), index=True, unique=True)
+    ln_lat        = db.Column(db.Float)
+    ln_long       = db.Column(db.Float)
+
+    def __repr__(self):
+        return '{} ({}, {}'.format(self.ln_name, self.ln_lat, self.ln_long)
+
 class User(UserMixin, db.Model):
     id            = db.Column(db.Integer, primary_key=True)
     username      = db.Column(db.String(64), index=True, unique=True)
@@ -13,7 +32,7 @@ class User(UserMixin, db.Model):
     home_postcode = db.Column(db.String(50))
 
     def __repr__(self):
-        return '{}'.format(self.username)
+        return '{} ({}) - {}'.format(self.username, self.rid, self.home_run)
      
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
