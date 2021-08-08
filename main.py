@@ -6,10 +6,10 @@ from werkzeug.urls import url_parse
 
 from app import app,login,db
 from app.forms import LoginForm
-from app.countries import country_dict
+#from app.countries import country_dict
 from app.track import Tracker
-from app.country_list import centres
-
+#from app.country_list import centres
+from app.resources import country_dict, centres
 import app.newruns as NR
 import app.utils as utils
 import app.summaries as summaries
