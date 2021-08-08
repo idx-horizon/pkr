@@ -22,12 +22,12 @@ country_dict = {
 }
 
 
-centres = get_centres()
 from app.models import Location
 def get_centres():
     c = Location.query.all()
     return c
 
+centres = get_centres()
 
 
 #centres = {
