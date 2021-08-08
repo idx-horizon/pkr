@@ -31,7 +31,7 @@
           <select class="form-control" style="width:75px" name="country_code">
             {% for c in countries|sort %}
                 <option {% if c==country %}selected{% endif %}
-                  value={{ c }}>{{ c['name'] + c }}</option>
+                  value={{ c }}>{{ c['name'] }} + {{ c }}</option>
             {% endfor %}
           </select>
 
