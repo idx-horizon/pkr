@@ -20,7 +20,7 @@ class Location(db.Model):
     ln_long       = db.Column(db.Float)
 
     def __repr__(self):
-        return '{} ({}, {}'.format(self.ln_name, self.ln_lat, self.ln_long)
+        return '{} ({}, {})'.format(self.ln_name, self.ln_lat, self.ln_long)
 
 class User(UserMixin, db.Model):
     id            = db.Column(db.Integer, primary_key=True)

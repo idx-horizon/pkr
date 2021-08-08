@@ -22,18 +22,23 @@ country_dict = {
 }
 
 
-centres = {
-        'bromley': (51.386539,0.022874),
-        'bushy': (51.410992,-0.335791),
-		'banstead': (51.307648, -0.184225),
-		'lloyd':    (51.364807,-0.079973),
-		'wepre': (53.205552,-3.056846),
-		'woking': (51.311708,-0.556204),
-		'southnorwood' : (51.396111, -0.059908)
-        }
+centres = get_centres()
 from app.models import Location
-def centrelist():
+def get_centres():
     c = Location.query.all()
     return c
+
+
+
+#centres = {
+#        'bromley': (51.386539,0.022874),
+#        'bushy': (51.410992,-0.335791),
+#		'banstead': (51.307648, -0.184225),
+#		'lloyd':    (51.364807,-0.079973),
+#		'wepre': (53.205552,-3.056846),
+#		'woking': (51.311708,-0.556204),
+#		'southnorwood' : (51.396111, -0.059908)
+#        }
+
     
     
