@@ -27,7 +27,7 @@ def get_centres():
     locations = Location.query.all()
     d={}
     for c in locations:
-       d[c] = (c.ln_lat, c.ln_long)
+       d[c.ln_name] = (c.ln_lat, c.ln_long)
     return d
 
 centres = get_centres()
