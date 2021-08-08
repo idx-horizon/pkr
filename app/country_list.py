@@ -24,8 +24,11 @@ country_dict = {
 
 from app.models import Location
 def get_centres():
-    c = Location.query.all()
-    return c
+    locations = Location.query.all()
+    d={}
+    for c in locations:
+       d[c] = (c.ln_lat, c.ln_long)
+    return d
 
 centres = get_centres()
 
