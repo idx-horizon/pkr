@@ -1,5 +1,5 @@
 from collections import Counter
-from time
+import time
 # t1 = map(lambda  x:  (int(x['Time'][-5:-3])*60) + int(x['Time'][-2:]), runs)
 def get_avg(lst):
     m = map(lambda  x:  (int(x['Time'][-5:-3])*60) + int(x['Time'][-2:]), lst)
