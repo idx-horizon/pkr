@@ -4,7 +4,7 @@ from collections import Counter
 
 def get_stat_time(runs, k):
 
-    l = [x['Time'] for x in runs if x['Run Date'][-4:] = k]
+    l = [x['Time'] for x in runs if x['Run Date'][-4:] == k]
     return ( min(l), max(l) )
     
     
