@@ -1,16 +1,19 @@
 from collections import Counter
-
+from time
 # t1 = map(lambda  x:  (int(x['Time'][-5:-3])*60) + int(x['Time'][-2:]), runs)
+def get_avg(lst):
+    m = map(lambda  x:  (int(x['Time'][-5:-3])*60) + int(x['Time'][-2:]), lst)
+    return time.strftime('%H:%M:%S', time.gmtime(sum(m)/len(lst)))
 
 def get_ystat_times(runs, k):
 
     l = [x['Time'] for x in runs if x['Run Date'][-4:] == k]
-    return ( '-', min(l), max(l) )
+    return ( get_avg(l), min(l), max(l) )
     
 def get_estat_times(runs, k):
 
     l = [x['Time'] for x in runs if x['Event'] == k]
-    return ( '-', min(l), max(l) )
+    return ( get_avg(l), min(l), max(l) )
     
 def year_summary(runs):
     c = Counter()
