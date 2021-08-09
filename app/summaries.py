@@ -3,12 +3,16 @@ import time
 # t1 = map(lambda  x:  (int(x['Time'][-5:-3])*60) + int(x['Time'][-2:]), runs)
 
 def get_avg(lst):
-    m = map(lambda  x:  (int(x[-8:-6])*60*60) + (int(x[-5:-3])*60) + int(x[-2:]), lst)
+    try:
+        m = map(lambda  x:  (int(x[-8:-6])*60*60) + (int(x[-5:-3])*60) + int(x[-2:]), lst)
+    except:
+        print(x)
     return time.strftime('%H:%M:%S', time.gmtime(sum(m)/len(lst)))
 
 def get_ystat_times(runs, k):
 
     l = [x['Time'] if len(x['Time'])==5 else '00:' + x['Time'] for x in runs if x['Run Date'][-4:] == k]
+    print(l)
     return ( get_avg(l), min(l), max(l) )
     
 def get_estat_times(runs, k):
