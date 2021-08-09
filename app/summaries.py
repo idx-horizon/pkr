@@ -13,7 +13,7 @@ def get_ystat_times(runs, k):
     
 def get_estat_times(runs, k):
 
-    l = [x['Time'] if len(x['Time'])==5 else x['Time'] + '00:' for x in runs if x['Event'][-4:] == k]
+    l = [x['Time'] if len(x['Time'])==5 else '00:' + x['Time'] for x in runs if x['Event'][-4:] == k]
     return ( get_avg(l), min(l), max(l) )
     
 def year_summary(runs):
