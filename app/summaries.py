@@ -11,7 +11,7 @@ def get_avg(lst):
 
 def get_ystat_times(runs, k):
 
-    l = [x['Time'].xfill(8) if len(x['Time'])>5 else '00:' + x['Time'] for x in runs if x['Run Date'][-4:] == k]
+    l = [x['Time'].zfill(8) if len(x['Time'])>5 else '00:' + x['Time'] for x in runs if x['Run Date'][-4:] == k]
     return ( get_avg(l), min(l), max(l) )
     
 def get_estat_times(runs, k):
