@@ -1,14 +1,17 @@
 .form-inline {
     padding:5px;
 }
+
 .form-inline > * {
     margin:10px 5px !important;
 }
+
 #demo-ignore img {
 width: 100%;
 height: auto;
 max-height: 100px;
 }
+
 .active {
     font-weight: bold;
     text-decoration: underline;    
