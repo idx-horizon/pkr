@@ -3,15 +3,16 @@
 </div>
 <div class="container-fluid p-3 bg-dark text-white">
 <H2>{{ title }} ({{ data | length }} years)</H2>
+{% set test = data | length %}
 
 <table class="table table-hover table-light table-striped">
     <thead class="thead-light text-left">
     <tr>
-        <th style="width: 30%">Year</th>
+        <th style="width: 15%">Year</th>
         <th style="width: 10%">#</th>
         <th width="10%">Average</th>
         <th width="10%">Fastest</th>
-        <th width="40%">Slowest</th>
+        <th width="55%">Slowest</th>
         
         </tr>
     </thead>
@@ -27,5 +28,6 @@
         <P>
 </table>
 <P>
+-{{ test }}-
 </div>
 {% include "_footer.html" %}
