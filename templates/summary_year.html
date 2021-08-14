@@ -20,8 +20,13 @@
     </thead>
     {% for item in data %}
         <tr>
-            <td>{{ item.year }}{% if item.year == max_count.year %} 🎉{% endif %}</td>
-            <td>{{ item.count }}</td>
+            <td>{{ item.year }}</td>
+            <td>{% if item.year == max_count.year %}
+                <span class="badge badge-pill badge-success">Most</span>
+            {% else %}
+                {{ item.count }}
+            {% endif %}
+            </td>
             <td>{{ item.times[0] }}</td>
             <td>{{ item.times[1] }}</td>
             <td>{{ item.times[2] }}</td>            
