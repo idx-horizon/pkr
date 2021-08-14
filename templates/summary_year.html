@@ -20,8 +20,7 @@
     </thead>
     {% for item in data %}
         <tr>
-            <td>{% if item.year == max_count.year %}🎉 {% endif %}
-            {{ item.year }}</td>
+            <td>{{ item.year }}{% if item.year == max_count.year %} 🎉{% endif %}</td>
             <td>{{ item.count }}</td>
             <td>{{ item.times[0] }}</td>
             <td>{{ item.times[1] }}</td>
@@ -31,6 +30,6 @@
         <P>
 </table>
 <P>
-Best year: {{ max_count.year }}
+Year most/least: {{ max_count.year }}/ {{ min_count.year }}
 </div>
 {% include "_footer.html" %}
