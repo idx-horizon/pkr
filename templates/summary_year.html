@@ -3,7 +3,7 @@
 </div>
 <div class="container-fluid p-3 bg-dark text-white">
 <H2>{{ title }} ({{ data | length }} years)</H2>
-{% set test = data | length %}
+{% set max_count = data | max(attribute='count') %}
 
 <table class="table table-hover table-light table-striped">
     <thead class="thead-light text-left">
@@ -28,7 +28,6 @@
         <P>
 </table>
 <P>
--{{ test }}-
-Most in year : -{{ data | max(attribute='count') }}--
+Best year: {{ test.year }}
 </div>
 {% include "_footer.html" %}
