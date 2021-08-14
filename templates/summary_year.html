@@ -11,21 +11,22 @@
     <thead class="thead-light text-left">
     <tr>
         <th style="width: 15%">Year</th>
-        <th style="width: 10%">#</th>
+        <th style="width: 15%">#</th>
         <th width="10%">Average</th>
         <th width="10%">Fastest</th>
-        <th width="55%">Slowest</th>
+        <th width="50%">Slowest</th>
         
         </tr>
     </thead>
     {% for item in data %}
         <tr>
             <td>{{ item.year }}</td>
-            <td>{% if item.year == max_count.year %}
-                <span class="badge badge-pill badge-success">Most</span>
-            {% else %}
-                {{ item.count }}
-            {% endif %}
+            <td>{{ item.count }}
+                {% if item.year == max_count.year %}
+                    <span class="badge badge-pill badge-success">most</span>
+                {% elif item.year == max_count.year %}
+                    <span class="badge badge-pill badge-success">least</span>
+                {% endif %}
             </td>
             <td>{{ item.times[0] }}</td>
             <td>{{ item.times[1] }}</td>
