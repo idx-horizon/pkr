@@ -20,7 +20,7 @@
     </thead>
     {% for item in data %}
         <tr>
-            <td>{% if item.year == max_count %}🎉 {% endif %}
+            <td>{% if item.year == max_count.year %}🎉 {% endif %}
             {{ item.year }}</td>
             <td>{{ item.count }}</td>
             <td>{{ item.times[0] }}</td>
