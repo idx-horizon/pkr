@@ -29,6 +29,6 @@
 </table>
 <P>
 -{{ test }}-
-Max: {{ data|selectattr("times"[0])|max }}
+Max: [{{ data | selectattr("times")[0] | max }}]
 </div>
 {% include "_footer.html" %}
