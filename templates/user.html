@@ -3,7 +3,7 @@
 
 
 <div class="container-fluid p-3 bg-dark text-white">
-  <h1>User: {{ current_user | title }}</h1>
+  <h1>User: {{ current_user.username | title }}</h1>
 </div>
 <div class="container-fluid p-2">
 ID: {{current_user.id }}<P>
@@ -14,21 +14,29 @@ Email: {{ current_user.email  }}<P>
 </div>
 
 <form>
-  <div class="form-group">
-    <label for="inputEmail">Email</label>
-    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  <div class="form-group row">
+    <label for="staticUser" class="col-sm-2 col-form-label">User</label>
+    <div class="col-sm-10">
+      <input type="text" readonly class="form-control-plaintext" id="staticUser" value={{ current_user.username }} ({{ current_user.rid }})>
+    </div>
   </div>
+  
   <div class="form-group">
     <label for="inputPassword">Password</label>
     <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+  </div>
+
+  <div class="form-group">
+    <label for="inputEmail">Email</label>
+    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value=current_user.email>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
     <div class="form-group">
     <label for="inputHomeRun">Home Run</label>
     <input type="text" class="form-control" id="inputHomeRun" placeholder="Home run" value={{ current_user.home_run }}>
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-success">Submit</button>
 </form>
 
 {% include "_footer.html" %}
