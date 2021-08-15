@@ -7,12 +7,16 @@
 }
 
 #demo-ignore img {
-width: 100%;
-height: auto;
-max-height: 100px;
+    width: 100%;
+    height: auto;
+    max-height: 100px;
 }
 
 .active {
     font-weight: bold;
     text-decoration: none;    
 }
+
+ a { 
+    text-decoration: none !important;
+ }
