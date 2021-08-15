@@ -66,7 +66,7 @@
         <tr>
             {% if not current_user.is_anonymous %}
                  <td>{%if item.hasrun == "Yes" %}
-               <a class="text-decoration-none" href="/runs/{{ item.evshortname }}" class="badge badge-pill badge-success">{{item.occurrences }}</a>
+               <a href="/runs/{{ item.evshortname }}"><span  class="badge badge-pill badge-success">{{item.occurrences }}</span></a>
                     {% else %}
                <span class="badge badge-pill badge-danger">Never</span>
           
