@@ -3,21 +3,14 @@
 
 
 <div class="container-fluid p-3 bg-dark text-white">
-  <h1>User: {{ current_user.username | title }}</h1>
-</div>
-<div class="container-fluid p-2">
-ID: {{current_user.id }}<P>
-Username: {{ current_user.username | title }}<P>
-Runner ID: {{ current_user.rid }}<P>
-Home Run: {{ current_user.home_run | title }}<P>
-Email: {{ current_user.email  }}<P>
+  <h1>Runner: {{ current_user.username | title }}</h1>
 </div>
 
 <form>
   <div class="form-group row">
     <label for="staticUser" class="col-sm-2 col-form-label">User</label>
     <div class="col-sm-10">
-      <input type="text" readonly class="form-control-plaintext" id="staticUser" value="{{ current_user.username }} ({{ current_user.rid }})">
+      <input type="text" readonly class="form-control-plaintext" id="staticUser" value="{{ current_user.username | title }} ({{ current_user.rid }})">
     </div>
   </div>
   
@@ -26,7 +19,7 @@ Email: {{ current_user.email  }}<P>
     <input type="password" class="form-control" id="inputPassword" placeholder="Password">
   </div>
 
-  <div class="form-group">
+  <div class="form-group row">
     <label for="inputEmail">Email</label>
     <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value="{{ current_user.email }}">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -34,6 +27,26 @@ Email: {{ current_user.email  }}<P>
     <div class="form-group">
     <label for="inputHomeRun">Home Run</label>
     <input type="text" class="form-control" id="inputHomeRun" placeholder="Home run" value="{{ current_user.home_run }}">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Email</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">Home Run</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+        <option>...</option>
+        <option>...</option>
+      </select>
+    </div>  
+    <div class="form-group col-md-2">
+      <label for="inputZip">Other</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>    
   </div>
 
   <button type="submit" class="btn btn-success">Submit</button>
