@@ -26,6 +26,6 @@
 }
 #hilite {
     font-weight: bold;
-    font-color: red;
+    background-color: rgba(0,128,0,0.400) !important;
 
 }
