@@ -32,7 +32,7 @@ def make_shell_context():
 
 @app.template_filter()
 def format_datetime(value, format='%d-%b-%Y'):
-    x = datetime.datetime.strptime('%d/%m/%Y')
+    x = datetime.datetime.strptime(value, '%d/%m/%Y')
     return x.strftime(format)
 #    if format == 'full':
 #        format="EEEE, d. MMMM y 'at' HH:mm"
