@@ -19,7 +19,7 @@
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
-            {{ form.username(size=24, placeholder="runner", autofocus=True) }}<br>
+            {{ form.username(size=24, placeholder="username", autofocus=True) }}<br>
             {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
