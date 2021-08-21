@@ -48,9 +48,7 @@
 			<tr>
 				<td><a class="text-decoration-none" href="/runs/{{ item['Event'] }}">{{ item['Event'] }}
 				    <span class="badge badge-pill badge-success">{{ item['occurrences'] }}</span></a>
-					{% endif %}
-				
-				</td>
+								</td>
 				<td>{{ item['Run Date'] }}</td>
 				<td
 						{% if item['Time'] < threshold %} 
