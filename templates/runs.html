@@ -52,7 +52,7 @@
 				<td>{{ item['Run Date'] | format_datetime }}</td>
 				<td
 						{% if item['Time'] < threshold %} 
-							id="hilite"
+							style="background-color:hsl(120,33%,33%)"
 						{% endif %}>
 						{{ item['Time'] }}
 						{% if item['PB?'] == 'PB' %}
