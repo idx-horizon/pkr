@@ -24,7 +24,11 @@
 .btn-success {
     background-color: #4CAF50 !important;
 }
-#hilite {
+#hilite-good {
     font-weight: bold;
     color: green
+}
+#hilite-bad {
+    font-weight: bold;
+    color: orange;
 }

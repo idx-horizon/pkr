@@ -52,10 +52,10 @@
 				<td>{{ item['Run Date'] | format_datetime }}</td>
 				<td
 						{% if item['Time'] < threshold %} 
-							id="hilite">📈
+							id="hilite-good">
 						{% else %}
-						>
-						{% endif %}
+							id="hilite-bad"
+						{% endif %}>
 						{{ item['Time'] }}
 						{% if item['PB?'] == 'PB' %}
 						  <span class="badge badge-pill badge-success">PB</span> 
