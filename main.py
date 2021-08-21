@@ -13,6 +13,7 @@ from app.resources import country_dict, centres
 import app.newruns as NR
 import app.utils as utils
 import app.summaries as summaries
+import datetime
 
 #from app.countries import country_dict
 #from app.country_list import centres
@@ -29,6 +30,15 @@ app_TRACKER = Tracker()
 def make_shell_context():
     return {'db': db, 'User': User}
 
+@app.template_filter()
+def format_datetime(value, format='%d-%b-%Y'):
+    x = datetime.datetime.strptime('%d/%m/%Y')
+    return x.strftime(format)
+#    if format == 'full':
+#        format="EEEE, d. MMMM y 'at' HH:mm"
+#    elif format == 'medium':
+#        format="EE dd.MM.y HH:mm"
+#    return babel.dates.format_datetime(value, format)
     
 @app.errorhandler(404)
 def error_404(error):

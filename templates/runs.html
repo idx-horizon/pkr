@@ -49,7 +49,7 @@
 				<td><a class="text-decoration-none" href="/runs/{{ item['Event'] }}">{{ item['Event'] }}
 				    <span class="badge badge-pill badge-success">{{ item['occurrences'] }}</span></a>
 								</td>
-				<td>{{ item['Run Date'] }}</td>
+				<td>{{ item['Run Date'] | format_datetime }}</td>
 				<td
 						{% if item['Time'] < threshold %} 
 							id="hilite"
