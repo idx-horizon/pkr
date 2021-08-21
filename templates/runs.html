@@ -7,7 +7,7 @@
 <H3>
 
 </H3>
-<form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form">
+<form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form" autocomplete="off">
 	{% if data.run_count == data.runs | length %}
 		<span class="badge badge-pill badge-success">
 			All: {{ data.run_count }}
@@ -48,8 +48,6 @@
 			<tr>
 				<td><a class="text-decoration-none" href="/runs/{{ item['Event'] }}">{{ item['Event'] }}
 				    <span class="badge badge-pill badge-success">{{ item['occurrences'] }}</span></a>
-					{% if item['PB?'] == 'PB' %}
-						<span class="badge badge-pill badge-success">PB</span>
 					{% endif %}
 				
 				</td>
@@ -59,7 +57,8 @@
 							id="hilite"
 						{% endif %}>
 						{% if item['PB?'] == 'PB' %}
-						  {{ item['Time'] }} 🎉 
+						  {{ item['Time'] }}
+						  <span class="badge badge-pill badge-success">PB</span> 
 						{% else %}
   						  {{ item['Time'] }}
 		  			    {% endif %}

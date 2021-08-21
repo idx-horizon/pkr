@@ -15,18 +15,18 @@
 {% endwith %}
 
 {% block content %}
-    <form action="" method="post" novalidate>
+    <form action="" method="post" novalidate autocomplete="off">
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
-            {{ form.username(size=32, placeholder="username", autofocus=True) }}<br>
+            {{ form.username(size=24, placeholder="{{form.username.label}}", autofocus=True) }}<br>
             {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.password.label }}<br>
-            {{ form.password(size=32, placeholder="password") }}<br>
+            {{ form.password(size=24, placeholder="password") }}<br>
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
