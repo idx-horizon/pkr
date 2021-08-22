@@ -31,14 +31,9 @@ def make_shell_context():
     return {'db': db, 'User': User}
 
 @app.template_filter()
-def format_datetime(value, format='%d-%b-%Y'):
-    x = datetime.datetime.strptime(value, '%d/%m/%Y')
-    return x.strftime(format)
-#    if format == 'full':
-#        format="EEEE, d. MMMM y 'at' HH:mm"
-#    elif format == 'medium':
-#        format="EE dd.MM.y HH:mm"
-#    return babel.dates.format_datetime(value, format)
+def format_datetime(value, format_src='%d/%m/%Y', format_out='%d-%b-%Y'):
+    x = datetime.datetime.strptime(value, format_src)
+    return x.strftime(format_out)
     
 @app.errorhandler(404)
 def error_404(error):
