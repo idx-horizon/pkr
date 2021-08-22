@@ -19,8 +19,7 @@
     </thead>
     {% for item in data %}
         <tr>
-            <td>{{ item.event }}
-            <a class="text-decoration-none" href="/runs/{{ item.event }}">{{ item.event }}</a>
+            <td><a class="text-decoration-none" href="/runs/{{ item.event }}">{{ item.event }}</a>
             </td>
             <td>{{ item.count }}</td>
             <td>{{ item.times[1] | replace('00:','') }}</td>
