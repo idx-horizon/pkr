@@ -2,7 +2,11 @@
 {% include "_menubar.html" %}
 </div>
 <div class="container-fluid p-3 bg-dark text-white">
-<H2>{{ title }} ({{ data | length }} years)</H2>
+<H2>
+		<span class="badge badge-pill badge-success">
+			{{ data | length }} years
+		</span>	
+</H2>
 
 {% set most_count  = data | max(attribute='count') %}
 {% set least_count = data | min(attribute='count') %}
