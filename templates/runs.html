@@ -3,15 +3,15 @@
 
 <div class="container-fluid p-3 bg-dark text-white">
 
-<H2>	{% if data.run_count == data.runs | length %}
+<H2>
+	Showing	
+	{% if data.run_count == data.runs | length %}
 		<span class="badge badge-pill badge-success">
-			Showing all {{ data.run_count }} runs
+			all {{ data.run_count }} runs
 		</span>	
-
 	{% else %}
-	
 		<span class="badge badge-pill badge-success">
-			Showing {{ data.runs | length }} runs out of {{ data.run_count }}
+			{{ data.runs | length }} runs out of {{ data.run_count }}
 		</span>	
 		<a href="/runs" class="btn btn-success">Clear filter</a>	
 	{% endif %}

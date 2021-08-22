@@ -2,15 +2,18 @@
 {% include "_menubar.html" %}
 </div>
 <div class="container-fluid p-3 bg-dark text-white">
-<H2>{{ title }} ({{ data | length }} events)</H2>
-
+<H2>
+		<span class="badge badge-pill badge-success">
+			{{ data | length }} events
+		</span>	
+</H2>
 <table class="table table-hover table-light table-striped">
     <thead class="thead-light text-left">
     <tr>
         <th width="20%">Event</th>
         <th width="10%">#</th>
+        <th width="10%">PB</th>
         <th width="10%">Average</th>
-        <th width="10%">Fastest</th>
         <th width="50%">Slowest</th>
         </tr>
     </thead>
@@ -18,9 +21,9 @@
         <tr>
             <td>{{ item.event }}</td>
             <td>{{ item.count }}</td>
-            <td>{{ item.times[0] }}</td>
-            <td>{{ item.times[1] }}</td>
-            <td>{{ item.times[2] }}</td>            
+            <td>{{ item.times[1] | replace('00:','') }}</td>
+            <td>{{ item.times[0] | replace('00:','') }}</td>
+            <td>{{ item.times[2] | replace('00:','') }}</td>            
 
         </tr>
    {% endfor %}
