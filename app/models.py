@@ -6,7 +6,7 @@ from sqlalchemy.sql import func
 
 class LoginLog(db.Model):
     id         = db.Column(db.Integer, primary_key=True)
-    usernam    = db.Column(db.String(64), index=True)
+    username   = db.Column(db.String(64), index=True)
     time_stamp = db.Column(db.DateTime, nullable=True, server_default=func.now())
     ipaddress  = db.Column(db.String(20))
 
