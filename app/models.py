@@ -2,12 +2,13 @@ from datetime import datetime
 from app import login, db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.sql import func
 
 class LoginLog(db.Model):
-    id            = db.Column(db.Integer, primary_key=True)
-    ll_username   = db.Column(db.String(64), index=True)
-    ll_datetime   = db.Column(db.DateTime, default=datetime.utcnow)
-    ll_ipaddress  = db.Column(db.String(20))
+    id         = db.Column(db.Integer, primary_key=True)
+    usernam    = db.Column(db.String(64), index=True)
+    time_stamp = db.Column(db.DateTime, server_default=func.now())
+    ipaddress  = db.Column(db.String(20))
 
     def __repr__(self):
         return '{}. {} - {} - {}'.format(self.id, self.ll_datetime, self.ll_username, self.ll_ipaddress)
