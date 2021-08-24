@@ -6,11 +6,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class LoginLog(db.Model):
     id            = db.Column(db.Integer, primary_key=True)
     ll_username   = db.Column(db.String(64), index=True)
-    ll_datetime   = db.Column(db.DateTime)
+    ll_datetime   = db.Column(DateTime, default=datetime.datetime.utcnow)
     ll_ipaddress  = db.Column(db.String(20))
 
     def __repr__(self):
-        return '{<5}. {} - {} - {}'.format(self.id, self.ll_datetime, self.ll_username, self.ll_ipaddress)
+        return '{:>5}. {} - {} - {}'.format(self.id, self.ll_datetime, self.ll_username, self.ll_ipaddress)
       
 class Country(db.Model):
     id            = db.Column(db.Integer, primary_key=True)
