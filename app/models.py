@@ -31,6 +31,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     home_run      = db.Column(db.String(50))
     home_postcode = db.Column(db.String(50))
+    is_admin      = db.Column(db.Boolean)
 
     def __repr__(self):
         return '{} ({})'.format(self.username, self.rid)
