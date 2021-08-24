@@ -9,7 +9,10 @@ def add_loginlog(username, ipaddress='unknown'):
                  ipaddress=ipaddress)
     db.session.add(l)
     db.session.commit()
-
+    
+def clear_log():
+    LoginLog.query.filter(LoginLog.id > 0).delete()
+    
 def show_ll():
     q = LoginLog.query.all()
     for ele in q:
