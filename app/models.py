@@ -25,8 +25,9 @@ class Location(db.Model):
 class User(UserMixin, db.Model):
     id            = db.Column(db.Integer, primary_key=True)
     username      = db.Column(db.String(64), index=True, unique=True)
-    rid           = db.Column(db.String(10), index=True, unique=True)
+    rid           = db.Column(db.String(10), index=True)
     email         = db.Column(db.String(120), index=True, unique=True)
+    agegrade_theshold = db.Column(db.Float))
     password_hash = db.Column(db.String(128))
     home_run      = db.Column(db.String(50))
     home_postcode = db.Column(db.String(50))
