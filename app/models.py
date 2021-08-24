@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
     username      = db.Column(db.String(64), index=True, unique=True)
     rid           = db.Column(db.String(10), index=True)
     email         = db.Column(db.String(120), index=True, unique=True)
-    agegrade_theshold = db.Column(db.Float))
+    agegrade_theshold = db.Column(db.Float)
     password_hash = db.Column(db.String(128))
     home_run      = db.Column(db.String(50))
     home_postcode = db.Column(db.String(50))
