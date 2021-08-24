@@ -7,7 +7,7 @@ from werkzeug.urls import url_parse
 
 from app import app,login,db
 from app.track import Tracker
-from app.models import User, Country, Location, add_loginlog
+from app.models import User, Country, Location, LoginLog, add_loginlog
 from app.forms import LoginForm
 from app.resources import country_dict, centres
 import app.newruns as NR
@@ -165,6 +165,11 @@ def runner_runs(filter_str=None):
                 filter=this_filter,
                 threshold=rid.threshold)
 
+@app.route('/loginlog/', methods=['POST','GET'])
+def r_loginlog():
+    data = LoginLog.get_log()
+    return render_template('loginlog.html',
+                data=data)
 
         
 @app.route('/newevents/', methods=['POST','GET'])
