@@ -10,7 +10,7 @@ class LoginLog(db.Model):
     ll_ipaddress  = db.Column(db.String(20))
 
     def __repr__(self):
-        return '{:>5}. {} - {} - {}'.format(self.id, self.ll_datetime, self.ll_username, self.ll_ipaddress)
+        return '{}. {} - {} - {}'.format(self.id, self.ll_datetime, self.ll_username, self.ll_ipaddress)
       
 class Country(db.Model):
     id            = db.Column(db.Integer, primary_key=True)
