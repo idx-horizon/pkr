@@ -210,7 +210,7 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('runner_runs')
             
-        add_loginlog(form.username.data.lower(), request.remote_addr)
+        add_loginlog(form.username.data.lower(), request.headers['X-Real-IP'])
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
