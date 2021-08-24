@@ -10,8 +10,9 @@ def add_loginlog(username, ipaddress='unknown'):
     db.session.add(l)
     db.session.commit()
     
-def clear_log():
-    LoginLog.query.filter(LoginLog.id > 0).delete()
+#def clear_log():
+#    LoginLog.query.filter(LoginLog.id > 0).delete()
+#    db.session.commit()
     
 def show_ll():
     q = LoginLog.query.all()
@@ -27,6 +28,13 @@ class LoginLog(db.Model):
     def __repr__(self):
         return '{}. {} - {} - {}'.format(self.id, self.time_stamp, self.username, self.ipaddress)
 
+    def clear_log():
+        LoginLog.query.filter(LoginLog.id > 0).delete()
+        db.session.commit()
+
+    def get_log():
+        return LoginLog.query.all()
+        
           
 class Country(db.Model):
     id            = db.Column(db.Integer, primary_key=True)
