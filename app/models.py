@@ -4,6 +4,17 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.sql import func
 
+def add_loginlog(username, ipaddress='unknown'):
+    l = LoginLog(username=username,
+                 ipaddress=ipaddress)
+    db.session.add(l)
+    db.session.commit()
+
+def show_ll():
+    q = LoginLog.query.all()
+    for ele in q:
+        print(ele)
+        
 class LoginLog(db.Model):
     id         = db.Column(db.Integer, primary_key=True)
     username   = db.Column(db.String(64), index=True)
@@ -12,7 +23,8 @@ class LoginLog(db.Model):
 
     def __repr__(self):
         return '{}. {} - {} - {}'.format(self.id, self.time_stamp, self.username, self.ipaddress)
-      
+
+          
 class Country(db.Model):
     id            = db.Column(db.Integer, primary_key=True)
     cy_code       = db.Column(db.String(2), index=True, unique=True)
