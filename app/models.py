@@ -11,7 +11,7 @@ class LoginLog(db.Model):
     ipaddress  = db.Column(db.String(20))
 
     def __repr__(self):
-        return '{}. {} - {} - {}'.format(self.id, self.ll_datetime, self.ll_username, self.ll_ipaddress)
+        return '{}. {} - {} - {}'.format(self.id, self.time_stamp, self.username, self.ipaddress)
       
 class Country(db.Model):
     id            = db.Column(db.Integer, primary_key=True)
