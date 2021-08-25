@@ -36,7 +36,7 @@ class LoginLog(db.Model):
     def get_log():
         return LoginLog.query.all()
         
-    def add(self, username, ipaddress='unknown'):
+    def add(username, ipaddress='unknown'):
         l = LoginLog(username=username,
                      ipaddress=ipaddress)
         db.session.add(l)
