@@ -67,6 +67,9 @@ class Friend(db.Model):
     f_username      = db.Column(db.String(64), index=True)
     f_rid           = db.Column(db.String(10), index=True)
 
+    def __repr__(self):
+        return 'Who {}: {} ({})'.format(self.u_username, self.f_username, self.f_rid)
+
     def get(whose):
         return Friend.query.filter_by(u_username=whose).all()
         
