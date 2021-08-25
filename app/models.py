@@ -1,14 +1,15 @@
-from datetime import datetime
 from app import login, db
+
+from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.sql import func
 
-def add_loginlog(username, ipaddress='unknown'):
-    l = LoginLog(username=username,
-                 ipaddress=ipaddress)
-    db.session.add(l)
-    db.session.commit()
+#def add_loginlog(username, ipaddress='unknown'):
+#    l = LoginLog(username=username,
+#                 ipaddress=ipaddress)
+#    db.session.add(l)
+#    db.session.commit()
     
 #def clear_log():
 #    LoginLog.query.filter(LoginLog.id > 0).delete()
@@ -35,6 +36,11 @@ class LoginLog(db.Model):
     def get_log():
         return LoginLog.query.all()
         
+    def add(self, username, ipaddress='unknown'):
+        l = LoginLog(username=username,
+                     ipaddress=ipaddress)
+        db.session.add(l)
+        db.session.commit()
           
 class Country(db.Model):
     id            = db.Column(db.Integer, primary_key=True)

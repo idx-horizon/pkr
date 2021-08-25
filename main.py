@@ -209,13 +209,15 @@ def login():
         user = User.query.filter_by(username=form.username.data.lower()).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
+            LoginLog.add('***' + form.username.data.lower(), request.headers['X-Real-IP'])
+            
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('runner_runs')
             
-        add_loginlog(form.username.data.lower(), request.headers['X-Real-IP'])
+        LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)

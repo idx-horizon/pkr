@@ -3,14 +3,10 @@
 
 <div class="container-fluid p-3 bg-dark text-white">
 
-    <H2>{{ data|length }} events in {{ country|upper }}
-{% if request.form['filter_str']|length > 0 %}{{ filter_method }} "{{ request.form['filter_str'] }}"{% endif %}</H2>
-
-
 <form class="form-inline" action='/loginlog/{{ filter_user }}' method="POST" name="form">
 
           <select class="form-control" style="width:150px" name="filter_user">
-            <option {% if request.form['filter_user']=='startswith' %}
+            <option {% if request.form['filter_user']=='all' %}
                     selected
                     {% endif %}
                     value="all">(All)
@@ -18,7 +14,7 @@
             <option {% if request.form['filter_user']=='contains' %}
                     selected
                     {% endif %}
-                    value="contains">current_user.name
+                    value="contains">{{ current_user.name }}
             </option>
           </select>
 		<button type="submit" class="btn btn-success" name="filter_btn" value="Filter">Filter</button>
@@ -35,7 +31,7 @@
     {% for item in data %}
         <tr>
             <td>{{ item.id }}</td>
-            <td>{{ item.username }}</td>
+            <td>{{ item.username | Title }}</td>
             <td>{{ item.time_stamp }}</td>
             <td>{{ item.ipaddress }}</td>
         </tr>
