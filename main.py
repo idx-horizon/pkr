@@ -7,7 +7,7 @@ from werkzeug.urls import url_parse
 
 from app import app,login,db
 from app.track import Tracker
-from app.models import User, Country, Location, LoginLog, add_loginlog
+from app.models import User, Country, Location, LoginLog
 from app.forms import LoginForm
 from app.resources import country_dict, centres
 import app.newruns as NR
