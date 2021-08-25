@@ -61,7 +61,7 @@ class Location(db.Model):
     def __repr__(self):
         return '{} ({}, {})'.format(self.ln_name, self.ln_lat, self.ln_long)
 
-class Friend(db.model):
+class Friend(db.Model):
     id            = db.Column(db.Integer, primary_key=True)
     u_username      = db.Column(db.String(64), index=True)
     f_username      = db.Column(db.String(64), index=True)
