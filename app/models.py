@@ -66,7 +66,10 @@ class Friend(db.Model):
     u_username      = db.Column(db.String(64), index=True)
     f_username      = db.Column(db.String(64), index=True)
     f_rid           = db.Column(db.String(10), index=True)
-    
+
+    def get(whose):
+        return Friend.query.filter_by(u_username=whose).all()
+        
 class User(UserMixin, db.Model):
     id            = db.Column(db.Integer, primary_key=True)
     username      = db.Column(db.String(64), index=True, unique=True)
