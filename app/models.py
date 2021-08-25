@@ -61,6 +61,12 @@ class Location(db.Model):
     def __repr__(self):
         return '{} ({}, {})'.format(self.ln_name, self.ln_lat, self.ln_long)
 
+class Friend(db.model):
+    id            = db.Column(db.Integer, primary_key=True)
+    u_username      = db.Column(db.String(64), index=True)
+    f_username      = db.Column(db.String(64), index=True)
+    f_rid           = db.Column(db.String(10), index=True)
+    
 class User(UserMixin, db.Model):
     id            = db.Column(db.Integer, primary_key=True)
     username      = db.Column(db.String(64), index=True, unique=True)
