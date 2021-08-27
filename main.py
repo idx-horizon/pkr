@@ -24,6 +24,7 @@ def make_shell_context():
 
 @app.context_processor
 def inject_selected_runner():
+    global SELECTEDRUNNER
     return dict(selected_runner=SELECTEDRUNNER)
     
 @app.template_filter()
