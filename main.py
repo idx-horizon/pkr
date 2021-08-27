@@ -212,6 +212,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
+        print('**Current User**', current_user.__dict__)
         current_user.friends = Friend.get(form.username.data.lower())
         print('**', current_user.username, current_user.friends)
         return redirect(next_page)
