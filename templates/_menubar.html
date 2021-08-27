@@ -14,7 +14,7 @@
     {% else %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDDMenuRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Runner: {{ current_user | title }} {{current_user.friends | length }}
+          Runner: {{ current_user | title }} 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDDMenuRunner">
           <a class="dropdown-item" href="/stats">Stats & challenges</a>
@@ -24,7 +24,7 @@
           <a class="dropdown-item" href="/summaries/event">Event summary</a>
           <div class="dropdown-divider"></div>
           {% for f in current_user.friends %}
-            <a class="dropdown-item" href="#">{{ f.f_username }}</a>
+            <a class="dropdown-item" href="#">{{ f.f_username | title }}</a>
           {% endfor %}
           <a class="dropdown-item" href="/user">Runner profile</a>
           <a class="dropdown-item" href="/logout">Logout</a>
@@ -59,6 +59,19 @@
           <a class="dropdown-item" href="#">Help</a>
         </div>
       </li>
+      {% if current_user.friends | length > 0 %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Friends
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        {% for f in current_user.friends }
+          <a class="dropdown-item" href="#">{{ f.f_username | title}}</a>
+        {% endfor %}
+        </div>
+      </li>
+      {% endif %}
+      
       {% if current_user.is_admin %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
