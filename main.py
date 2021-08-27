@@ -213,6 +213,7 @@ def login():
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
         current_user.friends = Friend.get(current_user.username)
+        print('**', current_user.username, current_user.friends)
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
