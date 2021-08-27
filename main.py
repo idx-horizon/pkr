@@ -229,18 +229,21 @@ def login():
 @login_required
 def r_year_summary():
 #    rid = utils.Runner(str(current_user.rid).lower())
-    rid = utils.Runner(SELECTEDRUNNER)
-    rid.get_runs(None, False)
+    if SELECTEDRUNNER:
+        rid = utils.Runner(SELECTEDRUNNER)
+        rid.get_runs(None, False)
 
-    data = summaries.year_summary(rid.runs)
-    return render_template('summary_year.html', 
-                            title='Year Summary', 
-                            data=data)
+        data = summaries.year_summary(rid.runs)
+        return render_template('summary_year.html', 
+                                title='Year Summary', 
+                                data=data)
+    else:
+        return redirect(url_for('logout'))
 
 @app.route('/summaries/event')
 @login_required
 def r_event_summary():
-    rid = utils.Runner(str(current_user.rid).lower())
+    rid = utils.Runner(SELECTEDRUNNER)
         
     rid.get_runs(None, False)
 
