@@ -7,7 +7,7 @@ from werkzeug.urls import url_parse
 
 from app import app,login,db
 from app.track import Tracker
-from app.models import User, Country, Location, LoginLog
+from app.models import User, Country, Location, LoginLog, Friend
 from app.forms import LoginForm
 from app.resources import country_dict, centres
 import app.newruns as NR
@@ -15,23 +15,17 @@ import app.utils as utils
 import app.summaries as summaries
 import datetime
 
-#from app.countries import country_dict
-#from app.country_list import centres
-
 
 app_TRACKER = Tracker()
-
-#try:
-#    print('URL request: {}'.format(request))
-#except:
-#    pass
 
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db, 'User': User}
 
 @app.template_filter()
-def format_datetime(value, format_src='%d/%m/%Y', format_out='%d-%b-%Y'):
+def format_datetime(value, 
+                    format_src='%d/%m/%Y', 
+                    format_out='%d-%b-%Y'):
     x = datetime.datetime.strptime(value, format_src)
     return x.strftime(format_out)
     
@@ -218,6 +212,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
+        current_user.friends = Friend.get(current_user.username)
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)

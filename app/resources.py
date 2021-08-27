@@ -17,7 +17,7 @@ def get_centres():
        d[c.ln_name] = (c.ln_lat, c.ln_long)
     return d
 
-centres = get_centres()
+centres      = get_centres()
 country_dict = get_countries()
 
 #country_dict = {
