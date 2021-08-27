@@ -5,7 +5,7 @@
 
     <H2>{{ data|length }} events in {{ country|upper }}
 {% if request.form['filter_str']|length > 0 %}{{ filter_method }} "{{ request.form['filter_str'] }}"{% endif %}</H2>
-
+{{ selected_runner }}
 
 <form class="form-inline" action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on_code }}' method="POST" name="form">
 

@@ -22,6 +22,10 @@ app_TRACKER = Tracker()
 def make_shell_context():
     return {'db': db, 'User': User}
 
+@app.context_processor
+def inject_selected_runner():
+    return dict(selected_runner=SELECTEDRUNNER)
+    
 @app.template_filter()
 def format_datetime(value, 
                     format_src='%d/%m/%Y', 
@@ -192,6 +196,8 @@ def r_newevents(limit=10, country=None):
 
 @app.route('/login/', methods=['POST','GET'])
 def login():
+    global GLOBALRUNNER
+    
     if current_user.is_authenticated:
         return redirect(url_for('home'))
 
@@ -212,9 +218,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
-#        user.friends = Friend.get(form.username.data.lower())
-#        print('**user**', user.__dict__)
-#        print('**', current_user.username, current_user.friends)
+        GLOBALRUNNER = form.username.date.lower()
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
