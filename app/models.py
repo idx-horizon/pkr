@@ -84,6 +84,10 @@ class User(UserMixin, db.Model):
     home_postcode = db.Column(db.String(50))
     is_admin      = db.Column(db.Boolean)
 
+    @property
+    def friends(self):
+        return Friend.get(self.username)
+
     def __repr__(self):
         return '{} ({})'.format(self.username, self.rid)
      

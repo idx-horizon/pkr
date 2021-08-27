@@ -212,9 +212,9 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
-        user.friends = Friend.get(form.username.data.lower())
-        print('**user**', user.__dict__)
-        print('**', current_user.username, current_user.friends)
+#        user.friends = Friend.get(form.username.data.lower())
+#        print('**user**', user.__dict__)
+#        print('**', current_user.username, current_user.friends)
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
