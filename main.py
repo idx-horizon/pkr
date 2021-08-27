@@ -196,7 +196,7 @@ def r_newevents(limit=10, country=None):
 
 @app.route('/login/', methods=['POST','GET'])
 def login():
-    global GLOBALRUNNER
+    global SELECTEDRUNNER
     
     if current_user.is_authenticated:
         return redirect(url_for('home'))
@@ -218,7 +218,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
-        GLOBALRUNNER = form.username.date.lower()
+        SELECTEDRUNNER = form.username.date.lower()
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
