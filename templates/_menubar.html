@@ -65,7 +65,7 @@
           Friends
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        {% for f in current_user.friends }
+        {% for f in current_user.friends %}
           <a class="dropdown-item" href="#">{{ f.f_username | title}}</a>
         {% endfor %}
         </div>
