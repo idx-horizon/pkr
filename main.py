@@ -220,7 +220,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
-        SELECTEDRUNNER = form.username.data.lower()
+        SELECTEDRUNNER = user.rid
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
@@ -228,7 +228,8 @@ def login():
 @app.route('/summaries/year')
 @login_required
 def r_year_summary():
-    rid = utils.Runner(str(current_user.rid).lower())
+#    rid = utils.Runner(str(current_user.rid).lower())
+    rid = utils.Runner(SELECTEDRUNNER)
     rid.get_runs(None, False)
 
     data = summaries.year_summary(rid.runs)
