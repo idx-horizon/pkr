@@ -218,7 +218,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
-        SELECTEDRUNNER = user
+        SELECTEDRUNNER = {'username': user.username, 'rid': user.rid}
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
