@@ -1,9 +1,9 @@
+{% if not current_user.is_anonymous %}	
+  <span style="background-color: #4CAF50;">Logged in as {{ current_user.username | title }}</span>
+{% endif %}    
 <nav class="navbar navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
   <a class="navbar-brand" href="/home">
     <img src="{{url_for('static', filename='pkr.jpg')}}" width="30" height="30" alt="PKR">
-{% if not current_user.is_anonymous %}	
-  <span>Logged in as {{ current_user.username | title }}</span>
-{% endif %}    
   </a>
     
 
@@ -35,6 +35,7 @@
           {% for f in current_user.friends %}
             <a class="dropdown-item" href="/switch/{{ f.f_username}}">{{ f.f_username | title}}</a>
           {% endfor %}
+          </div>
           <div class="dropdown-divider"></div>
           {% endif %}
           <a class="dropdown-item" href="/logout">Logout</a>
