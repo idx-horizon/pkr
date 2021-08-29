@@ -2,9 +2,11 @@
 {% include "_menubar.html" %}
 
 ==START==
+{% block content %}
 <div class="container" align="left">
 	<embed type="image/svg+xml" src={{ graph_data | safe }} style='max-width:1000px'/>
 </div>
+{% endblock %}
 ==END==
 {{ graph_data }}
 {% include "_footer.html" %}
