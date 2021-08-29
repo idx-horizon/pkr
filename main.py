@@ -243,7 +243,7 @@ def r_year_summary():
 @app.route('/summaries/event')
 @login_required
 def r_event_summary():
-    rid = utils.Runner(SELECTEDRUNNER)
+    rid = utils.Runner(SELECTEDRUNNER or current_user.rid)
         
     rid.get_runs(None, False)
 
