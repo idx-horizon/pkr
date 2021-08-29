@@ -3,7 +3,7 @@
 
 
 <div class="container-fluid p-3 bg-dark text-white">
-  <h1>Runner: {{ current_user.username | title }} ({{ current_user.rid }} | safe )</h1>
+  <h1>Runner: {{ current_user.username | title }} ({{ current_user.rid | safe }})</h1>
 </div>
 
 <form>  

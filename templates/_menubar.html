@@ -14,7 +14,7 @@
     {% else %}
       <li class="nav-item dropdown dropright">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDDMenuRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ (selected_runner.username or current_user.username) | title }} ({{ (selected_runner.rid or current_user.rid) | safe }}
+          {{ (selected_runner.username or current_user.username) | title }} ({{ (selected_runner.rid or current_user.rid) | safe }})
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDDMenuRunner">
           <a class="dropdown-item" href="/stats">Stats & challenges</a>
@@ -22,7 +22,6 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/summaries/year">Year summary</a>
           <a class="dropdown-item" href="/summaries/event">Event summary</a>
-          <a class="dropdown-item" href="/user">Runner profile</a>
           <div class="dropdown-divider"></div>
           {% if  current_user.friends | length > 0 %}
           <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,24 +62,12 @@
           Settings
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/user">Runner profile</a>
           <a class="dropdown-item" href="#">About</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Help</a>
         </div>
-      </li>
-      {% if current_user.friends | length > 0 %}
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Switch
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        {% for f in current_user.friends %}
-          <a class="dropdown-item" href="/switch/{{ f.f_username}}">{{ f.f_username | title}}</a>
-        {% endfor %}
-        </div>
-      </li>
-      {% endif %}
-      
+      </li>      
       {% if current_user.is_admin %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
