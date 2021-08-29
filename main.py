@@ -84,7 +84,7 @@ def r_graph():
        graph.add('C++',     [5,  51, 54, 102, 150])
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
-                                graph_title = graph.title
+                                graph_title = graph.title,
                                 graph_data = graph_data)
     except Exception as e:
        return(str(e))
