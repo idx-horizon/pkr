@@ -1,13 +1,13 @@
 {% if not current_user.is_anonymous %}	
   <div style="background-color: #4CAF50;">Logged in <B>{{ current_user.username | title }}</B></div>
 {% endif %}    
-<nav class="navbar navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
+<nav class="navbar fixed-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
   <a class="navbar-brand" href="/home">
     <img src="{{url_for('static', filename='pkr.jpg')}}" width="30" height="30" alt="PKR">
   </a>
     
 
- <div class="navbar sticky-top" id="navbarUserLogin">
+ <div class="navbar" id="navbarUserLogin">
   <ul class="navbar-nav">
  	{% if current_user.is_anonymous %}	
 	<li class="nav-item active">
@@ -15,7 +15,7 @@
 	</li>
       
     {% else %}
-      <li class="nav-item dropdown dropright">
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDDMenuRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ (selected_runner.username or current_user.username) | title }} ({{ (selected_runner.rid or current_user.rid) | safe }})
         </a>
@@ -27,8 +27,8 @@
           <a class="dropdown-item" href="/summaries/event">Event summary</a>
           <div class="dropdown-divider"></div>
           {% if current_user.friends | length > 0 %}
-          <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropright" aria-haspopup="true" aria-expanded="false">
-          Switch runner .. 
+          <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Switch runner
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner">
           <a class="dropdown-item" href="/switch">(self)</a>
