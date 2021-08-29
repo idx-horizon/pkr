@@ -261,7 +261,7 @@ def r_switch(switch_to):
         SELECTEDRUNNER = user.rid
         return redirect(url_for('runner_runs'))
     else:
-        return redirect(url_for('error_404'))
+        return redirect(url_for('error'))
     
     
 @app.route('/changepwd')
