@@ -18,6 +18,3 @@
 	<link rel="stylesheet" href= {{ url_for('static', filename='pkr-20210821.3.css') }} type="text/css">
 </head>
 <body>
-{% if not current_user.is_anonymous %}	
-  <span>Logged in as {{ current_user.username | title }}</span>
-{% endif %}
