@@ -19,5 +19,5 @@
 </head>
 <body>
 {% if not current_user.is_anonymous %}	
-  <span>Logged in as {{current_user.username | title</span>
+  <span>Logged in as {{ current_user.username | title }}</span>
 {% endif %}
