@@ -253,7 +253,7 @@ def r_switch(switch_to=None):
     global SELECTEDRUNNER
     
     if not switch_to:
-        SELECTEDRUNNER = None
+        SELECTEDRUNNER = {'rid': None}
         return redirect(url_for('runner_runs'))
     
     if switch_to.lower() in [x.f_username for x in current_user.friends]:
