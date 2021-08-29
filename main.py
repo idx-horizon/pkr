@@ -198,7 +198,7 @@ def r_newevents(limit=10, country=None):
 
 @app.route('/login/', methods=['POST','GET'])
 def login():
-    global SELECTEDRUNNER
+    #global SELECTEDRUNNER
     
     if current_user.is_authenticated:
         return redirect(url_for('home'))
@@ -206,8 +206,6 @@ def login():
     HOME_RUN = None
     form = LoginForm()
     if form.validate_on_submit():
-        print('Validating: [{}] [{}]'.format(form.username.data, form.password.data))
-        #user = User(form.username.data)
         user = User.query.filter_by(username=form.username.data.lower()).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
@@ -229,16 +227,13 @@ def login():
 @login_required
 def r_year_summary():
 #    rid = utils.Runner(str(current_user.rid).lower())
-    if SELECTEDRUNNER:
-        rid = utils.Runner(SELECTEDRUNNER)
-        rid.get_runs(None, False)
+    rid = utils.Runner(SELECTEDRUNNER or current_user.rid)
+    rid.get_runs(None, False)
 
-        data = summaries.year_summary(rid.runs)
-        return render_template('summary_year.html', 
-                                title='Year Summary', 
-                                data=data)
-    else:
-        return redirect(url_for('logout'))
+    data = summaries.year_summary(rid.runs)
+    return render_template('summary_year.html', 
+                            title='Year Summary', 
+                            data=data)
 
 @app.route('/summaries/event')
 @login_required
@@ -251,6 +246,15 @@ def r_event_summary():
     return render_template('summary_event.html', 
                             title='Event Summary', 
                             data=data)
+
+@app.route('/switch')
+@app.route('/switch/<switch_to>', methods=['GET'])
+def r_switch(switch_to):
+    user = User.query.filter_by(username=switch_to.lower()).first()
+    SELECTEDRUNNER = user.rid
+    return redirect(url_for('runner_runs'))
+    
+    
 @app.route('/changepwd')
 @login_required
 def change_pwd():

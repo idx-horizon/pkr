@@ -58,11 +58,11 @@
       {% if current_user.friends | length > 0 %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Friends
+          Switch
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         {% for f in current_user.friends %}
-          <a class="dropdown-item" href="#">{{ f.f_username | title}}</a>
+          <a class="dropdown-item" href="/switch/{{ f.f_username}}">{{ f.f_username | title}}</a>
         {% endfor %}
         </div>
       </li>
