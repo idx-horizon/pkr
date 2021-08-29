@@ -245,11 +245,16 @@ def r_event_summary():
     return render_template('summary_event.html', 
                             data=data)
 
+
 @app.route('/switch')
 @app.route('/switch/<switch_to>', methods=['GET'])
 @login_required
-def r_switch(switch_to):
+def r_switch(switch_to=None):
     global SELECTEDRUNNER
+    
+    if not switch_to:
+        SELECTEDRUNNER = None
+        return redirect(url_for('runner_runs'))
     
     if switch_to.lower() in [x.f_username for x in current_user.friends]:
         user = User.query.filter_by(username=switch_to.lower()).first()

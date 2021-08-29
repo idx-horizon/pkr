@@ -29,6 +29,7 @@
           Switch runner... 
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner">
+          <a class="dropdown-item" href="/switch>(self)</a>
           {% for f in current_user.friends %}
             <a class="dropdown-item" href="/switch/{{ f.f_username}}">{{ f.f_username | title}}</a>
           {% endfor %}
