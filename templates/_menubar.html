@@ -1,12 +1,11 @@
 {% if not current_user.is_anonymous %}	
-  <div class="fixed-top" style="background-color: #4CAF50;">Logged in <B>{{ current_user.username | title }}</B></div>
+  <div style="background-color: #4CAF50;">Logged in <B>{{ current_user.username | title }}</B></div>
 {% endif %}    
-<nav class="navbar fixed-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
+<nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
   <a class="navbar-brand" href="/home">
     <img src="{{url_for('static', filename='pkr.jpg')}}" width="30" height="30" alt="PKR">
   </a>
     
-
  <div class="navbar" id="navbarUserLogin">
   <ul class="navbar-nav">
  	{% if current_user.is_anonymous %}	
@@ -28,14 +27,13 @@
           <div class="dropdown-divider"></div>
           {% if current_user.friends | length > 0 %}
           <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Switch runner
-          </a>
+          Switch runner</a>
           <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner">
           <a class="dropdown-item" href="/switch">(self)</a>
           {% for f in current_user.friends %}
             <a class="dropdown-item" href="/switch/{{ f.f_username}}">{{ f.f_username | title}}</a>
           {% endfor %}
-          </div>
+          
           <div class="dropdown-divider"></div>
           {% endif %}
           <a class="dropdown-item" href="/logout">Logout</a>
