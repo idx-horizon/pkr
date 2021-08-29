@@ -85,7 +85,7 @@ def r_graph():
        graph.add('All others combined!',  [5, 15, 21, 55, 92, 105])
        graph_data = graph.render_data_uri()
        return render_template("graph.html", graph_data = graph_data)
-    except Exception, e:
+    except Exception as e:
        return(str(e))
     
 @app.route('/home/')
