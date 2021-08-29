@@ -1,13 +1,9 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-
-<div class="container-fluid p-3 bg-dark text-white">
-  <h1>Graph</h1>
-
-</div>
+==START==
 <div class="container" align="left">
 	<embed type="image/svg+xml" src={{graph_data|safe}} style='max-width:1000px'/>
 </div>
-
+==END==
 {% include "_footer.html" %}

@@ -87,7 +87,7 @@ def r_graph():
        return render_template("graph.html", graph_data = graph_data)
     except Exception as e:
        return(str(e))
-    
+      
 @app.route('/home/')
 def home():
     return render_template('home.html',
