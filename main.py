@@ -26,7 +26,8 @@ def make_shell_context():
 @app.context_processor
 def inject_selected_runner():
     global SELECTEDRUNNER
-    return dict(selected_runner=SELECTEDRUNNER)
+    return dict(selected_runner=SELECTEDRUNNER,
+                title=get_app_title())
     
 @app.template_filter()
 def format_datetime(value, 
@@ -75,7 +76,7 @@ def apilog():
 @app.route('/home/')
 def home():
     return render_template('home.html',
-                title=get_app_title(),
+                #title=get_app_title(),
                 file_modified_date=NR.get_last_update())
 
     
@@ -198,7 +199,7 @@ def r_newevents(limit=10, country=None):
 
 @app.route('/login/', methods=['POST','GET'])
 def login():
-    #global SELECTEDRUNNER
+    global SELECTEDRUNNER
     
     if current_user.is_authenticated:
         return redirect(url_for('home'))
@@ -249,6 +250,7 @@ def r_event_summary():
 
 @app.route('/switch')
 @app.route('/switch/<switch_to>', methods=['GET'])
+@login_required
 def r_switch(switch_to):
     user = User.query.filter_by(username=switch_to.lower()).first()
     SELECTEDRUNNER = user.rid
