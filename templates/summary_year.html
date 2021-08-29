@@ -14,9 +14,9 @@
 <table class="table table-hover table-light table-striped">
     <thead class="thead-light text-left">
     <tr>
-        <th style="width: 20%">Year</th>
-        <th style="width: 15%">PB</th>
-        <th style="width: 15%">Average</th>
+        <th style="width: 30%">Year</th>
+        <th style="width: 10%">PB</th>
+        <th style="width: 10%">Average</th>
         <th style="width: 50%">Slowest</th>
         
         </tr>
@@ -24,7 +24,7 @@
     {% for item in data %}
         <tr>
             <td>
-            <span class="badge badge-pill badge-success">{{ item.count }}</span>{{ item.year }}
+            <span class="badge badge-pill badge-success">{{ item.count }}</span> {{ item.year }}
             </td>
             <td>{{ item.times[1] | replace('00:','') }}</td>
             <td>{{ item.times[0] | replace('00:','') }}</td>

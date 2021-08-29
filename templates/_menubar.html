@@ -14,16 +14,21 @@
     {% else %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDDMenuRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Runner: {{ current_user | title }} 
+          Runner: {{ selected_runner | title }} 
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDDMenuRunner">
           <a class="dropdown-item" href="/stats">Stats & challenges</a>
-          <a class="dropdown-item" href="/runs">My runs</a>
+          <a class="dropdown-item" href="/runs">Runs</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/summaries/year">Year summary</a>
           <a class="dropdown-item" href="/summaries/event">Event summary</a>
           <a class="dropdown-item" href="/user">Runner profile</a>
           <div class="dropdown-divider"></div>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Switch 
+        </a>
+          <div class="dropdown-divider"></div>
+          
           <a class="dropdown-item" href="/logout">Logout</a>
         </div>
       </li>
