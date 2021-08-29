@@ -76,7 +76,6 @@ def apilog():
 @app.route('/home/')
 def home():
     return render_template('home.html',
-                #title=get_app_title(),
                 file_modified_date=NR.get_last_update())
 
     
@@ -135,13 +134,12 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
 @login_required
 def runner_stats():
 #    rid = utils.Runner(str(current_user.rid).lower())
-    rid = utils.Runner(SELECTEDRUNNER or current_user.rid)
+    rid = utils.Runner(SELECTEDRUNNER.rid or current_user.rid)
 
     rid.get_runs(None,False)
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
 
     return render_template('stats.html',
- #               title=get_app_title(), 
                 file_modified_date=NR.get_last_update(),
                 data=rid)
 
@@ -151,7 +149,7 @@ def runner_stats():
 @login_required
 def runner_runs(filter_str=None):
 #    rid = utils.Runner(str(current_user.rid).lower())
-    rid = utils.Runner(SELECTEDRUNNER or current_user.rid)
+    rid = utils.Runner(SELECTEDRUNNER.rid or current_user.rid)
 
     this_filter = filter_str or ''
 
@@ -162,7 +160,6 @@ def runner_runs(filter_str=None):
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
 
     return render_template('runs.html',
-#                title=get_app_title(), 
                 file_modified_date=NR.get_last_update(),
                 data=rid,
                 filter=this_filter,
@@ -221,7 +218,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
-        SELECTEDRUNNER = user.rid
+        SELECTEDRUNNER = user
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
@@ -230,7 +227,7 @@ def login():
 @login_required
 def r_year_summary():
 #    rid = utils.Runner(str(current_user.rid).lower())
-    rid = utils.Runner(SELECTEDRUNNER or current_user.rid)
+    rid = utils.Runner(SELECTEDRUNNER.rid or current_user.rid)
     rid.get_runs(None, False)
 
     data = summaries.year_summary(rid.runs)
@@ -240,7 +237,7 @@ def r_year_summary():
 @app.route('/summaries/event')
 @login_required
 def r_event_summary():
-    rid = utils.Runner(SELECTEDRUNNER or current_user.rid)
+    rid = utils.Runner(SELECTEDRUNNER.rid or current_user.rid)
         
     rid.get_runs(None, False)
 
@@ -256,7 +253,7 @@ def r_switch(switch_to):
     
     if switch_to.lower() in [x.f_username for x in current_user.friends]:
         user = User.query.filter_by(username=switch_to.lower()).first()
-        SELECTEDRUNNER = user.rid
+        SELECTEDRUNNER = user
         return redirect(url_for('runner_runs'))
     else:
         return redirect(url_for('error'))
