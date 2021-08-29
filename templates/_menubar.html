@@ -1,5 +1,5 @@
 {% if not current_user.is_anonymous %}	
-  <div style="background-color: #4CAF50;">Logged in <B>{{ current_user.username | title }}</B></div>
+  <div class="fixed-top" style="background-color: #4CAF50;">Logged in <B>{{ current_user.username | title }}</B></div>
 {% endif %}    
 <nav class="navbar fixed-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
   <a class="navbar-brand" href="/home">
@@ -15,7 +15,7 @@
 	</li>
       
     {% else %}
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown dropright">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDDMenuRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{ (selected_runner.username or current_user.username) | title }} ({{ (selected_runner.rid or current_user.rid) | safe }})
         </a>
