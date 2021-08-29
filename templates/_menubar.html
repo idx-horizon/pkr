@@ -1,5 +1,5 @@
 {% if not current_user.is_anonymous %}	
-  <div style="background-color: #4CAF50;">Logged in <B>{{ current_user.username | title }}</B></div>
+  <div style="background-color: #4CAF50;"><B>{{ current_user.username | title }} logged in</B></div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
   <a class="navbar-brand" href="/home">
@@ -28,7 +28,7 @@
           {% if current_user.friends | length > 0 %}
           <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Switch runner</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner">
+          <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner"></div>
           <a class="dropdown-item" href="/switch">(self)</a>
           {% for f in current_user.friends %}
             <a class="dropdown-item" href="/switch/{{ f.f_username}}">{{ f.f_username | title}}</a>
