@@ -235,7 +235,6 @@ def r_year_summary():
 
     data = summaries.year_summary(rid.runs)
     return render_template('summary_year.html', 
-                            title='Year Summary', 
                             data=data)
 
 @app.route('/summaries/event')
@@ -247,7 +246,6 @@ def r_event_summary():
 
     data = summaries.event_summary(rid.runs)
     return render_template('summary_event.html', 
-                            title='Event Summary', 
                             data=data)
 
 @app.route('/switch')
