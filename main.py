@@ -78,7 +78,8 @@ def r_graph():
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
     rid.get_runs(None,False)
-
+    mx_runs = 20
+    
     try:
        graph = pygal.Line()
 #       graph.title = 'Languages over time.'
@@ -86,10 +87,10 @@ def r_graph():
 #       graph.add('Python',  [15, 31, 89, 200, 356])
 #       graph.add('Java',    [15, 45, 76, 80,  91])
 #       graph.add('C++',     [5,  51, 54, 102, 150])
-       graph.title = 'Last 10 runs'
-       graph.x_labels = [x['Run Date'] for x in rid.runs[:20]]
-       graph.add(selected_runner['username'], 
-                 [float(x['AgeGrade'].replace('%','')) for x in rid.runs[:10]]) 
+       graph.title = 'Last {} runs'.format(mx_runs)
+       graph.x_labels = [x['Run Date'] for x in rid.runs[:mx_runs]]
+       graph.add(SELECTEDRUNNER['username'], 
+                 [float(x['AgeGrade'].replace('%','')) for x in rid.runs[:mx_runs]]) 
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
                                 graph_title = graph.title,
