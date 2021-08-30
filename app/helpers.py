@@ -4,7 +4,7 @@ from app.models import User
 def seticon():
      users = [('ian', '🔴'),
           ('michael', '🏃‍♂️'),
-          ('same',    '🏃‍♂️'),
+          ('sam',    '🏃‍♂️'),
           ('ant',     '🏃‍♂️'),
           ('matt',    '🏃‍♂️'),
           ('caroline','✨')
