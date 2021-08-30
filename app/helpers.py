@@ -10,6 +10,6 @@ def seticon():
           ('caroline','✨')
      ]
      for u in users:
-          x = User.query.filter_by(username=u[0].first()
-          x.icon = x[1]
+          x = User.query.filter_by(username=u[0]).first()
+          x.icon = u[1]
           db.session.commit()
