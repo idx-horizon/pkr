@@ -22,12 +22,12 @@
           <a class="dropdown-item" href="/stats">Stats & challenges</a>
           <a class="dropdown-item" href="/runs">Runs</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/summaries/year">Year summary</a>
-          <a class="dropdown-item" href="/summaries/event">Event summary</a>
+          <a class="dropdown-item" href="/summaries/year">📅 Year summary</a>
+          <a class="dropdown-item" href="/summaries/event">❇️ Event summary</a>
           <div class="dropdown-divider"></div>
           {% if current_user.friends | length > 0 %}
           <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          🟧 Switch runner</a>
+          🔄 Switch runner</a>
           <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner">
           <a class="dropdown-item" href="/switch?page={{ request.endpoint }}">⭐️ (self)</a>
           {% for f in current_user.friends %}
@@ -36,7 +36,7 @@
           </div>
           <div class="dropdown-divider"></div>
           {% endif %}
-          <a class="dropdown-item" href="/logout">Logout</a>
+          <a class="dropdown-item" href="/logout">❎ Logout</a>
         </div>
       </li>
     {% endif %}
