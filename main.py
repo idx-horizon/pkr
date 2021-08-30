@@ -75,13 +75,20 @@ def apilog():
 
 @app.route('/graph')
 def r_graph():
+    rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
+
+    rid.get_runs(None,False)
+
     try:
        graph = pygal.Line()
-       graph.title = 'Languages over time.'
-       graph.x_labels = ['2012','2013','2014','2015','2016']
-       graph.add('Python',  [15, 31, 89, 200, 356])
-       graph.add('Java',    [15, 45, 76, 80,  91])
-       graph.add('C++',     [5,  51, 54, 102, 150])
+#       graph.title = 'Languages over time.'
+#       graph.x_labels = ['2012','2013','2014','2015','2016']
+#       graph.add('Python',  [15, 31, 89, 200, 356])
+#       graph.add('Java',    [15, 45, 76, 80,  91])
+#       graph.add('C++',     [5,  51, 54, 102, 150])
+       graph.title = 'Last 10 runs'
+       graph.x_labels = [x['Run Date'] for x in rid.runs[:10]]
+       graph.add('Run', [x['Run Date'] for x in rid.runs[:10]]) 
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
                                 graph_title = graph.title,

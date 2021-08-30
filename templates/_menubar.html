@@ -1,5 +1,5 @@
 {% if not current_user.is_anonymous %}	
-  <div class="text-center" style="background-color: #4CAF50;">{{ current_user.username | title }} logged in</div>
+  <div class="text-left text-dark" style="background-color: #4CAF50;">{{ current_user.username | title }} logged in</div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
   <a class="navbar-brand" href="/home">
