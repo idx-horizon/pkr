@@ -89,7 +89,7 @@ def r_graph():
 #       graph.add('C++',     [5,  51, 54, 102, 150])
        graph.title = 'Last {} runs'.format(mx_runs)
        
-       subset = reversed(rid.runs[:mx_runs])
+       subset = rid.runs[:mx_runs]
        
        graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'], 
