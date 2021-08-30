@@ -87,8 +87,9 @@ def r_graph():
 #       graph.add('Java',    [15, 45, 76, 80,  91])
 #       graph.add('C++',     [5,  51, 54, 102, 150])
        graph.title = 'Last 10 runs'
-       graph.x_labels = [x['Run Date'] for x in rid.runs[:10]]
-       graph.add('Run', [float(x['AgeGrade'].replace('%','')) for x in rid.runs[:10]]) 
+       graph.x_labels = [x['Run Date'] for x in rid.runs[:20]]
+       graph.add(selected_runner['username'], 
+                 [float(x['AgeGrade'].replace('%','')) for x in rid.runs[:10]]) 
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
                                 graph_title = graph.title,

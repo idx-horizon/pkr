@@ -32,3 +32,8 @@
     font-weight: bold;
     color: orange;
 }
+img {
+  display: block;
+  max-width: 80%;
+  height: auto;
+}
