@@ -83,6 +83,7 @@ class User(UserMixin, db.Model):
     home_run      = db.Column(db.String(50))
     home_postcode = db.Column(db.String(50))
     is_admin      = db.Column(db.Boolean)
+    icon          = db.Column(db.String(1))
 
     @property
     def friends(self):

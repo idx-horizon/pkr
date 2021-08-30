@@ -78,7 +78,7 @@ def r_graph():
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
     rid.get_runs(None,False)
-    mx_runs = 10
+    mx_runs = 100
     
     try:
        graph = pygal.Line()
@@ -90,9 +90,14 @@ def r_graph():
        graph.title = 'Last {} runs'.format(mx_runs)
        subset = rid.runs[:mx_runs]
        
-       graph.x_labels = [x['Run Date'] for x in subset]
-       graph.add(SELECTEDRUNNER['username'], 
+#       graph.x_labels = [x['Run Date'] for x in subset]
+       graph.add(SELECTEDRUNNER['username'].title(), 
                 [float(x['AgeGrade'].replace('%','')) for x in subset])
+                
+       for f in rid.friends:
+           print('Add to graph', f) 
+ #          graph.add(f.f_username].title(), 
+ #               [float(x['AgeGrade'].replace('%','')) for x in subset])
                 
        graph.range = [0, 100]
        graph_data = graph.render_data_uri()
@@ -135,7 +140,8 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     data = sorted(data, key=attrgetter('distance'))
 
     if not current_user.is_anonymous:
-        base_runner = current_user.rid 
+#        base_runner = current_user.rid 
+        base_runner = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
         rid = utils.Runner(str(base_runner).lower())
         rid.get_runs(this_filter, False)
 
@@ -218,7 +224,7 @@ def r_newevents(limit=10, country=None):
 #    data = sorted(data, key=attrgetter('distance'))
     data = sorted(data, reverse=True, key=attrgetter('evid'))
     return render_template('newevents.html',
-                title=get_app_title(), 
+#                title=get_app_title(), 
                 limit=this_limit, 
                 countries=country_dict,
                 country=this_country,
