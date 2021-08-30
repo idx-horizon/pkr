@@ -1,9 +1,9 @@
 {% if not current_user.is_anonymous %}	
-  <div class="text-left text-dark" style="background-color: #4CAF50;"><H2>{{ current_user.icon }} {{ current_user.username | title }} logged in</H2></div>
+  <div class="text-left text-dark active" style="background-color: #4CAF50;">{{ current_user.icon }} {{ current_user.username | title }} logged in</div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
   <a class="navbar-brand" href="/home">
-    <img src="{{url_for('static', filename='pkr.jpg')}}" width="30" height="30" alt="PKR">
+    <img src="{{url_for('static', filename='pkr.jpg')}}" width="30" height="30" alt="PKR">User: {{ current_user.username | title }}
   </a>
     
  <div class="navbar" id="navbarUserLogin">
