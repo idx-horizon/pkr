@@ -2,8 +2,8 @@
   <div class="text-left text-dark active" style="background-color: #4CAF50;">{{ current_user.icon }} {{ current_user.username | title }} logged in</div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
-  <a class="navbar-brand" href="/home">{{ current_user.username | title }}
-    <img src="{{url_for('static', filename='pkr.jpg')}}" width="30" height="30" alt="PKR"> 
+  <a class="navbar-brand" href="/home">
+    <img src="{{url_for('static', filename='pkr.jpg')}}" width="35" height="35" alt="PKR"> 
   </a>
 
     

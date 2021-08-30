@@ -1,12 +1,15 @@
 from app import db
 from app.models import User
 
-u = User.query.filter_by(username='ian').first()
-u.icon = '🔴'
-db.session.commit()
-u = User.query.filter_by(username='michael').first()
-u.icon = '🏃‍♂️'
-db.session.commit()
-u = User.query.filter_by(username='caroline').first()
-u.icon = '🏃‍♀️'
-db.session.commit()
+def seticon():
+     users = [('ian',     '🔴'),
+          ('michael', '🏃‍♂️'),
+          ('same',    '🏃‍♂️'),
+          ('ant',     '🏃‍♂️'),
+          ('matt',    '🏃‍♂️'),
+          ('caroline','✨')
+     ]
+     for u in users:
+          x = User.query.filter_by(username=u[0].first()
+          x.icon = x[1]
+          db.session.commit()
