@@ -78,7 +78,7 @@ def r_graph():
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
     rid.get_runs(None,False)
-    mx_runs = 30
+    mx_runs = 50
     
     try:
        graph = pygal.Line()
@@ -88,12 +88,12 @@ def r_graph():
 #       graph.add('Java',    [15, 45, 76, 80,  91])
 #       graph.add('C++',     [5,  51, 54, 102, 150])
        graph.title = 'Last {} runs'.format(mx_runs)
-       
        subset = rid.runs[:mx_runs]
        
-       graph.x_labels = [x['Run Date'] for x in subset]
+#       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'], 
                 [float(x['AgeGrade'].replace('%','')) for x in subset]) 
+       graph.range = [0, 100]
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
                                 graph_title = graph.title,
