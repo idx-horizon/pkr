@@ -9,6 +9,7 @@ def seticon():
           ('matt',    '🏃‍♂️'),
           ('caroline','✨')
      ]
+     
      for u in users:
           x = User.query.filter_by(username=u[0]).first()
           x.icon = u[1]
