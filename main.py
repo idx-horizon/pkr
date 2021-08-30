@@ -297,7 +297,7 @@ def r_switch(switch_to=None):
     if switch_to.lower() in [x.f_username for x in current_user.friends]:
         user = User.query.filter_by(username=switch_to.lower()).first()
         SELECTEDRUNNER = {'rid': user.rid, 'username': user.username}
-        return redirect(url_for(return_to)
+        return redirect(url_for(return_to))
     else:
         return redirect(url_for('error'))
     
