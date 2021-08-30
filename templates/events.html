@@ -6,7 +6,7 @@
     <H2>{{ data|length }} events in {{ country|upper }}
 {% if request.form['filter_str']|length > 0 %}{{ filter_method }} "{{ request.form['filter_str'] }}"{% endif %}</H2>
 
-<form class="form-inline" action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on_code }}' method="POST" name="form">
+<form class="form-inline" action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on_code }}?filter={{ has_run }}' method="POST" name="form">
 
           <select class="form-control" style="width:125px" name="filter_method">
             <option {% if request.form['filter_method']=='startswith' %}
@@ -42,7 +42,7 @@
           </select>
         {% if not current_user.is_anonymous %}  
           <select class="form-control" style="width:75px" name="has_run">
-          {% for opt in ['Any','Yes','No'] %}
+          {% for opt in ['Any','Never','Singleton'] %}
                   <option value={{ opt }}>{{ opt }}</option>
           {% endfor %}
         {% endif %}

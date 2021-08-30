@@ -2,9 +2,9 @@ from app import db
 from app.models import User
 
 def seticon():
-     users = [('ian', '🔴'),
+     users = [('ian', '🆔'),
           ('michael', '🏃‍♂️'),
-          ('sam',    '🏃‍♂️'),
+          ('sam',     '🏃‍♂️'),
           ('ant',     '🏃‍♂️'),
           ('matt',    '🏃‍♂️'),
           ('caroline','✨')

@@ -135,6 +135,8 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
       this_method  = str(request.form['filter_method'])
       this_country = str(request.form['country_code'])
       this_centre_on = str(request.form['centre_on_code'])
+
+    print('** args', request.args.get('has_run')
     
     data=NR.getevents_by_filter(this_filter, country_dict[this_country]['id'], this_method, this_centre_on)
     data = sorted(data, key=attrgetter('distance'))
