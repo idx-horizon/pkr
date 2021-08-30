@@ -6,7 +6,7 @@
     <H2>{{ data|length }} events in {{ country|upper }}
 {% if request.form['filter_str']|length > 0 %}{{ filter_method }} "{{ request.form['filter_str'] }}"{% endif %}</H2>
 
-<form class="form-inline" action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on_code }}?has_run={{ has_run.lower() }}' method="POST" name="form">
+<form class="form-inline" action='/events/{{ country_code }}/{{ filter_str }}/{{ centre_on_code }}?has_run={{ has_run }}' method="POST" name="form">
 
           <select class="form-control" style="width:125px" name="filter_method">
             <option {% if request.form['filter_method']=='startswith' %}
