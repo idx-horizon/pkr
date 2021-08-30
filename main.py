@@ -285,6 +285,8 @@ def r_event_summary():
 @app.route('/switch/<switch_to>', methods=['GET'])
 @login_required
 def r_switch(switch_to=None):
+    return_to = request.args.get('page')
+    print('** Came from page: ', return_to)
     global SELECTEDRUNNER
     
     if not switch_to:
