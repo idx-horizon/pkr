@@ -2,8 +2,8 @@
   <div class="text-left text-dark active" style="background-color: #4CAF50;">{{ current_user.icon }} {{ current_user.username | title }} logged in</div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
-  <a class="navbar-brand" href="/home">
-    <img src="{{url_for('static', filename='pkr.jpg')}}" width="30" height="30" alt="PKR">User: {{ current_user.username | title }}
+  <a class="navbar-brand" href="/home">{{ current_user.username | title }}
+    <img src="{{url_for('static', filename='pkr.jpg')}}" width="30" height="30" alt="PKR"> 
   </a>
     
  <div class="navbar" id="navbarUserLogin">
@@ -19,8 +19,8 @@
           Runner: {{ (selected_runner.username or current_user.username) | title }} ({{ (selected_runner.rid or current_user.rid) | safe }})
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDDMenuRunner">
-          <a class="dropdown-item" href="/stats">Stats & challenges</a>
-          <a class="dropdown-item" href="/runs">Runs</a>
+          <a class="dropdown-item" href="/stats">✅ Stats & challenges</a>
+          <a class="dropdown-item" href="/runs">🏃 Runs</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/summaries/year">📅 Year summary</a>
           <a class="dropdown-item" href="/summaries/event">❇️ Event summary</a>
