@@ -90,9 +90,10 @@ def r_graph():
        graph.title = 'Last {} runs'.format(mx_runs)
        subset = rid.runs[:mx_runs]
        
-       graph.x_labels = reversed([x['Run Date'] for x in subset])
+       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'], 
-                reversed([float(x['AgeGrade'].replace('%','')) for x in subset])) 
+                [float(x['AgeGrade'].replace('%','')) for x in subset])
+                
        graph.range = [0, 100]
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
