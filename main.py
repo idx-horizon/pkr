@@ -94,7 +94,7 @@ def r_graph():
        graph.add(SELECTEDRUNNER['username'].title(), 
                 [float(x['AgeGrade'].replace('%','')) for x in subset])
                 
-       for f in rid.friends:
+       for f in Friend.get(SELECTEDRUNNER['username']):
            print('Add to graph', f) 
  #          graph.add(f.f_username].title(), 
  #               [float(x['AgeGrade'].replace('%','')) for x in subset])
@@ -141,7 +141,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
 
     if not current_user.is_anonymous:
 #        base_runner = current_user.rid 
-        base_runner = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
+        base_runner = SELECTEDRUNNER['rid'] or current_user.rid
         rid = utils.Runner(str(base_runner).lower())
         rid.get_runs(this_filter, False)
 
