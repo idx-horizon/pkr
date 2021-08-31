@@ -257,6 +257,7 @@ def login():
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
         SELECTEDRUNNER = {'username': user.username, 'rid': user.rid}
+        user.extra = 'extra_data'
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
