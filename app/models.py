@@ -88,6 +88,11 @@ class User(UserMixin, db.Model):
     @property
     def extra(self):
         return session['extra']
+
+    @property
+    def SElECTEDRUNNER(self):
+        return session['SELECTEDRUNNER']
+
                 
     @property
     def friends(self):

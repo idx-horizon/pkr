@@ -257,6 +257,7 @@ def login():
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
         SELECTEDRUNNER = {'username': user.username, 'rid': user.rid}
+        session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
         session['extra'] = 'extra_data'
         return redirect(next_page)
 
@@ -318,6 +319,7 @@ def change_pwd():
 def logout():
     logout_user()
     SELECTEDRUNNER = {'rid': None, 'username': None}
+    session['SELECTEDRUNNER'] = {'username': None, 'rid': None}
     return redirect(url_for('home'))
 
 @app.route('/user')
