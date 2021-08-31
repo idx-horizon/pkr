@@ -19,6 +19,7 @@ import datetime
 import pygal
 
 app_TRACKER = Tracker()
+session['FRIENDS'] = None
 
 @app.shell_context_processor
 def make_shell_context():
