@@ -294,7 +294,7 @@ def r_switch(switch_to=None):
         session['SELECTEDRUNNER'] = {'username': current_user.username, 'rid': current_user.rid}
         return redirect(url_for('runner_runs'))
     
-    if switch_to.lower() in [x.f_username for x in session['FRIENDS']]:
+    if switch_to.lower() in [x['f_username'] for x in session['FRIENDS']]:
         user = User.query.filter_by(username=switch_to.lower()).first()
         session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
         return redirect(url_for(return_to))
