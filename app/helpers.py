@@ -16,7 +16,7 @@ def seticon():
           db.session.commit()
 
 def add_f(f, t):
-     to = User.query.filter_by(username=t).first
+     to = User.query.filter_by(username=t).first()
      friend = Friend(f_username=t,f_rid=to.rid, u_username=f)
      db.session.add(friend)
      db.session.commit()
