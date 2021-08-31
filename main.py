@@ -27,7 +27,7 @@ def make_shell_context():
 @app.context_processor
 def inject_context():
     return dict(selected_runner=session['SELECTEDRUNNER'],
-                friends=[], #session['FRIENDS'],
+                friends=session['FRIENDS'],
                 title = os.environ['APP_TITLE'])
     
 @app.template_filter()
