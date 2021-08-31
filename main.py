@@ -254,7 +254,7 @@ def login():
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
         session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
-        #session['FRIENDS'] = Friend.get(user.username)
+        session['FRIENDS'] = Friend.get(user.username)
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
