@@ -19,14 +19,13 @@ import datetime
 import pygal
 
 app_TRACKER = Tracker()
-session['FRIENDS'] = None
 
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db, 'User': User}
 
 @app.context_processor
-def inject_selected_runner():
+def inject_context():
     return dict(selected_runner=session['SELECTEDRUNNER'],
                 friends=session['FRIENDS'],
                 title = os.environ['APP_TITLE'])
@@ -315,6 +314,7 @@ def change_pwd():
 def logout():
     logout_user()
     session['SELECTEDRUNNER'] = {'username': None, 'rid': None}
+    session['FRIENDS'] = None
     return redirect(url_for('home'))
 
 @app.route('/user')
