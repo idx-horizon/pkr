@@ -86,10 +86,6 @@ class User(UserMixin, db.Model):
     icon          = db.Column(db.String(1))
 
     @property
-    def extra(self):
-        return session['extra']
-
-    @property
     def SELECTEDRUNNER(self):
         return session['SELECTEDRUNNER']
 

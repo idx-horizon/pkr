@@ -258,7 +258,6 @@ def login():
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
         SELECTEDRUNNER = {'username': user.username, 'rid': user.rid}
         session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
-        session['extra'] = 'extra_data'
         return redirect(next_page)
 
     return render_template('login.html', title='Login', form=form)
@@ -267,7 +266,7 @@ def login():
 @login_required
 def r_year_summary():
 #    rid = utils.Runner(str(current_user.rid).lower())
-    rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
+    rid = utils.Runner(session['SELECTEDRUNNER']['rid'] or current_user.rid)
     rid.get_runs(None, False)
 
     data = summaries.year_summary(rid.runs)
@@ -297,11 +296,13 @@ def r_switch(switch_to=None):
     if not switch_to:
         SELECTEDRUNNER = {'rid': current_user.rid, 
                           'username': current_user.username}
+        session['SELECTEDRUNNER'] = {'username': current_user.username, 'rid': current_user.rid}
         return redirect(url_for('runner_runs'))
     
     if switch_to.lower() in [x.f_username for x in current_user.friends]:
         user = User.query.filter_by(username=switch_to.lower()).first()
         SELECTEDRUNNER = {'rid': user.rid, 'username': user.username}
+        session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
         return redirect(url_for(return_to))
     else:
         return redirect(url_for('error'))
