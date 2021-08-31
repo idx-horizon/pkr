@@ -4,6 +4,7 @@ from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.sql import func
+import json
 
 #def add_loginlog(username, ipaddress='unknown'):
 #    l = LoginLog(username=username,
@@ -70,8 +71,12 @@ class Friend(db.Model):
     def __repr__(self):
         return 'Who {}: {} ({})'.format(self.u_username, self.f_username, self.f_rid)
 
+    def toJson(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
+
     def get(whose):
-        return Friend.query.filter_by(u_username=whose).all()
+        f = Friend.query.filter_by(u_username=whose).all()
+        return [x.f_username for x in f]
         
 class User(UserMixin, db.Model):
     id            = db.Column(db.Integer, primary_key=True)
@@ -93,7 +98,10 @@ class User(UserMixin, db.Model):
     @property
     def friends(self):
         return Friend.get(self.username)
-
+        
+    def toJson(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
+        
     def __repr__(self):
         return '{} ({})'.format(self.username, self.rid)
      
