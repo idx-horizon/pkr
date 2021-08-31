@@ -1,5 +1,8 @@
 from app import db
-from app.models import User, Friend
+from app.models import User, Friend, LoginLog
+
+def clearlog():
+     LoginLog.clearlog()
 
 def seticon():
      users = [('ian', '🆔', 47.0),

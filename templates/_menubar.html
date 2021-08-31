@@ -1,18 +1,17 @@
 {% if not current_user.is_anonymous %}	
-  <div class="text-left sticky-top text-dark active" style="background-color: #4CAF50;">{{ current_user.icon }} {{ current_user.username | title }} logged in</div>
+  <div class="text-left text-dark active" style="background-color: #4CAF50;">{{ current_user.icon }} {{ current_user.username | title }} logged in</div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
   <a class="navbar-brand" href="/home">
     <img src="{{url_for('static', filename='pkr.jpg')}}" width="35" height="35" alt="PKR"> 
   </a>
-
-    
+   
  <div class="navbar" id="navbarUserLogin">
   <ul class="navbar-nav">
  	{% if current_user.is_anonymous %}	
-	<li class="nav-item active">
-		<a href="/login" class="nav-link">Login</a>
-	</li>
+  	  <li class="nav-item active">
+	   	  <a href="/login" class="nav-link">Login</a>
+	  </li>
       
     {% else %}
       <li class="nav-item dropdown dropright">
