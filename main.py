@@ -26,9 +26,8 @@ def make_shell_context():
 
 @app.context_processor
 def inject_selected_runner():
-    global SELECTEDRUNNER
     return dict(selected_runner=session['SELECTEDRUNNER'],
-                title=get_app_title())
+                title = os.environ['APP_TITLE'])
     
 @app.template_filter()
 def format_datetime(value, 
@@ -145,7 +144,6 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     data = sorted(data, key=attrgetter('distance'))
 
     if not current_user.is_anonymous:
-#        base_runner = current_user.rid 
         base_runner = SELECTEDRUNNER['rid'] or current_user.rid
         rid = utils.Runner(str(base_runner).lower())
         rid.get_runs(this_filter, False)
@@ -160,7 +158,6 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                     pass
                     
     return render_template('events.html',
-                title=get_app_title() + '[' + str(this_country) + ' | ' + this_filter + ']', 
                 filter=this_filter, 
                 filter_method=this_method,
                 file_modified_date=NR.get_last_update(),
@@ -174,7 +171,6 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
 @login_required
 def runner_stats():
     SELECTEDRUNNER = session['SELECTEDRUNNER']
-#    rid = utils.Runner(str(current_user.rid).lower())
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
     rid.get_runs(None,False)
@@ -190,8 +186,6 @@ def runner_stats():
 @login_required
 def runner_runs(filter_str=None):
     SELECTEDRUNNER = session['SELECTEDRUNNER']
-
-#    rid = utils.Runner(str(current_user.rid).lower())
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
     this_filter = filter_str or ''
@@ -232,7 +226,6 @@ def r_newevents(limit=10, country=None):
 #    data = sorted(data, key=attrgetter('distance'))
     data = sorted(data, reverse=True, key=attrgetter('evid'))
     return render_template('newevents.html',
-#                title=get_app_title(), 
                 limit=this_limit, 
                 countries=country_dict,
                 country=this_country,
@@ -241,8 +234,6 @@ def r_newevents(limit=10, country=None):
 
 @app.route('/login/', methods=['POST','GET'])
 def login():
-    #global SELECTEDRUNNER
-    
     if current_user.is_authenticated:
         return redirect(url_for('home'))
 
@@ -261,7 +252,6 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
-        #SELECTEDRUNNER = {'username': user.username, 'rid': user.rid}
         session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
         return redirect(next_page)
 
@@ -271,7 +261,6 @@ def login():
 @login_required
 def r_year_summary():
     SELECTEDRUNNER = session['SELECTEDRUNNER']
-#    rid = utils.Runner(str(current_user.rid).lower())
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     rid.get_runs(None, False)
 
@@ -298,17 +287,13 @@ def r_event_summary():
 def r_switch(switch_to=None):
     return_to = request.args.get('page')
     print('** Came from page: ', return_to)
-#    global SELECTEDRUNNER
     
     if not switch_to:
-#        SELECTEDRUNNER = {'rid': current_user.rid, 
-#                          'username': current_user.username}
         session['SELECTEDRUNNER'] = {'username': current_user.username, 'rid': current_user.rid}
         return redirect(url_for('runner_runs'))
     
     if switch_to.lower() in [x.f_username for x in current_user.friends]:
         user = User.query.filter_by(username=switch_to.lower()).first()
- #       SELECTEDRUNNER = {'rid': user.rid, 'username': user.username}
         session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
         return redirect(url_for(return_to))
     else:
@@ -326,7 +311,6 @@ def change_pwd():
 @app.route('/logout')
 def logout():
     logout_user()
-#    SELECTEDRUNNER = {'rid': None, 'username': None}
     session['SELECTEDRUNNER'] = {'username': None, 'rid': None}
     return redirect(url_for('home'))
 
@@ -336,8 +320,8 @@ def user_details():
     return render_template('user.html')
 
 
-def get_app_title():
-    return os.environ['APP_TITLE'] 
+# def get_app_title():
+#    return os.environ['APP_TITLE'] 
 
 def runapp(host='localhost', port=5000, debug=True):
     app.run(host=host, port=port, debug=debug)
