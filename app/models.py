@@ -1,5 +1,5 @@
 from app import login, db
-
+from flask import session
 from datetime import datetime
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -85,8 +85,10 @@ class User(UserMixin, db.Model):
     is_admin      = db.Column(db.Boolean)
     icon          = db.Column(db.String(1))
 
-    extra = 'Nothing to see here'
-        
+    @property
+    def extra(self):
+        return session['extra']
+                
     @property
     def friends(self):
         return Friend.get(self.username)
