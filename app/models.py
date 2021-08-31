@@ -90,7 +90,7 @@ class User(UserMixin, db.Model):
         return session['extra']
 
     @property
-    def SElECTEDRUNNER(self):
+    def SELECTEDRUNNER(self):
         return session['SELECTEDRUNNER']
 
                 
