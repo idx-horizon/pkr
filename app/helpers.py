@@ -26,7 +26,7 @@ def add_f(f, t):
 
 def all_u():
      users = User.query.all()
-     for u in us: 
+     for u in users: 
           print('{:<10} {:<8} {:<15} {:<5} {:<6}'.format(
                u.username, 
                u.rid, 
