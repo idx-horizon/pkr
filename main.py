@@ -5,7 +5,7 @@ from flask_login import login_user, logout_user, current_user, login_required, U
 from operator import attrgetter
 from werkzeug.urls import url_parse
 
-from app import app,login,db, SELECTEDRUNNER
+from app import app,login,db
 
 from app.track import Tracker
 from app.models import User, Country, Location, LoginLog, Friend
