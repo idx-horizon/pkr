@@ -28,7 +28,7 @@ login.login_view = 'login'
 #THISDB = app.config['REPOSITORY']
 #APPNAME = app.config['APPNAME']
 #THISCONFIG = app.config
-SELECTEDRUNNER = {'rid': None, 'username': None}
+#SELECTEDRUNNER = {'rid': None, 'username': None}
 
 from app import routes, models
 
