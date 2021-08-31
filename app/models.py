@@ -76,7 +76,7 @@ class Friend(db.Model):
 
     def get(whose):
         f = Friend.query.filter_by(u_username=whose).all()
-        return [{'username': x.f_username} for x in f]
+        return [{'f_username': x.f_username} for x in f]
         
 class User(UserMixin, db.Model):
     id            = db.Column(db.Integer, primary_key=True)
