@@ -27,7 +27,7 @@ def make_shell_context():
 @app.context_processor
 def inject_selected_runner():
     global SELECTEDRUNNER
-    return dict(selected_runner=SELECTEDRUNNER,
+    return dict(selected_runner=session['SELECTEDRUNNER'],
                 title=get_app_title())
     
 @app.template_filter()
@@ -75,6 +75,7 @@ def apilog():
 
 @app.route('/graph')
 def r_graph():
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
     rid.get_runs(None,False)
@@ -118,6 +119,7 @@ def home():
 @app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
 @app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None, centre_on_code=None):
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
     print('r_events {} - method {} - centre {}'.format( 
             request.url, 
             request.method,
@@ -171,6 +173,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
 @app.route('/stats', methods=['POST','GET'])
 @login_required
 def runner_stats():
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
 #    rid = utils.Runner(str(current_user.rid).lower())
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
@@ -186,6 +189,8 @@ def runner_stats():
 @app.route('/runs/<filter_str>/', methods=['POST','GET'])
 @login_required
 def runner_runs(filter_str=None):
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
+
 #    rid = utils.Runner(str(current_user.rid).lower())
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
@@ -236,7 +241,7 @@ def r_newevents(limit=10, country=None):
 
 @app.route('/login/', methods=['POST','GET'])
 def login():
-    global SELECTEDRUNNER
+    #global SELECTEDRUNNER
     
     if current_user.is_authenticated:
         return redirect(url_for('home'))
@@ -256,7 +261,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
-        SELECTEDRUNNER = {'username': user.username, 'rid': user.rid}
+        #SELECTEDRUNNER = {'username': user.username, 'rid': user.rid}
         session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
         return redirect(next_page)
 
@@ -265,8 +270,9 @@ def login():
 @app.route('/summaries/year')
 @login_required
 def r_year_summary():
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
 #    rid = utils.Runner(str(current_user.rid).lower())
-    rid = utils.Runner(session['SELECTEDRUNNER']['rid'] or current_user.rid)
+    rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     rid.get_runs(None, False)
 
     data = summaries.year_summary(rid.runs)
@@ -276,6 +282,7 @@ def r_year_summary():
 @app.route('/summaries/event')
 @login_required
 def r_event_summary():
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
         
     rid.get_runs(None, False)
@@ -291,17 +298,17 @@ def r_event_summary():
 def r_switch(switch_to=None):
     return_to = request.args.get('page')
     print('** Came from page: ', return_to)
-    global SELECTEDRUNNER
+#    global SELECTEDRUNNER
     
     if not switch_to:
-        SELECTEDRUNNER = {'rid': current_user.rid, 
-                          'username': current_user.username}
+#        SELECTEDRUNNER = {'rid': current_user.rid, 
+#                          'username': current_user.username}
         session['SELECTEDRUNNER'] = {'username': current_user.username, 'rid': current_user.rid}
         return redirect(url_for('runner_runs'))
     
     if switch_to.lower() in [x.f_username for x in current_user.friends]:
         user = User.query.filter_by(username=switch_to.lower()).first()
-        SELECTEDRUNNER = {'rid': user.rid, 'username': user.username}
+ #       SELECTEDRUNNER = {'rid': user.rid, 'username': user.username}
         session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
         return redirect(url_for(return_to))
     else:
@@ -319,7 +326,7 @@ def change_pwd():
 @app.route('/logout')
 def logout():
     logout_user()
-    SELECTEDRUNNER = {'rid': None, 'username': None}
+#    SELECTEDRUNNER = {'rid': None, 'username': None}
     session['SELECTEDRUNNER'] = {'username': None, 'rid': None}
     return redirect(url_for('home'))
 
