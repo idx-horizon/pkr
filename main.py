@@ -100,7 +100,7 @@ def r_graph():
  #          graph.add(f.f_username].title(), 
  #               [float(x['AgeGrade'].replace('%','')) for x in subset])
                 
-       graph.range = [0, 100]
+       graph.range = [20, 60]
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
                                 graph_title = graph.title,
@@ -201,7 +201,7 @@ def runner_runs(filter_str=None):
                 file_modified_date=NR.get_last_update(),
                 data=rid,
                 filter=this_filter,
-                threshold=rid.threshold)
+                threshold='{:05.2f}'.format(rid.agegrade_theshold))
 
 @app.route('/loginlog/', methods=['POST','GET'])
 def r_loginlog():
