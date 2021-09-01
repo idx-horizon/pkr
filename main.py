@@ -207,7 +207,7 @@ def runner_runs(filter_str=None):
         file_modified_date=NR.get_last_update(),
         data=rid,
         filter=this_filter,
-        threshold='{:05.2f}'.format(SELECTEDRUNNER.threshold))
+        threshold='{:05.2f}'.format(SELECTEDRUNNER['threshold']))
 
 @app.route('/loginlog/', methods=['POST','GET'])
 def r_loginlog():
