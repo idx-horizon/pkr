@@ -264,7 +264,7 @@ def login():
             'username': user.username, 
             'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
-            'icon': rid.icon}
+            'icon': user.icon}
         session['FRIENDS'] = Friend.get(user.username)
         return redirect(next_page)
 
@@ -305,17 +305,17 @@ def r_switch(switch_to=None):
         session['SELECTEDRUNNER'] = {
             'username': current_user.username, 
             'rid': current_user.rid, 
-            'threshold': user.agegrade_theshold, 
-            'icon': rid.icon}
+            'threshold': current_user.agegrade_theshold, 
+            'icon': current_user.icon}
         return redirect(url_for('runner_runs'))
     
     if switch_to.lower() in [x['f_username'] for x in session['FRIENDS']]:
         user = User.query.filter_by(username=switch_to.lower()).first()
         session['SELECTEDRUNNER'] = {
-            'username': current_user.username, 
-            'rid': current_user.rid, 
+            'username': user.username, 
+            'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
-            'icon': rid.icon}
+            'icon': user.icon}
         return redirect(url_for(return_to))
     else:
         return redirect(url_for('error'))
