@@ -106,8 +106,8 @@ def r_graph():
                 [float(x['AgeGrade'].replace('%','')) for x in subset],
                 dots_size=6)
                 
-        if current_user.rid != SELECTEDRUNNER['rid']:
-           graph.add(current_user.username.title(), 
+       if current_user.rid != SELECTEDRUNNER['rid']:
+          graph.add(current_user.username.title(), 
                 [float(x['AgeGrade'].replace('%','')) for x in me.runs[:mx_runs]],
                 dots_size=6)
                 
