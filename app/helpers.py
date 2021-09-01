@@ -3,15 +3,20 @@ from app.models import User, Friend, LoginLog
 
 def clearlog():
      LoginLog.clear_log()
-
-def seticon():
-     users = [('ian', '🆔', 47.0),
+     
+def seticon(who,value):
+     x = User.query.filter_by(username=who).first()
+     x.icon = value
+     db.session.commit()
+     
+def seticon_all():
+     users = [('ian', '🆔', 45.0),
           ('michael', 'Ⓜ️', 50.0),
           ('sam',     '🏃‍♂️', 50.0),
-          ('ant',     '🟡', 50.0),
+          ('ant',     '👨', 50.0),
           ('matt',    'Ⓜ️', 50.0),
-          ('eileen',    '🟢', 50.0),
-          ('sharon',    '🔺', 50.0),
+          ('eileen',  '🙎‍♀️', 50.0),
+          ('sharon',  '🙎‍♀️', 50.0),
           ('caroline','✨', 50.0)
      ]
      
