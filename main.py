@@ -260,6 +260,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
+        print('***THRESHOLD:', user.agegrade_theshold)
         session['SELECTEDRUNNER'] = {
             'username': user.username, 
             'rid': user.rid, 
