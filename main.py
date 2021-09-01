@@ -260,7 +260,6 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
-        set_session_selectedrunner()
         session['SELECTEDRUNNER'] = {
             'username': user.username, 
             'rid': user.rid, 
