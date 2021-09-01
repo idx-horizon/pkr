@@ -82,7 +82,7 @@ class Friend(db.Model):
             all()
 
         return [{'f_username': x.Friend.f_username,
-                 'f_icon': x.Friend.icon} for x in f]
+                 'f_icon': x.User.icon} for x in f]
         
 class User(UserMixin, db.Model):
     id            = db.Column(db.Integer, primary_key=True)
