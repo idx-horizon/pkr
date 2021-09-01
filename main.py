@@ -100,7 +100,7 @@ def r_graph():
  #          graph.add(f.f_username].title(), 
  #               [float(x['AgeGrade'].replace('%','')) for x in subset])
                 
-       graph.range = [20, 60]
+       graph.range = [20, 80]
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
                                 graph_title = graph.title,
@@ -198,10 +198,10 @@ def runner_runs(filter_str=None):
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
 
     return render_template('runs.html',
-                file_modified_date=NR.get_last_update(),
-                data=rid,
-                filter=this_filter,
-                threshold='{:05.2f}'.format(rid.agegrade_theshold))
+        file_modified_date=NR.get_last_update(),
+        data=rid,
+        filter=this_filter,
+        threshold='{:05.2f}'.format(SELECTEDRUNNER.threshold))
 
 @app.route('/loginlog/', methods=['POST','GET'])
 def r_loginlog():
@@ -253,7 +253,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
-        session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
+        session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid, 'threshold': user.agegrade_theshold, 'icon': rid.icon}
         session['FRIENDS'] = Friend.get(user.username)
         return redirect(next_page)
 
