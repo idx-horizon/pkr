@@ -104,12 +104,12 @@ def r_graph():
 #       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'].title(), 
                 [float(x['AgeGrade'].replace('%','')) for x in subset],
-                dots_size=6)
+                dots_size=1)
                 
        if current_user.rid != SELECTEDRUNNER['rid']:
           graph.add(current_user.username.title(), 
                 [float(x['AgeGrade'].replace('%','')) for x in me.runs[:mx_runs]],
-                dots_size=6)
+                dots_size=1)
                 
                 
        for f in Friend.get(SELECTEDRUNNER['username']):
