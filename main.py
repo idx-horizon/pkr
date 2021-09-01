@@ -111,6 +111,7 @@ def r_graph():
                 [float(x['AgeGrade'].replace('%','')) for x in me.runs[:mx_runs]],
                 dots_size=6)
                 
+                
        for f in Friend.get(SELECTEDRUNNER['username']):
            print('Add to graph', f) 
  #          graph.add(f.f_username].title(), 
