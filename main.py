@@ -99,7 +99,7 @@ def r_graph():
        
 #       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'].title(), 
-                [float(x['AgeGrade'].replace('%','')) for x in subset]
+                [float(x['AgeGrade'].replace('%','')) for x in subset],
                 dots_size=6)
                 
        for f in Friend.get(SELECTEDRUNNER['username']):
