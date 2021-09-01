@@ -88,7 +88,7 @@ def r_graph():
     mx_runs = 100
     
     try:
-       graph = pygal.Line(style=pygal.style.DarkGreenStyle)
+       graph = pygal.Line(style=pygal.style.LightGreenStyle)
 #       graph.title = 'Languages over time.'
 #       graph.x_labels = ['2012','2013','2014','2015','2016']
 #       graph.add('Python',  [15, 31, 89, 200, 356])
@@ -99,7 +99,8 @@ def r_graph():
        
 #       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'].title(), 
-                [float(x['AgeGrade'].replace('%','')) for x in subset])
+                [float(x['AgeGrade'].replace('%','')) for x in subset]
+                dots_size=6)
                 
        for f in Friend.get(SELECTEDRUNNER['username']):
            print('Add to graph', f) 
