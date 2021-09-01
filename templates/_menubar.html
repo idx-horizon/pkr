@@ -14,7 +14,7 @@
 	  </li>
       
     {% else %}
-      <li class="nav-item dropdown dropright">
+      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDDMenuRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Runner: {{ selected_runner.username | title }} ({{ selected_runner.rid | safe }})
         </a>
@@ -38,9 +38,9 @@
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-          {% if (friends) and (friends | length > 0) %}
+        {% if (friends) and (friends | length > 0) %}
           <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          🔄 Switch runner</a>
+          🔄 Switch</a>
           <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner">
           <a class="dropdown-item" href="/switch?page={{ request.endpoint }}">⭐️ (self)</a>
           {% for f in friends %}
@@ -48,7 +48,7 @@
           {% endfor %}
           </div>
           <div class="dropdown-divider"></div>
-          {% endif %}
+        {% endif %}
           
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDDEventLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
