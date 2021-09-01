@@ -19,7 +19,13 @@ import datetime
 import pygal
 
 app_TRACKER = Tracker()
-
+def reset_session_selectedrunner():
+        session['SELECTEDRUNNER'] = {
+            'username': None, 
+            'rid': None, 
+            'threshold': None, 
+            'icon': None}
+            
 @app.shell_context_processor
 def make_shell_context():
     return {'db': db, 'User': User}
@@ -254,6 +260,7 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
+        set_session_selectedrunner()
         session['SELECTEDRUNNER'] = {
             'username': user.username, 
             'rid': user.rid, 
@@ -296,12 +303,20 @@ def r_switch(switch_to=None):
     print('** Came from page: ', return_to)
     
     if not switch_to:
-        session['SELECTEDRUNNER'] = {'username': current_user.username, 'rid': current_user.rid}
+        session['SELECTEDRUNNER'] = {
+            'username': current_user.username, 
+            'rid': current_user.rid, 
+            'threshold': user.agegrade_theshold, 
+            'icon': rid.icon}
         return redirect(url_for('runner_runs'))
     
     if switch_to.lower() in [x['f_username'] for x in session['FRIENDS']]:
         user = User.query.filter_by(username=switch_to.lower()).first()
-        session['SELECTEDRUNNER'] = {'username': user.username, 'rid': user.rid}
+        session['SELECTEDRUNNER'] = {
+            'username': current_user.username, 
+            'rid': current_user.rid, 
+            'threshold': user.agegrade_theshold, 
+            'icon': rid.icon}
         return redirect(url_for(return_to))
     else:
         return redirect(url_for('error'))
@@ -318,7 +333,7 @@ def change_pwd():
 @app.route('/logout')
 def logout():
     logout_user()
-    session['SELECTEDRUNNER'] = {'username': None, 'rid': None}
+    reset_session_selectedrunner()
     session['FRIENDS'] = None
     return redirect(url_for('home'))
 
