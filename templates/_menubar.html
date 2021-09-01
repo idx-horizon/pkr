@@ -25,7 +25,7 @@
           <a class="dropdown-item" href="/summaries/year">📅 Year summary</a>
           <a class="dropdown-item" href="/summaries/event">❇️ Event summary</a>
           <div class="dropdown-divider"></div>
-          {% if friends | length > 0 %}
+          {% if (friends and friends | length > 0) %}
           <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           🔄 Switch runner</a>
           <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner">
