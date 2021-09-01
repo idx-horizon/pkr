@@ -87,6 +87,10 @@ def r_graph():
     rid.get_runs(None,False)
     mx_runs = 100
     
+    if current_user.rid != SELECTEDRUNNER['rid']:
+        me = utils.Runner(current_user.rid)
+        me.get_runs(None, False)
+        
     try:
        graph = pygal.Line(style=pygal.style.LightGreenStyle)
 #       graph.title = 'Languages over time.'
@@ -100,6 +104,11 @@ def r_graph():
 #       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'].title(), 
                 [float(x['AgeGrade'].replace('%','')) for x in subset],
+                dots_size=6)
+                
+        if current_user.rid != SELECTEDRUNNER['rid']:
+           graph.add(current_user.username.title(), 
+                [float(x['AgeGrade'].replace('%','')) for x in me.runs[:mx_runs]],
                 dots_size=6)
                 
        for f in Friend.get(SELECTEDRUNNER['username']):
