@@ -88,7 +88,7 @@ def r_graph():
     mx_runs = 100
     
     try:
-       graph = pygal.Line()
+       graph = pygal.Line(style=pygal.style.DarkGreenStyle)
 #       graph.title = 'Languages over time.'
 #       graph.x_labels = ['2012','2013','2014','2015','2016']
 #       graph.add('Python',  [15, 31, 89, 200, 356])
