@@ -31,7 +31,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner">
           <a class="dropdown-item" href="/switch?page={{ request.endpoint }}">⭐️ (self)</a>
           {% for f in friends %}
-            <a class="dropdown-item" href="/switch/{{ f.f_username}}?page={{ request.endpoint }}">🏃‍♂️ {{ f.f_username | title}}</a>
+            <a class="dropdown-item" href="/switch/{{ f.f_username}}?page={{ request.endpoint }}">{{ f.f_icon }} {{ f.f_username | title}}</a>
           {% endfor %}
           </div>
           <div class="dropdown-divider"></div>
