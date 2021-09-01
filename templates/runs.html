@@ -54,7 +54,7 @@
 						  <span class="badge badge-pill badge-success">PB</span> 
 		  			    {% endif %}
 					</td>
-				<td {% if item['AgeGrade'] > ':05.2f%' | format(threshold) %}
+				<td {% if item['AgeGrade'] > (':05.2f%' | format(threshold)) %}
 						id="hilite-good"
 					{% endif %}>
 				{{ item['AgeGrade'] }}</td>
