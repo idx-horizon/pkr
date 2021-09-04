@@ -42,6 +42,8 @@ class Runner():
 		def get_local():
 			with open(local_fname, 'r', encoding='utf-8') as fh:
 				return json.loads(fh.read())
+		
+		print('** Looking for ', local_fname)
 						
 		if refresh or not os.path.exists(local_fname):
 			page = get(self.url).text
