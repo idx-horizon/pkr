@@ -43,7 +43,12 @@ class Runner():
 			with open(local_fname, 'r', encoding='utf-8') as fh:
 				return json.loads(fh.read())
 		
-		print('** Looking for ', local_fname)
+		print('** Filter: {} Refresh: {} - File {} in {} **'.format(
+					filter, refresh,
+					local_fname, 
+					os.getcwd()
+					)
+			)
 						
 		if refresh or not os.path.exists(local_fname):
 			page = get(self.url).text
