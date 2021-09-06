@@ -36,7 +36,8 @@ def inject_context():
         return dict(selected_runner=session['SELECTEDRUNNER'],
                 friends=session['FRIENDS'],
                 title = os.environ['APP_TITLE'])
-    except:
+    except Exception as e:
+        print('** inject_context Error: {}'.format(e))
         return redirect(url_for('logout'))
         
 @app.template_filter()
@@ -52,11 +53,12 @@ def error_404(error):
         print('URL request: {}'.format(request))
     except:
         pass
-    print('** Error: {}'.format(error))
+    print('** 404Error: {}'.format(error))
     return redirect('/error/404')
 
 @app.errorhandler(500)
 def error_500(error):
+    print('** 500Error: {}'.format(error))
     return redirect('/error/500')
 
 @app.route('/error/')
