@@ -28,14 +28,17 @@ def reset_session_selectedrunner():
             
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db, 'User': User}
+    return {'db': db, 'User': User, 'Friend': Friend}
 
 @app.context_processor
 def inject_context():
-    return dict(selected_runner=session['SELECTEDRUNNER'],
+    try:
+        return dict(selected_runner=session['SELECTEDRUNNER'],
                 friends=session['FRIENDS'],
                 title = os.environ['APP_TITLE'])
-    
+    except:
+        return redirect(url_for('logout'))
+        
 @app.template_filter()
 def format_datetime(value, 
                     format_src='%d/%m/%Y', 

@@ -34,8 +34,8 @@ class LoginLog(db.Model):
         LoginLog.query.filter(LoginLog.id > 0).delete()
         db.session.commit()
 
-    def get_log():
-        return LoginLog.query.all()
+    def get_log(lmt=20):
+        return LoginLog.query.order_by(id.desc()).limit(lmt)
         
     def add(username, ipaddress='unknown'):
         l = LoginLog(username=username,
