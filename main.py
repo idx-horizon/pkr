@@ -38,6 +38,9 @@ def inject_context():
                 title = os.environ['APP_TITLE'])
     except Exception as e:
         print('** inject_context Error: {}'.format(e))
+        logout_user()
+        reset_session_selectedrunner()
+        session['FRIENDS'] = None
         return redirect(url_for('logout'))
         
 @app.template_filter()
