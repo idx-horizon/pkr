@@ -194,6 +194,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                 data=data)
 
 @app.route('/stats', methods=['POST','GET'])
+@app.route('/stats/', methods=['POST','GET'])
 @login_required
 def runner_stats():
     SELECTEDRUNNER = session['SELECTEDRUNNER']
