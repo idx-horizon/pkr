@@ -43,6 +43,6 @@ def all_u():
                str(u.agegrade_theshold)))
                
 def agegrade(u,value):
-     to = User.query.filter_by(username=t).first()
+     to = User.query.filter_by(username=u).first()
      to.agegrade_theshold = value
      db.session.commit()
