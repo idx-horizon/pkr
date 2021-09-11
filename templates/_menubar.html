@@ -1,5 +1,5 @@
 {% if not current_user.is_anonymous %}	
-  <div class="text-left text-dark active" style="background-color: #4CAF50;">{{ current_user.icon }}  {{ current_user.username | title }} logged in</div>
+  <div class="text-left text-dark active" style="background-color: #4CAF50;">{{ current_user.icon }} &nbsp {{ current_user.username | title }} logged in</div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
   <a class="navbar-brand" href="/home">
@@ -19,13 +19,13 @@
           Runner: {{ selected_runner.username | title }} ({{ selected_runner.rid | safe }})
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDDMenuRunner">
-          <a class="dropdown-item" href="/stats">✅&nbsp Stats & challenges</a>
+          <a class="dropdown-item" href="/stats">✅ &nbsp Stats & challenges</a>
           <a class="dropdown-item" href="/runs">🏃 &nbsp Runs</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/summaries/year">📅 &nbsp Year summary</a>
-          <a class="dropdown-item" href="/summaries/event">❇️ Event summary</a>
+          <a class="dropdown-item" href="/summaries/event">❇️ &nbsp Event summary</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="/logout">❎ Logout</a>
+          <a class="dropdown-item" href="/logout">❎ &nbsp Logout</a>
         </div>
       </li>
     {% endif %}
@@ -40,11 +40,11 @@
     <ul class="navbar-nav">
         {% if (friends) and (friends | length > 0) %}
           <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          🔄 Switch</a>
+          🔄 &nbsp Switch</a>
           <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner">
           <a class="dropdown-item" href="/switch?page={{ request.endpoint }}">⭐️ (self)</a>
           {% for f in friends %}
-            <a class="dropdown-item" href="/switch/{{ f.f_username}}?page={{ request.endpoint }}">{{ f.f_icon }} {{ f.f_username | title}}</a>
+            <a class="dropdown-item" href="/switch/{{ f.f_username}}?page={{ request.endpoint }}">{{ f.f_icon }} &nbsp {{ f.f_username | title}}</a>
           {% endfor %}
           </div>
           <div class="dropdown-divider"></div>
