@@ -152,7 +152,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     this_country = country or 'uk'	
     this_filter = filter_str or ''
     this_method = 'startswith'
-    this_has_run = 'any'
+    this_has_run = 'all'
     
     if not current_user.is_anonymous:
         this_centre_on = centre_on_code or current_user.home_run
@@ -183,10 +183,15 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                     d.set_occurrences(occ)
                 except:
                     pass
+            else:
+                d.set_occurrences(0)
+                
         if this_has_run == 'never':
             data = [d for d in data if d.occurrences==0]
         elif this_has_run == 'singleton':
             data = [d for d in data if d.occurrences==1]
+        elif this_has_run == 'any':
+            data = [d for d in data if d.occurrences>0]
         
                     
     return render_template('events.html',
