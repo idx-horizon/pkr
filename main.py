@@ -168,7 +168,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     
     data=NR.getevents_by_filter(this_filter, country_dict[this_country]['id'], this_method, this_centre_on)
     data = sorted(data, key=attrgetter('distance'))
-
+        
     if not current_user.is_anonymous:
         SELECTEDRUNNER = session['SELECTEDRUNNER']
         base_runner = SELECTEDRUNNER['rid'] or current_user.rid
@@ -183,6 +183,11 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                     d.set_occurrences(occ)
                 except:
                     pass
+        if this_has_run == 'never':
+            data = [d for d in data if d['occurences']==0]
+        elif this_has_run == 'singleton':
+            data = [d for d in data if d['occurences']==1]
+        
                     
     return render_template('events.html',
                 filter=this_filter, 

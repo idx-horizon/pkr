@@ -60,11 +60,7 @@
  
     </tr>
 
-     {% if has_run == "never" %}
-         for item in data if item.occurences == 0
-     {% else %}
-         for item in data
-     {% endif %}
+     {% for item in data %}
         <tr>
             {% if not current_user.is_anonymous %}
                  <td>{%if item.hasrun == "Yes" %}
