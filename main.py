@@ -146,9 +146,7 @@ def home():
 #@app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
 #def r_events(country=None, filter_str=None, centre_on_code=None):
 def r_events():
-    print('** {} - r_events {} - centre {}'.format( 
-            request.method, request.url, 
-            centre_on_code))
+#    print('** {} - r_events {}'.format(request.method, request.url))
             
 #    this_country = country or 'uk'	
 #    this_filter = filter_str or ''
