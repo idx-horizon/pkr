@@ -156,7 +156,7 @@ def r_events():
     this_has_run = 'all'
     
     if not current_user.is_anonymous:
-        this_centre_on = centre_on_code or current_user.home_run
+        this_centre_on = current_user.home_run
     else:
 #        this_centre_on = centre_on_code or 'bushy'
         this_centre_on = 'bushy'
