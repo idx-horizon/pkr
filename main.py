@@ -126,7 +126,7 @@ def r_graph():
  #          graph.add(f.f_username].title(), 
  #               [float(x['AgeGrade'].replace('%','')) for x in subset])
                 
-       graph.range = [20, 80]
+       graph.range = [25, 75]
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
                                 graph_title = graph.title,
@@ -144,20 +144,24 @@ def home():
 #@app.route('/events/<country>/', methods=['POST','GET'])
 #@app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
 #@app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
-def r_events(country=None, filter_str=None, centre_on_code=None):
+#def r_events(country=None, filter_str=None, centre_on_code=None):
+def r_events():
     print('** {} - r_events {} - centre {}'.format( 
             request.method, request.url, 
             centre_on_code))
             
-    this_country = country or 'uk'	
-    this_filter = filter_str or ''
-    this_method = 'startswith'
+#    this_country = country or 'uk'	
+#    this_filter = filter_str or ''
+    this_country = 'uk'	
+    this_filter  = ''
+    this_method  = 'startswith'
     this_has_run = 'all'
     
     if not current_user.is_anonymous:
         this_centre_on = centre_on_code or current_user.home_run
     else:
-        this_centre_on = centre_on_code or 'bushy'
+#        this_centre_on = centre_on_code or 'bushy'
+        this_centre_on = 'bushy'
     
     if request.method.upper() == 'POST':
       this_filter  = str(request.form['filter_str']).lower()
