@@ -60,10 +60,8 @@
  
     </tr>
 
-     {% if has_run == 'never' %}
+     {% if has_run == "never" %}
          {% for item in data if item.occurences == 0 %}
-     {% elif has_run == 'singleton' %}
-         {% for item in data if item.occurences == 1 %}
      {% else %}
          {% for item in data %}
      {% endif %}
