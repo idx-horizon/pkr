@@ -140,14 +140,14 @@ def home():
 
     
 @app.route('/events/', methods=['POST','GET'])
-@app.route('/events/<country>/', methods=['POST','GET'])
-@app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
-@app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
+#@app.route('/events/<country>/', methods=['POST','GET'])
+#@app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
+#@app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None, centre_on_code=None):
     SELECTEDRUNNER = session['SELECTEDRUNNER']
-    print('r_events {} - method {} - centre {}'.format( 
-            request.url, 
+    print('** {} - r_events {} - centre {}'.format( 
             request.method,
+            request.url, 
             centre_on_code))
     this_country = country or 'uk'	
     this_filter = filter_str or ''
@@ -163,7 +163,8 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
       this_country = str(request.form['country_code'])
       this_centre_on = str(request.form['centre_on_code'])
 
-    print('** has_run args', request.args.get('filter','not set'))
+    print('** has_run args', request.form['has_run'])
+    #args.get('filter','not set'))
     print('** all args', request.args)
     
     data=NR.getevents_by_filter(this_filter, country_dict[this_country]['id'], this_method, this_centre_on)
