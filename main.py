@@ -152,6 +152,8 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
     this_country = country or 'uk'	
     this_filter = filter_str or ''
     this_method = 'startswith'
+    this_has_run = 'All'
+    
     if not current_user.is_anonymous:
         this_centre_on = centre_on_code or current_user.home_run
     else:
