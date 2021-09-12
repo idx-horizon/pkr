@@ -61,9 +61,9 @@
     </tr>
 
      {% if has_run == "never" %}
-         {% for item in data if item.occurences == 0 %}
+         for item in data if item.occurences == 0
      {% else %}
-         {% for item in data %}
+         for item in data
      {% endif %}
         <tr>
             {% if not current_user.is_anonymous %}
