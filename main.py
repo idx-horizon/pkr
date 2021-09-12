@@ -140,9 +140,9 @@ def home():
 
     
 @app.route('/events/', methods=['POST','GET'])
-#@app.route('/events/<country>/', methods=['POST','GET'])
-#@app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
-#@app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
+@app.route('/events/<country>/', methods=['POST','GET'])
+@app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
+@app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None, centre_on_code=None):
     print('** {} - r_events {} - centre {}'.format( 
             request.method, request.url, 
