@@ -184,9 +184,9 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                 except:
                     pass
         if this_has_run == 'never':
-            data = [d for d in data if d['occurences']==0]
+            data = [d for d in data if d.occurrences==0]
         elif this_has_run == 'singleton':
-            data = [d for d in data if d['occurences']==1]
+            data = [d for d in data if d.occurrences==1]
         
                     
     return render_template('events.html',
