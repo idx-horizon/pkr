@@ -56,12 +56,12 @@ def error_404(error):
         print('URL request: {}'.format(request))
     except:
         pass
-    print('** 404Error: {}'.format(error))
+    print('** 404 Error: {}'.format(error))
     return redirect('/error/404')
 
 @app.errorhandler(500)
 def error_500(error):
-    print('** 500Error: {}'.format(error))
+    print('** 500 Error: {}'.format(error))
     return redirect('/error/500')
 
 @app.route('/error/')
@@ -88,12 +88,13 @@ def apilog():
         return render_template('apilog.html', payload=payload)
 
 @app.route('/graph')
+@app.route('/graph/')
 def r_graph():
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
     rid.get_runs(None,False)
-    mx_runs = 100
+    mx_runs = 52
     
     if current_user.rid != SELECTEDRUNNER['rid']:
         me = utils.Runner(current_user.rid)
@@ -140,9 +141,9 @@ def home():
 
     
 @app.route('/events/', methods=['POST','GET'])
-@app.route('/events/<country>/', methods=['POST','GET'])
-@app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
-@app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
+#@app.route('/events/<country>/', methods=['POST','GET'])
+#@app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
+#@app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
 def r_events(country=None, filter_str=None, centre_on_code=None):
     print('** {} - r_events {} - centre {}'.format( 
             request.method, request.url, 
@@ -161,10 +162,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
       this_method  = str(request.form['filter_method'])
       this_country = str(request.form['country_code'])
       this_centre_on = str(request.form['centre_on_code'])
-
-      print('** has_run args:', request.form['has_run'])
-    #args.get('filter','not set'))
-      print('** all args', request.args)
+      this_has_run = str(request.form['has_run'])
     
     data=NR.getevents_by_filter(this_filter, country_dict[this_country]['id'], this_method, this_centre_on)
     data = sorted(data, key=attrgetter('distance'))
@@ -192,6 +190,7 @@ def r_events(country=None, filter_str=None, centre_on_code=None):
                 country=this_country,
                 centres=centres.keys(),
                 centre_on=this_centre_on,
+                has_run=this_has_run, 
                 data=data)
 
 @app.route('/stats', methods=['POST','GET'])
