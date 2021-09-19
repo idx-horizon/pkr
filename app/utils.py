@@ -235,8 +235,8 @@ class Runner():
 			return '⏱ 100% - 60 out of 60'
 		else:  
 		    return '{} out of 60~Missing: {}'.format(
-							secs, 
-							', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
+						secs, 
+						', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
 	
 		
