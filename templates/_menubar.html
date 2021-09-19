@@ -1,6 +1,6 @@
 {% if not current_user.is_anonymous %}	
   <div class="text-left text-dark active" style="background-color: #4CAF50;">Logged in as {{ current_user.icon }} &nbsp {{ current_user.username | title }} 
-  <a class="nav-item" href="/logout">(Logout)</a>
+  <a class="nav-item" href="/logout"><BR>(Logout)</a>
   </div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
