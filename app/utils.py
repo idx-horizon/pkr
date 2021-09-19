@@ -141,7 +141,7 @@ class Runner():
 #							
 #						)
 						
-        challenges['Stopwatch']	= self.stopwatch()
+		challenges['Stopwatch']	= self.stopwatch()
         
 		challenges['Alphabet'] = '{} letters~Missing: {}'.format(
 							len(self.letters),
