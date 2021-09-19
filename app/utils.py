@@ -232,7 +232,7 @@ class Runner():
 	def stopwatch(self):
 		secs = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')})
 		if secs == 60:
-			return '⏱ 100% - 60 out of 69'
+			return '⏱ 100% - 60 out of 60'
 		else:  
 		    return '{} out of 60~Missing: {}'.format(
 							secs, 
