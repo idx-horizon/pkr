@@ -75,9 +75,9 @@ class Runner():
 		self.caption = data['caption']
 		
 		self.threshold = '00:00'
-		if self.name.lower() == 'ian': self.threshold = '32:00'
-		if self.name.lower() == 'caroline': self.threshold = '35:00'
-		if self.name.lower() == 'michael': self.threshold = '25:00'
+#		if self.name.lower() == 'ian': self.threshold = '32:00'
+#		if self.name.lower() == 'caroline': self.threshold = '35:00'
+#		if self.name.lower() == 'michael': self.threshold = '25:00'
 				
 		
 		event_counter = self.count_by()
@@ -135,10 +135,14 @@ class Runner():
 						bingo.most_common(1)[0][1], 
 						bingo.most_common(1)[0][0]) 
 		
-		challenges['Stopwatch'] = '{} out of 60~Missing: {}'.format(
-							len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')}),
-							', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
-						)
+#		challenges['Stopwatch'] = '{} out of 60~Missing: {}'.format(
+#							len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')}),
+#							', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
+#							
+#						)
+						
+        challenges['Stopwatch']	= self.stopwatch()
+        
 		challenges['Alphabet'] = '{} letters~Missing: {}'.format(
 							len(self.letters),
 							', '.join(sorted(self.missing))
@@ -191,6 +195,7 @@ class Runner():
 		challenges['Current tourism streak'] = streak
 		challenges['Longest tourism streak'] = 'tbc'
 		challenges['Total distance travelled'] = 'tbc'
+		
 		challenges['Countries visited'] = '{} ({})'.format(len(self.countries),  ', '.join(self.countries))
 		
 		for k,v in [('Time', 'Time'), ('AgeGrade','Age grading'), ('Pos', 'Position')]:
@@ -223,6 +228,17 @@ class Runner():
 			return 'First after lockdown'
 		else:
 			return '-'
+
+	def stopwatch(self):
+		secs = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')})
+		if secs == 60:
+			return '⏱ 100% - 60 out of 69'
+		else:  
+		    return '{} out of 60~Missing: {}'.format(
+							secs, 
+							', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
+						)
+	
 		
 	def cowell(self):
 		levels = {0: '-',
