@@ -6,20 +6,13 @@ import pprint as pp
 
 try:
 	from app.resources import country_dict, centres
-#	from app.country_list import country_dict, centres
 	from app.geo import measure
 except:
 	from resources import country_dict, centres
-#	from country_list import country_dict, centres
 	from geo import measure
 
 cJUNIOR = 2
 cADULT = 1
-#centres = {
-#        'bromley': (51.386539,0.022874),
-#		'banstead': (51.307648, -0.184225),
-#		'lloyd':    (51.364807,-0.079973)
-#        }
 
 class Event():
     def __init__(self, event, centre_on='bromley'):
@@ -100,11 +93,10 @@ def getevents(js, countrycode, seriesid):
 def get_last_newruns(lastlimit=10, country_code=97, centre_on='bromley'):
     js = getfile(False)
 
-    uk = getevents(js, country_code, cADULT)
+    cc_ev = getevents(js, country_code, cADULT)
 
     subset = []
-    for ev in sorted(uk, key=lambda k: k['id'])[-lastlimit:]:
-#    for ev in uk[-lastlimit:]:
+    for ev in sorted(cc_ev, key=lambda k: k['id'])[-lastlimit:]:
         subset.append(Event(ev,centre_on))
 
     return subset
