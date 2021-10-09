@@ -64,7 +64,11 @@ class Runner():
 		
 		self.updated_dt = get_file_details(local_fname)
 		self.run_count = len(data['runs'])
-		self.fullname = data['title'][:data['title'].index('-')].strip()
+		try:
+			self.fullname = data['title'][:data['title'].index('-')].strip()
+		except:
+			self.fullname = data['title']
+
 		self.name = self.fullname[:self.fullname.index(' ')]
 		if not filter:
 			self.runs = data['runs']
@@ -74,11 +78,7 @@ class Runner():
 		self.countries = countries
 		self.caption = data['caption']
 		
-		self.threshold = '00:00'
-#		if self.name.lower() == 'ian': self.threshold = '32:00'
-#		if self.name.lower() == 'caroline': self.threshold = '35:00'
-#		if self.name.lower() == 'michael': self.threshold = '25:00'
-				
+		self.threshold = '00:00'				
 		
 		event_counter = self.count_by()
 		self.missing = {x.upper() for x in event_counter if event_counter[x]==0}
