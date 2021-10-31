@@ -41,7 +41,7 @@ def inject_context():
         logout_user()
         reset_session_selectedrunner()
         session['FRIENDS'] = None
-        return redirect(url_for('logout'))
+        return redirect(url_for('home'))
         
 @app.template_filter()
 def format_datetime(value, 
@@ -141,15 +141,7 @@ def home():
 
     
 @app.route('/events/', methods=['POST','GET'])
-#@app.route('/events/<country>/', methods=['POST','GET'])
-#@app.route('/events/<country>/<filter_str>/', methods=['POST','GET'])
-#@app.route('/events/<country>/<filter_str>/<centre_on_code>/', methods=['POST','GET'])
-#def r_events(country=None, filter_str=None, centre_on_code=None):
 def r_events():
-#    print('** {} - r_events {}'.format(request.method, request.url))
-            
-#    this_country = country or 'uk'	
-#    this_filter = filter_str or ''
     this_country = 'uk'	
     this_filter  = ''
     this_method  = 'startswith'
@@ -158,7 +150,6 @@ def r_events():
     if not current_user.is_anonymous:
         this_centre_on = current_user.home_run
     else:
-#        this_centre_on = centre_on_code or 'bushy'
         this_centre_on = 'bushy'
     
     if request.method.upper() == 'POST':
@@ -254,7 +245,7 @@ def r_loginlog():
 @app.route('/newevents/<country>/', methods=['POST','GET'])
 @app.route('/newevents/<country>/<limit>/', methods=['POST','GET'])
 def r_newevents(limit=10, country=None):
-    this_limit =int(limit) or 10
+    this_limit =int(limit) or 15
     this_country = country or 'uk'	
 
     
