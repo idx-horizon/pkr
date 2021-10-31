@@ -367,6 +367,9 @@ def logout():
 def user_details():
     return render_template('user.html')
 
+@app.route('/image')
+def user_details():
+    return render_template('image.html')
 
 # def get_app_title():
 #    return os.environ['APP_TITLE'] 
