@@ -368,7 +368,7 @@ def user_details():
     return render_template('user.html')
 
 @app.route('/image')
-def user_details():
+def r_image():
     return render_template('image.html')
 
 # def get_app_title():
