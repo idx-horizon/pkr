@@ -36,7 +36,7 @@
     <thead class="thead-light text-left">
     <tr>
         <th width="10%">#</th>
-        <th width="60%">Name</th>
+        <th width="45%">Name</th>
         <th width="15%">First Run</th>
         <th width="15%">Distance</th>
         <th width="15%">Map</th>
@@ -46,7 +46,7 @@
         <tr>
             <td>{{ item.evid }}</td>
             <td><a target="_blank", href="{{ item.url_course }}">{{ item.evlongname }}</td>
-            <tb>{{ item.first_run }}</td>
+            <td>{{ item.first_run }}</td>
             <td>{{ item.distance }}</td>
             <td><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
         </tr>
