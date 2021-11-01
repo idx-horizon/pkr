@@ -20,6 +20,7 @@ class Event():
         self.evname = event['properties']['eventname']
         self.evshortname = event['properties']['EventShortName']
         self.evlongname = event['properties']['EventLongName']
+        self.first_run = event['properties']['first_run']
         self.latitude = event['geometry']['coordinates'][1]
         self.longitude = event['geometry']['coordinates'][0]        
         self.domain = 'https://' + [country_dict[ele]['base'] for ele in country_dict if country_dict[ele]['id']==event['properties']['countrycode']][0] +'/'
@@ -94,7 +95,7 @@ def getevents(js, countrycode, seriesid):
     events = [x for x in js['events']['features'] if
             x['properties']['countrycode'] == countrycode and x['properties']['seriesid'] == seriesid]
     anni = get_anniversaries()
-    print('** first anni',anni[0])
+#    print('** first anni',anni[0])
     for e in events:
         try:
             first_run = [x['First Run'] for x in anni if x['Event']==e['properties']['EventLongName']][0]
@@ -103,7 +104,7 @@ def getevents(js, countrycode, seriesid):
             first_run='n/a'
 
         e['properties']['first_run']=first_run	
-    print('** last event',e)
+ #   print('** last event',e)
     return events
 
 def get_last_newruns(lastlimit=10, country_code=97, centre_on='bromley'):
