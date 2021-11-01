@@ -64,7 +64,7 @@ def get(url):
 def get_last_update():
     return datetime.datetime.fromtimestamp(os.path.getctime('events.json')).strftime('%d-%b-%Y %H:%M')
 
-def get_anniversaris():
+def get_anniversaries():
     with open('anniversaries.json','r') as fin:
         return fin.readlines()
         
