@@ -67,7 +67,7 @@ def get_last_update():
 
 def get_anniversaries():
     with open('anniversaries.json','r') as fin:
-        return fin.readlines()
+        return json.loads(fin.readlines()[0])
         
 def getfile(refresh=False):
     fn_events ='events.json'
