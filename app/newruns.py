@@ -64,6 +64,10 @@ def get(url):
 def get_last_update():
     return datetime.datetime.fromtimestamp(os.path.getctime('events.json')).strftime('%d-%b-%Y %H:%M')
 
+def get_anniversaris():
+    with open('anniversaries.json','r') as fin:
+        return fin.readlines()
+        
 def getfile(refresh=False):
     fn_events ='events.json'
     if refresh:
@@ -87,8 +91,20 @@ def getevents_by_filter(filter_str, countrycode='97', method='startswith', centr
 
 
 def getevents(js, countrycode, seriesid):
-    return [x for x in js['events']['features'] if
+    events = [x for x in js['events']['features'] if
             x['properties']['countrycode'] == countrycode and x['properties']['seriesid'] == seriesid]
+    anni = get_anniversaries()
+
+    for e in events:
+        try:
+            first_run = [x['First Run'] for x in anni if x['Event']==e['properties']['EventLongName']][0]
+        except:
+#            print('** Unable to get {}'.format(e['properties']['EventLongName']))
+            first_run=None
+
+        e['properties']['first_run']=first_run	
+    
+    return events
 
 def get_last_newruns(lastlimit=10, country_code=97, centre_on='bromley'):
     js = getfile(False)
