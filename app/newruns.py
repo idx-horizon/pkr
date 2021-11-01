@@ -94,16 +94,16 @@ def getevents(js, countrycode, seriesid):
     events = [x for x in js['events']['features'] if
             x['properties']['countrycode'] == countrycode and x['properties']['seriesid'] == seriesid]
     anni = get_anniversaries()
-
+    print('** first anni',anni[0])
     for e in events:
         try:
             first_run = [x['First Run'] for x in anni if x['Event']==e['properties']['EventLongName']][0]
         except:
 #            print('** Unable to get {}'.format(e['properties']['EventLongName']))
-            first_run=None
+            first_run='n/a'
 
         e['properties']['first_run']=first_run	
-    
+    print('** last event',e)
     return events
 
 def get_last_newruns(lastlimit=10, country_code=97, centre_on='bromley'):
