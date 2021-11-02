@@ -47,8 +47,11 @@ def inject_context():
 def format_datetime(value, 
                     format_src='%d/%m/%Y', 
                     format_out='%d-%b-%Y'):
-    x = datetime.datetime.strptime(value, format_src)
-    return x.strftime(format_out)
+    try:
+        x = datetime.datetime.strptime(value, format_src)
+        return x.strftime(format_out)
+    except:
+        return value
     
 @app.errorhandler(404)
 def error_404(error):
