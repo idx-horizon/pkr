@@ -55,7 +55,7 @@
              <th width="10%">Run?</th>
         {% endif %}
         <th width="55%">Name</th>
-        <th width="15%">First Run</th>
+        <th width="15%">First Event</th>
         <th width="10%">Distance</th>
         <th width="10%">Map</th>
  
@@ -72,7 +72,7 @@
                     {% endif %}</td>
             {% endif %}   
             <td><a target="_blank" href="{{ item.url_course }}">{{ item.evshortname }}</td>
-            <td>{{ item.first_run }}</td>
+            <td>{{ item.first_run | format_datetime }}</td>
             <td>{{ item.distance|round(1,'floor') }}</td>
             <td><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
         </tr>
