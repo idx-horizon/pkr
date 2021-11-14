@@ -80,9 +80,9 @@ class Runner():
 		
 		self.threshold = '00:00'				
 		
-		event_counter = self.count_by()
-		self.missing = {x.upper() for x in event_counter if event_counter[x]==0}
-		self.letters = {x:event_counter[x] for x in event_counter if event_counter[x]!=0}
+	#	event_counter = self.count_by()
+	#	self.missing = {x.upper() for x in event_counter if event_counter[x]==0}
+	#	self.letters = {x:event_counter[x] for x in event_counter if event_counter[x]!=0}
 		
 		event_occ = Counter(x['Event'] for x in self.runs)
 		for x in self.runs:
@@ -135,18 +135,14 @@ class Runner():
 						bingo.most_common(1)[0][1], 
 						bingo.most_common(1)[0][0]) 
 		
-#		challenges['Stopwatch'] = '{} out of 60~Missing: {}'.format(
-#							len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')}),
-#							', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
-#							
-#						)
-						
 		challenges['Stopwatch']	= self.stopwatch()
-        
-		challenges['Alphabet'] = '{} letters~Missing: {}'.format(
-							len(self.letters),
-							', '.join(sorted(self.missing))
-						)
+		challenges['Alphabet'] = self.alphabet()
+
+#		challenges['Alphabet'] = '{} letters~Missing: {}'.format(
+#							len(self.letters),
+#							', '.join(sorted(self.missing))
+#						)
+
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		
 		key = max({x for x in self.stats if x.startswith('_YR_')}, 
@@ -228,6 +224,21 @@ class Runner():
 			return 'First after lockdown'
 		else:
 			return '-'
+
+	def alphabet(self):
+		#alphabet (discounts X, so only 25 letters)
+		event_counter = self.count_by()
+		missing = {x.upper() for x in event_counter if event_counter[x]==0 and x != 'x'}
+		percent = (25 - len(missing))/25
+		if percent != 1:
+			return '🔤 100% - All letters (except X)'
+		else:
+			return '{:0.0%} {} letters (missing {})'.format(
+							percent,
+							25 - len(missing),
+							','.join(sorted(missing))
+							)
+
 
 	def stopwatch(self):
 		secs = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')})
