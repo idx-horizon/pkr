@@ -227,7 +227,7 @@ class Runner():
 		if len(missing) == 0:
 			return '🔤 100% - All letters (except X)'
 		else:
-			return '{:0.0%} {} letters (missing {})'.format(
+			return '🔤 {:0.0%} {} letters (missing {})'.format(
 							(25 - len(missing))/25,
 							25 - len(missing),
 							','.join(sorted(missing))
@@ -238,7 +238,7 @@ class Runner():
 		if secs == 60:
 			return '⏱ 100% - 60 out of 60'
 		else:  
-		    return '{} out of 60~Missing: {}'.format(
+		    return '⏱ {} out of 60~Missing: {}'.format(
 						secs, 
 						', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
