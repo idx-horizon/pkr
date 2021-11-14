@@ -12,14 +12,13 @@ def get_run_links(pagetext):
 	soup = bs4.BeautifulSoup(pagetext,'html5lib')
 	y = soup.find_all('table')[2]
 	ass = y.find_all('a')
+	country_codes = list(set([ x.get('href').split('/')[2].split('.')[-1] for x in ass]))
 	links = []
-	for link in set([x for x in ass if 'runSeqNumber' in x.get('href')]): 
-		href = link.get('href').split('/')[2].split('.')[-1]
-#		country = app.country_list.c_dict[href]['name']
-		country = app.resources.c_dict[href]['name']
+	for c in country_codes:
+		country = app.resources.country_dict[c]['name']
 		if country not in links:
 			links.append(country)
-	
+			
 	return links
 
 
