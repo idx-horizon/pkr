@@ -138,11 +138,6 @@ class Runner():
 		challenges['Stopwatch']	= self.stopwatch()
 		challenges['Alphabet'] = self.alphabet()
 
-#		challenges['Alphabet'] = '{} letters~Missing: {}'.format(
-#							len(self.letters),
-#							', '.join(sorted(self.missing))
-#						)
-
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		
 		key = max({x for x in self.stats if x.startswith('_YR_')}, 
@@ -229,16 +224,14 @@ class Runner():
 		#alphabet (discounts X, so only 25 letters)
 		event_counter = self.count_by()
 		missing = {x.upper() for x in event_counter if event_counter[x]==0 and x != 'x'}
-		percent = (25 - len(missing))/25
-		if percent != 1:
+		if len(missing) == 0:
 			return '🔤 100% - All letters (except X)'
 		else:
 			return '{:0.0%} {} letters (missing {})'.format(
-							percent,
+							(25 - len(missing))/25,
 							25 - len(missing),
 							','.join(sorted(missing))
 							)
-
 
 	def stopwatch(self):
 		secs = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')})
