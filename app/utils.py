@@ -135,9 +135,9 @@ class Runner():
 						bingo.most_common(1)[0][1], 
 						bingo.most_common(1)[0][0]) 
 		
-		challenges['Stopwatch']	= self.stopwatch()
-		challenges['Alphabet'] = self.alphabet()
-		challenges['Position 00-99'] = self.position()
+		challenges['Alphabet A-Z']    = self.alphabet()
+		challenges['Stopwatch 00-59'] = self.stopwatch()
+		challenges['Position 00-99']  = self.position()
 
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		
