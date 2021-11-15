@@ -240,7 +240,7 @@ class Runner():
 			return '⏱ 100% - 60 out of 60'
 		else:  
 			return '⏱ {:0.0%} {} out of 60~Missing: {}'.format(
-		 				(60 - k)/60,
+		 				k/60,
 						k, 
 						','.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
@@ -250,7 +250,7 @@ class Runner():
 			return '💯 100% - 100 out of 100'
 		else:  
 			return '💯 {:0.0%} {} out of 100~Missing: {}'.format(
-						(100 - k)/100,
+						k/100,
 						k, 
 						','.join(sorted({x.replace('_POS_','') for x in self.stats if self.stats[x]==0 and x.startswith('_POS_')})) 
 						)
