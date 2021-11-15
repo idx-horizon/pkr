@@ -344,7 +344,7 @@ class Runner():
 		stats.update('_PB' for t in self.runs if t['PB?']!='')
 		stats.update('_YR_' + t['Run Date'][-4:] for t in self.runs)
 		stats.update('_EVENT_' + t['Event'] for t in self.runs)
-		stats.update('_POS_' + t['Pos'][-2:] for t in self.runs)
+		stats.update('_POS_' + t['Pos'][-2:].zfill(2) for t in self.runs)
 		return stats
 		
 	def count_by(self):
