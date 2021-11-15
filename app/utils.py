@@ -137,6 +137,7 @@ class Runner():
 		
 		challenges['Stopwatch']	= self.stopwatch()
 		challenges['Alphabet'] = self.alphabet()
+		challenges['Position 00-99'] = self.position()
 
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		
@@ -242,6 +243,15 @@ class Runner():
 						secs, 
 						', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
+	def position(self):
+		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_POS_')})
+		if k == 100:
+			return '💯 100% - 60 out of 60'
+		else:  
+		    return '💯 {} out of 100~Missing: {}'.format(
+						secs, 
+						', '.join(sorted({x.replace('_POS_','') for x in self.stats if self.stats[x]==0 and x.startswith('_POS_')})) 
+						)
 	
 		
 	def cowell(self):
@@ -327,10 +337,12 @@ class Runner():
 	
 	def get_stats(self):
 		stats = Counter({'_SEC_{:02}'.format(s):0 for s in range(60)})
+		stats.update({'_POS_{:02}'.format(s):0 for s in range(100)})
 		stats.update('_SEC_' + t['Time'][-2:] for t in self.runs) 	
 		stats.update('_PB' for t in self.runs if t['PB?']!='')
 		stats.update('_YR_' + t['Run Date'][-4:] for t in self.runs)
 		stats.update('_EVENT_' + t['Event'] for t in self.runs)
+		stats.update('_POS_' + t['Pos'][-2:] for t in self.runs)
 		return stats
 		
 	def count_by(self):
