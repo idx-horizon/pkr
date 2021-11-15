@@ -240,7 +240,7 @@ class Runner():
 			return '⏱ 100% - 60 out of 60'
 		else:  
 		    return '⏱ {} out of 60~Missing: {}'.format(
-						secs, 
+						k, 
 						', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
 	def position(self):
@@ -249,7 +249,7 @@ class Runner():
 			return '💯 100% - 100 out of 100'
 		else:  
 		    return '💯 {} out of 100~Missing: {}'.format(
-						secs, 
+						k, 
 						', '.join(sorted({x.replace('_POS_','') for x in self.stats if self.stats[x]==0 and x.startswith('_POS_')})) 
 						)
 	
