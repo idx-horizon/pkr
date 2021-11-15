@@ -119,8 +119,6 @@ class Runner():
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
 		challenges['Total number of runs'] = self.run_count
 		challenges['Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
-		challenges['Cowell Club'] = self.cowell()
-		challenges['Lockdown'] = self.lockdown()
 		
 		challenges['Number of PBs'] = self.stats['_PB']
 		last_PB_ix = find_in_list_dict(self.runs,'PB?','PB')  or 0
@@ -138,6 +136,8 @@ class Runner():
 		challenges['Alphabet A-Z']    = self.alphabet()
 		challenges['Stopwatch 00-59'] = self.stopwatch()
 		challenges['Position 00-99']  = self.position()
+		challenges['Cowell Club'] = self.cowell()
+		challenges['Lockdown'] = self.lockdown()
 
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		
@@ -235,8 +235,8 @@ class Runner():
 							)
 
 	def stopwatch(self):
-		secs = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')})
-		if secs == 60:
+		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')})
+		if k == 60:
 			return '⏱ 100% - 60 out of 60'
 		else:  
 		    return '⏱ {} out of 60~Missing: {}'.format(
@@ -246,7 +246,7 @@ class Runner():
 	def position(self):
 		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_POS_')})
 		if k == 100:
-			return '💯 100% - 60 out of 60'
+			return '💯 100% - 100 out of 100'
 		else:  
 		    return '💯 {} out of 100~Missing: {}'.format(
 						secs, 
