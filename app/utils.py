@@ -150,9 +150,10 @@ class Runner():
 
 		times = Counter(x['Time'] for x in self.runs)
 		max_freq = max(times.values())
-		challenges['Most frequent time'] = '{} - {}'.format(
-								max_freq, 
-								', '.join(sorted([x for x in times if times[x]==max_freq]))
+		times_done_max_freq = sorted([x for x in times if times[x]==max_freq])
+		challenges['Most frequent time'] = '{} - {} times'.format(
+								', '.join(times_done_max_freq),
+								max_freq
 								)
 		
 		
