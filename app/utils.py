@@ -128,10 +128,11 @@ class Runner():
 									last_PB_ix) 
 		
 		bingo = Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
-		challenges['Calendar Bingo'] = '{}~Most common date: {} times on {}'.format(
+		challenges['Calendar Bingo'] = '📅 {:0.0%} - {} out of 365 - most common {} ({} times)'.format(
+						len(bingo)/365,
 						len(bingo), 
-						bingo.most_common(1)[0][1], 
-						bingo.most_common(1)[0][0]) 
+						bingo.most_common(1)[0][0], 
+						bingo.most_common(1)[0][1]) 
 		
 		challenges['Alphabet A-Z']    = self.alphabet()
 		challenges['Stopwatch 00-59'] = self.stopwatch()
