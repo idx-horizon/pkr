@@ -227,7 +227,7 @@ class Runner():
 		matching = set([int(x['Run Number']) for x in self.runs if int(x['Run Number']) in fibseq])
 		missing = set(fibseq) - set(matching)
 		if len(fibseq) == len(matching):
-			return '100% - All numbers in first {} numbes of Fibonacci series'.format(len(fibseq)
+			return '100% - All numbers in first {} numbes of Fibonacci series'.format(len(fibseq))
 		else:
 			return '{:0.0%} - missing {} out of {}~Missing: {}'.format(
 							len(matching)/len(fibseq),
