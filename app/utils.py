@@ -136,9 +136,10 @@ class Runner():
 		challenges['Alphabet A-Z']    = self.alphabet()
 		challenges['Stopwatch 00-59'] = self.stopwatch()
 		challenges['Position 00-99']  = self.position()
-		challenges['Fibonacci'] = self.fib()
+		challenges['Fibonacci series'] = self.num_series('Fibonacci')
+		challenges['Primes series']    = self.num_series('Prime')
 		challenges['Cowell Club'] = self.cowell()
-		challenges['Lockdown'] = self.lockdown()
+		challenges['Lockdown']    = self.lockdown()
 
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		
@@ -222,19 +223,24 @@ class Runner():
 		else:
 			return '-'
 
-	def fib(self):
-		fibseq = [1,2,3,5,8,13,21,34,55,89,144,233,377,630]
-		matching = set([int(x['Run Number']) for x in self.runs if int(x['Run Number']) in fibseq])
-		missing = set(fibseq) - set(matching)
-		if len(fibseq) == len(matching):
-			return '💹 100% - All numbers in first {} numbes of Fibonacci series'.format(len(fibseq))
+	def num_series(self,name):
+		series_dict = {
+			'Fibonacci':  [1,2,3,5,8,13,21,34,55,89,144,233,377,630],
+			'Prime':      [2,3,5,7,11,13,17,17,19,23,29,31,37,41,43,47]
+		}
+		series = series_dict[name]
+		matching = set([int(x['Run Number']) for x in self.runs if int(x['Run Number']) in series])
+		missing = set(series) - set(matching)
+		if len(seq) == len(matching):
+			return '💹 100% - (first {} numbers of {} series)'.format(len(series),name)
 		else:
 			return '💹 {:0.0%} - missing {} out of {}~Missing: {}'.format(
-							len(matching)/len(fibseq),
+							len(matching)/len(series),
 							len(missing),
-							len(fibseq),
+							len(series),
 							', '.join([str(x) for x in sorted(missing)])
 							)
+							
 	def alphabet(self):
 		#alphabet (discounts X, so only 25 letters)
 		event_counter = self.count_by()
@@ -242,7 +248,7 @@ class Runner():
 		if len(missing) == 0:
 			return '🔤 100% - All letters (except X)'
 		else:
-			return '🔤 {:0.0%} {} letters (missing {})'.format(
+			return '🔤 {:0.0%} - {} letters (missing {})'.format(
 							(25 - len(missing))/25,
 							25 - len(missing),
 							', '.join(sorted(missing))
@@ -253,7 +259,7 @@ class Runner():
 		if k == 60:
 			return '⏱ 100% - 60 out of 60'
 		else:  
-			return '⏱ {:0.0%} {} out of 60~Missing: {}'.format(
+			return '⏱ {:0.0%} - {} out of 60~Missing: {}'.format(
 		 				k/60,
 						k, 
 						', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
