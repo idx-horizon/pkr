@@ -151,7 +151,7 @@ class Runner():
 		times = Counter(x['Time'] for x in self.runs)
 		max_freq = max(times.values())
 		times_done_max_freq = sorted([x for x in times if times[x]==max_freq])
-		challenges['Most frequent time'] = '{} - {} times'.format(
+		challenges['⏱ Most frequent time'] = '{} - {} times'.format(
 								', '.join(times_done_max_freq),
 								max_freq
 								)
@@ -236,7 +236,7 @@ class Runner():
 	def num_series(self,name):
 		series_dict = {
 			'Fibonacci':  [1,2,3,5,8,13,21,34,55,89,144,233,377,610],
-			'Prime':      [2,3,5,7,11,13,17,17,19,23,29,31,37,41,43,47,53,59,61,67]
+			'Prime':      [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71]
 		}
 		series = series_dict[name]
 		
