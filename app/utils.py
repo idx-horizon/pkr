@@ -229,9 +229,11 @@ class Runner():
 			'Prime':      [2,3,5,7,11,13,17,17,19,23,29,31,37,41,43,47]
 		}
 		series = series_dict[name]
+		
 		matching = set([int(x['Run Number']) for x in self.runs if int(x['Run Number']) in series])
 		missing = set(series) - set(matching)
-		if len(seq) == len(matching):
+		
+		if len(series) == len(matching):
 			return '💹 100% - (first {} numbers of {} series)'.format(len(series),name)
 		else:
 			return '💹 {:0.0%} - missing {} out of {}~Missing: {}'.format(
@@ -279,14 +281,14 @@ class Runner():
 	def cowell(self):
 		levels = {0: '-',
 				  1: 'Quarter',
-				  2: 'Half',
-				  3: 'Three quarter'
+				  2: '🐮 Half',
+				  3: '🐮 Three quarter'
 		}
 				  
 		evs = len([x for x in self.stats if x.startswith('_EVENT_')])
 
 		if evs > 99:
-			return 'Full'
+			return '🐮 Full'
 		else:
 			return levels[math.floor(evs/25)]
 			
