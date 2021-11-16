@@ -138,6 +138,7 @@ class Runner():
 		challenges['Position 00-99']  = self.position()
 		challenges['Cowell Club'] = self.cowell()
 		challenges['Lockdown'] = self.lockdown()
+		challenges['Fibonacci'] = self.fib()
 
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		
@@ -221,6 +222,20 @@ class Runner():
 		else:
 			return '-'
 
+	def fib(self):
+		fibseq = [1,2,3,5,8,13,21,34,55,89,144,233,377,630,1007]
+		matching = set([int(x['Run Number']) for x in self.runs if int(x['Run Number']) in fibseq])
+		missing = set(fibseq) - set(matching)
+		if len(fibseq) == len(matching):
+			return '100% - All numbers in first {} numbes of Fibonacci series'.format(len(fibseq)
+		else:
+			return '{:0.0%} - missing {} out of {}~Missing: {}'.format(
+							len(matching)/len(fibseq),
+							len(missing),
+							len(fibseq),
+							','.join(sorted(missing))
+							)
+							
 	def alphabet(self):
 		#alphabet (discounts X, so only 25 letters)
 		event_counter = self.count_by()
