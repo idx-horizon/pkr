@@ -143,11 +143,11 @@ class Runner():
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		
 		key = max({x for x in self.stats if x.startswith('_YR_')}, 
-																		key=lambda key: self.stats[key])
+						key=lambda key: self.stats[key])
 		challenges['Most parkruns in a year'] = '{} in {}'.format(self.stats[key], key.replace('_YR_',''))
 				
 		key = max({x for x in self.stats if x.startswith('_EVENT_')}, 
-																		key=lambda key: self.stats[key])		
+						key=lambda key: self.stats[key])		
 		challenges['Most common event'] = '{} at {}'.format(self.stats[key], key.replace('_EVENT_',''))
 		challenges['Singleton events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==1]))
 		
