@@ -128,18 +128,18 @@ class Runner():
 									last_PB_ix) 
 		
 		bingo = Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
-		challenges['Calendar Bingo'] = '📅 {:0.0%} - {} out of 365 - most common {} ({} times)'.format(
+		challenges['📅 Calendar Bingo'] = '{:0.0%} - {} out of 365 - most common {} ({} times)'.format(
 						len(bingo)/365,
 						len(bingo), 
 						bingo.most_common(1)[0][0], 
 						bingo.most_common(1)[0][1]) 
 		
-		challenges['Alphabet A-Z']    = self.alphabet()
-		challenges['Stopwatch 00-59'] = self.stopwatch()
-		challenges['Position 00-99']  = self.position()
-		challenges['Fibonacci series'] = self.num_series('Fibonacci')
-		challenges['Primes series']    = self.num_series('Prime')
-		challenges['Cowell Club'] = self.cowell()
+		challenges['🔤 Alphabet A-Z']    = self.alphabet()
+		challenges['⏱ Stopwatch 00-59'] = self.stopwatch()
+		challenges['💯 Position 00-99']  = self.position()
+		challenges['💹 Fibonacci series'] = self.num_series('Fibonacci')
+		challenges['💹 Primes series']    = self.num_series('Prime')
+		challenges['🐮 Cowell Club'] = self.cowell()
 		challenges['Lockdown']    = self.lockdown()
 
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
@@ -176,7 +176,7 @@ class Runner():
 		yr = sorted([x.replace('_YR_','') for x in self.stats if x.startswith('_YR_')])
 		challenges['Years running'] = '{} ({} to {})'.format(len(yr), yr[0], yr[-1])
 
-		challenges['Tourist Quotient'] = '{:%}'.format(
+		challenges['Tourist Quotient'] = '{:0.0%}'.format(
 							len([x for x in self.stats if x.startswith('_EVENT_')]) / self.run_count
 							)
 		streak = 0
@@ -193,21 +193,21 @@ class Runner():
 		
 		challenges['Countries visited'] = '🌍 {} ({})'.format(len(self.countries),  ', '.join(self.countries))
 		
-		for k,v in [('Time', '⏱Time'), ('AgeGrade','🎂Age grading'), ('Pos', '🏅Position')]:
+		for k,v in [('Time', '⏱ Time'), ('AgeGrade','🎂 Age grading'), ('Pos', '🏅 Position')]:
 			element = ['{:>4}'.format(t[k]) for t in self.runs]	
-			challenges[v[1:] + ' (range)'] = '{} {} --> {}'.format(v[0], min(element).strip(), max(element).strip())
+			challenges[v + ' (range)'] = '{} --> {}'.format(min(element).strip(), max(element).strip())
 		
 		times = [sum(x * int(t) for x, t in zip([60, 1], ele['Time'].split(":"))) for ele in self.runs]
-		challenges['Average run time'] = '{}'.format(datetime.timedelta(seconds=round(statistics.mean(times))))
-		challenges['Total run time']   = '⏱ {}'.format(str(datetime.timedelta(seconds=sum(times))))
+		challenges['⏱ Average run time'] = '{}'.format(datetime.timedelta(seconds=round(statistics.mean(times))))
+		challenges['⏱ Total run time']   = '{}'.format(str(datetime.timedelta(seconds=sum(times))))
 		
-		challenges['Christmas Day'] = self.holiday_runs(12,25)
-		challenges['New Year Day'] = self.holiday_runs(1,1)
+		challenges['🎄 Christmas Day'] = self.holiday_runs(12,25)
+		challenges['🎊 New Year Day'] = self.holiday_runs(1,1)
 
 		challenges['Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
 		challenges['Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
-		challenges['Pirates'] = '🏴‍☠️ {}'.format( self.regex_test('^C|^R', 'Event','list'))
-		challenges['Compass'] = '🧭 {}'.format(self.regex_test('north|east|south|east', 'Event', 'list'))
+		challenges['🏴‍☠️ Pirates'] = '{}'.format( self.regex_test('^C|^R', 'Event','list'))
+		challenges['🧭 Compass'] = '{}'.format(self.regex_test('north|east|south|east', 'Event', 'list'))
 		challenges['Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
 
 		
@@ -235,9 +235,9 @@ class Runner():
 		missing = set(series) - set(matching)
 		
 		if len(series) == len(matching):
-			return '💹 100% - (first {} numbers of {} series)'.format(len(series),name)
+			return '100% - (first {} numbers of {} series)'.format(len(series),name)
 		else:
-			return '💹 {:0.0%} - missing {} out of {}~Missing: {}'.format(
+			return '{:0.0%} - missing {} out of {}~Missing: {}'.format(
 							len(matching)/len(series),
 							len(missing),
 							len(series),
@@ -249,9 +249,9 @@ class Runner():
 		event_counter = self.count_by()
 		missing = {x.upper() for x in event_counter if event_counter[x]==0 and x != 'x'}
 		if len(missing) == 0:
-			return '🔤 100% - All letters (except X)'
+			return '100% - All letters (except X)'
 		else:
-			return '🔤 {:0.0%} - {} letters (missing {})'.format(
+			return '{:0.0%} - {} letters (missing {})'.format(
 							(25 - len(missing))/25,
 							25 - len(missing),
 							', '.join(sorted(missing))
@@ -260,9 +260,9 @@ class Runner():
 	def stopwatch(self):
 		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')})
 		if k == 60:
-			return '⏱ 100% - 60 out of 60'
+			return '100% - 60 out of 60'
 		else:  
-			return '⏱ {:0.0%} - {} out of 60~Missing: {}'.format(
+			return '{:0.0%} - {} out of 60~Missing: {}'.format(
 		 				k/60,
 						k, 
 						', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
@@ -270,9 +270,9 @@ class Runner():
 	def position(self):
 		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_POS_')})
 		if k == 100:
-			return '💯 100% - 100 out of 100'
+			return '100% - 100 out of 100'
 		else:  
-			return '💯 {:0.0%} {} out of 100~Missing: {}'.format(
+			return '{:0.0%} {} out of 100~Missing: {}'.format(
 						k/100,
 						k, 
 						', '.join(sorted({x.replace('_POS_','') for x in self.stats if self.stats[x]==0 and x.startswith('_POS_')})) 
@@ -282,14 +282,14 @@ class Runner():
 	def cowell(self):
 		levels = {0: '-',
 				  1: 'Quarter',
-				  2: '🐮 Half',
-				  3: '🐮 Three quarter'
+				  2: 'Half',
+				  3: 'Three quarter'
 		}
 				  
 		evs = len([x for x in self.stats if x.startswith('_EVENT_')])
 
 		if evs > 99:
-			return '🐮 Full'
+			return 'Full'
 		else:
 			return levels[math.floor(evs/25)]
 			
