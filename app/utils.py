@@ -233,9 +233,8 @@ class Runner():
 							len(matching)/len(fibseq),
 							len(missing),
 							len(fibseq),
-							','.join(sorted(missing))
+							','.join([str(x) for x in sorted(missing)])
 							)
-							
 	def alphabet(self):
 		#alphabet (discounts X, so only 25 letters)
 		event_counter = self.count_by()
