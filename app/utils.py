@@ -136,9 +136,9 @@ class Runner():
 		challenges['Alphabet A-Z']    = self.alphabet()
 		challenges['Stopwatch 00-59'] = self.stopwatch()
 		challenges['Position 00-99']  = self.position()
+		challenges['Fibonacci'] = self.fib()
 		challenges['Cowell Club'] = self.cowell()
 		challenges['Lockdown'] = self.lockdown()
-		challenges['Fibonacci'] = self.fib()
 
 		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
 		
@@ -223,17 +223,17 @@ class Runner():
 			return '-'
 
 	def fib(self):
-		fibseq = [1,2,3,5,8,13,21,34,55,89,144,233,377,630,1007]
+		fibseq = [1,2,3,5,8,13,21,34,55,89,144,233,377,630]
 		matching = set([int(x['Run Number']) for x in self.runs if int(x['Run Number']) in fibseq])
 		missing = set(fibseq) - set(matching)
 		if len(fibseq) == len(matching):
-			return '100% - All numbers in first {} numbes of Fibonacci series'.format(len(fibseq))
+			return '💹 100% - All numbers in first {} numbes of Fibonacci series'.format(len(fibseq))
 		else:
-			return '{:0.0%} - missing {} out of {}~Missing: {}'.format(
+			return '💹 {:0.0%} - missing {} out of {}~Missing: {}'.format(
 							len(matching)/len(fibseq),
 							len(missing),
 							len(fibseq),
-							','.join([str(x) for x in sorted(missing)])
+							', '.join([str(x) for x in sorted(missing)])
 							)
 	def alphabet(self):
 		#alphabet (discounts X, so only 25 letters)
@@ -245,7 +245,7 @@ class Runner():
 			return '🔤 {:0.0%} {} letters (missing {})'.format(
 							(25 - len(missing))/25,
 							25 - len(missing),
-							','.join(sorted(missing))
+							', '.join(sorted(missing))
 							)
 
 	def stopwatch(self):
@@ -256,7 +256,7 @@ class Runner():
 			return '⏱ {:0.0%} {} out of 60~Missing: {}'.format(
 		 				k/60,
 						k, 
-						','.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
+						', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
 	def position(self):
 		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_POS_')})
