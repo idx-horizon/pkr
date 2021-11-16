@@ -147,7 +147,15 @@ class Runner():
 		key = max({x for x in self.stats if x.startswith('_YR_')}, 
 						key=lambda key: self.stats[key])
 		challenges['Most parkruns in a year'] = '{} in {}'.format(self.stats[key], key.replace('_YR_',''))
-				
+
+		times = Counter(x['Time'] for x in self.runs)
+		max_freq = max(times.values())
+		challenges['Most frequent time'] = '{} - {}'.format(
+								max_freq, 
+								', '.join(sorted([x for x in times if times[x]==max_freq]))
+								)
+		
+		
 		key = max({x for x in self.stats if x.startswith('_EVENT_')}, 
 						key=lambda key: self.stats[key])		
 		challenges['Most common event'] = '{} at {}'.format(self.stats[key], key.replace('_EVENT_',''))
