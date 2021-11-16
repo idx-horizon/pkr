@@ -190,23 +190,23 @@ class Runner():
 		challenges['Longest tourism streak'] = 'tbc'
 		challenges['Total distance travelled'] = 'tbc'
 		
-		challenges['Countries visited'] = '{} ({})'.format(len(self.countries),  ', '.join(self.countries))
+		challenges['Countries visited'] = '🌍 {} ({})'.format(len(self.countries),  ', '.join(self.countries))
 		
-		for k,v in [('Time', 'Time'), ('AgeGrade','Age grading'), ('Pos', 'Position')]:
+		for k,v in [('Time', '⏱ Time'), ('AgeGrade','Age grading'), ('Pos', '🏅 Position')]:
 			element = ['{:>4}'.format(t[k]) for t in self.runs]	
 			challenges[v + ' (range)'] = '{} --> {}'.format(min(element).strip(), max(element).strip())
 		
 		times = [sum(x * int(t) for x, t in zip([60, 1], ele['Time'].split(":"))) for ele in self.runs]
 		challenges['Average run time'] = '{}'.format(datetime.timedelta(seconds=round(statistics.mean(times))))
-		challenges['Total run time']   = '{}'.format(str(datetime.timedelta(seconds=sum(times))))
+		challenges['Total run time']   = '⏱ {}'.format(str(datetime.timedelta(seconds=sum(times))))
 		
 		challenges['Christmas Day'] = self.holiday_runs(12,25)
 		challenges['New Year Day'] = self.holiday_runs(1,1)
 
 		challenges['Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
 		challenges['Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
-		challenges['Pirates'] = self.regex_test('^C|^R', 'Event','list')
-		challenges['Compass'] = self.regex_test('north|east|south|east', 'Event', 'list')
+		challenges['Pirates'] = '🏴‍☠️ {}'.format( self.regex_test('^C|^R', 'Event','list'))
+		challenges['Compass'] = '🧭 {}'.format(self.regex_test('north|east|south|east', 'Event', 'list'))
 		challenges['Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
 
 		
@@ -274,7 +274,7 @@ class Runner():
 			return '💯 {:0.0%} {} out of 100~Missing: {}'.format(
 						k/100,
 						k, 
-						','.join(sorted({x.replace('_POS_','') for x in self.stats if self.stats[x]==0 and x.startswith('_POS_')})) 
+						', '.join(sorted({x.replace('_POS_','') for x in self.stats if self.stats[x]==0 and x.startswith('_POS_')})) 
 						)
 	
 		
