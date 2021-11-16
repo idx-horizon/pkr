@@ -117,8 +117,8 @@ class Runner():
 		challenges['Last run'] = '{} at {}'.format(fdate(self.runs[0]['Run Date']), self.runs[0]['Event'])
 		challenges['Current series'] = self.current_series()
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
-		challenges['Total number of runs'] = self.run_count
-		challenges['Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
+		challenges['✳️ Total number of runs'] = self.run_count
+		challenges['✳️ Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
 		
 		challenges['Number of PBs'] = self.stats['_PB']
 		last_PB_ix = find_in_list_dict(self.runs,'PB?','PB')  or 0
@@ -140,13 +140,13 @@ class Runner():
 		challenges['💹 Fibonacci series'] = self.num_series('Fibonacci')
 		challenges['💹 Primes series']    = self.num_series('Prime')
 		challenges['🐮 Cowell Club'] = self.cowell()
-		challenges['Lockdown']    = self.lockdown()
+		challenges['🔒 Lockdown']    = self.lockdown()
 
-		challenges['Total parkrun distance'] = '{:0,}km'.format(self.run_count * 5) 
+		challenges['✳️ Total parkrun distance'] = '{:0,}km'.format(self.run_count * 5) 
 		
 		key = max({x for x in self.stats if x.startswith('_YR_')}, 
 						key=lambda key: self.stats[key])
-		challenges['Most parkruns in a year'] = '{} in {}'.format(self.stats[key], key.replace('_YR_',''))
+		challenges['✳️ Most parkruns in a year'] = '{} in {}'.format(self.stats[key], key.replace('_YR_',''))
 
 		times = Counter(x['Time'] for x in self.runs)
 		max_freq = max(times.values())
@@ -160,7 +160,7 @@ class Runner():
 		key = max({x for x in self.stats if x.startswith('_EVENT_')}, 
 						key=lambda key: self.stats[key])		
 		challenges['Most common event'] = '{} at {}'.format(self.stats[key], key.replace('_EVENT_',''))
-		challenges['Singleton events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==1]))
+		challenges['1️⃣ Singleton events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==1]))
 		
 		pix = 0
 		ev = sorted([self.stats[x] for x in self.stats if x.startswith('_EVENT_')], reverse=True)
@@ -169,21 +169,21 @@ class Runner():
 				pix = ix+1
 			else:
 				break		
-		challenges['p-index'] = pix
+		challenges['ℹ️ p-index'] = pix
 		
 		rn = sorted(set([int(x['Run Number']) for x in self.runs]))
 		wix = sorted(list(
 				set(range(1,max(rn)))
 				-set(rn)))[0]-1
-		challenges['Wilson-index'] = wix
+		challenges['ℹ️ Wilson-index'] = wix
 		
-		challenges['Parkrun birthday'] = '{} at {}'.format(
+		challenges['🎉 Parkrun birthday'] = '{} at {}'.format(
 						fdate(self.runs[-1]['Run Date']), 
 						self.runs[-1]['Event']
 						)
 		
 		yr = sorted([x.replace('_YR_','') for x in self.stats if x.startswith('_YR_')])
-		challenges['Years running'] = '{} ({} to {})'.format(len(yr), yr[0], yr[-1])
+		challenges['🕯 Years running'] = '{} ({} to {})'.format(len(yr), yr[0], yr[-1])
 
 		challenges['Tourist Quotient'] = '{:0.0%}'.format(
 							len([x for x in self.stats if x.startswith('_EVENT_')]) / self.run_count
@@ -213,8 +213,8 @@ class Runner():
 		challenges['🎄 Christmas Day'] = self.holiday_runs(12,25)
 		challenges['🎊 New Year Day'] = self.holiday_runs(1,1)
 
-		challenges['Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
-		challenges['Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
+		challenges['🌳 Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
+		challenges['🎵 Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
 		challenges['🏴‍☠️ Pirates'] = '{}'.format( self.regex_test('^C|^R', 'Event','list'))
 		challenges['🧭 Compass'] = '{}'.format(self.regex_test('north|east|south|east', 'Event', 'list'))
 		challenges['Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
