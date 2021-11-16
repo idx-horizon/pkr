@@ -142,7 +142,7 @@ class Runner():
 		challenges['🐮 Cowell Club'] = self.cowell()
 		challenges['Lockdown']    = self.lockdown()
 
-		challenges['Total parkrun distance'] = '{}km'.format(self.run_count * 5) 
+		challenges['Total parkrun distance'] = '{:0,}km'.format(self.run_count * 5) 
 		
 		key = max({x for x in self.stats if x.startswith('_YR_')}, 
 						key=lambda key: self.stats[key])
@@ -235,8 +235,8 @@ class Runner():
 
 	def num_series(self,name):
 		series_dict = {
-			'Fibonacci':  [1,2,3,5,8,13,21,34,55,89,144,233,377,630],
-			'Prime':      [2,3,5,7,11,13,17,17,19,23,29,31,37,41,43,47]
+			'Fibonacci':  [1,2,3,5,8,13,21,34,55,89,144,233,377,610],
+			'Prime':      [2,3,5,7,11,13,17,17,19,23,29,31,37,41,43,47,53,59,61,67]
 		}
 		series = series_dict[name]
 		
@@ -269,7 +269,7 @@ class Runner():
 	def stopwatch(self):
 		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_SEC_')})
 		if k == 60:
-			return '100% - 60 out of 60'
+			return '100% - All seconds ticked off'
 		else:  
 			return '{:0.0%} - {} out of 60~Missing: {}'.format(
 		 				k/60,
@@ -279,22 +279,17 @@ class Runner():
 	def position(self):
 		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_POS_')})
 		if k == 100:
-			return '100% - 100 out of 100'
+			return '100% - All positions 00 to 99 completed'
 		else:  
-			return '{:0.0%} {} out of 100~Missing: {}'.format(
+			return '{:0.0%} - {} out of 100~Missing: {}'.format(
 						k/100,
 						k, 
 						', '.join(sorted({x.replace('_POS_','') for x in self.stats if self.stats[x]==0 and x.startswith('_POS_')})) 
 						)
-	
-		
+
 	def cowell(self):
-		levels = {0: '-',
-				  1: 'Quarter',
-				  2: 'Half',
-				  3: 'Three quarter'
-		}
-				  
+		levels = {0: '-', 1: 'Quarter', 2: 'Half', 3: 'Three quarter'}
+
 		evs = len([x for x in self.stats if x.startswith('_EVENT_')])
 
 		if evs > 99:
