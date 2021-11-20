@@ -284,7 +284,7 @@ class Runner():
 			return '100% - Snaked 10 times ({})'.format(txt)
 		else:
 			return '{:0.0%} - {}S\'s - {}'.format(
-					len(ss/10, len(ss),txt)
+					len(ss)/10, len(ss),txt)
 		
 	def position(self):
 		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_POS_')})
