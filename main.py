@@ -98,7 +98,7 @@ def r_graph():
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
     rid.get_runs(None,False)
-    mx_runs = 10
+    mx_runs = 50
     
     if current_user.rid != SELECTEDRUNNER['rid']:
         me = utils.Runner(current_user.rid)
@@ -112,7 +112,7 @@ def r_graph():
 #       graph.add('Java',    [15, 45, 76, 80,  91])
 #       graph.add('C++',     [5,  51, 54, 102, 150])
 
-       graph.title = 'Last {} runs'.format(mx_runs)
+       graph.title = 'Age grading over last {} runs'.format(mx_runs)
        subset = reversed(list(rid.runs[:mx_runs]))
        
 #       graph.x_labels = [x['Run Date'] for x in subset]

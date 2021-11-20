@@ -82,6 +82,7 @@ class Friend(db.Model):
             all()
 
         return [{'f_username': x.Friend.f_username,
+                'f_rid': x.Friend.f_rid,
                  'f_icon': x.User.icon} for x in f]
         
 class User(UserMixin, db.Model):
