@@ -111,7 +111,7 @@ def r_graph():
 #       graph.add('Java',    [15, 45, 76, 80,  91])
 #       graph.add('C++',     [5,  51, 54, 102, 150])
        graph.title = 'Last {} runs'.format(mx_runs)
-       subset = rid.runs[:mx_runs]
+       subset = reversed(list(rid.runs[:mx_runs]))
        
 #       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'].title(), 
@@ -120,7 +120,7 @@ def r_graph():
                 
        if current_user.rid != SELECTEDRUNNER['rid']:
           graph.add(current_user.username.title(), 
-                [float(x['AgeGrade'].replace('%','')) for x in me.runs[:mx_runs]],
+                [float(x['AgeGrade'].replace('%','')) for x in reversed(list(me.runs[:mx_runs]])),
                 dots_size=1)
                 
                 
