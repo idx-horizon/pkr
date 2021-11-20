@@ -281,11 +281,11 @@ class Runner():
 		ss = set([x['Event'] for x in self.runs if x['Event'][0].upper()=='S'])
 		txt = ', '.join(sorted([x for x in ss]))
 		if len(ss)>=10:
-			return '100% - Snaked {} times\n({})'.format(
+			return '100% - snaked {} times~{}'.format(
 					len(ss),
 					txt)
 		else:
-			return '{:0.0%} - {}S\'s\n{}'.format(
+			return '{:0.0%} - snaked {} times~{}'.format(
 					len(ss)/10, len(ss),txt)
 		
 	def position(self):
