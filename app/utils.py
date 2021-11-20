@@ -278,9 +278,13 @@ class Runner():
 						', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
 	def snake(self):
-		ss = set([x for x in self.runs if x['Event'][0].upper()=='S'])
-		txt = ','.join([x['Event'] for x in ss])
-		return '{} - {}'.format(len(ss),txt)
+		ss = set([x['Event'] for x in self.runs if x['Event'][0].upper()=='S'])
+		txt = ', '.join(sorted([x for x in ss]))
+		if len(ss)==10:
+			return '100% - Snaked 10 times ({})'.format(txt)
+		else:
+			return '{:0.0%} - {}S\'s - {}'.format(
+					len(ss/10, len(ss),txt)
 		
 	def position(self):
 		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_POS_')})
