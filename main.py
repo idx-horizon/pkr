@@ -120,7 +120,7 @@ def r_graph():
                 
        if current_user.rid != SELECTEDRUNNER['rid']:
           graph.add(current_user.username.title(), 
-                [float(x['AgeGrade'].replace('%','')) for x in reversed(list(me.runs[:mx_runs]])),
+                [float(x['AgeGrade'].replace('%','')) for x in reversed(list(me.runs[:mx_runs])),
                 dots_size=1)
                 
                 
