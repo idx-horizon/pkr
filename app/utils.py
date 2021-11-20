@@ -214,6 +214,7 @@ class Runner():
 		challenges['🎊 New Year Day'] = self.holiday_runs(1,1)
 
 		challenges['🌳 Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
+		challenges['🐍 Snake'] = self.snake()
 		challenges['🎵 Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
 		challenges['🏴‍☠️ Pirates'] = '{}'.format( self.regex_test('^C|^R', 'Event','list'))
 		challenges['🧭 Compass'] = '{}'.format(self.regex_test('north|east|south|east', 'Event', 'list'))
@@ -276,6 +277,11 @@ class Runner():
 						k, 
 						', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
+	def snake(self):
+		ss = set([x for x in self.runs if x['Event'][0].upper()=='S'])
+		txt = ','.join([x['Event'] for x in ss])
+		return '{} - {}'.format(len(ss),txt)
+		
 	def position(self):
 		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_POS_')})
 		if k == 100:
