@@ -280,10 +280,12 @@ class Runner():
 	def snake(self):
 		ss = set([x['Event'] for x in self.runs if x['Event'][0].upper()=='S'])
 		txt = ', '.join(sorted([x for x in ss]))
-		if len(ss)==10:
-			return '100% - Snaked 10 times ({})'.format(txt)
+		if len(ss)>=10:
+			return '100% - Snaked {} times\n({})'.format(
+					len(ss),
+					txt)
 		else:
-			return '{:0.0%} - {}S\'s - {}'.format(
+			return '{:0.0%} - {}S\'s\n{}'.format(
 					len(ss)/10, len(ss),txt)
 		
 	def position(self):
