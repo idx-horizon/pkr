@@ -65,7 +65,8 @@ def error_404(error):
 @app.errorhandler(500)
 def error_500(error):
     print('** 500 Error: {}'.format(error))
-    return redirect('/error/500')
+    return redirect('/login')
+#    return redirect('/error/500')
 
 @app.route('/error/')
 @app.route('/error/<code>')
@@ -110,7 +111,8 @@ def r_graph():
 #       graph.add('Python',  [15, 31, 89, 200, 356])
 #       graph.add('Java',    [15, 45, 76, 80,  91])
 #       graph.add('C++',     [5,  51, 54, 102, 150])
-       graph.title = 'Last {} runs'.format(mx_runs)
+
+#       graph.title = 'Last {} runs'.format(mx_runs)
        subset = reversed(list(rid.runs[:mx_runs]))
        
 #       graph.x_labels = [x['Run Date'] for x in subset]
