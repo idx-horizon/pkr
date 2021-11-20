@@ -115,7 +115,7 @@ def r_graph():
        graph.title = 'Last {} runs'.format(mx_runs)
        subset = reversed(list(rid.runs[:mx_runs]))
        
-       graph.x_labels = [x['Run Date'] for x in subset]
+#       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'].title(), 
                 [float(x['AgeGrade'].replace('%','')) for x in subset],
                 dots_size=1)
