@@ -228,8 +228,8 @@ class Runner():
 		resp=''
 		for ms in [10,25,50,100,250,500]:
 			if ms <= len(self.runs):
-				txt = '{:>3} on {} at {}~'.format(ms,
-					self.runs[-ms]['Run Date'],
+				txt = '{} Club on {} at {}~'.format(ms,
+					fdate(self.runs[-ms]['Run Date']),
 					self.runs[-ms]['Event'])
 				resp += txt
 					
