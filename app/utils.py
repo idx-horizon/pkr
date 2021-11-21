@@ -119,6 +119,7 @@ class Runner():
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
 		challenges['✳️ Total number of runs'] = self.run_count
 		challenges['✳️ Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
+		challenges['🚩 Milestones'] = self.milestones()
 		
 		challenges['Number of PBs'] = self.stats['_PB']
 		last_PB_ix = find_in_list_dict(self.runs,'PB?','PB')  or 0
@@ -223,6 +224,17 @@ class Runner():
 		
 		return challenges
 
+	def milestones(self):
+		resp=''
+		for ms in [10,25,50,100,250,500]:
+			if ms <= len(self.runs):
+				txt = '{}. {} {}~'.format(ms,
+					self.runs[ms]['Event'],
+					self.runs[ms]['Run Date']
+				resp+= txt
+					
+		return resp
+		
 	def lockdown(self):
 		evs = [x['Run Date'] for x in self.runs if x['Run Date'] in ('14/03/2020', '24/07/2021')]
 		if len(evs) == 2:
