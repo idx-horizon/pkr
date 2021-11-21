@@ -230,8 +230,8 @@ class Runner():
 			if ms <= len(self.runs):
 				txt = '{}. {} {}~'.format(ms,
 					self.runs[ms]['Event'],
-					self.runs[ms]['Run Date']
-				resp+= txt
+					self.runs[ms]['Run Date'])
+				resp += txt
 					
 		return resp
 		
