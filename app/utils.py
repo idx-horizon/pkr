@@ -20,7 +20,9 @@ def find_in_list_dict(lst, key, value):
     
 class Runner():
 	
-	base = 'https://www.parkrun.org.uk/results/athleteeventresultshistory/?athleteNumber={}&eventNumber=0'
+#	base = 'https://www.parkrun.org.uk/results/athleteeventresultshistory/?athleteNumber={}&eventNumber=0'
+	base = 'https://www.parkrun.org.uk/parkrunner/{}/all/'
+
 	def run(self):
 		pass
 		
