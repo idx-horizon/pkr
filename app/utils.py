@@ -216,7 +216,7 @@ class Runner():
 
 	def milestones(self):
 		resp=''
-		for ms in [10,25,50,100,250,500]:
+		for ms in [25,50,100,250,500]:
 			if ms <= len(self.runs):
 				txt = '{} Club on {} at {}~'.format(ms,
 					fdate(self.runs[-ms]['Run Date']),
