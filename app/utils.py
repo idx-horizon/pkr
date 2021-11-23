@@ -61,7 +61,6 @@ class Runner():
 			print(self.url)
 			data = e.extract_tables(page)[3]
 			countries = e.get_run_links(page)
-#			s = json.dumps(data)
 			self.cached = 'new'
 			save_local(json.dumps((countries, data)))
 
@@ -104,24 +103,20 @@ class Runner():
 		challenges['Last run'] = '{} at {}'.format(fdate(self.runs[0]['Run Date']), self.runs[0]['Event'])
 		challenges['Current series'] = self.current_series()
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
+		challenges['Number of PBs'] = self.stats['_PB']
+
 		challenges['✳️ Total number of runs'] = self.run_count
 		challenges['✳️ Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
 		challenges['🚩 Milestones'] = self.milestones()
 		
-		challenges['Number of PBs'] = self.stats['_PB']
 		last_PB_ix = find_in_list_dict(self.runs,'PB?','PB')  or 0
 		challenges['Last PB'] = '{} at {} ({} runs ago)'.format(
 									fdate(self.runs[last_PB_ix]['Run Date']),
 									self.runs[last_PB_ix]['Event'],
 									last_PB_ix) 
 		
-		bingo = Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
-		challenges['📅 Calendar Bingo'] = '{:0.0%} - {} out of 365 - most common {} ({} times)'.format(
-						len(bingo)/365,
-						len(bingo), 
-						bingo.most_common(1)[0][0], 
-						bingo.most_common(1)[0][1]) 
-		
+						
+		challenges['📅 Calendar Bingo']= self.bingo()
 		challenges['🔤 Alphabet A-Z']    = self.alphabet()
 		challenges['⏱ Stopwatch 00-59'] = self.stopwatch()
 		challenges['💯 Position 00-99']  = self.position()
@@ -210,6 +205,13 @@ class Runner():
 
 		
 		return challenges
+	def bingo(self);
+		resp= Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
+		return '{:0.0%} - {} out of 365 - most common {} ({} times)'.format(
+						len(resp)/365,
+						len(resp), 
+						resp.most_common(1)[0][0], 
+						resp.most_common(1)[0][1]) 
 
 	def milestones(self):
 		resp=''
