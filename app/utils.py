@@ -105,17 +105,17 @@ class Runner():
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
 		challenges['Number of PBs'] = self.stats['_PB']
 
-		challenges['✳️ Total number of runs'] = self.run_count
-		challenges['✳️ Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
-		challenges['🚩 Milestones'] = self.milestones()
 		
-		last_PB_ix = find_in_list_dict(self.runs,'PB?','PB')  or 0
+		last_PB_ix = find_in_list_dict(self.runs,'PB?','PB') or 0
 		challenges['Last PB'] = '{} at {} ({} runs ago)'.format(
 									fdate(self.runs[last_PB_ix]['Run Date']),
 									self.runs[last_PB_ix]['Event'],
 									last_PB_ix) 
 		
 						
+		challenges['✳️ Total number of runs'] = self.run_count
+		challenges['✳️ Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
+		challenges['🚩 Milestones'] = self.milestones()
 		challenges['📅 Calendar Bingo']= self.bingo()
 		challenges['🔤 Alphabet A-Z']    = self.alphabet()
 		challenges['⏱ Stopwatch 00-59'] = self.stopwatch()
@@ -124,12 +124,12 @@ class Runner():
 		challenges['💹 Primes series']    = self.num_series('Prime')
 		challenges['🐮 Cowell Club'] = self.cowell()
 		challenges['🔒 Lockdown']    = self.lockdown()
-
 		challenges['✳️ Total parkrun distance'] = '{:0,}km'.format(self.run_count * 5) 
 		
 		key = max({x for x in self.stats if x.startswith('_YR_')}, 
 						key=lambda key: self.stats[key])
-		challenges['✳️ Most parkruns in a year'] = '{} in {}'.format(self.stats[key], key.replace('_YR_',''))
+		challenges['✳️ Most parkruns in a year'] = '{} in {}'.format(
+						self.stats[key], key.replace('_YR_',''))
 
 		times = Counter(x['Time'] for x in self.runs)
 		max_freq = max(times.values())
@@ -201,10 +201,11 @@ class Runner():
 		challenges['🎵 Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
 		challenges['🏴‍☠️ Pirates'] = '{}'.format( self.regex_test('^C|^R', 'Event','list'))
 		challenges['🧭 Compass'] = '{}'.format(self.regex_test('north|east|south|east', 'Event', 'list'))
-		challenges['Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
+		challenges['👤 Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
 
 		
 		return challenges
+		
 	def bingo(self):
 		resp= Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
 		return '{:0.0%} - {} out of 365 - most common {} ({} times)'.format(
