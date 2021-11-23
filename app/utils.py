@@ -432,10 +432,7 @@ def fdate(src, src_format='%d/%m/%Y',target_format='%d-%b-%Y'):
 		return datetime.datetime.strptime(src, src_format).strftime(target_format)
 	except:
 		return src
-# -----------
-# MAIN
-# -----------
-if __name__ == '__main__':
+def load_runners():
 	runners_lst = [184594, 4327482, 2564629, 541276, 33202, 3158074, 185368, 23656, 40489]
 	runners =[]
 	for r in runners_lst:
@@ -443,4 +440,11 @@ if __name__ == '__main__':
 		o.get_runs(True)
 		runners.append(o)
 		print(o)
+
+# -----------
+# MAIN
+# -----------
+if __name__ == '__main__':
+	load_runners()
+
 
