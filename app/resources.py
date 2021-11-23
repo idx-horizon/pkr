@@ -1,4 +1,8 @@
-from app.models import Location, Country
+try:
+    from app.models import Location, Country
+except:
+    from models import Location, Country
+    
 def get_countries():
     countries = Country.query.all()
     d={}
