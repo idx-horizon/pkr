@@ -205,7 +205,7 @@ class Runner():
 
 		
 		return challenges
-	def bingo(self);
+	def bingo(self):
 		resp= Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
 		return '{:0.0%} - {} out of 365 - most common {} ({} times)'.format(
 						len(resp)/365,
