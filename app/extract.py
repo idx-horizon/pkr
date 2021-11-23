@@ -4,7 +4,7 @@ import bs4
 try:
 	import app.resources as resources
 except:
-	import resources as
+	import resources
 	
 def get_chunk_as_tuples(datalist, n):
     """Yield successive n-sized chunks as tuple from datalist"""
