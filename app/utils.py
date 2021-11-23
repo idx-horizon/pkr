@@ -364,16 +364,12 @@ class Runner():
 			return 'Unavailable'
 					
 	def __str__(self):
-		challenges = ''
-		for c in self.challenges: 
-			challenges += '{:<40} {}\n'.format(c, self.challenges[c])
-		return 'Runner: {} | {} | {} | {} | {}\nChallenges:\n{}'.format(
+		return 'Runner: {} | {} | {} | {} | {}'.format(
 									 self.id, 
 									 self.name, 
 									 len(self.runs), 
 									 self.cached or '-', 
-									 self.updated_dt,
-									 challenges
+									 self.updated_dt
 									 )
 	def __repr__(self):
 		return self.__str__()
