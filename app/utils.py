@@ -10,6 +10,7 @@ import re
 import datetime
 import math
 
+ANNIVERSARY_URL = 'https://wiki.parkrun.com/index.php/Anniversaries'
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
 def find_in_list_dict(lst, key, value):
@@ -54,10 +55,11 @@ class Runner():
 						
 		if refresh or not os.path.exists(local_fname):
 			page = get(self.url).text
+			print(self.url)
 			data = e.extract_tables(page)[3]
+			countries = e.get_run_links(page)
 #			s = json.dumps(data)
 			self.cached = 'new'
-			#save_local(json.dumps(data))
 			save_local(json.dumps((countries, data)))
 
 		else:
