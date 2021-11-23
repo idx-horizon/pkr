@@ -10,7 +10,7 @@ import datetime
 import math
 try: 
 	import app.extract as e
-exept:
+except:
 	import extract as e
 	
 ANNIVERSARY_URL = 'https://wiki.parkrun.com/index.php/Anniversaries'
