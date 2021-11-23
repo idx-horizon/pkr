@@ -1,7 +1,6 @@
 import requests
 import os
 import datetime
-import app.extract as e
 import json
 from collections import Counter
 import string
@@ -9,7 +8,11 @@ import statistics
 import re
 import datetime
 import math
-
+try: 
+	import app.extract as e
+exept:
+	import extract as e
+	
 ANNIVERSARY_URL = 'https://wiki.parkrun.com/index.php/Anniversaries'
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
@@ -433,13 +436,11 @@ def fdate(src, src_format='%d/%m/%Y',target_format='%d-%b-%Y'):
 # MAIN
 # -----------
 if __name__ == '__main__':
-#	for r in (184594, 4327482):
-	runners = []
-	for r in (184594,4327482,6594419, 2564629):
+	runners_lst = [184594, 4327482, 2564629, 541276, 33202, 3158074, 185368, 23656, 40489]
+	runners =[]
+	for r in runners_lst:
 		o = Runner(r)
-		o.get_runs(None,False)
+		o.get_runs(True)
 		runners.append(o)
-#		runner.append Runner(r)
-		#print(runner)
-#		runner.get_runs(None, False)
 		print(o)
+
