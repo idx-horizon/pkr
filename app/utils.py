@@ -71,33 +71,13 @@ class Runner():
 		
 		self.updated_dt = get_file_details(local_fname)
 		self.run_count = len(data['runs'])
-		try:
-			self.fullname = data['title'][:data['title'].index('-')].strip()
-		except:
-			self.fullname = data['title']
-
+		print(data['title'])
+		self.fullname = data['title']
 		self.name = self.fullname[:self.fullname.index(' ')]
-		if not filter:
-			self.runs = data['runs']
-		else:
-			self.runs = [x for x in data['runs'] if x['Event'].lower().startswith(filter.lower())]
-			
-		self.countries = countries
+		self.runs = data['runs']
 		self.caption = data['caption']
-		
-		self.threshold = '00:00'				
-		
-	#	event_counter = self.count_by()
-	#	self.missing = {x.upper() for x in event_counter if event_counter[x]==0}
-	#	self.letters = {x:event_counter[x] for x in event_counter if event_counter[x]!=0}
-		
-		event_occ = Counter(x['Event'] for x in self.runs)
-		for x in self.runs:
- 			x['occurrences'] = event_occ[x['Event']]		
-		self.fastest = '-'
-		self.slowest = '-'
-		self.average = '-'
-		  		
+		self.countries = countries		
+
 		self.stats = self.get_stats()
 		self.challenges = self.get_challenges()
 
