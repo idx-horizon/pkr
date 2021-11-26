@@ -73,7 +73,11 @@ class Runner():
 		print(data['title'])
 		self.fullname = data['title']
 		self.name = self.fullname[:self.fullname.index(' ')]
-		self.runs = data['runs']
+		if filter:
+			self.runs = data['runs']
+		else:
+			self.runs = [x for x in data['runs'] if filter.lower() in x['Event'].lower()]
+					
 		self.caption = data['caption']
 		self.countries = countries		
 

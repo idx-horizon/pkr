@@ -178,16 +178,6 @@ def r_events():
             d.set_occurrences(occ)
             if occ != 0:
                 d.set_hasrun('Yes')
-    
-  #          if d.evshortname in [x['Event'] for x in rid.runs]:
-  #              d.set_hasrun('Yes')
-  #              try:
-  #                  occ = max([x['occurrences'] for x in rid.runs if x['Event']==d.evshortname])
-  #                  d.set_occurrences(occ)
-  #              except:
-  #                  pass
-  #          else:
-  #              d.set_occurrences(0)
                 
         if this_has_run == 'never':
             data = [d for d in data if d.occurrences==0]
