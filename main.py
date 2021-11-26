@@ -174,7 +174,7 @@ def r_events():
         rid.get_runs(this_filter, False)
 
         for d in data:
-            occ = len([x for x in rid.runs if x['Event']==d.evshortname)
+            occ = len([x for x in rid.runs if x['Event']==d.evshortname])
             d.set_occurrences(occ)
             if occ != 0:
                 d.set_run('Yes')
