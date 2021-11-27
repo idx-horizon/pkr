@@ -39,7 +39,7 @@ class Runner():
 		self.fullname = None
 		self.name = None
 				
-	def get_runs(self, filter=None, refresh=True):
+	def get_runs(self, filter_by=None, refresh=True):
 		local_fname = '{}.pkr'.format(self.id)
 		def save_local(data):
 			with open(local_fname, 'w', encoding='utf-8') as fh:
@@ -50,7 +50,7 @@ class Runner():
 				return json.loads(fh.read())
 		
 		print('** Filter: {} Refresh: {} - File {} in {} **'.format(
-					filter, refresh,
+					filter_by, refresh,
 					local_fname, 
 					os.getcwd()
 					)
@@ -74,8 +74,8 @@ class Runner():
 		self.fullname = data['title']
 		self.name = self.fullname[:self.fullname.index(' ')]
 		
-		if filter:
-			self.runs = [x for x in data['runs'] if filter.lower() in x['Event'].lower()]
+		if filter_by:
+			self.runs = [x for x in data['runs'] if filter_by.lower() in x['Event'].lower()]
 		else:
 			self.runs = data['runs']
 					
