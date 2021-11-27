@@ -214,7 +214,7 @@ def runner_stats():
 
 @app.route('/runs', methods=['POST','GET'])
 @app.route('/runs/', methods=['POST','GET'])
-@app.route('/runs/<filter_str>/', methods=['POST','GET'])
+@app.route('/runs/<params>/', methods=['POST','GET'])
 @login_required
 def runner_runs(params=None):
     SELECTEDRUNNER = session['SELECTEDRUNNER']
