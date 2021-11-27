@@ -216,14 +216,16 @@ def runner_stats():
 @app.route('/runs/', methods=['POST','GET'])
 @app.route('/runs/<filter_str>/', methods=['POST','GET'])
 @login_required
-def runner_runs(filter_str=None):
+def runner_runs(params=None):
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
-    this_filter = filter_str or ''
+    this_filter = params.split('_')[0] or ''
+    this_sort = params.split('_')[1] or 'Date'
 
     if request.method.upper() == 'POST':
       this_filter  = str(request.form['filter_str']).lower()
+      this_sort    = str(request.form['sort_by']).lower()
 
     rid.get_runs(this_filter, False)
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
@@ -232,6 +234,7 @@ def runner_runs(filter_str=None):
         file_modified_date=NR.get_last_update(),
         data=rid,
         filter=this_filter,
+        sort=this_sort,
         threshold='{:05.2f}'.format(SELECTEDRUNNER['threshold']))
 
 @app.route('/loginlog/', methods=['POST','GET'])
