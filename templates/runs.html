@@ -30,6 +30,12 @@
 
 <button type="submit" class="btn btn-success" name="filter_btn" value="Filter">Filter</button>
 
+<select class="form-control" style="width:100px" name="sort_by">
+  {% for opt in ['Date','Time', 'Age Grading','Position','Event No'] %}
+     <option value={{ opt }}>{{ opt | title }}</option>
+  {% endfor %}
+</select>
+
 </form>
 
 <table class="table table-hover table-light table-striped" style="width:90%">

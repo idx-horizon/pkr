@@ -1,0 +1,7 @@
+          <select class="form-control" style="width:100px" name="has_run">
+          {% for opt in ['all','any','never','singleton'] %}
+                  <option {% if opt==has_run %}selected{% endif %}             
+                  value={{ opt }}>{{ opt | title }}</option>
+          {% endfor %}
+        {% endif %}
+        </select>
