@@ -39,7 +39,7 @@ class Runner():
 		self.fullname = None
 		self.name = None
 				
-	def get_runs(self, filter_by=None, refresh=True):
+	def get_runs(self, filter_by=None, refresh=True,sort_by='Date'):
 		local_fname = '{}.pkr'.format(self.id)
 		def save_local(data):
 			with open(local_fname, 'w', encoding='utf-8') as fh:
@@ -78,7 +78,19 @@ class Runner():
 			self.runs = [x for x in data['runs'] if filter_by.lower() in x['Event'].lower()]
 		else:
 			self.runs = data['runs']
-					
+			
+		if sort_by=='position':
+			self.runs = sorted(self.runs, key=lambda d: d['Pos'], reverse=False)	
+		elif sort_by=='age grading':
+			self.runs = sorted(self.runs, key=lambda d: d['AgeGrade'], reverse=False)	
+		elif sort_by=='event no':
+			self.runs = sorted(self.runs, key=lambda d: d['Run Number'], reverse=False)	
+		elif sort_by=='time':
+			self.runs = sorted(self.runs, key=lambda d: d['Time'], reverse=False)	
+		elif sort_by=='date':
+			# already in reverse date order
+			pass #self.runs = sorted(self.runs, key=lambda d: d['Run Date'], reverse=False)	
+		
 		self.caption = data['caption']
 		self.countries = countries		
 
