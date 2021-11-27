@@ -223,7 +223,7 @@ def runner_runs(params=None):
     
     this_filter = params or ''
     try:
-        this_sort = request.form['sort_by']).lower()
+        this_sort = str(request.form['sort_by']).lower()
     except:
         this_sort = 'Date'
 

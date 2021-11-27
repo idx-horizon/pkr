@@ -84,7 +84,7 @@ class Runner():
 		if sort_by=='position': # ascending position
 			self.runs = sorted(self.runs, key=lambda d: int(d['Pos']))
 		elif sort_by=='age_grading': #descending age
-			self.runs = sorted(self.runs, key=lambda d: float(d['AgeGrade'].replace('%','')), reverse=False)	
+			self.runs = sorted(self.runs, key=lambda d: float(d['AgeGrade'].replace('%','')), reverse=True)	
 		elif sort_by=='event_no': #ascending event/run number
 			self.runs = sorted(self.runs, key=lambda d: int(d['Run Number']))	
 		elif sort_by=='time': #ascending Time
