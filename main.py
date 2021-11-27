@@ -220,8 +220,8 @@ def runner_runs(params=None):
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
-    this_filter = params.split('_')[0] or ''
-    this_sort = params.split('_')[1] or 'Date'
+    this_filter = ''
+    this_sort = 'Date'
 
     if request.method.upper() == 'POST':
       this_filter  = str(request.form['filter_str']).lower()
