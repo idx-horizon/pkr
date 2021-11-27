@@ -78,13 +78,15 @@ class Runner():
 			self.runs = [x for x in data['runs'] if filter_by.lower() in x['Event'].lower()]
 		else:
 			self.runs = data['runs']
+		
+		print('** Sorting runs by [',sort_by,']')
 			
 		if sort_by=='position':
-			self.runs = sorted(self.runs, key=lambda d: d['Pos'], reverse=False)	
+			self.runs = sorted(self.runs, key=lambda d: int(d['Pos']))
 		elif sort_by=='age grading':
-			self.runs = sorted(self.runs, key=lambda d: d['AgeGrade'], reverse=False)	
+			self.runs = sorted(self.runs, key=lambda d: float(d['AgeGrade'].replace('%','')), reverse=False)	
 		elif sort_by=='event no':
-			self.runs = sorted(self.runs, key=lambda d: d['Run Number'], reverse=False)	
+			self.runs = sorted(self.runs, key=lambda d: int(d['Run Number']))	
 		elif sort_by=='time':
 			self.runs = sorted(self.runs, key=lambda d: d['Time'], reverse=False)	
 		elif sort_by=='date':
