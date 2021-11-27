@@ -81,17 +81,16 @@ class Runner():
 		
 		print('** Sorting runs by [',sort_by,']')
 			
-		if sort_by=='position':
+		if sort_by=='position': # ascending position
 			self.runs = sorted(self.runs, key=lambda d: int(d['Pos']))
-		elif sort_by=='age grading':
+		elif sort_by=='age_grading': #descending age
 			self.runs = sorted(self.runs, key=lambda d: float(d['AgeGrade'].replace('%','')), reverse=False)	
-		elif sort_by=='event no':
+		elif sort_by=='event_no': #ascending event/run number
 			self.runs = sorted(self.runs, key=lambda d: int(d['Run Number']))	
-		elif sort_by=='time':
-			self.runs = sorted(self.runs, key=lambda d: d['Time'], reverse=False)	
-		elif sort_by=='date':
-			# already in reverse date order
-			pass #self.runs = sorted(self.runs, key=lambda d: d['Run Date'], reverse=False)	
+		elif sort_by=='time': #ascending Time
+			self.runs = sorted(self.runs, key=lambda d: d['Time'])	
+		elif sort_by=='date': # already in reverse "Run Date" order
+			pass 	
 		
 		self.caption = data['caption']
 		self.countries = countries		

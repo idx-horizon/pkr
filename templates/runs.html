@@ -22,7 +22,7 @@
 
 <label>Sort by</label>
 <select class="form-control" style="width:125px" name="sort_by">
-  {% for opt in ['date','time', 'age grading','position','event no'] %}
+  {% for opt in ['date','time', 'age_grading','position','event_no'] %}
   
      <option {% if opt==sortcol %}selected{% endif %} 
      		value={{ opt }}>{{ opt }}
