@@ -421,7 +421,7 @@ def load_runners():
 	runners =[]
 	for r in runners_lst:
 		o = Runner(r)
-		o.get_runs(True)
+		o.get_runs(refresh=True)
 		runners.append(o)
 		print(o)
 
