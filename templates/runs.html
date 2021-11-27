@@ -19,22 +19,24 @@
 
 </H3>
 <form class="form-inline" action='/runs/{{ filter_str }}' method="POST" name="form" autocomplete="off">
-
-		<input class="form-inline" type="text" style="width:250px" autocomplete="off"
-               autocapitalize="off"
-               spellcheck="off"
-               name="filter_str"
-               placeholder="(filter by)"
-               value="{{ filter }}"></input>
-
-
-<button type="submit" class="btn btn-success" name="filter_btn" value="Filter">Filter</button>
-
-<select class="form-control" style="width:100px" name="sort_by">
+<label>Sort</label>
+<select class="form-control" style="width:150px" name="sort_by">
   {% for opt in ['Date','Time', 'Age Grading','Position','Event No'] %}
      <option value={{ opt }}>{{ opt | title }}</option>
   {% endfor %}
 </select>
+
+<input class="form-inline" type="text" style="width:250px" autocomplete="off"
+               autocapitalize="off"
+               spellcheck="off"
+               name="filter_str"
+               placeholder="(filter by)"
+               value="{{ filter }}">
+ </input>
+
+
+<button type="submit" class="btn btn-success" name="filter_btn" value="Filter">Filter</button>
+
 
 </form>
 
