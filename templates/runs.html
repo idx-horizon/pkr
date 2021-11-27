@@ -18,11 +18,11 @@
 <H3>
 
 </H3>
-<form class="form-inline" action='/runs/{{ filter_str }}_{{ sort_by }}' method="POST" name="form" autocomplete="off">
+<form class="form-inline" action='/runs' method="POST" name="form" autocomplete="off">
 <label>Sort</label>
 <select class="form-control" style="width:150px" name="sort_by">
   {% for opt in ['Date','Time', 'Age Grading','Position','Event No'] %}
-     <option value={{ opt }} {% if opt==sort %} selected {% endif %}
+     <option value={{ opt }} {% if opt==sortcol %}selected{% endif %}
      >{{ opt | title }}</option>
   {% endfor %}
 </select>
