@@ -223,13 +223,13 @@ def runner_runs(params=None):
     
     this_filter = params or ''
     try:
-        this_sort = str(request.form['sort_by']).lower()
+        this_sort = str(request.form['sort_by'])
     except:
         this_sort = 'Date'
 
     if request.method.upper() == 'POST':
       this_filter  = str(request.form['filter_str']).lower()
-      this_sort    = str(request.form['sort_by']).lower()
+      this_sort    = str(request.form['sort_by'])
 
     rid.get_runs(this_filter, False, this_sort)
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
