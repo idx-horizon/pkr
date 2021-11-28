@@ -231,6 +231,7 @@ def runner_runs(params=None):
       this_filter  = str(request.form['filter_str']).lower()
       this_sort    = str(request.form['sort_by'])
 
+    print('** [{}] - [{}] - [{}]'.format(this_filter, this_sort, params))
     rid.get_runs(this_filter, False, this_sort)
     rid.updated_dt = rid.updated_dt.strftime('%d-%b-%Y %H:%M')
 
