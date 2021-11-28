@@ -21,7 +21,7 @@
 <form class="form-inline" action='/runs' method="POST" name="form" autocomplete="off">
 
 <label for="select_sort_by">Sort by</label>
-<select class="form-control" style="width:125px" id="select_sort_by@ name="sort_by">
+<select class="form-control" style="width:125px" id="select_sort_by" name="sort_by">
   {% for opt in ['date','time','age_grading','event_no','run_pos'] %}
      <option {% if opt==sortcol %}selected{% endif %} 
      		value={{ opt }}>{{ opt | replace('_',' ') | title }}
