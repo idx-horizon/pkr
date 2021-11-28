@@ -73,7 +73,12 @@ class Runner():
 		print(data['title'])
 		self.fullname = data['title']
 		self.name = self.fullname[:self.fullname.index(' ')]
-		
+
+		# add number of occurences event has been run
+		ev_counter = Counter([e['Event'] for e in self.runs])
+		for e in self.runs:
+			e['occurrences']=ev_counter[e['Event']]
+
 		if filter_by:
 			self.runs = [x for x in data['runs'] if filter_by.lower() in x['Event'].lower()]
 		else:
