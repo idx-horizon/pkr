@@ -79,7 +79,7 @@ class Runner():
 		else:
 			self.runs = data['runs']
 		
-		print('** Sorting runs by [',sort_by,']')
+		#print('** Sorting runs by [',sort_by,']')
 			
 		if sort_by=='run_pos': # ascending position
 			self.runs = sorted(self.runs, key=lambda d: int(d['Pos']))

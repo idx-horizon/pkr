@@ -47,17 +47,17 @@
 <table class="table table-hover table-light table-striped" style="width:90%">
     <thead class="thead-light text-left">
 	<tr>
-		<th onclick="sortTable(0)" width="30%">Run</th>
-		<th onclick="sortTable(1)" width="15%">Date</th>
-		<th onclick="sortTable(2)" width="15%">Time</th>
-		<th onclick="sortTable(3)" width="10%">Age Grading</th>
-		<th onclick="sortTable(4)" width="15%">Event No</th>
-		<th onclick="sortTable(5)" width="15%">Run Pos</th>
+		<th width="30%">Run</th>
+		<th width="15%">Date</th>
+		<th width="15%">Time</th>
+		<th width="10%">Age Grading</th>
+		<th width="15%">Event No</th>
+		<th width="15%">Run Pos</th>
 	</tr>
 	</thead>
 	{% for item in data.runs %}
 			<tr>
-				<td><a class="text-decoration-none" href="/runs/{{ item['Event'] }}"><span class="badge badge-pill badge-success">{{ item['occurrences'] }}</span> {{ item['Event'] }}</a>
+				<td><a class="text-decoration-none" href="/runs/{{ item['Event'] }}"><span class="badge badge-pill badge-success">{{ item['occurrences'] }}1</span> {{ item['Event'] }}</a>
 								</td>
 				<td>{{ item['Run Date'] | format_datetime }}</td>
 				<td>
