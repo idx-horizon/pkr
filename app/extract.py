@@ -65,10 +65,9 @@ def extract_tables(html_text):
 		run_list = [{k: v for k, v in zip(headers, tup)} for tup in list(runs)]
 
 		response[table_count] = {'headers': headers,
-									'number_cols': len(headers),
-#									'data_count': len(data),
-									'data': data,
-									'runs': run_list,
-									'caption': caption.strip(),
-									'title': h2name.strip()}
+								 'number_cols': len(headers),
+								 'data': data,
+								 'runs': run_list,
+								 'caption': caption.strip(),
+								 'title': h2name.strip()}
 	return response

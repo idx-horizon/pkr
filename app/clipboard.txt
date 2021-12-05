@@ -1,8 +1,0 @@
-for e in uk:
-	try:
-		first_run = [x['First Run'] for x in anni if x['Event']==e['properties']['EventLongName']][0]
-	except:
-		print('** Unable to get {}'.format(e['properties']['EventLongName']))
-		first_run=None
-	
-	e['properties']['first_run']=first_run	

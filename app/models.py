@@ -6,21 +6,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.sql import func
 import json
 
-#def add_loginlog(username, ipaddress='unknown'):
-#    l = LoginLog(username=username,
-#                 ipaddress=ipaddress)
-#    db.session.add(l)
-#    db.session.commit()
-    
-#def clear_log():
-#    LoginLog.query.filter(LoginLog.id > 0).delete()
-#    db.session.commit()
-    
 def show_ll():
     q = LoginLog.query.all()
     for ele in q:
         print(ele)
-        
+
 class LoginLog(db.Model):
     id         = db.Column(db.Integer, primary_key=True)
     username   = db.Column(db.String(64), index=True)
@@ -101,7 +91,6 @@ class User(UserMixin, db.Model):
     def SELECTEDRUNNER(self):
         return session['SELECTEDRUNNER']
 
-                
     @property
     def friends(self):
         return Friend.get(self.username)
