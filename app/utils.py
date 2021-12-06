@@ -32,7 +32,6 @@ def find_in_list_dict(lst, key, value):
     
 class Runner():
 	
-#	base = 'https://www.parkrun.org.uk/results/athleteeventresultshistory/?athleteNumber={}&eventNumber=0'
 	base = 'https://www.parkrun.org.uk/parkrunner/{}/all/'
 
 	def run(self):
@@ -67,6 +66,7 @@ class Runner():
 		if refresh or not os.path.exists(local_fname):
 			page = get(self.url).text
 			print(self.url)
+			print('Extract e:', dir(e))
 			data = e.extract_tables(page)[3]
 			countries = e.get_run_links(page)
 			self.cached = 'new'
@@ -82,7 +82,8 @@ class Runner():
 		self.fullname = data['title']
 		self.name = self.fullname[:self.fullname.index(' ')]
 
-		# add number of occurences event has been run
+		# add number of occurences event has been run and
+		# add timeSecs to represent Time in seconds
 		ev_counter = Counter([e['Event'] for e in data['runs']])
 		for e in data['runs']:
 			e['occurrences']=ev_counter[e['Event']]
