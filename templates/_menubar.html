@@ -1,6 +1,6 @@
 {% if not current_user.is_anonymous %}	
   <div class="text-left text-dark active" style="background-color: #4CAF50;">Logged in as {{ current_user.icon }} &nbsp {{ current_user.username | title }} 
-  <a class="nav-link active" href="/logout"><BR>(Logout)</a>
+  <a class="nav-item active" href="/logout"><BR>(Logout)</a>
   </div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
@@ -80,15 +80,15 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-        <a class="nav-link dropdown-toggle" href="#" id="dropdownSubMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Graphs</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdownSubMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">📈 Graphs</a>
               <div class="dropdown-menu" aria-labelledby="dropdownSubMenu">
                   <a class="dropdown-item" href="/graph">Age Grading</a>
                   <a class="dropdown-item" href="/graph">Run time</a>
               </div>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Locations</a>
+        <a class="dropdown-item" href="#">📍 Locations</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/loginlog">Login logs</a>
+        <a class="dropdown-item" href="/loginlog">🔑 Login logs</a>
         </div>
       </li>
       {% endif %}
