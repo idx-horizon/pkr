@@ -98,9 +98,9 @@ def r_graph():
     graphtype = request.args.get('graphtype', 'runtime')
     print('GRAPH TYPE: {}'.format(graphtype))
     if graphtype == 'agegrading':
-        params = ('AgeGrade', [25,75], '%','')
+        params = ('AgeGrade', [25,75], '%','',1)
     elif graphtype == 'runtime':
-        params = ('Time', [15,50], ':', '.')
+        params = ('TimeSecs', [15,40], ':', '.',60)
         
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
@@ -119,12 +119,12 @@ def r_graph():
        subset = reversed(list(rid.runs[:mx_runs]))
        
        graph.add(SELECTEDRUNNER['username'].title(), 
-                [float(x[params[0]].replace(params[2],params[3])) for x in subset],
+                [float(x[params[0]].replace(params[2],params[3]))/params[4] for x in subset],
                 dots_size=1)
                 
        if current_user.rid != SELECTEDRUNNER['rid']:
           graph.add(current_user.username.title(), 
-                [float(x[params[0]].replace(params[2],params[3])) for x in reversed(list(me.runs[:mx_runs]))],
+                [float(x[params[0]].replace(params[2],params[3])) for x in reversed(list(me.runs[:mx_runs]))/params[4]],
                 dots_size=1)
                 
        graph.range = params[1] #[25, 75]
