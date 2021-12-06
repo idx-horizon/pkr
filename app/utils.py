@@ -66,7 +66,6 @@ class Runner():
 		if refresh or not os.path.exists(local_fname):
 			page = get(self.url).text
 			print(self.url)
-			print('Extract E:', dir(E))
 			data = E.extract_tables(page)[3]
 			countries = E.get_run_links(page)
 			self.cached = 'new'
@@ -174,6 +173,7 @@ class Runner():
 						key=lambda key: self.stats[key])		
 		challenges['Most common event'] = '{} at {}'.format(self.stats[key], key.replace('_EVENT_',''))
 		challenges['1️⃣ Singleton events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==1]))
+		challenges['2️⃣ Double events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==2]))
 		
 		pix = 0
 		ev = sorted([self.stats[x] for x in self.stats if x.startswith('_EVENT_')], reverse=True)
