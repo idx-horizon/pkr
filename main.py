@@ -98,9 +98,9 @@ def r_graph():
     graphtype = request.args.get('graphtype', 'runtime')
     print('GRAPH TYPE: {}'.format(graphtype))
     if graphtype == 'agegrading':
-        params = ('AgeGrade', [25,75], '%','',1)
+        params = ('AgeGrade', [25,75], '%','',1, 'Age Grading')
     elif graphtype == 'runtime':
-        params = ('TimeSecs', [15,40], ':', '.',60)
+        params = ('TimeSecs', [15,40], ':', '.',60, 'Run Time')
         
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
@@ -115,16 +115,17 @@ def r_graph():
     try:
        graph = pygal.Line(style=pygal.style.LightGreenStyle)
 
-       graph.title = '{} over last {} runs'.format(params[0], mx_runs)
+       graph.title = '{} over last {} runs'.format(params[5], mx_runs)
        subset = reversed(list(rid.runs[:mx_runs]))
-       
+       current_series = [float(str(x[params[0]]).replace(params[2],params[3]))/params[4] for x in subset]
        graph.add(SELECTEDRUNNER['username'].title(), 
-                [float(str(x[params[0]]).replace(params[2],params[3]))/params[4] for x in subset],
+                current_series,
                 dots_size=1)
-                
+       print('** Max/Min:', max(current_series), min(current_series))                
        if current_user.rid != SELECTEDRUNNER['rid']:
+          my_series = [float(str(x[params[0]]).replace(params[2],params[3]))/params[4] for x in reversed(list(me.runs[:mx_runs]))]
           graph.add(current_user.username.title(), 
-                [float(str(x[params[0]]).replace(params[2],params[3]))/params[4] for x in reversed(list(me.runs[:mx_runs]))],
+                my_series,
                 dots_size=1)
                 
        graph.range = params[1] #[25, 75]
