@@ -121,14 +121,19 @@ def r_graph():
        graph.add(SELECTEDRUNNER['username'].title(), 
                 current_series,
                 dots_size=1)
-       print('** Max/Min:', max(current_series), min(current_series))                
+       my_series = current_series
        if current_user.rid != SELECTEDRUNNER['rid']:
           my_series = [float(str(x[params[0]]).replace(params[2],params[3]))/params[4] for x in reversed(list(me.runs[:mx_runs]))]
           graph.add(current_user.username.title(), 
                 my_series,
                 dots_size=1)
                 
-       graph.range = params[1] #[25, 75]
+#       graph.range = params[1] #[25, 75]
+       graph.range = [ min(current_series+my_series)-1 , 
+                       max(current_series+my_series)+1 ]
+                       
+       print('** Min/Max:', graph.range) 
+                      
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
                                 graph_title = graph.title,
