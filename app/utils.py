@@ -16,6 +16,14 @@ except:
 ANNIVERSARY_URL = 'https://wiki.parkrun.com/index.php/Anniversaries'
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
+def time_to_secs(runtime):
+	if len(runtime)==8:
+		weights = [3600, 60, 1]
+	else:
+		weights = [60,1]
+		
+	return sum(x * int(t) for x, t in zip(weights, runtime.split(":")))
+	
 def find_in_list_dict(lst, key, value):
     for i, dic in enumerate(lst):
         if dic[key] == value:
@@ -78,6 +86,7 @@ class Runner():
 		ev_counter = Counter([e['Event'] for e in data['runs']])
 		for e in data['runs']:
 			e['occurrences']=ev_counter[e['Event']]
+			e['TimeSecs']= time_to_secs(e['Time'])
 
 		if filter_by:
 			self.runs = [x for x in data['runs'] if filter_by.lower() in x['Event'].lower()]
@@ -93,7 +102,7 @@ class Runner():
 		elif sort_by=='event_no': #ascending event/run number
 			self.runs = sorted(self.runs, key=lambda d: int(d['Run Number']))	
 		elif sort_by=='time': #ascending Time
-			self.runs = sorted(self.runs, key=lambda d: d['Time'])	
+			self.runs = sorted(self.runs, key=lambda d: d['TimeSecs'])	
 		elif sort_by=='date': # already in reverse "Run Date" order
 			pass 	
 		

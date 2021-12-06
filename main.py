@@ -114,16 +114,10 @@ def r_graph():
         
     try:
        graph = pygal.Line(style=pygal.style.LightGreenStyle)
-#       graph.title = 'Languages over time.'
-#       graph.x_labels = ['2012','2013','2014','2015','2016']
-#       graph.add('Python',  [15, 31, 89, 200, 356])
-#       graph.add('Java',    [15, 45, 76, 80,  91])
-#       graph.add('C++',     [5,  51, 54, 102, 150])
 
        graph.title = '{} over last {} runs'.format(params[0], mx_runs)
        subset = reversed(list(rid.runs[:mx_runs]))
        
-#       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'].title(), 
                 [float(x[params[0]].replace(params[2],params[3])) for x in subset],
                 dots_size=1)
@@ -132,12 +126,6 @@ def r_graph():
           graph.add(current_user.username.title(), 
                 [float(x[params[0]].replace(params[2],params[3])) for x in reversed(list(me.runs[:mx_runs]))],
                 dots_size=1)
-                
-                
-       for f in Friend.get(SELECTEDRUNNER['username']):
-           print('Add to graph', f) 
- #          graph.add(f.f_username].title(), 
- #               [float(x['AgeGrade'].replace('%','')) for x in subset])
                 
        graph.range = params[1] #[25, 75]
        graph_data = graph.render_data_uri()
