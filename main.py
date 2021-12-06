@@ -98,7 +98,7 @@ def r_graph():
     graphtype = request.args.get('graphtype')
     print('GRAPH TYPE: {}'.format(graphtype))
     if graphtype == 'agegrading':
-        params = ('AgeGrade' [25,75], '%','')
+        params = ('AgeGrade', [25,75], '%','')
     elif graphtype == 'runtime':
         params = ('Time', [15,50], ':', '.')
         
@@ -125,7 +125,7 @@ def r_graph():
        
 #       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'].title(), 
-                [float(x[params[0]].replace('%','')) for x in subset],
+                [float(x[params[0]].replace(params[2],params[3])) for x in subset],
                 dots_size=1)
                 
        if current_user.rid != SELECTEDRUNNER['rid']:
