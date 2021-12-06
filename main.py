@@ -95,6 +95,12 @@ def apilog():
 @app.route('/graph')
 @app.route('/graph/')
 def r_graph():
+    graphtype = request.args.get('graphtype')
+    if graphtype == 'agegrading':
+        params = ('AgeGrade' [25,75], '%','')
+    elif graphtype == 'runtime':
+        params = ('Time', [15,50], ':', '.')
+        
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
@@ -113,17 +119,17 @@ def r_graph():
 #       graph.add('Java',    [15, 45, 76, 80,  91])
 #       graph.add('C++',     [5,  51, 54, 102, 150])
 
-       graph.title = 'Age grading over last {} runs'.format(mx_runs)
+       graph.title = '{} over last {} runs'.format(params[0], mx_runs)
        subset = reversed(list(rid.runs[:mx_runs]))
        
 #       graph.x_labels = [x['Run Date'] for x in subset]
        graph.add(SELECTEDRUNNER['username'].title(), 
-                [float(x['AgeGrade'].replace('%','')) for x in subset],
+                [float(x[params[0]].replace('%','')) for x in subset],
                 dots_size=1)
                 
        if current_user.rid != SELECTEDRUNNER['rid']:
           graph.add(current_user.username.title(), 
-                [float(x['AgeGrade'].replace('%','')) for x in reversed(list(me.runs[:mx_runs]))],
+                [float(x[params[0]].replace(params[2],params[3])) for x in reversed(list(me.runs[:mx_runs]))],
                 dots_size=1)
                 
                 
@@ -132,7 +138,7 @@ def r_graph():
  #          graph.add(f.f_username].title(), 
  #               [float(x['AgeGrade'].replace('%','')) for x in subset])
                 
-       graph.range = [25, 75]
+       graph.range = params[1] #[25, 75]
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
                                 graph_title = graph.title,
@@ -342,7 +348,6 @@ def r_switch(switch_to=None):
             'rid': current_user.rid, 
             'threshold': current_user.agegrade_theshold, 
             'icon': current_user.icon}
-       # return redirect(url_for('runner_runs'))
         return redirect(url_for(return_to))
     
     if switch_to.lower() in [x['f_username'] for x in session['FRIENDS']]:
