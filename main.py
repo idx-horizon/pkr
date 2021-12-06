@@ -119,12 +119,12 @@ def r_graph():
        subset = reversed(list(rid.runs[:mx_runs]))
        
        graph.add(SELECTEDRUNNER['username'].title(), 
-                [float(x[params[0]].replace(params[2],params[3]))/params[4] for x in subset],
+                [float(str(x[params[0]]).replace(params[2],params[3]))/params[4] for x in subset],
                 dots_size=1)
                 
        if current_user.rid != SELECTEDRUNNER['rid']:
           graph.add(current_user.username.title(), 
-                [float(x[params[0]].replace(params[2],params[3])) for x in reversed(list(me.runs[:mx_runs]))/params[4]],
+                [float(str(x[params[0]]).replace(params[2],params[3]))/params[4] for x in reversed(list(me.runs[:mx_runs]))],
                 dots_size=1)
                 
        graph.range = params[1] #[25, 75]
