@@ -17,7 +17,7 @@ ANNIVERSARY_URL = 'https://wiki.parkrun.com/index.php/Anniversaries'
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
 def time_to_secs(runtime):
-	if len(runtime)==8:
+	if runtime.count(':')==2:
 		weights = [3600, 60, 1]
 	else:
 		weights = [60,1]
