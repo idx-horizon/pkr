@@ -96,6 +96,7 @@ def apilog():
 @app.route('/graph/')
 def r_graph():
     graphtype = request.args.get('graphtype')
+    print('GRAPH TYPE: {}'.format(graphtype))
     if graphtype == 'agegrading':
         params = ('AgeGrade' [25,75], '%','')
     elif graphtype == 'runtime':
