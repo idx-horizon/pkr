@@ -61,7 +61,7 @@
 								</td>
 				<td>{{ item['Run Date'] | format_datetime }}</td>
 				<td>
-						{{ item['Time'] }}
+						{{ item['Time'] }} ({{ item['TimeSecs'] }})
 						{% if item['PB?'] == 'PB' %}
 						  <span class="badge badge-pill badge-success">PB</span> 
 		  			    {% endif %}
