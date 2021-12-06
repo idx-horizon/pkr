@@ -9,9 +9,9 @@ import re
 import datetime
 import math
 try: 
-	import app.extract as e
+	import app.extract as E
 except:
-	import extract as e
+	import extract as E
 	
 ANNIVERSARY_URL = 'https://wiki.parkrun.com/index.php/Anniversaries'
 EVENT_URL = 'https://images.parkrun.com/events.json'
@@ -66,9 +66,9 @@ class Runner():
 		if refresh or not os.path.exists(local_fname):
 			page = get(self.url).text
 			print(self.url)
-			print('Extract e:', dir(e))
-			data = e.extract_tables(page)[3]
-			countries = e.get_run_links(page)
+			print('Extract E:', dir(E))
+			data = E.extract_tables(page)[3]
+			countries = E.get_run_links(page)
 			self.cached = 'new'
 			save_local(json.dumps((countries, data)))
 
@@ -94,8 +94,6 @@ class Runner():
 		else:
 			self.runs = data['runs']
 		
-		print('** Sorting runs by [',sort_by,']')
-			
 		if sort_by=='run_pos': # ascending position
 			self.runs = sorted(self.runs, key=lambda d: int(d['Pos']))
 		elif sort_by=='age_grading': #descending age
@@ -171,7 +169,6 @@ class Runner():
 								', '.join(times_done_max_freq),
 								max_freq
 								)
-		
 		
 		key = max({x for x in self.stats if x.startswith('_EVENT_')}, 
 						key=lambda key: self.stats[key])		
