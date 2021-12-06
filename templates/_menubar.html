@@ -53,7 +53,7 @@
         {% endif %}
           
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDEventLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDDEventLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Events
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDDEventLink">
@@ -63,7 +63,7 @@
       </li>
       
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Settings
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -75,12 +75,12 @@
       </li>      
       {% if current_user.is_admin %}
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Admin
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-        <a class="nav-link dropdown-toggle dropright" href="#" id="dropdownSubMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">📈 Graphs</a>
+        <a class="nav-link dropdown-toggle" href="#" id="dropdownSubMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">📈 Graphs</a>
               <div class="dropdown-menu" aria-labelledby="dropdownSubMenu">
                   <a class="dropdown-item" href="/graph">Age Grading</a>
                   <a class="dropdown-item" href="/graph">Run time</a>

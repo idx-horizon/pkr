@@ -329,7 +329,7 @@ def r_event_summary():
                             data=data)
 
 
-@app.route('/switch')
+@app.route('/switch', methods=['GET'])
 @app.route('/switch/<switch_to>', methods=['GET'])
 @login_required
 def r_switch(switch_to=None):
@@ -342,7 +342,8 @@ def r_switch(switch_to=None):
             'rid': current_user.rid, 
             'threshold': current_user.agegrade_theshold, 
             'icon': current_user.icon}
-        return redirect(url_for('runner_runs'))
+       # return redirect(url_for('runner_runs'))
+        return redirect(url_for(return_to))
     
     if switch_to.lower() in [x['f_username'] for x in session['FRIENDS']]:
         user = User.query.filter_by(username=switch_to.lower()).first()
