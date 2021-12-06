@@ -391,6 +391,7 @@ def r_image():
 #    return os.environ['APP_TITLE'] 
 
 def runapp(host='localhost', port=5000, debug=True):
+    print('** MY PARAMS: {}'.format(os.environ['MY_PARAMS']))
     app.run(host=host, port=port, debug=debug)
 
 if __name__ == '__main__':
