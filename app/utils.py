@@ -229,7 +229,8 @@ class Runner():
 		challenges['🌳 Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
 		challenges['🐍 Snake']    = self.snake()
 #		challenges['🎵 Bee Gees'] = self.combo( {'B':3, 'G':3})
-		challenges['🏴‍☠️ Pirates**']  = self.refac( {'C':7, 'G':1})
+		challenges['🏴‍☠️ Pirates**']  = self.refac( {'^C':7, '^G':1})
+		challenges['🧭 Compass**']  = self.refac( {'north':1, 'east':1, 'south':1, 'east': 1})
 		
 		challenges['🎵 Bee Gees'] = self.combo( [('^B',3),('^G',3)])
 		challenges['🏴‍☠️ Pirates']  = self.combo( [('^C',7),('^G',1)])
@@ -253,17 +254,17 @@ class Runner():
 	def combo(self,opts):
 		# covers BeeGess and Pirates challenge
 			
-		x0 = self.regex_test('^'+opts[0][0], 'Event','list').split('~')[0:opts[0][1]]
-		x1 = self.regex_test('^'+opts[1][0], 'Event','list').split('~')[0:opts[1][1]]
+		x0 = self.regex_test(opts[0][0], 'Event','list').split('~')[0:opts[0][1]]
+		x1 = self.regex_test(opts[1][0], 'Event','list').split('~')[0:opts[1][1]]
 		tot = len(x0) + len(x1)
 		return '{:0.0%} - {} out of {} {}\'s & {} out of {} {}\'s~{}'.format(
 					tot/(opts[0][1]+opts[1][1]),
 					len(x0),
 					opts[0][1],
-					opts[0][0],
+					opts[0][0].replace('^',''),
 					len(x1),
 					opts[1][1],
-					opts[1][0],
+					opts[1][0].replace('^',''),
 					', '.join(x0+x1)) 
 		
 	def bingo(self):
