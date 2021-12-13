@@ -227,22 +227,35 @@ class Runner():
 		challenges['🎊 New Year Day'] = self.holiday_runs(1,1)
 
 		challenges['🌳 Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
-		challenges['🐍 Snake'] = self.snake()
-#		challenges['🎵 Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
-		challenges['🎵 Bee Gees'] = self.combo([('B',3),('G',3)])
-		challenges['🏴‍☠️ Pirates'] = self.combo([('C',7),('R',1)])
+		challenges['🐍 Snake']    = self.snake()
+#		challenges['🎵 Bee Gees'] = self.combo( {'B':3, 'G':3})
+		challenges['🏴‍☠️ Pirates**']  = self.refac( {'C':7, 'G':1})
+		challenges['🎵 Bee Gees'] = self.combo( [('B',3),('G':3)])
+		challenges['🏴‍☠️ Pirates']  = self.combo( [('C',7),('G':1)])
 		
 		challenges['🧭 Compass'] = '{}'.format(self.regex_test('north|east|south|east', 'Event', 'list'))
 		challenges['👤 Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
 		
 		return challenges
-		
+
+	def refac(self, d):
+		result = {}
+		for ele in d:
+			result[ele] = self.regex_test('^'+ele, 'Event','list').split('~')[0:d[ele]]
+		total_met = sum(result.values())	
+		total_required = sum(d.values())
+		return '{0:0%} - {} out of {}'.format(
+					total_met/total_required,
+					total_met,
+					total_required)
+				
 	def combo(self,opts):
 		# covers BeeGess and Pirates challenge
+			
 		x0 = self.regex_test('^'+opts[0][0], 'Event','list').split('~')[0:opts[0][1]]
 		x1 = self.regex_test('^'+opts[1][0], 'Event','list').split('~')[0:opts[1][1]]
 		tot = len(x0) + len(x1)
-		return '{:0.0%} - {}/{} {} & {}/{} {}~{}'.format(
+		return '{:0.0%} - {} out of {} {}\'s & {} out of {} {}\'s~{}'.format(
 					tot/(opts[0][1]+opts[1][1]),
 					len(x0),
 					opts[0][1],
