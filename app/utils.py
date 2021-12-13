@@ -243,7 +243,7 @@ class Runner():
 		result = {}
 		for ele in d:
 			result[ele] = self.regex_test(ele, 'Event','list').split('~')[0:d[ele]]
-		total_met = sum(result.values())	
+		total_met = sum( [len(result[x]) for x in result] )	
 		total_required = sum(d.values())
 		return '{0:0%} - {} out of {}'.format(
 					total_met/total_required,
