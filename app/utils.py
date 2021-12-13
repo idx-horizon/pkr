@@ -228,8 +228,8 @@ class Runner():
 
 		challenges['🌳 Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
 		challenges['🐍 Snake']    = self.snake()
-		challenges['🎵 Bee Gees**'] = self.refac( {'B':3, 'G':3})
-		challenges['🏴‍☠️ Pirates**']  = self.refac( {'^C':7, '^G':1})
+		challenges['🎵 Bee Gees**'] = self.refac( {'^B':3, '^G':3})
+		challenges['🏴‍☠️ Pirates**']  = self.refac( {'^C':7, '^R':1})
 		challenges['🧭 Compass**']  = self.refac( {'north':1, 'west':1, 'south':1, 'east': 1})
 		
 		challenges['🎵 Bee Gees'] = self.combo( [('^B',3),('^G',3)])
@@ -245,9 +245,9 @@ class Runner():
 		for ele in d:
 			result[ele] = self.regex_test(ele, 'Event','list').split('~')[0:d[ele]]
 			
-		total_met = sum( [len(result[x]) for x in result] )	
+		total_met = sum( [len(result[x]) for x in result if result[x] != '-'] )	
 		total_required = sum(d.values())
-		events = [', '.join([', '.join(result[x]) for x in result])]
+		events = ', '.join([', '.join(result[x]) for x in result if result[x] != '-'])
 		return '{:0.0%} - {} out of {}~{}'.format(
 					total_met/total_required,
 					total_met,
