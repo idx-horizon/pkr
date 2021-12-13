@@ -247,7 +247,7 @@ class Runner():
 		return '{:0.0%} - {}C & {}R~{}'.format(
 					tot/8,
 					len(cs),
-					len(rs)
+					len(rs),
 					', '.join(cs+rs)) 
 		
 	def bingo(self):
