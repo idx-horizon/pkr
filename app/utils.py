@@ -245,9 +245,9 @@ class Runner():
 		for ele in d:
 			result[ele] = self.regex_test(ele, 'Event','list').split('~')[0:d[ele]]
 			
-		total_met = sum( [len(result[x]) for x in result if result[x] != '-'] )	
+		total_met = sum( [len(result[x]) for x in result] )	
 		total_required = sum(d.values())
-		events = ', '.join([', '.join(result[x]) for x in result if result[x] != '-'])
+		events = ', '.join([', '.join(result[x]) for x in result])
 		return '{:0.0%} - {} out of {}~{}'.format(
 					total_met/total_required,
 					total_met,
@@ -378,9 +378,9 @@ class Runner():
 	def regex_test(self, pattern, attribute, returntype):
 		lst = sorted(set([x[attribute] for x in self.runs if re.search(pattern, x['Event'], re.IGNORECASE)]))	
 		if returntype == 'single':
-			return lst[0] if len(lst) > 0 else '-'
+			return lst[0] if len(lst) > 0 else None
 		else:
-			return '~'.join(lst) if len(lst) > 0 else '-'
+			return '~'.join(lst) if len(lst) > 0 else None #'-'
 				
 	def run_gen(self):
 		ix = -1
