@@ -231,6 +231,8 @@ class Runner():
 		challenges['🎵 Bee Gees**'] = self.refac( {'^B':3, '^G':3})
 		challenges['🏴‍☠️ Pirates**']  = self.refac( {'^C':7, '^R':1})
 		challenges['🧭 Compass**']  = self.refac( {'north':1, 'west':1, 'south':1, 'east': 1})
+		challenges['👤 Full Ponty**'] = self.refac( {'ponty':4})		
+		
 		
 		challenges['🎵 Bee Gees'] = self.combo( [('^B',3),('^G',3)])
 		challenges['🏴‍☠️ Pirates']  = self.combo( [('^C',7),('^G',1)])
@@ -244,6 +246,7 @@ class Runner():
 		result = {}
 		for ele in d:
 			result[ele] = self.regex_test(ele, 'Event','list').split('~')[0:d[ele]]
+			print('**REFAC:', ele, result[ele])
 			
 		total_met = sum( [len(result[x]) for x in result] )	
 		total_required = sum(d.values())
