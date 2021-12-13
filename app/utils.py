@@ -230,8 +230,9 @@ class Runner():
 		challenges['🐍 Snake']    = self.snake()
 #		challenges['🎵 Bee Gees'] = self.combo( {'B':3, 'G':3})
 		challenges['🏴‍☠️ Pirates**']  = self.refac( {'C':7, 'G':1})
-		challenges['🎵 Bee Gees'] = self.combo( [('B',3),('G':3)])
-		challenges['🏴‍☠️ Pirates']  = self.combo( [('C',7),('G':1)])
+		
+		challenges['🎵 Bee Gees'] = self.combo( [('^B',3),('^G',3)])
+		challenges['🏴‍☠️ Pirates']  = self.combo( [('^C',7),('^G',1)])
 		
 		challenges['🧭 Compass'] = '{}'.format(self.regex_test('north|east|south|east', 'Event', 'list'))
 		challenges['👤 Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
@@ -241,7 +242,7 @@ class Runner():
 	def refac(self, d):
 		result = {}
 		for ele in d:
-			result[ele] = self.regex_test('^'+ele, 'Event','list').split('~')[0:d[ele]]
+			result[ele] = self.regex_test(ele, 'Event','list').split('~')[0:d[ele]]
 		total_met = sum(result.values())	
 		total_required = sum(d.values())
 		return '{0:0%} - {} out of {}'.format(
