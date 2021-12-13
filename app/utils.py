@@ -232,8 +232,8 @@ class Runner():
 		challenges['🎵 Bee Gees'] = self.refac( {'^B':3, '^G':3}, '(Need 3B & 3G)')
 		challenges['🏴‍☠️ Pirates']  = self.refac( {'^C':7, '^R':1}, '(Need 7C & 1R)')
 		challenges['🧭 Compass']  = self.refac( {'north':1, 'west':1, 'south':1, 'east': 1}, 
-												'(Need North/South/East/West)')
-		challenges['👤 Full Ponty**'] = self.refac( {'ponty':4}, '(Need all the Ponty\'s'))		
+												'(Go North, South, East & West)')
+		challenges['👤 Full Ponty**'] = self.refac( {'ponty':4}, '(Need all the Ponty\'s)')		
 		
 		
 #		challenges['🎵 Bee Gees'] = self.combo( [('^B',3),('^G',3)])
