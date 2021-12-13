@@ -237,13 +237,13 @@ class Runner():
 		
 		return challenges
 		
-	def combo(self,opts ):
+	def combo(self,opts):
 		# covers BeeGess and Pirates challenge
 		x0 = self.regex_test('^'+opts[0][0], 'Event','list').split('~')[0:opts[0][1]]
 		x1 = self.regex_test('^'+opts[1][0], 'Event','list').split('~')[0:opts[1][1]]
 		tot = len(x0) + len(x1)
 		return '{:0.0%} - {}/{} {} & {}/{} {}~{}'.format(
-					tot/(opts[0][1]+opts[1][1],
+					tot/(opts[0][1]+opts[1][1]),
 					len(x0),
 					opts[0][1],
 					opts[0][0],
