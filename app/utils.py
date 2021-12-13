@@ -378,9 +378,9 @@ class Runner():
 	def regex_test(self, pattern, attribute, returntype):
 		lst = sorted(set([x[attribute] for x in self.runs if re.search(pattern, x['Event'], re.IGNORECASE)]))	
 		if returntype == 'single':
-			return lst[0] if len(lst) > 0 else None
+			return lst[0] if len(lst) > 0 else ''
 		else:
-			return '~'.join(lst) if len(lst) > 0 else None #'-'
+			return '~'.join(lst) if len(lst) > 0 else ''
 				
 	def run_gen(self):
 		ix = -1
