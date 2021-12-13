@@ -228,27 +228,29 @@ class Runner():
 
 		challenges['🌳 Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
 		challenges['🐍 Snake'] = self.snake()
-		challenges['🎵 Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
-		challenges['🏴‍☠️ Pirates'] = self.pirates()
+#		challenges['🎵 Bee Gees'] = self.regex_test('^B|^G', 'Event','list')
+		challenges['🎵 Bee Gees'] = self.combo([('B',3),('G',3)])
+		challenges['🏴‍☠️ Pirates'] = self.combo([('C',7),('R',1)])
 		
-		#challenges['🏴‍☠️ Pirates'] = '{}'.format( self.regex_test('^C|^R', 'Event','list'))
-
 		challenges['🧭 Compass'] = '{}'.format(self.regex_test('north|east|south|east', 'Event', 'list'))
 		challenges['👤 Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
-
 		
 		return challenges
 		
-	def pirates(self):
-		# Need 7C's and an R
-		cs = self.regex_test('^C', 'Event','list').split('~')[0:7]
-		rs = self.regex_test('^R', 'Event','list').split('~')[0:1]
-		tot = len(cs) + len(rs)
-		return '{:0.0%} - {}C & {}R~{}'.format(
-					tot/8,
-					len(cs),
-					len(rs),
-					', '.join(cs+rs)) 
+	def combo(self,opts ):
+		# covers BeeGess and Pirates challenge
+		x0 = self.regex_test('^'+opts[0][0], 'Event','list').split('~')[0:opts[0][1]]
+		x1 = self.regex_test('^'+opts[1][0], 'Event','list').split('~')[0:opts[1][1]]
+		tot = len(x0) + len(x1)
+		return '{:0.0%} - {}/{} {} & {}/{} {}~{}'.format(
+					tot/(opts[0][1]+opts[1][1],
+					len(x0),
+					opts[0][1],
+					opts[0][0],
+					len(x1),
+					opts[1][1],
+					opts[1][0],
+					', '.join(x0+x1)) 
 		
 	def bingo(self):
 		resp= Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
