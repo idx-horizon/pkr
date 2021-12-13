@@ -227,51 +227,54 @@ class Runner():
 		challenges['🎊 New Year Day'] = self.holiday_runs(1,1)
 
 		challenges['🌳 Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
-		challenges['🐍 Snake']    = self.snake()
-		challenges['🎵 Bee Gees**'] = self.refac( {'^B':3, '^G':3})
-		challenges['🏴‍☠️ Pirates**']  = self.refac( {'^C':7, '^R':1})
-		challenges['🧭 Compass**']  = self.refac( {'north':1, 'west':1, 'south':1, 'east': 1})
-		challenges['👤 Full Ponty**'] = self.refac( {'ponty':4})		
+#		challenges['🐍 Snake']    = self.snake()
+		challenges['🐍 Snake']    = self.refac( {'^S': 10}, '(Slither around 10 S events)')
+		challenges['🎵 Bee Gees'] = self.refac( {'^B':3, '^G':3}, '(Need 3B & 3G)')
+		challenges['🏴‍☠️ Pirates']  = self.refac( {'^C':7, '^R':1}, '(Need 7C & 1R)')
+		challenges['🧭 Compass']  = self.refac( {'north':1, 'west':1, 'south':1, 'east': 1}, 
+												'(Need North/South/East/West)')
+		challenges['👤 Full Ponty**'] = self.refac( {'ponty':4}, '(Need all the Ponty\'s'))		
 		
 		
-		challenges['🎵 Bee Gees'] = self.combo( [('^B',3),('^G',3)])
-		challenges['🏴‍☠️ Pirates']  = self.combo( [('^C',7),('^G',1)])
+#		challenges['🎵 Bee Gees'] = self.combo( [('^B',3),('^G',3)])
+#		challenges['🏴‍☠️ Pirates']  = self.combo( [('^C',7),('^G',1)])
 		
-		challenges['🧭 Compass'] = '{}'.format(self.regex_test('north|west|south|east', 'Event', 'list'))
-		challenges['👤 Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
+#		challenges['🧭 Compass'] = '{}'.format(self.regex_test('north|west|south|east', 'Event', 'list'))
+#		challenges['👤 Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
 		
 		return challenges
 
-	def refac(self, d):
+	def refac(self, d, reqt):
 		result = {}
 		for ele in d:
 			result[ele] = self.regex_test(ele, 'Event','list').split('~')[0:d[ele]]
-			print('**REFAC:', ele, result[ele])
+#			print('**REFAC:', ele, result[ele])
 			
 		total_met = sum( [len(result[x]) for x in result if result[x] != ['-']] )	
 		total_required = sum(d.values())
 		events = ', '.join([', '.join(result[x]) for x in result if result[x] != ['-']] )
-		return '{:0.0%} - {} out of {}~{}'.format(
+		return '{:0.0%} - {} out of {} {}~{}'.format(
 					total_met/total_required,
 					total_met,
 					total_required,
+					reqt,
 					events)
 				
-	def combo(self,opts):
+#	def combo(self,opts):
 		# covers BeeGess and Pirates challenge
 			
-		x0 = self.regex_test(opts[0][0], 'Event','list').split('~')[0:opts[0][1]]
-		x1 = self.regex_test(opts[1][0], 'Event','list').split('~')[0:opts[1][1]]
-		tot = len(x0) + len(x1)
-		return '{:0.0%} - {} out of {} {}\'s & {} out of {} {}\'s~{}'.format(
-					tot/(opts[0][1]+opts[1][1]),
-					len(x0),
-					opts[0][1],
-					opts[0][0].replace('^',''),
-					len(x1),
-					opts[1][1],
-					opts[1][0].replace('^',''),
-					', '.join(x0+x1)) 
+#		x0 = self.regex_test(opts[0][0], 'Event','list').split('~')[0:opts[0][1]]
+#		x1 = self.regex_test(opts[1][0], 'Event','list').split('~')[0:opts[1][1]]
+#		tot = len(x0) + len(x1)
+#		return '{:0.0%} - {} out of {} {}\'s & {} out of {} {}\'s~{}'.format(
+#					tot/(opts[0][1]+opts[1][1]),
+#					len(x0),
+#					opts[0][1],
+#					opts[0][0].replace('^',''),
+#					len(x1),
+#					opts[1][1],
+#					opts[1][0].replace('^',''),
+#					', '.join(x0+x1)) 
 		
 	def bingo(self):
 		resp= Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
