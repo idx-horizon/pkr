@@ -23,8 +23,7 @@
     </thead>
     {% for item in data %}
         <tr>
-            <td>
-            <span class="badge badge-pill badge-success">{{ item.count }}</span> {{ item.year }}
+            <td><a class="text-decoration-none" href="/runs/year={{ item.year }}"><span class="badge badge-pill badge-success">{{ item.count }}</span> {{ item.year }}</a>
             </td>
             <td>{{ item.times[1] | replace('00:','') }}</td>
             <td>{{ item.times[0] | replace('00:','') }}</td>
