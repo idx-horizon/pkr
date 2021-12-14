@@ -24,7 +24,7 @@ class LoginLog(db.Model):
         LoginLog.query.filter(LoginLog.id > 0).delete()
         db.session.commit()
 
-    def get_log(lmt=20):
+    def get_log(lmt=20, white_ips=None):
         return LoginLog.query.order_by(LoginLog.id.desc()).limit(lmt)
         
     def add(username, ipaddress='unknown'):

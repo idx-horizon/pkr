@@ -245,8 +245,8 @@ def runner_runs(params=None):
 
 @app.route('/loginlog/', methods=['POST','GET'])
 def r_loginlog():
-    print('** Whitelist IP: {}'.format(os.environ.get('MY_IP_WHITELIST','empty whitelist')))
-    data = LoginLog.get_log()
+    white_ips = [x for x in os.environ.get('MY_IP_WHITELIST','').split('|' if x != '']
+    data = LoginLog.get_log(white_ips)
     return render_template('loginlog.html',data=data)
 
         
