@@ -89,7 +89,10 @@ class Runner():
 			e['TimeSecs']= time_to_secs(e['Time'])
 
 		if filter_by:
-			self.runs = [x for x in data['runs'] if filter_by.lower() in x['Event'].lower()]
+			if filter_by.lower().startswith('year='):
+				self.run = [x for x in data['runs'] if filter_by.lower().replace('year=','') in x['Run Date']
+			else:
+				self.runs = [x for x in data['runs'] if filter_by.lower() in x['Event'].lower()]
 		else:
 			self.runs = data['runs']
 		

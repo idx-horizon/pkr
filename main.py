@@ -132,7 +132,7 @@ def r_graph():
        graph.range = [ min(current_series+my_series)-1 , 
                        max(current_series+my_series)+1 ]
                        
-       print('** Min/Max:', graph.range) 
+#       print('** Min/Max:', graph.range) 
                       
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 

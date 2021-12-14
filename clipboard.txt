@@ -1,1 +1,0 @@
-       print('** Max/Min:', max(current_series), min(current_series))                
