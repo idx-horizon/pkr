@@ -25,8 +25,11 @@ class LoginLog(db.Model):
         db.session.commit()
 
     def get_log(lmt=20, white_ips=None):
-        return LoginLog.query.order_by(LoginLog.id.desc()).limit(lmt)
-        
+#        return LoginLog.query.order_by(LoginLog.id.desc()).limit(lmt)
+        return LoginLog.query.filter(
+                    LoginLog.ipaddress.notin_(white_ips)). \
+                    order_by(LoginLog.id.desc()).limit(lmt)
+
     def add(username, ipaddress='unknown'):
         l = LoginLog(username=username,
                      ipaddress=ipaddress)
