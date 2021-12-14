@@ -228,25 +228,24 @@ class Runner():
 
 		challenges['🌳 Bushy Pilgrimage'] = fdate(self.regex_test('bushy','Run Date', 'single'))
 		
+		challenges['🐍 Snake']    = self.ev_pattern_challenge( {'^S': 10}, '(Ssssslither around)')
+		challenges['🎵 Bee Gees'] = self.ev_pattern_challenge( {'^B':3, '^G':3}, '(3B & 3G)')
+		challenges['🏴‍☠️ Pirates']  = self.ev_pattern_challenge( {'^C':7, '^R':1}, '(7C & 1R)')
+		challenges['🧭 Compass']  = self.ev_pattern_challenge( 
+										{'north':1, 'west':1, 'south':1, 'east': 1}, 
+										'(Go North, South, East & West)')
+		challenges['👤 Full Ponty'] = self.ev_pattern_challenge( {'ponty':4}, '(All the Ponty\'s)')		
+		
+		
 #		challenges['🐍 Snake']    = self.snake()
-
-		challenges['🐍 Snake']    = self.refac( {'^S': 10}, '(Ssssslither around)')
-		challenges['🎵 Bee Gees'] = self.refac( {'^B':3, '^G':3}, '(3B & 3G)')
-		challenges['🏴‍☠️ Pirates']  = self.refac( {'^C':7, '^R':1}, '(7C & 1R)')
-		challenges['🧭 Compass']  = self.refac( {'north':1, 'west':1, 'south':1, 'east': 1}, 
-												'(Go North, South, East & West)')
-		challenges['👤 Full Ponty'] = self.refac( {'ponty':4}, '(All the Ponty\'s)')		
-		
-		
 #		challenges['🎵 Bee Gees'] = self.combo( [('^B',3),('^G',3)])
 #		challenges['🏴‍☠️ Pirates']  = self.combo( [('^C',7),('^G',1)])
-		
 #		challenges['🧭 Compass'] = '{}'.format(self.regex_test('north|west|south|east', 'Event', 'list'))
 #		challenges['👤 Full Ponty'] = self.regex_test('ponty', 'Event', 'list')		
 		
 		return challenges
 
-	def refac(self, d, reqt):
+	def ev_pattern_challenge(self, d, reqt):
 		result = {}
 		for ele in d:
 			result[ele] = self.regex_test(ele, 'Event','list').split('~')[0:d[ele]]
@@ -260,6 +259,18 @@ class Runner():
 					total_required,
 					reqt,
 					events)
+
+#	def snake(self):
+#		ss = set([x['Event'] for x in self.runs if x['Event'][0].upper()=='S'])
+#		txt = ', '.join(sorted([x for x in ss]))
+#		if len(ss)>=10:
+#			return '100% - snaked {} times~{}'.format(
+#					len(ss),
+#					txt)
+#		else:
+#			return '{:0.0%} - snaked {} times~{}'.format(
+#					len(ss)/10, len(ss),txt)
+		
 				
 #	def combo(self,opts):
 		# covers BeeGess and Pirates challenge
@@ -287,7 +298,7 @@ class Runner():
 
 	def milestones(self):
 		resp=''
-		for ms in [25,50,100,250,500]:
+		for ms in [10,25,50,100,250,500]:
 			if ms <= len(self.runs):
 				txt = '{} Club on {} at {}~'.format(ms,
 					fdate(self.runs[-ms]['Run Date']),
@@ -350,17 +361,6 @@ class Runner():
 						k, 
 						', '.join(sorted({x.replace('_SEC_','') for x in self.stats if self.stats[x]==0 and x.startswith('_SEC_')})) 
 						)
-	def snake(self):
-		ss = set([x['Event'] for x in self.runs if x['Event'][0].upper()=='S'])
-		txt = ', '.join(sorted([x for x in ss]))
-		if len(ss)>=10:
-			return '100% - snaked {} times~{}'.format(
-					len(ss),
-					txt)
-		else:
-			return '{:0.0%} - snaked {} times~{}'.format(
-					len(ss)/10, len(ss),txt)
-		
 	def position(self):
 		k = len({x for x in self.stats if self.stats[x]!=0 and x.startswith('_POS_')})
 		if k == 100:
