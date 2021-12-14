@@ -128,7 +128,6 @@ def r_graph():
                 my_series,
                 dots_size=1)
                 
-#       graph.range = params[1] #[25, 75]
        graph.range = [ min(current_series+my_series)-1 , 
                        max(current_series+my_series)+1 ]
                        
@@ -246,9 +245,9 @@ def runner_runs(params=None):
 
 @app.route('/loginlog/', methods=['POST','GET'])
 def r_loginlog():
+    print('** Whitelist IP: {}'.format(os.environ.get('MY_IP_WHITELIST','empty whitelist')))
     data = LoginLog.get_log()
-    return render_template('loginlog.html',
-                data=data)
+    return render_template('loginlog.html',data=data)
 
         
 @app.route('/newevents/', methods=['POST','GET'])
