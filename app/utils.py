@@ -90,7 +90,7 @@ class Runner():
 
 		if filter_by:
 			if filter_by.lower().startswith('year='):
-				self.run = [x for x in data['runs'] if filter_by.lower().replace('year=','') in x['Run Date']]
+				self.runs = [x for x in data['runs'] if filter_by.lower().replace('year=','') in x['Run Date']]
 			else:
 				self.runs = [x for x in data['runs'] if filter_by.lower() in x['Event'].lower()]
 		else:
