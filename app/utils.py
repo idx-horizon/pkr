@@ -299,14 +299,12 @@ class Runner():
 		silver = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 39 and x[1] < 50 ])
 		bronze = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 29 and x[1] < 40 ])
 		
-		if len(gold)   == 0: gold   = ['None']
-		if len(silver) == 0: silver = ['None']
-		if len(bronze) == 0: bronze = ['None']
+		if len(gold)   > 0: gold   = ['🥇 (50+)'] + gold   + ['~']
+		if len(silver) > 0: silver = ['🥈 (40+)'] + silver + ['~']
+		if len(bronze) > 0: bronze = ['🥉 (30+)'] + bronze + ['~']
 		
-		return '🥇 (50+) {}~🥈 (40+) {}~🥉 (30+) {}'.format(
-					', '.join(gold),
-					', '.join(silver),
-					', '.join(bronze)
+		return '{}'.format(
+					', '.join(gold+silver+bronze)
 					)
 
 	def bingo(self):
