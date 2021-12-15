@@ -294,14 +294,27 @@ class Runner():
 #					', '.join(x0+x1)) 
 		
 	def medal_years(self):
+		def get_selected(years, label, lower, upper):
+			s = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > lower and x[1] < upper ])
+			if len(s) > 0:
+				s = [label] + s + ['~']
+			
+			return s
+			
 		years = [(x.replace('_YR_',''), self.stats[x]) for x in self.stats if x.startswith('_YR_')]
-		gold   = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 49])
-		silver = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 39 and x[1] < 50 ])
-		bronze = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 29 and x[1] < 40 ])
+		gold    = get_selected(years, '🥇 (50+): ', 49, 9999)
+		silver	= get_selected(years, '🥈 (40+): ', 39, 50)
+		bronze	= get_selected(years, '🥉 (30+): ', 29, 40)
 		
-		if len(gold)   > 0: gold   = ['🥇 (50+)'] + gold   + ['~']
-		if len(silver) > 0: silver = ['🥈 (40+)'] + silver + ['~']
-		if len(bronze) > 0: bronze = ['🥉 (30+)'] + bronze + ['~']
+#		gold   = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 49])
+#		silver = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 39 and x[1] < 50 ])
+#		bronze = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 29 and x[1] < 40 ])
+#		
+#		if len(gold)   > 0: gold   = ['🥇 (50+): '] + gold   + ['~']
+#		if len(silver) > 0: silver = ['🥈 (40+): '] + silver + ['~']
+#		if len(bronze) > 0: bronze = ['🥉 (30+): '] + bronze + ['~']
+		
+		if len(gold+silver_bronze) == 0: gold = ['No years where 30+ events run']
 		
 		return '{}'.format(' '.join(gold+silver+bronze))
 
