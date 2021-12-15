@@ -102,7 +102,7 @@ class User(UserMixin, db.Model):
         return json.dumps(self, default=lambda o: o.__dict__)
         
     def __repr__(self):
-        return '{} ({})'.format(self.username, self.rid)
+        return '{} (A{})'.format(self.username, self.rid)
      
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
