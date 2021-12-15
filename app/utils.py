@@ -314,7 +314,7 @@ class Runner():
 #		if len(silver) > 0: silver = ['🥈 (40+): '] + silver + ['~']
 #		if len(bronze) > 0: bronze = ['🥉 (30+): '] + bronze + ['~']
 		
-		if len(gold+silver_bronze) == 0: gold = ['No years where 30+ events run']
+		if len(gold+silver+bronze) == 0: gold = ['No years where 30+ events run']
 		
 		return '{}'.format(' '.join(gold+silver+bronze))
 
