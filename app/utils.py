@@ -486,7 +486,7 @@ def fdate(src, src_format='%d/%m/%Y',target_format='%d-%b-%Y'):
 	except:
 		return src
 def load_runners():
-	runners_lst = [184594, 4327482, 2564629, 541276, 33202, 3158074, 185368, 23656, 40489, 5404801]
+	runners_lst = [184594, 4327482, 2564629, 541276, 33202, 3158074, 185368, 23656, 40489, 5404801,69260]
 	runners =[]
 	for r in runners_lst:
 		o = Runner(r)
