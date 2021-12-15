@@ -163,7 +163,8 @@ class Runner():
 						key=lambda key: self.stats[key])
 		challenges['✳️ Most parkruns in a year'] = '{} in {}'.format(
 						self.stats[key], key.replace('_YR_',''))
-
+		challenges['🏆 Trophy years'] = self.medal_years()
+		
 		times = Counter(x['Time'] for x in self.runs)
 		max_freq = max(times.values())
 		times_done_max_freq = sorted([x for x in times if times[x]==max_freq])
@@ -177,8 +178,6 @@ class Runner():
 		challenges['Most common event'] = '{} at {}'.format(self.stats[key], key.replace('_EVENT_',''))
 		challenges['1️⃣ Singleton events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==1]))
 		challenges['2️⃣ Double events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==2]))
-		
-		challenges['🏆 Trophy years'] = self.medal_years()
 		
 		pix = 0
 		ev = sorted([self.stats[x] for x in self.stats if x.startswith('_EVENT_')], reverse=True)
@@ -305,14 +304,6 @@ class Runner():
 		gold    = get_selected(years, '🥇 (50+): ', 49, 9999)
 		silver	= get_selected(years, '🥈 (40+): ', 39, 50)
 		bronze	= get_selected(years, '🥉 (30+): ', 29, 40)
-		
-#		gold   = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 49])
-#		silver = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 39 and x[1] < 50 ])
-#		bronze = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 29 and x[1] < 40 ])
-#		
-#		if len(gold)   > 0: gold   = ['🥇 (50+): '] + gold   + ['~']
-#		if len(silver) > 0: silver = ['🥈 (40+): '] + silver + ['~']
-#		if len(bronze) > 0: bronze = ['🥉 (30+): '] + bronze + ['~']
 		
 		if len(gold+silver+bronze) == 0: gold = ['No years where 30+ events run']
 		
