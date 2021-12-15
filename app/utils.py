@@ -295,9 +295,9 @@ class Runner():
 		
 	def medal_years(self):
 		years = [(x.replace('_YR_',''), self.stats[x]) for x in self.stats if x.startswith('_YR_')]
-		gold   = ['{} ({})'.format(x[0], x[1] for x in years if x[1] > 49]
-		silver = ['{} ({})'.format(x[0], x[1] for x in years if x[1] > 29 and x[1] < 50 ]
-		bronze = ['{} ({})'.format(x[0], x[1] for x in years if x[1] > 29 and x[1] < 40 ]
+		gold   = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 49])
+		silver = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 29 and x[1] < 50 ])
+		bronze = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > 29 and x[1] < 40 ])
 		return '🥇 (50+) {}~🥈 (40+) {}~🥉 (30+) {}'.format(
 					', '.join(gold),
 					', '.join(silver),
