@@ -5,12 +5,15 @@
 <div class="container-fluid p-3 bg-dark text-white">
   <h1>Home</h1>
   <img src="{{url_for('static', filename='ph1.jpg')}}" class="rounded-circle img-fluid float-right" alt="bushy park" width="30%"> 
+ {% if current_user.is_anonymous %}	
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac tortor bibendum lobortis. Quisque felis diam, tincidunt non volutpat quis, dapibus a mauris. Fusce eget vulputate lorem. Donec malesuada mi in congue suscipit. Nunc maximus dapibus hendrerit. Nullam euismod lacus nec urna mollis, non elementum nulla sollicitudin. Integer aliquam dolor a massa maximus bibendum. Proin tellus diam, sodales sed finibus ac, porta vitae quam. Phasellus fringilla ipsum at lacus ultricies, eget venenatis mauris tempus. Sed nec interdum velit, sit amet dignissim purus. In vel lacinia ante. Aliquam a nunc convallis, mattis augue eu, auctor dolor. Vestibulum cursus vel quam sed auctor. Aenean ut arcu eget neque fringilla dapibus in non tortor. Duis eleifend eros ac commodo auctor.
 <P><P>
 Ut at convallis nulla. Donec varius porta ultrices. Vivamus ut egestas turpis. Nulla sollicitudin et lorem mattis dignissim. Cras eu elit magna. Cras lorem nulla, porta eget ornare sit amet, malesuada et ante. Quisque orci metus, pulvinar iaculis faucibus vitae, lobortis sed nibh. Integer consequat pretium commodo. Sed imperdiet erat nibh, eu tincidunt velit efficitur ut. In et lobortis lacus. In mauris sem, condimentum nec scelerisque ac, gravida sit amet sem. Duis pharetra urna ac dictum accumsan. Nulla facilisi. Sed varius leo ut volutpat vestibulum. Suspendisse tortor nulla, varius nec lacus vitae, tincidunt vehicula felis.
+{% else %}
+  Runner: {{current_user}}
+{% endif %}
 
-</div>
 
 </div>
 
