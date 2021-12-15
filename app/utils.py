@@ -303,9 +303,7 @@ class Runner():
 		if len(silver) > 0: silver = ['🥈 (40+)'] + silver + ['~']
 		if len(bronze) > 0: bronze = ['🥉 (30+)'] + bronze + ['~']
 		
-		return '{}'.format(
-					', '.join(gold+silver+bronze)
-					)
+		return '{}'.format(' '.join(gold+silver+bronze))
 
 	def bingo(self):
 		resp= Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
