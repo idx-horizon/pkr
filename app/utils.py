@@ -178,6 +178,8 @@ class Runner():
 		challenges['1️⃣ Singleton events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==1]))
 		challenges['2️⃣ Double events'] = '{}'.format(len([x for x in self.stats if x.startswith('_EVENT_') and self.stats[x]==2]))
 		
+		challenges['🏆 Trophy years'] = self.medal_years()
+		
 		pix = 0
 		ev = sorted([self.stats[x] for x in self.stats if x.startswith('_EVENT_')], reverse=True)
 		for ix, element in enumerate(ev):
@@ -291,6 +293,17 @@ class Runner():
 #					opts[1][0].replace('^',''),
 #					', '.join(x0+x1)) 
 		
+	def medal_years(self):
+		years = [(x.replace('_YR_','', self.stats[x]) for x in self.stats if x.startswith('_YR_')]
+		gold   = ['{} ({})'.format(x[0], x[1] for x in years if x[1] > 49]
+		silver = ['{} ({})'.format(x[0], x[1] for x in years if x[1] > 29 and x[1] < 50 ]
+		bronze = ['{} ({})'.format(x[0], x[1] for x in years if x[1] > 29 and x[1] < 40 ]
+		return '🥇 (50+) {}~🥈 (40+) {}~🥉 (30+) {}'.format(
+					', '.join(gold),
+					', '.join(silver),
+					', '.join(bronze)
+					)
+
 	def bingo(self):
 		resp= Counter([datetime.datetime.strptime(x['Run Date'],'%d/%m/%Y').strftime('%d-%b') for x in self.runs])
 		return '{:0.0%} - {} out of 365 - most common {} ({} times)'.format(
