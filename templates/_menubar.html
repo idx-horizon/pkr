@@ -18,7 +18,7 @@
     {% else %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDDMenuRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Runner: {{ selected_runner.username | title }} ({{ selected_runner.rid | safe }})
+          {{ selected_runner.username | title }} (A{{ selected_runner.rid | safe }})
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDDMenuRunner">
           <a class="dropdown-item" href="/stats">✅ &nbsp Stats & challenges</a>
