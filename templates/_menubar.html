@@ -1,5 +1,5 @@
 {% if not current_user.is_anonymous %}	
-  <div class="text-left text-dark active" style="background-color: #4CAF50;">Logged in as {{ current_user.icon or '🏃‍♂️' }} &nbsp {{ current_user.username | title }} 
+  <div class="text-left text-dark active" style="background-color: #4CAF50;">Logged in as {{ current_user.username | title }} &nbsp  {{ current_user.icon or '🏃‍♂️' }} &nbsp
   <a class="btn btn-success btm-sm active" role="button" 
     href="/logout">(Logout)</a>
   
