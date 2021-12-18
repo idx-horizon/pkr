@@ -1,14 +1,13 @@
-{# #4CAF50 #}
+{# #4CAF50 (green) #}
+
+
 {% if not current_user.is_anonymous %}	
-  <div class="text-left active" style="background-color: black;color:white">
+<div class="text-left active" style="background-color: black;color:white">
   &nbsp {{ current_user.icon or '🏃‍♂️' }} 
   {{ current_user.username | title }} logged in &nbsp
   <a class="badge badge-pill badge-success" role="button" 
-    href="/logout">❎ Logout</a>
-  
-{#  <a class="nav-item active" href="/logout"><BR>(Logout)</a> #}
-
-  </div>
+    href="/logout">❎ Logout</a>  
+</div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
   <a class="navbar-brand" href="/home">
@@ -20,8 +19,7 @@
  	{% if current_user.is_anonymous %}	
   	  <li class="nav-item active">
 	   	  <a href="/login" class="nav-link">Login</a>
-	  </li>
-      
+	  </li>  
     {% else %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDDMenuRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
