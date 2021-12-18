@@ -12,9 +12,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 <P><P>
 Ut at convallis nulla. Donec varius porta ultrices. Vivamus ut egestas turpis. Nulla sollicitudin et lorem mattis dignissim. Cras eu elit magna. Cras lorem nulla, porta eget ornare sit amet, malesuada et ante. Quisque orci metus, pulvinar iaculis faucibus vitae, lobortis sed nibh. Integer consequat pretium commodo. Sed imperdiet erat nibh, eu tincidunt velit efficitur ut. In et lobortis lacus. In mauris sem, condimentum nec scelerisque ac, gravida sit amet sem. Duis pharetra urna ac dictum accumsan. Nulla facilisi. Sed varius leo ut volutpat vestibulum. Suspendisse tortor nulla, varius nec lacus vitae, tincidunt vehicula felis.
 {% else %}
-  Runner: {{current_user | title }}
-  Selected runner{{ selected_runner.username | title }} 
-      (A{{ selected_runner.rid | safe }})
+  Runner: {{ selected_runner.username | title }} 
+      ({{ selected_runner.rid | safe }})
 
   <ul>
   <li><a class="text-decoration-none" href="/runs">Runs</a></li>
