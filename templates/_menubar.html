@@ -1,6 +1,8 @@
 {# #4CAF50 #}
 {% if not current_user.is_anonymous %}	
-  <div class="text-left active" style="background-color: black;color:white">&nbsp {{ current_user.username | title }}   {{ current_user.icon or '🏃‍♂️' }} logged in &nbsp
+  <div class="text-left active" style="background-color: black;color:white">
+  &nbsp {{ current_user.icon or '🏃‍♂️' }} 
+  {{ current_user.username | title }} logged in &nbsp
   <a class="badge badge-pill badge-success" role="button" 
     href="/logout">❎ Logout</a>
   
@@ -68,7 +70,7 @@
           <a class="dropdown-item" href="/newevents">New events</a>
         </div>
       </li>
-      
+{# commenting out the settings section     
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Settings
@@ -80,6 +82,7 @@
           <a class="dropdown-item" href="#">Help</a>
         </div>
       </li>      
+#}      
       {% if current_user.is_admin %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
