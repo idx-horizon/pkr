@@ -89,6 +89,13 @@
         <a class="dropdown-item" href="#">📍 Locations</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="/loginlog">🔑 Login logs</a>
+          <select class="form-control" style="width:150px" name="country_code">
+            {% for c in ['John','Bill,'Jane'] | sort %}
+                <option {% if c==country %}selected{% endif %}
+                  value={{ c }}>{{ c }}</option>
+            {% endfor %}
+          </select>
+        
         </div>
       </li>
       {% endif %}
