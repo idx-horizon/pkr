@@ -1,7 +1,7 @@
 {% if not current_user.is_anonymous %}	
   <div class="text-left text-dark active" style="background-color: #4CAF50;">Logged in: {{ current_user.username | title }}   {{ current_user.icon or '🏃‍♂️' }} &nbsp
   <a class="btn btn-success btm-sm" role="button" 
-    href="/logout">Logout</a>
+    href="/logout">❎ Logout</a>
   
 {#  <a class="nav-item active" href="/logout"><BR>(Logout)</a> #}
 
@@ -30,8 +30,10 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/summaries/year">📅 &nbsp Year summary</a>
           <a class="dropdown-item" href="/summaries/event">❇️ &nbsp Event summary</a>
+        {#
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/logout">❎ &nbsp Logout</a>
+        #}
         </div>
       </li>
     {% endif %}
