@@ -1,7 +1,10 @@
 {% if not current_user.is_anonymous %}	
-  <div class="text-left text-dark active" style="background-color: #4CAF50;">Logged in as {{ current_user.icon or 'z' }} &nbsp {{ current_user.username | title }} 
-  <a class="btn btn-success btm-sm active" href="/logout">(Logout)</a>
-  <a class="nav-item active" href="/logout"><BR>(Logout)</a>
+  <div class="text-left text-dark active" style="background-color: #4CAF50;">Logged in as {{ current_user.icon or '🏃‍♂️' }} &nbsp {{ current_user.username | title }} 
+  <a class="btn btn-success btm-sm active" role="button" 
+    href="/logout">(Logout)</a>
+  
+{#  <a class="nav-item active" href="/logout"><BR>(Logout)</a> #}
+
   </div>
 {% endif %}    
 <nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
