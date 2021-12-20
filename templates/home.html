@@ -2,7 +2,7 @@
 {% include "_menubar.html" %}
 
 
-<div class="bg-dark text-white">
+<div class="container-fluid p-3 bg-dark text-white">
   <h1>Home</h1>
 </div>
  {% if current_user.is_anonymous %}	
@@ -27,7 +27,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   </ol>
 
   <!-- Wrapper for slides -->
-  <div class="carousel-inner" width=100%>
+  <div class="carousel-inner" width="100%">
     <div class="carousel-item active">
       <img src="{{url_for('static', filename='ph1.jpg')}}" alt="Runner 1">
       <div class="carousel-caption">
