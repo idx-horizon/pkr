@@ -4,7 +4,6 @@
 
 <div class="container-fluid p-3 bg-dark text-white">
   <h1>Home</h1>
-  <img src="{{url_for('static', filename='ph1.jpg')}}" class="rounded-circle img-fluid float-right" alt="bushy park" width="30%"> 
 </div>
  {% if current_user.is_anonymous %}	
 
@@ -56,14 +55,13 @@ Ut at convallis nulla. Donec varius porta ultrices. Vivamus ut egestas turpis. N
   </div>
 
   <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
+  <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
   </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
+  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
   </a>
+
 </div>
 
   
