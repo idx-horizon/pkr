@@ -20,7 +20,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 
 <div class="row">
   <div class="col">
-    <div class="card" style="width: 10rem;">
+    <div class="card">
       <img class="card-img-top avatar" src="{{url_for('static', filename='av1.jpg')}}" alt="AV-1">
       <div class="card-body">
         <h5 class="card-title">{{ current_user.username | title }}</h5>
@@ -32,7 +32,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 
   {% for f in friends %}
     <div class="col">
-    <div class="card" style="width: 10rem;">
+    <div class="card">
       <img class="card-img-top avatar" src="{{url_for('static', filename='av2.jpg')}}" alt="AV-1">
       <div class="card-body">
         <h5 class="card-title">{{ f.f_icon }} &nbsp {{ f.f_username | title }}</h5>
