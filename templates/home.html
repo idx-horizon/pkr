@@ -20,28 +20,27 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 
 <div class="row">
   <div class="col">
-    <div class="card">
-      <img class="card-img-top avatar" src="{{url_for('static', filename='av1.jpg')}}" alt="AV-1">
+    <div class="card" style="width: 18rem;">
       <div class="card-body">
         <h5 class="card-title">{{ current_user.username | title }}</h5>
-        <p class="card-text">A{{ current_user.rid | safe }}</p>
+        <h6 class="card-subtitle">{{ current_user.rid }}</h6>
+        <p class="card-text">summary...</p>
         <a href="/switch" class="btn btn-primary">Switch</a>
       </div>
     </div>  
   </div>
 
+  <div class="col">
   {% for f in friends %}
-    <div class="col">
     <div class="card">
-      <img class="card-img-top avatar" src="{{url_for('static', filename='av2.jpg')}}" alt="AV-1">
-      <div class="card-body">
+      <div class="card-body" style="width: 18rem;">
         <h5 class="card-title">{{ f.f_icon }} &nbsp {{ f.f_username | title }}</h5>
         <p class="card-text">A{{ current_user.rid | safe }}</p>
         <a href="/switch/{{ f.f_username}}" class="btn btn-primary">Switch</a>
       </div>
     </div>  
   {% endfor %}
-</div>
+  </div>
 
 
 <div class="row">
