@@ -308,7 +308,7 @@ def login():
             'icon': user.icon,
             'number_of_runs': len(runner.runs),
             'friend_list': [],
-            'runner': runner)
+            'runner': runner
             }
         print('*** Session:', session['SELECTEDRUNNER'])    
         session['FRIENDS'] = Friend.get(user.username)
