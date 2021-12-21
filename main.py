@@ -27,7 +27,8 @@ def reset_session_selectedrunner():
             'threshold': None, 
             'icon': None,
             'friend_list': None,
-            'runner': None}
+            'runner': None
+            'me_summary': None}
             
 @app.shell_context_processor
 def make_shell_context():
@@ -298,6 +299,7 @@ def login():
         
         runner = utils.Runner(user.rid or current_user.rid)
         runner.get_runs(None,False)
+        summary = runner.get_card_summary()
         
         session['SELECTEDRUNNER'] = {
             'username': user.username, 
@@ -306,7 +308,8 @@ def login():
             'icon': user.icon,
             'number_of_runs': len(runner.runs),
             'friend_list': {},
-            'runner': runner.get_card_summary()
+            'runner': summary,
+            'me_summary': summary
             }
         print('*** Session:', session['SELECTEDRUNNER'])    
         session['FRIENDS'] = Friend.get(user.username)
@@ -347,19 +350,21 @@ def r_event_summary():
 def r_switch(switch_to=None):
     return_to = request.args.get('page')
     print('** Came from page: ', return_to)
-    
+    me_summary = SESSION['SELECTEDRUNNER']['me_summary'] 
     if not switch_to:
     
         runner = utils.Runner(current_user.rid)
         runner.get_runs(None,False)
-    
+        summary = runner.get_card_summary()
+        
         session['SELECTEDRUNNER'] = {
             'username': current_user.username, 
             'rid': current_user.rid, 
             'threshold': current_user.agegrade_theshold, 
             'icon': current_user.icon,
             'friend_list': [],
-            'runner':  runner.get_card_summary()
+            'runner':  summary,
+            'me_summary': me_summary
             }
         return redirect(url_for(return_to))
     
@@ -368,6 +373,7 @@ def r_switch(switch_to=None):
  
         runner = utils.Runner(user.rid)
         runner.get_runs(None,False)
+        summary = runner.get_card_summary()
 
         session['SELECTEDRUNNER'] = {
             'username': user.username, 
@@ -375,7 +381,8 @@ def r_switch(switch_to=None):
             'threshold': user.agegrade_theshold, 
             'icon': user.icon,
             'friend_list': [],
-            'runner': runner.get_card_summary()
+            'runner':  summary,
+            'me_summary': me_summary
             }
         return redirect(url_for(return_to))
     else:
