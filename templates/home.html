@@ -22,7 +22,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   <div class="col">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">{{ current_user.username | title }}</h5>
+        <h5 class="card-title">{{ current_user.username | title }} (A{{ current_user.rid }})</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{ current_user.rid }}</h6>
         <p class="card-text">summary...</p>
         <a href="/switch" class="btn btn-primary">Switch</a>
@@ -35,12 +35,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 
 <div class="row">
   {% for f in friends %}
-  <div class="col-sm-6">
+  <div class="col">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <img class="avatar" style="float:left" src="{{url_for('static', filename='av1.jpg')}}" alt="AV-1">
-        <h5 class="card-title">{{ f.f_icon }} &nbsp {{ f.f_username | title }}</h5>
-        <p class="card-text">A{{ current_user.rid | safe }}</p>
+        <img class="avatar" style="float:left" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
+        <h5 class="card-title">{{ f.f_icon }} &nbsp {{ f.f_username | title }} (A{{ current_user.rid | safe }})</h5>
+        <p class="card-text">summary....</p>
         <a href="/switch/{{ f.f_username}}" class="btn btn-primary">Switch</a>
       </div>
     </div>  
@@ -48,6 +48,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   </div>
 </div>
 
+<--
 <div class="row">
   <div class="col">
     <div class="card" style="width: 10rem;">
@@ -73,6 +74,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
     <img src="{{url_for('static', filename='av3.jpg')}}" alt="Avatar" class="avatar">
   </div>
 </div>
+-->
  
   <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Latest results</strong> testing 
