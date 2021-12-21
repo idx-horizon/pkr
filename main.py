@@ -25,7 +25,8 @@ def reset_session_selectedrunner():
             'username': None, 
             'rid': None, 
             'threshold': None, 
-            'icon': None}
+            'icon': None,
+            'number_of_runs': None}
             
 @app.shell_context_processor
 def make_shell_context():
@@ -295,16 +296,17 @@ def login():
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
         
-        rid = utils.Runner(user.rid or current_user.rid)
-        rid.get_runs(None,False)
+        runner = utils.Runner(user.rid or current_user.rid)
+        runner.get_runs(None,False)
         
         session['SELECTEDRUNNER'] = {
             'username': user.username, 
             'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
             'icon': user.icon,
-            'number_of_runs': len(rid.runs)
+            'number_of_runs': len(runner.runs)
             }
+        print('*** Session:', session['SELECTEDRUNNER'])    
         session['FRIENDS'] = Friend.get(user.username)
         return redirect(next_page)
 
