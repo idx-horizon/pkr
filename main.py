@@ -351,6 +351,10 @@ def r_switch(switch_to=None):
     print('** Came from page: ', return_to)
     
     if not switch_to:
+    
+        runner = utils.Runner(current_user.rid)
+        runner.get_runs(None,False)
+    
         session['SELECTEDRUNNER'] = {
             'username': current_user.username, 
             'rid': current_user.rid, 
@@ -358,12 +362,16 @@ def r_switch(switch_to=None):
             'icon': current_user.icon,
             'number_of_runs': -1,
             'friend_list': [],
-            'runner': -2
+            'runner':  runner.get_card_summary()
             }
         return redirect(url_for(return_to))
     
     if switch_to.lower() in [x['f_username'] for x in session['FRIENDS']]:
         user = User.query.filter_by(username=switch_to.lower()).first()
+ 
+        runner = utils.Runner(user.rid)
+        runner.get_runs(None,False)
+
         session['SELECTEDRUNNER'] = {
             'username': user.username, 
             'rid': user.rid, 
@@ -371,7 +379,7 @@ def r_switch(switch_to=None):
             'icon': user.icon,
             'number_of_runs': -1,
             'friend_list': [],
-            'runner': -2
+            'runner': runner.get_card_summary
             }
         return redirect(url_for(return_to))
     else:
