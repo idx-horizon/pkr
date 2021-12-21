@@ -18,14 +18,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   <li><a class="text-decoration-none" href="/stats">Stats and Challenges</a></li>
   </ul>
 
-<h3> Runs: {{ selected_runner.number_of_runs }}</h3>
-
 <div class="row">
+  {% if current_user.username != selected_runner.username %}
   <div class="col">
-    <div class="card" style="width: 15rem;">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+          <img class="avatar" style="float:right" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
+        <h5 class="card-title">CURRENT {{ selected_runner.username | title }}</h5>
+        <p class="card-text">
+        {% autoescape false %}
+            {{ selected_runner.runner | replace('~','<BR/>') }}
+        {% endautoescape %}
+        </p>
+        <a href="/switch" class="btn btn-success">🔄 Switch</a>
+      </div>
+    </div>  
+  </div>
+  
+  {% endif %}
+  
+  <div class="col">
+    <div class="card" style="width: 18rem;">
       <div class="card-body">
           <img class="avatar" style="float:right" src="{{url_for('static', filename='av3.jpg')}}" alt="avatar">
-        <h5 class="card-title">{{ current_user.username | title }}</h5>
+        <h5 class="card-title">Me! - {{ current_user.username | title }}</h5>
         <p class="card-text">
         {% autoescape false %}
             {{ selected_runner.runner | replace('~','<BR/>') }}
@@ -43,7 +59,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 <div class="row">
   {% for f in friends %}
   <div class="col">
-    <div class="card" style="width: 15rem;">
+    <div class="card" style="width: 18rem;">
       <div class="card-body">
         <img class="avatar" style="float:right" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
         <h5 class="card-title">{{ f.f_username | title }}</h5>

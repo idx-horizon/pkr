@@ -26,7 +26,6 @@ def reset_session_selectedrunner():
             'rid': None, 
             'threshold': None, 
             'icon': None,
-            'number_of_runs': None,
             'friend_list': None,
             'runner': None}
             
@@ -48,9 +47,8 @@ def inject_context():
         return redirect(url_for('home'))
         
 @app.template_filter()
-def format_datetime(value, 
-                    format_src='%d/%m/%Y', 
-                    format_out='%d-%b-%Y'):
+def format_datetime(
+        value, format_src='%d/%m/%Y', format_out='%d-%b-%Y'):
     try:
         x = datetime.datetime.strptime(value, format_src)
         return x.strftime(format_out)
@@ -360,7 +358,6 @@ def r_switch(switch_to=None):
             'rid': current_user.rid, 
             'threshold': current_user.agegrade_theshold, 
             'icon': current_user.icon,
-            'number_of_runs': -1,
             'friend_list': [],
             'runner':  runner.get_card_summary()
             }
@@ -377,7 +374,6 @@ def r_switch(switch_to=None):
             'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
             'icon': user.icon,
-            'number_of_runs': -1,
             'friend_list': [],
             'runner': runner.get_card_summary()
             }
