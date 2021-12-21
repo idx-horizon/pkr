@@ -60,14 +60,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   {% for f in friends %}
   {% if selected_runner.username != f.f_username %}
   <div class="col">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 8rem;">
       <div class="card-body">
         <img class="avatar" style="float:right" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
         <h5 class="card-title">{{ f.f_username | title }}</h5>
-        <button class="btn btn-success">
-            <a href="/switch/{{ f.f_username}}">🔄 select</a>
-        </button>
-        <p>
         <a href="/switch/{{ f.f_username}}" class="btn btn-success">🔄 select</a>
       </div>
     </div>
