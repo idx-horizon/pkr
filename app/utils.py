@@ -128,6 +128,14 @@ class Runner():
 			return '{}~{}'.format(len(yrs), '~'.join(yrs))
 
 			
+	def get_card_summary(self):
+		x = 'Runs: {}~Events: {}~PB: {}'.format(
+			 self.run_count,
+			 len([x for x in self.stats if x.startswith('_EVENT_')]),
+			 'tbc'
+			 )
+		return x
+		
 	def get_challenges(self):
 		challenges = {}
 		if len(self.runs) == 0:
