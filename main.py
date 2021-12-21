@@ -355,7 +355,10 @@ def r_switch(switch_to=None):
             'username': current_user.username, 
             'rid': current_user.rid, 
             'threshold': current_user.agegrade_theshold, 
-            'icon': current_user.icon}
+            'icon': current_user.icon,
+            'number_of_runs': len(runner.runs),
+            'friend_list': {},
+            'runner': -2}
         return redirect(url_for(return_to))
     
     if switch_to.lower() in [x['f_username'] for x in session['FRIENDS']]:
@@ -364,7 +367,11 @@ def r_switch(switch_to=None):
             'username': user.username, 
             'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
-            'icon': user.icon}
+            'icon': user.icon
+            'number_of_runs': len(runner.runs),
+            'friend_list': {},
+            'runner': -2
+            }
         return redirect(url_for(return_to))
     else:
         return redirect(url_for('error'))

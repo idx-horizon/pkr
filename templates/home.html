@@ -43,7 +43,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
       <div class="card-body">
         <img class="avatar" style="float:right" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
         <h5 class="card-title">{{ f.f_username | title }}</h5>
-        <p class="card-text">{{ selected_runner.friend_list[f.f_username] }}</p>
+        <p class="card-text">runs{{ selected_runner.friend_list[f.f_username] }}</p>
         <a href="/switch/{{ f.f_username}}" class="btn btn-success">🔄 Switch</a>
       </div>
     </div>
