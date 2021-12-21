@@ -368,7 +368,7 @@ def r_switch(switch_to=None):
             'username': user.username, 
             'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
-            'icon': user.icon
+            'icon': user.icon,
             'number_of_runs': -1,
             'friend_list': [],
             'runner': -2
