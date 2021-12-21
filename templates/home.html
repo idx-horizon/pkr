@@ -20,20 +20,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 
 <div class="row">
   
-  <div class="col">
-    <div class="card" style="width: 20rem; background-color: rgba(25,255,78,0.046)">
-      <div class="card-body">
-          <img class="avatar" style="float:right" src="{{url_for('static', filename='ian.jpg')}}" alt="avatar">
-        <h5 class="card-title">(me) {{ current_user.username | title }}</h5>
-        <p class="card-text">
-        {% autoescape false %}
-            {{ selected_runner.me_summary | replace('~','<BR/>') }}
-        {% endautoescape %}
-        </p>
-      </div>
-    </div>  
-  </div>
-
   {% if current_user.username != selected_runner.username %}
   <div class="col">
     <div class="card" style="width: 20rem; background-color: rgba(25,255,78,0.046)">
@@ -51,6 +37,22 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   </div>
   
   {% endif %}
+  
+  <div class="col">
+    <div class="card" style="width: 20rem; background-color: rgba(25,255,78,0.046)">
+      <div class="card-body">
+          <img class="avatar" style="float:right" src="{{url_for('static', filename='ian.jpg')}}" alt="avatar">
+        <h5 class="card-title">(me) {{ current_user.username | title }}</h5>
+        <p class="card-text">
+        {% autoescape false %}
+            {{ selected_runner.me_summary | replace('~','<BR/>') }}
+        {% endautoescape %}
+        </p>
+        <a href="/switch" class="btn btn-success">✅ select</a>
+      </div>
+    </div>  
+  </div>
+
 </div>
 
 <P>

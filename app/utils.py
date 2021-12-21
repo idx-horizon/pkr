@@ -129,10 +129,10 @@ class Runner():
 
 			
 	def get_card_summary(self):
-		return '{} Runs~{} Events~PB: {}~Latest: {} at {} on {}'.format(
+		return 'PB: {}~{} runs @ {} events~Latest: {} at {} on {}'.format(
+			 min([t['TimeSecs'] for t in self.runs]),
 			 self.run_count,
 			 len([x for x in self.stats if x.startswith('_EVENT_')]),
-			 min([t['Time'] for t in self.runs]),
 			 self.runs[0]['Time'],
 			 self.runs[0]['Event'],
 			 fdate(self.runs[0]['Run Date'])
