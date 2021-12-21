@@ -63,8 +63,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
     <div class="card" style="width: 14rem;">
       <div class="card-body">
         <img class="avatar" style="float:right" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
-        <h4 class="card-title btn btn-success">
-        {{ f.f_icon }} &nbsp {{ f.f_username | title }}</h4>
+        <h4 class="card-title btn btn-outline-success">
+        {{ f.f_icon }} &nbsp {{ f.f_username | title }}
+        </h4>
         <a href="/switch/{{ f.f_username}}" class="btn btn-success">🔄 select</a>
       </div>
     </div>
