@@ -302,7 +302,7 @@ def login():
             'username': user.username, 
             'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
-            'icon': user.icon
+            'icon': user.icon,
             'number_of_runs': len(rid.runs)
             }
         session['FRIENDS'] = Friend.get(user.username)
