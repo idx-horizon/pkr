@@ -129,15 +129,14 @@ class Runner():
 
 			
 	def get_card_summary(self):
-		x = '{} Runs~{} Events~PB: {}~Latest: {}~On {}~Time: {}'.format(
+		return '{} Runs~{} Events~PB: {}~Latest: {} at {} on {}'.format(
 			 self.run_count,
 			 len([x for x in self.stats if x.startswith('_EVENT_')]),
 			 min([t['Time'] for t in self.runs]),
+			 self.runs[0]['Time'],
 			 self.runs[0]['Event'],
-			 fdate(self.runs[0]['Run Date']),
-			 self.runs[0]['Time']
+			 fdate(self.runs[0]['Run Date'])
 			 )
-		return x
 		
 	def get_challenges(self):
 		challenges = {}
