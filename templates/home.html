@@ -35,10 +35,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 
 <div class="row">
   {% for f in friends %}
-  <div class="col">
+  <div class="col-sm">
     <div class="card">
       <div class="card-body" style="width: 18rem;">
-        <img class="card-img-top avatar" src="{{url_for('static', filename='av1.jpg')}}" alt="AV-1">
+        <img class="avatar" src="{{url_for('static', filename='av1.jpg')}}" alt="AV-1">
         <h5 class="card-title">{{ f.f_icon }} &nbsp {{ f.f_username | title }}</h5>
         <p class="card-text">A{{ current_user.rid | safe }}</p>
         <a href="/switch/{{ f.f_username}}" class="btn btn-primary">Switch</a>
