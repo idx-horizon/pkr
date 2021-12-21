@@ -27,7 +27,7 @@ def reset_session_selectedrunner():
             'threshold': None, 
             'icon': None,
             'friend_list': None,
-            'runner': None
+            'runner': None,
             'me_summary': None}
             
 @app.shell_context_processor
