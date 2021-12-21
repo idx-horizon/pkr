@@ -22,10 +22,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   <div class="col">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">{{ current_user.username | title }} (A{{ current_user.rid }})</h5>
-        <h6 class="card-subtitle mb-2 text-muted">{{ current_user.rid }}</h6>
+          <img class="avatar" style="float:right" src="{{url_for('static', filename='av3.jpg')}}" alt="avatar">
+        <h5 class="card-title">{{ current_user.username | title }}</h5>
         <p class="card-text">summary...</p>
-        <a href="/switch" class="btn btn-primary">Switch</a>
+        <a href="/switch" class="btn btn-success">Back to me</a>
       </div>
     </div>  
   </div>
@@ -49,35 +49,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   {% endfor %}
 </div>
 
-<--
-<div class="row">
-  <div class="col">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top avatar" src="{{url_for('static', filename='av1.jpg')}}" alt="AV-1">
-      <div class="card-body">
-        <h5 class="card-title">{{ current_user.username | title }}</h5>
-        <p class="card-text">A{{ current_user.rid | safe }}</p>
-        <a href="/switch" class="btn btn-primary">Switch</a>
-      </div>
-    </div>  
-  </div>
-  <div class="col">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top avatar" src="{{url_for('static', filename='av2.jpg')}}" alt="AV-2">
-      <div class="card-body">
-        <h5 class="card-title">{{ selected_runner.username | title }}</h5>
-        <p class="card-text">A{{ selected_runner.rid | safe }} </p>
-        <a href="/switch" class="btn btn-primary">Switch</a>
-      </div>
-    </div>  
-  </div>
-  <div class="col">
-    <img src="{{url_for('static', filename='av3.jpg')}}" alt="Avatar" class="avatar">
-  </div>
-</div>
--->
  
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
+<div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Latest results</strong> testing 
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
