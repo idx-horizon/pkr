@@ -129,8 +129,9 @@ class Runner():
 
 			
 	def get_card_summary(self):
+		pb = min([t['TimeSecs'] for t in self.runs])
 		return 'PB: {}~{} runs @ {} events~Latest: {} at {} on {}'.format(
-			 min([t['TimeSecs'] for t in self.runs]),
+			 str(datetime.timedelta(seconds=pb)),
 			 self.run_count,
 			 len([x for x in self.stats if x.startswith('_EVENT_')]),
 			 self.runs[0]['Time'],
@@ -146,7 +147,8 @@ class Runner():
 		challenges['Last run'] = '{} at {}'.format(fdate(self.runs[0]['Run Date']), self.runs[0]['Event'])
 		challenges['Current series'] = self.current_series()
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
-		challenges['Best ever PB'] = min([t['Time'] for t in self.runs])
+		pb = min([t['TimeSecs'] for t in self.runs])
+		challenges['Best ever PB'] = str(datetime.timedelta(seconds=pb))
 		challenges['Number of PBs'] = self.stats['_PB']
 
 		
