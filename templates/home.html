@@ -21,7 +21,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 
 <div class="row">
   <div class="col">
-    <img src="{{url_for('static', filename='av1.jpg')}}" alt="Avatar" class="avatar">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{{url_for('static', filename='av1.jpg')}}" alt="AV-1">
+      <div class="card-body">
+        <h5 class="card-title">Runner 1</h5>
+        <p class="card-text">summary...</p>
+        <a href="/switch" class="btn btn-primary">Switch</a>
+      </div>
+    </div>  
   </div>
   <div class="col">
     <img src="{{url_for('static', filename='av2.jpg')}}" alt="Avatar" class="avatar">
