@@ -1,15 +1,19 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
+{% if current_user.is_anonymous %}	
 
+<div class="container-fluid p-3 bg-dark text-white">
+  <h1>Home</h1>
+</div>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac tortor bibendum lobortis. Quisque felis diam, tincidunt non volutpat quis, dapibus a mauris. Fusce eget vulputate lorem. Donec malesuada mi in congue suscipit. Proin tellus diam, sodales sed finibus ac, porta vitae quam. Phasellus fringilla ipsum at lacus ultricies, eget venenatis mauris tempus. Sed nec interdum velit, sit amet dignissim purus. In vel lacinia ante. Aliquam a nunc convallis, mattis augue eu, auctor dolor. Vestibulum cursus vel quam sed auctor. Aenean ut arcu eget neque fringilla dapibus in non tortor. Duis eleifend eros ac commodo auctor.
+<P>
+{% else %}
 <div class="container-fluid p-3 bg-dark text-white">
   <h1>Home - {{ selected_runner.username | title }} </h1>
 </div>
- {% if current_user.is_anonymous %}	
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac tortor bibendum lobortis. Quisque felis diam, tincidunt non volutpat quis, dapibus a mauris. Fusce eget vulputate lorem. Donec malesuada mi in congue suscipit. Nunc maximus dapibus hendrerit. Nullam euismod lacus nec urna mollis, non elementum nulla sollicitudin. Integer aliquam dolor a massa maximus bibendum. Proin tellus diam, sodales sed finibus ac, porta vitae quam. Phasellus fringilla ipsum at lacus ultricies, eget venenatis mauris tempus. Sed nec interdum velit, sit amet dignissim purus. In vel lacinia ante. Aliquam a nunc convallis, mattis augue eu, auctor dolor. Vestibulum cursus vel quam sed auctor. Aenean ut arcu eget neque fringilla dapibus in non tortor. Duis eleifend eros ac commodo auctor.
-<P>
-{% else %}
   Runner: {{ selected_runner.username | title }} 
   <ul>
   <li><a class="text-decoration-none" href="/runs">Runs</a></li>
@@ -40,7 +44,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
         <img class="avatar" style="float:right" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
         <h5 class="card-title">{{ f.f_username | title }}</h5>
         <p class="card-text">summary....</p>
-        <a href="/switch/{{ f.f_username}}" class="btn btn-primary">🔄 Switch</a>
+        <a href="/switch/{{ f.f_username}}" class="btn btn-success">🔄 Switch</a>
       </div>
     </div>
   </div>    
