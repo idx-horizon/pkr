@@ -1,0 +1,8 @@
+    <div class="card" style="width: 10rem;">
+      <img class="card-img-top avatar" src="{{url_for('static', filename='av1.jpg')}}" alt="AV-1">
+      <div class="card-body">
+        <h5 class="card-title">{{ current_user.username | title }}</h5>
+        <p class="card-text">A{{ current_user.rid | safe }}</p>
+        <a href="/switch" class="btn btn-primary">Switch</a>
+      </div>
+    </div>  
