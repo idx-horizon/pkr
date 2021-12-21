@@ -350,7 +350,7 @@ def r_event_summary():
 def r_switch(switch_to=None):
     return_to = request.args.get('page')
     print('** Came from page: ', return_to)
-    me_summary = SESSION['SELECTEDRUNNER']['me_summary'] 
+    me_summary = session['SELECTEDRUNNER']['me_summary'] 
     if not switch_to:
     
         runner = utils.Runner(current_user.rid)
