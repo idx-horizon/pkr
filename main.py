@@ -379,7 +379,7 @@ def r_switch(switch_to=None):
             'icon': user.icon,
             'number_of_runs': -1,
             'friend_list': [],
-            'runner': runner.get_card_summary
+            'runner': runner.get_card_summary()
             }
         return redirect(url_for(return_to))
     else:
