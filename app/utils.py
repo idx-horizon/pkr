@@ -132,7 +132,7 @@ class Runner():
 		x = 'Runs: {}~Events: {}~PB: {}'.format(
 			 self.run_count,
 			 len([x for x in self.stats if x.startswith('_EVENT_')]),
-			 'tbc'
+			 min([t['Time'] for t in self.runs])
 			 )
 		return x
 		
@@ -144,6 +144,7 @@ class Runner():
 		challenges['Last run'] = '{} at {}'.format(fdate(self.runs[0]['Run Date']), self.runs[0]['Event'])
 		challenges['Current series'] = self.current_series()
 		challenges['Parkruns this year'] = self.stats['_YR_' + str(datetime.datetime.now().year)]
+		challenges['Best ever PB'] = min([t['Time'] for t in self.runs])
 		challenges['Number of PBs'] = self.stats['_PB']
 
 		

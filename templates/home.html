@@ -27,7 +27,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
           <img class="avatar" style="float:right" src="{{url_for('static', filename='av3.jpg')}}" alt="avatar">
         <h5 class="card-title">{{ current_user.username | title }}</h5>
         <p class="card-text">
-        {{ selected_runner.runner | replace('~','<BR/>') }}</p>
+        {{ selected_runner.runner | replace('~','<BR>') }}</p>
         <a href="/switch" class="btn btn-success">🔄 Switch</a>
       </div>
     </div>  
