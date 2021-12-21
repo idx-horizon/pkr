@@ -21,7 +21,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 <div class="row">
   
   <div class="col">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 24rem;">
       <div class="card-body">
           <img class="avatar" style="float:right" src="{{url_for('static', filename='av3.jpg')}}" alt="avatar">
         <h5 class="card-title">(me) {{ current_user.username | title }}</h5>
@@ -36,7 +36,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 
   {% if current_user.username != selected_runner.username %}
   <div class="col">
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 24rem;">
       <div class="card-body">
           <img class="avatar" style="float:right" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
         <h5 class="card-title">(selected) {{ selected_runner.username | title }}</h5>
@@ -63,7 +63,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
     <div class="card" style="width: 12rem;">
       <div class="card-body">
         <img class="avatar" style="float:right" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
-        <h5 class="card-title">{{ f.f_username | title }}</h5>
+        <h5 class="card-title btn btn-success">{{ f.f_username | title }}</h5>
         <a href="/switch/{{ f.f_username}}" class="btn btn-success">🔄 select</a>
       </div>
     </div>
