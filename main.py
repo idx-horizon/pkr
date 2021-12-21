@@ -27,7 +27,7 @@ def reset_session_selectedrunner():
             'threshold': None, 
             'icon': None,
             'number_of_runs': None,
-            'friend_list': None
+            'friend_list': None,
             'runner': None}
             
 @app.shell_context_processor
@@ -306,7 +306,7 @@ def login():
             'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
             'icon': user.icon,
-            'number_of_runs': len(runner.runs,
+            'number_of_runs': len(runner.runs),
             'friend_list': [],
             'runner': runner)
             }
