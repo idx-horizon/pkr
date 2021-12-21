@@ -294,11 +294,17 @@ def login():
             next_page = url_for('runner_runs')
             
         LoginLog.add(form.username.data.lower(), request.headers['X-Real-IP'])
+        
+        rid = utils.Runner(user.rid or current_user.rid)
+        rid.get_runs(None,False)
+        
         session['SELECTEDRUNNER'] = {
             'username': user.username, 
             'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
-            'icon': user.icon}
+            'icon': user.icon
+            'number_of_runs': len(rid.runs)
+            }
         session['FRIENDS'] = Friend.get(user.username)
         return redirect(next_page)
 
