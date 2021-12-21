@@ -65,7 +65,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
         <img class="avatar" style="float:right" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
         <h5 class="card-title">{{ f.f_username | title }}</h5>
         <button class="btn btn-success">
-          <img class="avatar" src="{{url_for('static', filename='av2.jpg')}}"/>select
+            <a href="/switch/{{ f.f_username}}" class="btn btn-success">🔄 select</a>
         </button>
         <a href="/switch/{{ f.f_username}}" class="btn btn-success">🔄 select</a>
       </div>
