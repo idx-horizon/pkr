@@ -307,13 +307,13 @@ def login():
             'threshold': user.agegrade_theshold, 
             'icon': user.icon,
             'number_of_runs': len(runner.runs),
-            'friend_list': [],
+            'friend_list': {},
             'runner': runner
             }
         print('*** Session:', session['SELECTEDRUNNER'])    
         session['FRIENDS'] = Friend.get(user.username)
         for f in Friend.get(user.username):
-            session['SELECTED_RUNNER'][f] = -1
+            session['SELECTED_RUNNER']['friend_list'][f] = -1
             
         return redirect(next_page)
 
