@@ -38,12 +38,13 @@ def add_f(f, t):
 def all_u():
      users = User.query.all()
      for u in users: 
-          print('{:<10} {:<8} {:<15} {:<5} {:<6}'.format(
+          print('{:<10} {:<8} {:<15} {:<5} {:<6} {}'.format(
                u.username, 
                u.rid, 
                u.home_run, 
                str(u.is_admin), 
-               str(u.agegrade_theshold)))
+               str(u.agegrade_theshold),
+               u.avatar))
                
 def agegrade(u,value):
      to = User.query.filter_by(username=u).first()
