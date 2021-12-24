@@ -26,6 +26,7 @@ def reset_session_selectedrunner():
             'rid': None, 
             'threshold': None, 
             'icon': None,
+            'avatar': None,
             'friend_list': None,
             'runner': None,
             'me_summary': None}
