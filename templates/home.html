@@ -45,14 +45,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   <div class="col">
     <div class="card" style="width: 20rem; background-color: rgba(25,255,78,0.046)">
       <div class="card-body">
-          <img class="avatar" style="float:right" src="{{url_for('static', filename='ian.jpg')}}" alt="avatar">
+          <img class="avatar" style="float:right" src="{{url_for('static', filename=current_runner.username +'.jpg')}}" alt="avatar">
         <h5 class="card-title">(me) {{ current_user.username | title }}</h5>
         <p class="card-text">
         {% autoescape false %}
             {{ selected_runner.me_summary | replace('~','<BR/>') }}
         {% endautoescape %}
         </p>
-        <a href="/switch" class="btn btn-success">✅ select</a>
       </div>
     </div>  
   </div>
@@ -68,7 +67,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   <div class="col">
     <div class="card" style="width: 14rem;">
       <div class="card-body">
-        <img class="avatar" style="float:right" src="{{url_for('static', filename='av2.jpg')}}" alt="avatar">
+        <img class="avatar" style="float:right" src="{{url_for('static', filename=f.f_username +'.jpg')}}" alt="">
         <h2 class="card-title">
         <a class="btn btn-success" style="width: 70%;" href="/switch/{{ f.f_username}}">
         {{ f.f_icon }} &nbsp {{ f.f_username | title }}</a>
