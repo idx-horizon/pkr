@@ -22,15 +22,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   
   {% if current_user.username != selected_runner.username %}
   <div class="col">
-    <div class="card" style="width: 20rem; background-color: rgba(25,255,78,0.046)">
+    <div class="card" style="width: 20rem; background-color: rgba(25,255,0,0.577)">
       <div class="card-body">
-          <img class="avatar" style="float:right" src="{{url_for('static', filename=selected_runner.avatar)}}" alt=" 🏃‍♂️ ">
+          <img class="avatar" style="float:right" src="{{url_for('static', filename=selected_runner.avatar )}}" alt=" 🏃‍♂️ ">
         <h5 class="card-title">(selected) {{ selected_runner.username | title }}</h5>
         <p class="card-text">
         {% autoescape false %}
             {{ selected_runner.runner | replace('~','<BR/>') }}
         {% endautoescape %}
-        </p>
+        </p>** {{ selected_runner.avatar }} **
         <a href="/switch" class="btn btn-success">❌ unselect</a>
         <ul>
         <li><a class="text-decoration-none" href="/runs">Runs</a></li>
