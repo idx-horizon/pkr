@@ -24,7 +24,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   <div class="col">
     <div class="card" style="width: 20rem; background-color: rgba(25,255,78,0.046)">
       <div class="card-body">
-          <img class="avatar" style="float:right" src="{{url_for('static', filename=selected_runner.username +'.jpg')}}" alt=" 🏃‍♂️ ">
+          <img class="avatar" style="float:right" src="{{url_for('static', filename=selected_runner.avatar)}}" alt=" 🏃‍♂️ ">
         <h5 class="card-title">(selected) {{ selected_runner.username | title }}</h5>
         <p class="card-text">
         {% autoescape false %}
@@ -65,11 +65,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   {% for f in friends %}
   {% if selected_runner.username != f.f_username %}
   <div class="col">
-    <div class="card" style="width: 14rem;">
+    <div class="card" style="width: 12rem;">
       <div class="card-body">
         <h2 class="card-title">
         <a class="btn btn-success" style="width: 70%;" href="/switch/{{ f.f_username}}">
-        {{ f.f_icon }} &nbsp {{ f.f_username | title }}</a>
+        {{ f.f_username | title }}</a>
         </h2>
       </div>
     </div>
