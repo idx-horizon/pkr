@@ -11,7 +11,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 <P>
 {% else %}
 <div class="container-fluid p-3 bg-dark text-white">
-  <h1>Home - Current runner: {{ selected_runner.username | title }} </h1>
+  <h1>Home</h1>
 </div>
   <ul>
   <li><a class="text-decoration-none" href="/runs">Runs</a></li>
@@ -22,15 +22,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   
   {% if current_user.username != selected_runner.username %}
   <div class="col">
-    <div class="card" style="width: 20rem; background-color: rgba(25,255,0,0.577)">
+    <div class="card" style="width: 20rem; background-color: rgba(25,255,78,0.180)">
       <div class="card-body">
           <img class="avatar" style="float:right" src="{{url_for('static', filename=selected_runner.avatar )}}" alt=" 🏃‍♂️ ">
-        <h5 class="card-title">(selected) {{ selected_runner.username | title }}</h5>
+        <h5 class="card-title">{{ selected_runner.username | title }}</h5>
         <p class="card-text">
         {% autoescape false %}
             {{ selected_runner.runner | replace('~','<BR/>') }}
         {% endautoescape %}
-        </p>** {{ selected_runner.avatar }} **
+        </p>
         <a href="/switch" class="btn btn-success">❌ unselect</a>
         <ul>
         <li><a class="text-decoration-none" href="/runs">Runs</a></li>
@@ -43,9 +43,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
   {% endif %}
   
   <div class="col">
-    <div class="card" style="width: 20rem; background-color: rgba(25,255,78,0.046)">
+    <div class="card" style="width: 20rem; background-color: rgba(25,255,78,0.180)">
       <div class="card-body">
-          <img class="avatar" style="float:right" src="{{url_for('static', filename=current_user.avatar )}}" alt="avatar">
+          <img class="avatar" style="float:right" src="{{url_for('static', filename=current_user.avatar )}}" alt="">
         <h5 class="card-title">{{ current_user.username | title }}</h5>
         <p class="card-text">
         {% autoescape false %}
@@ -68,8 +68,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
     <div class="card" style="width: 12rem;">
       <div class="card-body">
         <h2 class="card-title">
-        <a class="btn btn-success" style="width: 70%;" href="/switch/{{ f.f_username}}">
-        {{ f.f_username | title }}</a>
+        <a class="btn btn-success" style="width: 100%;" href="/switch/{{ f.f_username}}">
+        {{ f.f_icon }} &nbsp {{ f.f_username | title }}</a>
         </h2>
       </div>
     </div>
