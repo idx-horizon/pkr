@@ -89,6 +89,7 @@ class User(UserMixin, db.Model):
     home_postcode = db.Column(db.String(50))
     is_admin      = db.Column(db.Boolean)
     icon          = db.Column(db.String(1))
+    avatar        = db.Column(db.String(30))
 
     @property
     def SELECTEDRUNNER(self):

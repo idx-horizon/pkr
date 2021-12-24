@@ -10,22 +10,23 @@ def seticon(who,value):
      db.session.commit()
      
 def seticon_all():
-     users = [('ian', '🆔', 45.0),
-          ('michael', 'Ⓜ️', 50.0),
-          ('sam',     '🏃‍♂️', 50.0),
-          ('ant',     '👨', 50.0),
-          ('matt',    'Ⓜ️', 50.0),
-          ('eileen',  '🙎‍♀️', 50.0),
-          ('sharon',  '🙎‍♀️', 50.0),
-          ('caroline','✨', 50.0),
-          ('norm',    '🏃‍♂️', 50.0),
-          ('cat',     '😼', 50.0)          
+     users = [('ian', '🆔', 47.5, 'av_ian.jpg'),
+          ('michael', 'Ⓜ️', 50.0, 'av_michael.jpg'),
+          ('sam',     '🏃‍♂️', 50.0, 'av_default.jpg'),
+          ('ant',     '👨', 50.0, 'av_default.jpg'),
+          ('matt',    'Ⓜ️', 50.0, 'av_default.jpg'),
+          ('eileen',  '🙎‍♀️', 50.0, 'av_default.jpg'),
+          ('sharon',  '🙎‍♀️', 50.0, 'av_default.jpg'),
+          ('caroline','✨', 50.0, 'av_caroline.jpg'),
+          ('norm',    '🏃‍♂️', 50.0, 'av_default.jpg'),
+          ('cat',     '😼', 50.0, 'av_cat.jpg')          
      ]
      
      for u in users:
           x = User.query.filter_by(username=u[0]).first()
           x.icon = u[1]
           x.agegrade_theshold = u[2]
+          x.avatar = u[3]
           db.session.commit()
 
 def add_f(f, t):
