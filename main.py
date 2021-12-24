@@ -134,8 +134,6 @@ def r_graph():
        graph.range = [ min(current_series+my_series)-1 , 
                        max(current_series+my_series)+1 ]
                        
-#       print('** Min/Max:', graph.range) 
-                      
        graph_data = graph.render_data_uri()
        return render_template("graph.html", 
                                 graph_title = graph.title,
@@ -364,6 +362,7 @@ def r_switch(switch_to=None):
             'rid': current_user.rid, 
             'threshold': current_user.agegrade_theshold, 
             'icon': current_user.icon,
+            'avatar': current_user.avatar,
             'friend_list': [],
             'runner':  summary,
             'me_summary': me_summary
@@ -382,6 +381,7 @@ def r_switch(switch_to=None):
             'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
             'icon': user.icon,
+            'avatar': user.avatar,
             'friend_list': [],
             'runner':  summary,
             'me_summary': me_summary
