@@ -306,6 +306,7 @@ def login():
             'rid': user.rid, 
             'threshold': user.agegrade_theshold, 
             'icon': user.icon,
+            'avatar': user.avatar,
             'number_of_runs': len(runner.runs),
             'friend_list': {},
             'runner': summary,
