@@ -31,7 +31,7 @@
             <td>{{ item.times[0] | replace('00:','') }}</td>
             <td>{{ item.times[2] | replace('00:','') }}</td>
             <td>{{ item.different_events}}/{{ item.count }}</td>
-            <td>{{ item.different_events / item.count }}</td>
+            <td>{{ "%.1f" | format(item.different_events / item.count) }}%</td>
         </tr>
    {% endfor %}
         <P>
