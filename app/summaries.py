@@ -28,7 +28,7 @@ def year_summary(runs):
         c[r['Run Date'][-4:]] += 1
     
     uniq_counter = Counter(
-        x['Run Date][-4:] + '-' + x['Event'] for x in runs
+        x['Run Date'][-4:] + '-' + x['Event'] for x in runs
     )    
     
     different = 0
