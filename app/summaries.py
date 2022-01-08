@@ -21,7 +21,7 @@ def get_estat_times(runs, k):
     
 def year_summary(runs):
     def uniq_year(data, year):
-        return len([x for x in data if x.startswith(year)])
+        return len([x for x in data if x.startswith(str(year))])
         
     c = Counter()
     for r in runs: 
