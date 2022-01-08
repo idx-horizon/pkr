@@ -18,7 +18,8 @@
         <th style="width: 10%">PB</th>
         <th style="width: 10%">Average</th>
         <th style="width: 10%">Slowest</th>
-        <th style="width: 40%">Diff Events</th>
+        <th style="width: 10%">Tourist</th>
+        <th style="width: 30%">Quotient</th>
         
         </tr>
     </thead>
@@ -29,7 +30,8 @@
             <td>{{ item.times[1] | replace('00:','') }}</td>
             <td>{{ item.times[0] | replace('00:','') }}</td>
             <td>{{ item.times[2] | replace('00:','') }}</td>
-            <td>{{ item.different_events }}</td>
+            <td>{{ item.different_events}}/{{ item.count }}</td>
+            <td>{{ item.different_events / item.count }}</td>
         </tr>
    {% endfor %}
         <P>
