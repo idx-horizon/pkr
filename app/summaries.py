@@ -20,13 +20,21 @@ def get_estat_times(runs, k):
     return ( get_avg(l), min(l), max(l) )
     
 def year_summary(runs):
+    def uniq_year(data, year):
+        return len([x for x in data if x.startswith(year)])
+        
     c = Counter()
     for r in runs: 
         c[r['Run Date'][-4:]] += 1
     
-        
+    uniq_counter = Counter(
+        x['Run Date][-4:] + '-' + x['Event'] for x in runs
+    )    
+    
+    different = 0
     data = [{'year': k,
              'count': v,
+             'different_events': uniq_year(uniq_counter, v),
              'times': get_ystat_times(runs, k), 
              } for k,v in c.items()]
 
