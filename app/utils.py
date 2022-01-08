@@ -185,6 +185,13 @@ class Runner():
 								', '.join(times_done_max_freq),
 								max_freq
 								)
+		pos = Counter(x['Pos'] for x in self.runs)
+		max_freq = max(pos.values())
+		times_done_max_freq = sorted([x for x in pos if pos[x]==max_freq])
+		challenges['🔢 Most frequent position'] = '{} - {} times'.format(
+								', '.join(times_done_max_freq),
+								max_freq
+								)  
 		
 		key = max({x for x in self.stats if x.startswith('_EVENT_')}, 
 						key=lambda key: self.stats[key])		
