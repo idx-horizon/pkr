@@ -34,7 +34,7 @@ def year_summary(runs):
     different = 0
     data = [{'year': k,
              'count': v,
-             'different_events': uniq_year(uniq_counter, v),
+             'different_events': uniq_year(uniq_counter, k),
              'times': get_ystat_times(runs, k), 
              } for k,v in c.items()]
 
