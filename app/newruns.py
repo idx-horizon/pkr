@@ -21,6 +21,7 @@ class Event():
         self.evshortname = event['properties']['EventShortName']
         self.evlongname = event['properties']['EventLongName']
         self.first_run = event['properties']['first_run']
+        self.sss_score = event['properties']['sss_score']
         self.latitude = event['geometry']['coordinates'][1]
         self.longitude = event['geometry']['coordinates'][0]        
         self.domain = 'https://' + [country_dict[ele]['base'] for ele in country_dict if country_dict[ele]['id']==event['properties']['countrycode']][0] +'/'
