@@ -75,7 +75,8 @@ def get_sss_scores():
             data = json.loads(fin.read())
 
         return {i['event']: float(i['average_sss']) for i in data }	
-    except:
+        
+    except Exception as e:
         return None
 
 def getfile(refresh=False):
