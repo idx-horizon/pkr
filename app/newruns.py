@@ -69,6 +69,15 @@ def get_anniversaries():
     with open('anniversaries.json','r') as fin:
         return json.loads(fin.readlines()[0])
         
+def get_sss_scores():
+    try:
+        with open('sss.json') as fin:
+            data = json.loads(fin.read())
+
+        return {i['event']: float(i['average_sss']) for i in data }	
+    except:
+        return None
+
 def getfile(refresh=False):
     fn_events ='events.json'
     if refresh:
@@ -95,16 +104,21 @@ def getevents(js, countrycode, seriesid):
     events = [x for x in js['events']['features'] if
             x['properties']['countrycode'] == countrycode and x['properties']['seriesid'] == seriesid]
     anni = get_anniversaries()
-#    print('** first anni',anni[0])
+    sss = get_sss_scores()
+    
     for e in events:
         try:
             first_run = [x['First Run'] for x in anni if x['Event']==e['properties']['EventLongName']][0]
         except:
-#            print('** Unable to get {}'.format(e['properties']['EventLongName']))
             first_run='n/a'
 
         e['properties']['first_run']=first_run	
- #   print('** last event',e)
+
+        try:
+            e['properties']['sss_score'] = sss[e['properties']['EventShortName']]
+        except:
+            e['properties']['sss_score'] = 'n/a'
+
     return events
 
 def get_last_newruns(lastlimit=10, country_code=97, centre_on='bromley'):
