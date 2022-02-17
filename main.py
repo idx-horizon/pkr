@@ -16,6 +16,7 @@ import app.newruns as NR
 import app.utils as utils
 import app.summaries as summaries
 import datetime
+import pandas as pd
 
 import pygal
 
