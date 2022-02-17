@@ -19,6 +19,18 @@ import datetime
 
 import pygal
 
+@app.route("/xltables")
+def show_tables():
+    data = pd.read_excel('static/dummy.xlsx')
+    data.set_index(['Name'], inplace=True)
+    data.index.name=None
+    females = data.loc[data.Gender=='f']
+    males = data.loc[data.Gender=='m']
+    return render_template('xlview.html',tables=[females.to_html(classes='female'), males.to_html(classes='male')],
+    titles = ['na', 'Female surfers', 'Male surfers'])
+
+
+
 app_TRACKER = Tracker()
 def reset_session_selectedrunner():
         session['SELECTEDRUNNER'] = {
