@@ -240,7 +240,7 @@ class Runner():
 		challenges['🌍 Countries visited'] = '{} ({})'.format(len(self.countries),  ', '.join(self.countries))
 		
 		for k,v in [('Time', '⏱ Time'), ('AgeGrade','🎂 Age grading'), ('Pos', '🏅 Position')]:
-			element = ['{:>4}'.format(t[k]) for t in self.runs]	
+			element = ['{:>8}'.format(t[k]) for t in self.runs]	
 			challenges[v + ' (range)'] = '{} --> {}'.format(min(element).strip(), max(element).strip())
 		
 		times = [sum(x * int(t) for x, t in zip([60, 1], ele['Time'].split(":"))) for ele in self.runs]
