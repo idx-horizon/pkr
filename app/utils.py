@@ -454,9 +454,9 @@ class Runner():
 				prev_run = next(seq)
 				prev_dt = self.convert_date(prev_run['Run Date'])
 				diff = (current_dt - prev_dt).days
-				
-				current_run = prev_run
-				current_dt = prev_dt
+				if diff < 8:
+					current_run = prev_run
+					current_dt = prev_dt
 			
 			if num_runs == 1:
 				return '{} - {} at {}'.format(
