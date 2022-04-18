@@ -231,6 +231,27 @@ def runner_stats():
                 file_modified_date=NR.get_last_update(),
                 data=rid)
 
+@app.route('/compare', methods=['POST','GET'])
+@login_required
+def r_compare(params=None):
+    data = {
+        '16-Apr-2022': [
+            ('me','East Grinstead','33:00'),
+            ('you','East Grinstead','32:20'),
+        ],
+        '09-Apr-2022': [
+            ('me','Nonsuch','31:40'),
+            ('you','Nonsuch','30:35'),
+        ],
+        '02-Apr-2022': [
+            ('me','Battersea','30:23'),
+        ],
+        
+    }
+    return render_template('compare.html',
+        data=data)
+    
+
 @app.route('/runs', methods=['POST','GET'])
 @app.route('/runs/', methods=['POST','GET'])
 @app.route('/runs/<params>/', methods=['POST','GET'])

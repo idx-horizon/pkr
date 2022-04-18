@@ -1,0 +1,27 @@
+{% include "_header.html" %}
+{% include "_menubar.html" %}
+
+<div class="container-fluid p-3 bg-dark text-white">
+
+
+<table class="table table-hover table-light table-striped" style="width:90%">
+    <thead class="thead-light text-left">
+	<tr>
+		<th width="30%">Date</th>
+		<th width="35%">Me</th>
+		<th width="35%">You</th>
+	</tr>
+	</thead>
+	{% for item in data %}
+			<tr>
+				<td>{{ item }}</td>
+				<td>| format_datetime </td>
+				<td>-</td>
+			</tr>
+	{% endfor %}
+		<P>
+
+</table>
+</div>
+
+{% include "_footer.html" %}
