@@ -15,7 +15,7 @@
 	{% for item in data %}
 			<tr>
 				<td>{{ item }}</td>
-				<td>| format_datetime </td>
+				<td>{{ data[item][0] }} </td>
 				<td>-</td>
 			</tr>
 	{% endfor %}
