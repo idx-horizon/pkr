@@ -237,17 +237,22 @@ def r_compare(params=None):
     rid = utils.Runner(current_user.rid)
     rid.get_runs('',False,'Date')
     myruns = rid.runs[0:10]
-    
-    data = {
-        '16-Apr-2022': [
-            ('me','East Grinstead','33:00'),
-            ('you','East Grinstead','32:20'),
-        ],
-        '09-Apr-2022': [
-            ('me','Nonsuch','31:40'),
-            ('you','Nonsuch','30:35'),
-        ],
-    }
+    data = {}
+    for e in myruns:
+        data[e['Date'] = [
+                ('me',e['Event'], e['Time']),
+                ('you', '','')
+                ]    
+#    data = {
+#        '16-Apr-2022': [
+#            ('me','East Grinstead','33:00'),
+#            ('you','East Grinstead','32:20'),
+#        ],
+#        '09-Apr-2022': [
+#            ('me','Nonsuch','31:40'),
+#            ('you','Nonsuch','30:35'),
+#        ],
+#    }
     return render_template('compare.html',
         data=data)
     
