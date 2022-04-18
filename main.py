@@ -234,6 +234,10 @@ def runner_stats():
 @app.route('/compare', methods=['POST','GET'])
 @login_required
 def r_compare(params=None):
+    rid = utils.Runner(current_user.rid)
+    rid.get_runs('',False,'Date')
+    myruns = rid.runs[0:10]
+    
     data = {
         '16-Apr-2022': [
             ('me','East Grinstead','33:00'),
@@ -243,10 +247,6 @@ def r_compare(params=None):
             ('me','Nonsuch','31:40'),
             ('you','Nonsuch','30:35'),
         ],
-        '02-Apr-2022': [
-            ('me','Battersea','30:23'),
-        ],
-        
     }
     return render_template('compare.html',
         data=data)
