@@ -239,7 +239,7 @@ def r_compare(params=None):
     myruns = rid.runs[0:10]
     data = {}
     for e in myruns:
-        data[e['Date']] = [
+        data[e['Run Date']] = [
                 ('me',e['Event'], e['Time']),
                 ('you', '','')
                 ]    
