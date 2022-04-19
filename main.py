@@ -237,11 +237,11 @@ def r_compare(params=None):
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     srid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     srid.get_runs('',False,'Date')
-    sruns = srid.runs[0:10]
+    sruns = srid.runs[0:1]
     
     crid = utils.Runner(current_user.rid)
     crid.get_runs('',False,'Date')
-    cruns = crid.runs[0:10]
+    cruns = crid.runs[0:1]
     data = {}
     for e in cruns:
         data[e['Run Date']] = [
