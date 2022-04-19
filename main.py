@@ -231,6 +231,7 @@ def runner_stats():
                 file_modified_date=NR.get_last_update(),
                 data=rid)
 
+
 @app.route('/headtohead', methods=['POST','GET'])
 @app.route('/headtohead', methods=['POST','GET'])
 @login_required
@@ -239,7 +240,7 @@ def r_headtohead(params=None):
         against = str(request.form['against'])
     except:
         against = None
-        
+    print('** Friends: ', session['FRIENDS'])        
     print('Head to head: ',against, request.form, request.form.keys())
     #get current selected runner's details
     SELECTEDRUNNER = session['SELECTEDRUNNER']
