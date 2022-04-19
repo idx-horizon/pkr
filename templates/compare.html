@@ -17,10 +17,10 @@
 	{% for item in data %}
 			<tr>
 				<td>{{ item | format_datetime }}</td>
+				<td>{{ data[item][0][0] }} </td>
 				<td>{{ data[item][0][1] }} </td>
-				<td>{{ data[item][0][2] }} </td>
-				<td>{{ data[item][1][2] }} </td>
 				<td>{{ data[item][1][1] }} </td>
+				<td>{{ data[item][1][0] }} </td>
 			</tr>
 	{% endfor %}
 		<P>
