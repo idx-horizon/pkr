@@ -17,8 +17,7 @@ except:
 ANNIVERSARY_URL = 'https://wiki.parkrun.com/index.php/Anniversaries'
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
-def lastSaturday(beforewhen=datetime.datetime.now().date()):
-   dt = beforewhen
+def lastSaturday(dt=datetime.datetime.now().date()):
    return dt - datetime.timedelta(days=((dt.isoweekday()+1) % 7))
 
 def time_to_secs(runtime):
