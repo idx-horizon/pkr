@@ -14,9 +14,9 @@
 #}
 <select class="form-control" style="width:125px" id="select_runner" name="runner">
 
-  {% for opt['f_username'] in friends %}
-     <option {% if opt==selectedrunner | lower %}selected{% endif %} 
-     		value={{ opt }}>{{ opt | replace('_',' ') | title }}
+  {% for opt in friends %}
+     <option {% if opt.f_username==selectedrunner | lower %}selected{% endif %} 
+     		value={{ opt.f_username }}>{{ opt.f_username | replace('_',' ') | title }}
      </option>
      		
   {% endfor %}
