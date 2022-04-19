@@ -237,30 +237,39 @@ def r_compare(params=None):
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     srid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     srid.get_runs('',False,'Date')
-    sruns = srid.runs[0:10]
+ #   sruns = srid.runs[0:10]
     
     crid = utils.Runner(current_user.rid)
     crid.get_runs('',False,'Date')
-    cruns = crid.runs[0:10]
+ #   cruns = crid.runs[0:10]
+    
     data = {}
     lastsat = utils.lastSaturday()
     for i in range(10):
         dt = lastsat - datetime.timedelta(days=i*7)
         data[dt] = [('','',''),('','','')]
+        fdt = dt.strftime('%d/%m/%Y')
+        c1 = [('',e['Event'], e['Time']) for e in crid.runs if e['Run Date']==fdt]
+        c2 = [('',e['Event'], e['Time']) for e in srid.runs if e['Run Date']==fdt]
+        if len(c1) == 0:
+            c1 = [('','','')]
+        if len(c2) == 0:
+            c2 = [('','','')]
+        data[dt] = [c1[0], c2[0]]
         
-    for e in cruns:
-        data[e['Run Date']] = [
-                (crid.name,e['Event'], e['Time']),
-                ('','','')
-                ]    
-    for e in sruns:
-        if e['Run Date'] in data.keys():
-            data[e['Run Date']][1] = ('Other', e['Event'], e['Time'])
-        else:
-            data[e['Run Date']] = [
-                ('','',''),
-                ('Other', e['Event'], e['Time']) 
-            ]
+#    for e in cruns:
+#        data[e['Run Date']] = [
+#                (crid.name,e['Event'], e['Time']),
+#                ('','','')
+#                ]    
+#    for e in sruns:
+#        if e['Run Date'] in data.keys():
+#            data[e['Run Date']][1] = ('Other', e['Event'], e['Time'])
+#        else:
+#            data[e['Run Date']] = [
+#                ('','',''),
+#                ('Other', e['Event'], e['Time']) 
+#           ]
 #    data = {
 #        '16-Apr-2022': [
 #            ('me','East Grinstead','33:00'),
