@@ -240,7 +240,7 @@ def r_headtohead(params=None):
     except:
         against = None
         
-    print('Head to head: ',against)
+    print('Head to head: ',against, request.form)
     #get current selected runner's details
     SELECTEDRUNNER = session['SELECTEDRUNNER']
 #    srid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
