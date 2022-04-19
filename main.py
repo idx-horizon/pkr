@@ -267,7 +267,8 @@ def r_compare(params=None):
 #    }
     return render_template('headtohead.html',
         data=data,
-        runner_names=[crid.name, srid.name]
+        runner_names=[crid.name, srid.name],
+        selectedrunner=srid.name,
         )
     
 
