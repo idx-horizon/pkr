@@ -245,9 +245,9 @@ def r_compare(params=None):
     
     data = {}
     lastsat = utils.lastSaturday()
-    for i in range(10):
+    for i in range(20):
         dt = lastsat - datetime.timedelta(days=i*7)
-        data[dt] = [('','',''),('','','')]
+#        data[dt] = [('','',''),('','','')]
         fdt = dt.strftime('%d/%m/%Y')
         c1 = [(e['Event'], e['Time']) for e in crid.runs if e['Run Date']==fdt]
         c2 = [(e['Event'], e['Time']) for e in srid.runs if e['Run Date']==fdt]
