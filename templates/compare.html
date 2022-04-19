@@ -8,15 +8,19 @@
     <thead class="thead-light text-left">
 	<tr>
 		<th width="20%">Date</th>
-		<th width="40%">{{ runner_names[0] }}</th>
-		<th width="40%">{{ runner_names[1] }}</th>
+		<th width="30%">{{ runner_names[0] }}</th>
+		<th width="10%"></th>
+		<th width="10%"></th>
+		<th width="30%">{{ runner_names[1] }}</th>
 	</tr>
 	</thead>
 	{% for item in data %}
 			<tr>
-				<td>{{ item }}</td>
-				<td>{{ data[item][0][1] }} {{ data[item][0][2] }} </td>
-				<td>{{ data[item][1][1] }} {{ data[item][1][2] }} </td>
+				<td>{{ item | format_datetime }}</td>
+				<td>{{ data[item][0][1] }} </td>
+				<td>{{ data[item][0][2] }} </td>
+				<td>{{ data[item][1][2] }} </td>
+				<td>{{ data[item][1][1] }} </td>
 			</tr>
 	{% endfor %}
 		<P>
