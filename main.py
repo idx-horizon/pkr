@@ -234,7 +234,12 @@ def runner_stats():
 @app.route('/headtohead', methods=['POST','GET'])
 @app.route('/headtohead', methods=['POST','GET'])
 @login_required
-def r_compare(params=None):
+def r_headtohead(params=None):
+    try:
+        against = str(request.form['against'])
+    except:
+        against = 'ian'
+    print('Head to head: ',against)
     #get current selected runner's details
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     srid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
