@@ -7,6 +7,7 @@ import string
 import statistics
 import re
 import datetime
+from datetime import datetime, timedelta
 import math
 try: 
 	import app.extract as E
