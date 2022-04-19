@@ -10,7 +10,7 @@
 <label for="against">Against</label>
 <select class="form-control" style="width:125px" id="against" name="against">
 
-  {% for opt in friends %}
+  {% for opt in friends | sorted %}
      <option {% if opt.f_rid==selectedrunner | lower %}selected{% endif %} 
      		value={{ opt.f_rid }}>{{ opt.f_username | replace('_',' ') | title }}
      </option>
