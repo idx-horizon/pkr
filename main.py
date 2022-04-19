@@ -240,7 +240,7 @@ def r_compare(params=None):
     data = {}
     for e in myruns:
         data[e['Run Date']] = [
-                ('me',e['Event'], e['Time']),
+                (rid.name,e['Event'], e['Time']),
                 ('you', '','')
                 ]    
 #    data = {

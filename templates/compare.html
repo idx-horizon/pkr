@@ -7,16 +7,16 @@
 <table class="table table-hover table-light table-striped" style="width:90%">
     <thead class="thead-light text-left">
 	<tr>
-		<th width="30%">Date</th>
-		<th width="35%">Me</th>
-		<th width="35%">You</th>
+		<th width="20%">Date</th>
+		<th width="40%">Me</th>
+		<th width="40%">You</th>
 	</tr>
 	</thead>
 	{% for item in data %}
 			<tr>
-				<td>{{ item }}</td>
-				<td>{{ data[item][0][2] }} {{ data[item][0][1] }} </td>
-				<td>{{ data[item][1][2] }} {{ data[item][1][1] }} </td>
+				<td>{{ item }} data[item][0][0]</td>
+				<td>{{ data[item][0][1] }} {{ data[item][0][2] }} </td>
+				<td>{{ data[item][1][1] }} {{ data[item][1][2] }} </td>
 			</tr>
 	{% endfor %}
 		<P>
