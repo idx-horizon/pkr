@@ -9,7 +9,11 @@
 
 <label for="select_runner">Other runner</label>
 <select class="form-control" style="width:125px" id="select_runner" name="runner">
-  {% for opt in ['ian','michael','cat'] %}
+  {% for opt in [
+	{% for f in friends %}
+		{{ f.f_username }},
+	{% endfor %}
+  ] %}
      <option {% if opt==selectedrunner | lower %}selected{% endif %} 
      		value={{ opt }}>{{ opt | replace('_',' ') | title }}
      </option>
