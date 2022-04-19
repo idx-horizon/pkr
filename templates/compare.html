@@ -18,9 +18,12 @@
 			<tr>
 				<td>{{ item | format_datetime }}</td>
 				<td>{{ data[item][0][0] }} </td>
+				{% if data[item][0][1] = '' or data[item][0][1] = '' %}
+					<td>{{ data[item][0][1] }} </td>
+					<td>{{ data[item][1][1] }}</td>				
 				{% if data[item][0][1] > data[item][1][1] %}
 					<td>{{ data[item][0][1] }} </td>
-					<td>{{ data[item][1][1] }} 🏅</td>
+					<td>🏅 {{ data[item][1][1] }}</td>
 				{% else %}
 					<td>{{ data[item][0][1] }} 🏅</td>
 					<td>{{ data[item][1][1] }} </td>				
