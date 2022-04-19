@@ -7,8 +7,8 @@ import string
 import statistics
 import re
 import datetime
-from datetime import datetime, timedelta
 import math
+
 try: 
 	import app.extract as E
 except:
@@ -17,9 +17,9 @@ except:
 ANNIVERSARY_URL = 'https://wiki.parkrun.com/index.php/Anniversaries'
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
-def lastSaturday(beforewhen=datetime.now().date()):
+def lastSaturday(beforewhen=datetime.datetime.now().date()):
    dt = beforewhen
-   return dt - timedelta(days=((dt.isoweekday()+1) % 7))
+   return dt - datetime.timedelta(days=((dt.isoweekday()+1) % 7))
 
 def time_to_secs(runtime):
 	if runtime.count(':')==2:
