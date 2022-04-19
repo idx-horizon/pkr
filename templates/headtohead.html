@@ -8,13 +8,13 @@
 <form class="form-inline" action='/headtohead' method="POST" name="form" autocomplete="off">
 
 <label for="select_runner">Against</label>
-
+{#
 {% set friendlist = x.f_username for x in friends %}
 {{ friendlist }}
 #}
 <select class="form-control" style="width:125px" id="select_runner" name="runner">
 
-  {% for opt in ['ian','michael'] %}
+  {% for opt.f_username in friends %}
      <option {% if opt==selectedrunner | lower %}selected{% endif %} 
      		value={{ opt }}>{{ opt | replace('_',' ') | title }}
      </option>
