@@ -255,8 +255,6 @@ def r_compare(params=None):
             c1 = [('','')]
         if len(c2) == 0:
             c2 = [('','')]
-        if c1[0][1] < c2[0][1]:
-            c1[0][1]=c1[0][1] + '🏅' 
         data[fdt] = [c1[0], c2[0]]
         
 #    data = {
