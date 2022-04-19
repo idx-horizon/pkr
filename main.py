@@ -234,13 +234,17 @@ def runner_stats():
 @app.route('/compare', methods=['POST','GET'])
 @login_required
 def r_compare(params=None):
-    rid = utils.Runner(current_user.rid)
-    rid.get_runs('',False,'Date')
-    myruns = rid.runs[0:10]
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
+    srid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
+    sruns = srid.runs[0:10]
+    
+    crid = utils.Runner(current_user.rid)
+    crid.get_runs('',False,'Date')
+    cruns = crid.runs[0:10]
     data = {}
-    for e in myruns:
+    for e in cruns:
         data[e['Run Date']] = [
-                (rid.name,e['Event'], e['Time']),
+                (crid.name,e['Event'], e['Time']),
                 ('you', '','')
                 ]    
 #    data = {
@@ -254,7 +258,9 @@ def r_compare(params=None):
 #        ],
 #    }
     return render_template('compare.html',
-        data=data)
+        data=data,
+        runner_names=[crid.name, srid.name]
+        )
     
 
 @app.route('/runs', methods=['POST','GET'])

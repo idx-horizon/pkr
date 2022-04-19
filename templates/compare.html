@@ -8,13 +8,13 @@
     <thead class="thead-light text-left">
 	<tr>
 		<th width="20%">Date</th>
-		<th width="40%">Me</th>
-		<th width="40%">You</th>
+		<th width="40%">{{ runner_names[0] }}</th>
+		<th width="40%">{{ runner_names[1] }}</th>
 	</tr>
 	</thead>
 	{% for item in data %}
 			<tr>
-				<td>{{ item }} {{ data[item][0][0] }}</td>
+				<td>{{ item }}</td>
 				<td>{{ data[item][0][1] }} {{ data[item][0][2] }} </td>
 				<td>{{ data[item][1][1] }} {{ data[item][1][2] }} </td>
 			</tr>
