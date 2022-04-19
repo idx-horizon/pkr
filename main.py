@@ -246,12 +246,16 @@ def r_compare(params=None):
     for e in cruns:
         data[e['Run Date']] = [
                 (crid.name,e['Event'], e['Time']),
-#                ('you', '','')
+                ('','','')
                 ]    
     for e in sruns:
-        data[e['Run Date']].append(
-                ('Other', e['Event'], e['Time'])
-            )  
+        if e['Run Date'] in data.keys():
+            data[e['Run Date']][1] = ('Other', e['Event'], e['Time'])
+        else:
+            data[e['Run Date']] = [
+                ('','',''),
+                ('Other', e['Event'], e['Time']) 
+            ]
 #    data = {
 #        '16-Apr-2022': [
 #            ('me','East Grinstead','33:00'),
