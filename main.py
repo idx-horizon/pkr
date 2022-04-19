@@ -231,7 +231,8 @@ def runner_stats():
                 file_modified_date=NR.get_last_update(),
                 data=rid)
 
-@app.route('/compare', methods=['POST','GET'])
+@app.route('/headtohead', methods=['POST','GET'])
+@app.route('/headtohead', methods=['POST','GET'])
 @login_required
 def r_compare(params=None):
     #get current selected runner's details
@@ -250,10 +251,8 @@ def r_compare(params=None):
         fdt = dt.strftime('%d/%m/%Y')
         c1 = [(e['Event'], e['Time']) for e in crid.runs if e['Run Date']==fdt]
         c2 = [(e['Event'], e['Time']) for e in srid.runs if e['Run Date']==fdt]
-        if len(c1) == 0:
-            c1 = [('No run','')]
-        if len(c2) == 0:
-            c2 = [('No run','')]
+        if len(c1) == 0: c1 = [('','')]
+        if len(c2) == 0: c2 = [('','')]
         data[fdt] = [c1[0], c2[0]]
         
 #    data = {
