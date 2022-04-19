@@ -23,9 +23,9 @@
 				{% if (data[item][0][1] == '') or (data[item][1][1] == '') %}
 					<td></td>
 				{% elif data[item][0][1] > data[item][1][1] %}
-					<td>➡️</td>
+					<td><span class="badge badge-pill badge-failure">lost</span></td>
 				{% else %}
-					<td>⬅️</td>				
+					<td><span class="badge badge-pill badge-success">won</span></td>				
 				{% endif %}
 				<td>{{ data[item][1][1] }} </td>	
 				{% if data[item][0][0] != data[item][1][0] %}
