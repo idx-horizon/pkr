@@ -237,16 +237,12 @@ def runner_stats():
 @login_required
 def r_headtohead(params=None):
     try:
-        against = str(request.form['against'])
+        against_rid = str(request.form['against'])
     except:
-        against = session['FRIENDS'][0]['f_rid']
+        against_rid = session['FRIENDS'][0]['f_rid']
         
-    print('** Friends: ', session['FRIENDS'])        
-    print('Head to head: ',against, request.form, request.form.keys())
-    #get current selected runner's details
-    SELECTEDRUNNER = session['SELECTEDRUNNER']
-#    srid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
-    srid = utils.Runner(against or current_user.rid)
+    #get selectd against_rid runner's detail    
+    srid = utils.Runner(against_rid)
     srid.get_runs('',False,'Date')
     
     # get currently logged in user details
@@ -264,20 +260,10 @@ def r_headtohead(params=None):
         if len(c2) == 0: c2 = [('','')]
         data[fdt] = [c1[0], c2[0]]
         
-#    data = {
-#        '16-Apr-2022': [
-#            ('me','East Grinstead','33:00'),
-#            ('you','East Grinstead','32:20'),
-#        ],
-#        '09-Apr-2022': [
-#            ('me','Nonsuch','31:40'),
-#            ('you','Nonsuch','30:35'),
-#        ],
-#    }
     return render_template('headtohead.html',
         data=data,
         runner_names=[crid.name, srid.name],
-        selectedrunner=against, #srid.name,
+        selectedrunner=against_rid,
         )
     
 

@@ -68,7 +68,6 @@ class Friend(db.Model):
         return json.dumps(self, default=lambda o: o.__dict__)
 
     def get(whose):
-        #f = Friend.query.filter_by(u_username=whose).all()
         f = db.session.query(User, Friend).             \
             filter(User.username == Friend.f_username). \
             filter(Friend.u_username==whose).           \
