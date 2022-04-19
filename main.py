@@ -234,27 +234,26 @@ def runner_stats():
 @app.route('/compare', methods=['POST','GET'])
 @login_required
 def r_compare(params=None):
+    #get current selected runner's details
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     srid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     srid.get_runs('',False,'Date')
- #   sruns = srid.runs[0:10]
     
+    # get currently logged in user details
     crid = utils.Runner(current_user.rid)
     crid.get_runs('',False,'Date')
- #   cruns = crid.runs[0:10]
     
     data = {}
     lastsat = utils.lastSaturday()
     for i in range(20):
         dt = lastsat - datetime.timedelta(days=i*7)
-#        data[dt] = [('','',''),('','','')]
         fdt = dt.strftime('%d/%m/%Y')
         c1 = [(e['Event'], e['Time']) for e in crid.runs if e['Run Date']==fdt]
         c2 = [(e['Event'], e['Time']) for e in srid.runs if e['Run Date']==fdt]
         if len(c1) == 0:
-            c1 = [('','')]
+            c1 = [('No run','')]
         if len(c2) == 0:
-            c2 = [('','')]
+            c2 = [('No run','')]
         data[fdt] = [c1[0], c2[0]]
         
 #    data = {
@@ -267,7 +266,7 @@ def r_compare(params=None):
 #            ('you','Nonsuch','30:35'),
 #        ],
 #    }
-    return render_template('compare.html',
+    return render_template('headtohead.html',
         data=data,
         runner_names=[crid.name, srid.name]
         )
