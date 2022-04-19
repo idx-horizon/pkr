@@ -239,7 +239,8 @@ def r_headtohead(params=None):
     try:
         against = str(request.form['against'])
     except:
-        against = None
+        against = session['FRIENDS'][0]['f_rid']
+        
     print('** Friends: ', session['FRIENDS'])        
     print('Head to head: ',against, request.form, request.form.keys())
     #get current selected runner's details
