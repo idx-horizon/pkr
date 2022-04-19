@@ -12,7 +12,7 @@
 
   {% for opt in friends %}
      <option {% if opt.f_username==selectedrunner | lower %}selected{% endif %} 
-     		value={{ opt.f_username }}>{{ opt.f_username | replace('_',' ') | title }}
+     		value={{ opt.f_rid }}>{{ opt.f_username | replace('_',' ') | title }}
      </option>
      		
   {% endfor %}
