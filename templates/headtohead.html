@@ -48,7 +48,7 @@
 
 				{% if data[item][1][1] == '' %}
 					<td><span class="badge badge-pill badge-dark">no run</span></td>
-				{% elif data[item][0][1] < data[item][1][1] %}
+				{% elif (data[item][0][1] < data[item][1][1])
 					and (data[item][0][1] != '') %}
 					<td class="text-left"><span class="badge badge-pill badge-danger">{{ data[item][1][1] }}</span></td>
 				{% else %}
