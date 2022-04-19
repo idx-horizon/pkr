@@ -246,7 +246,7 @@ def r_compare(params=None):
     for e in cruns:
         data[e['Run Date']] = [
                 (crid.name,e['Event'], e['Time']),
-                ('you', '','')
+#                ('you', '','')
                 ]    
     for e in sruns:
         data[e['Run Date']].append(
