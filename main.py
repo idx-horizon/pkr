@@ -236,6 +236,7 @@ def runner_stats():
 def r_compare(params=None):
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     srid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
+    srid.get_runs('',False,'Date')
     sruns = srid.runs[0:10]
     
     crid = utils.Runner(current_user.rid)
