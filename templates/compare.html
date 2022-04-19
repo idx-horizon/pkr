@@ -27,12 +27,22 @@
 				{% else %}
 					<td class="text-center"><span class="badge badge-pill badge-success">Won</span></td>				
 				{% endif %}
-				{% if data[item][0][1] > data[item][1][1] %}
-					<td class="text-center"><span class="badge badge-pill badge-danger">{{ data[item][0][1] }}</span></td>
+				{% if data[item][0][1] == ''}
+					<td>-</td>
+				{% elif data[item][0][1] > data[item][1][1] %}
+					<td class="text-left"><span class="badge badge-pill badge-danger">{{ data[item][0][1] }}</span></td>
 				{% else %}
-					<td class="text-center"><span class="badge badge-pill badge-danger">{{ data[item][0][1] }}</span></td>
+					<td class="text-left"><span class="badge badge-pill badge-success">{{ data[item][0][1] }}</span></td>
 				{% endif %}	
-				<td>{{ data[item][1][1] }} </td>	
+
+				{% if data[item][1][1] == ''}
+					<td>-</td>
+				{% elif data[item][0][1] > data[item][1][1] %}
+					<td class="text-left"><span class="badge badge-pill badge-success">{{ data[item][1][1] }}</span></td>
+				{% else %}
+					<td class="text-left"><span class="badge badge-pill badge-danger">{{ data[item][1][1] }}</span></td>
+				{% endif %}	
+				
 				{% if data[item][0][0] != data[item][1][0] %}
 					<td>{{ data[item][1][0] }} </td>
 				{% else %}
