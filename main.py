@@ -243,6 +243,8 @@ def r_compare(params=None):
     crid.get_runs('',False,'Date')
     cruns = crid.runs[0:10]
     data = {}
+    lastsat = utils.lastSaturday()
+    data[lastsat] = [('','',''),('','','')]
     for e in cruns:
         data[e['Run Date']] = [
                 (crid.name,e['Event'], e['Time']),

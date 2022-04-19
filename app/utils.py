@@ -16,6 +16,10 @@ except:
 ANNIVERSARY_URL = 'https://wiki.parkrun.com/index.php/Anniversaries'
 EVENT_URL = 'https://images.parkrun.com/events.json'
 
+def lastSaturday(beforewhen=datetime.now().date()):
+   dt = beforewhen
+   return dt - timedelta(days=((dt.isoweekday()+1) % 7))
+
 def time_to_secs(runtime):
 	if runtime.count(':')==2:
 		weights = [3600, 60, 1]
