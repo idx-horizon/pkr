@@ -9,24 +9,16 @@
     <thead class="thead-light text-left">
 	<tr>
 		<th width="14%">Date</th>
-		<th width="27%"></th>
-		<th width="6%"></th>
+		<th width="30%"></th>
 		<th width="13%">{{ runner_names[0] }}</th>
 		<th width="13%">{{ runner_names[1] }}</th>
-		<th width="27%"></th>
+		<th width="30%"></th>
 	</tr>
 	</thead>
 	{% for item in data %}
 			<tr>
 				<td>{{ item | format_datetime }}</td>
 				<td>{{ data[item][0][0] }} </td>
-				{% if (data[item][0][1] == '') or (data[item][1][1] == '') %}
-					<td></td>
-				{% elif data[item][0][1] > data[item][1][1] %}
-					<td class="text-center"><span class="badge badge-pill badge-danger">Lost</span></td>
-				{% else %}
-					<td class="text-center"><span class="badge badge-pill badge-success">Won</span></td>				
-				{% endif %}
 				
 				{% if data[item][0][1] == '' %}
 					<td>-</td>
