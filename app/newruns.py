@@ -5,14 +5,15 @@ import os
 import pprint as pp
 
 try:
-	from app.resources import country_dict, centres
-	from app.geo import measure
+    from app.resources import country_dict, centres
+    from app.geo import measure
 except:
-	from resources import country_dict, centres
-	from geo import measure
+    from resources import country_dict, centres
+    from geo import measure
 
 cJUNIOR = 2
 cADULT = 1
+
 
 class Event():
     def __init__(self, event, centre_on='bromley'):
@@ -23,33 +24,34 @@ class Event():
         self.first_run = event['properties']['first_run']
         self.sss_score = event['properties']['sss_score']
         self.latitude = event['geometry']['coordinates'][1]
-        self.longitude = event['geometry']['coordinates'][0]        
-        self.domain = 'https://' + [country_dict[ele]['base'] for ele in country_dict if country_dict[ele]['id']==event['properties']['countrycode']][0] +'/'
-#        self.domain = 'https://www.parkrun.org.uk/'
-        self.url_latestresults =  self.domain + self.evname + '/results/latestresults/'
-        self.url_course =  self.domain + self.evname + '/course/'
+        self.longitude = event['geometry']['coordinates'][0]
+        self.domain = 'https://' + [country_dict[ele]['base'] for ele in country_dict if
+                                    country_dict[ele]['id'] == event['properties']['countrycode']][0] + '/'
+        #        self.domain = 'https://www.parkrun.org.uk/'
+        self.url_latestresults = self.domain + self.evname + '/results/latestresults/'
+        self.url_course = self.domain + self.evname + '/course/'
         self.distance = measure((self.latitude, self.longitude), centres[centre_on])
         self.hasrun = None
         self.occurrences = None
 
     def __repr__(self):
-    	#return '{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_course)
-    	return str(self.__dict__)
-    	
+        # return '{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_course)
+        return str(self.__dict__)
+
     def print(self):
-        #print('{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_latestresults))
+        # print('{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_latestresults))
         pp.pprint(self.__dict__)
-        
+
     def get_dict(self):
         return {'id': self.evid, 'name': self.evshortname, 'latest_result': self.url_latestresults}
 
     def get_details(self):
         return '{:<4}. {:<25}  {}'.format(self.evid, self.evshortname, self.url_latestresults)
-        
-    def set_hasrun(self,value):
+
+    def set_hasrun(self, value):
         self.hasrun = value
 
-    def set_occurrences(self,value):
+    def set_occurrences(self, value):
         self.occurrences = value
 
 
@@ -66,22 +68,25 @@ def get(url):
 def get_last_update():
     return datetime.datetime.fromtimestamp(os.path.getctime('events.json')).strftime('%d-%b-%Y %H:%M')
 
+
 def get_anniversaries():
-    with open('anniversaries.json','r') as fin:
+    with open('anniversaries.json', 'r') as fin:
         return json.loads(fin.readlines()[0])
-        
+
+
 def get_sss_scores():
     try:
         with open('sss.json') as fin:
             data = json.loads(fin.read())
 
-        return {i['event']: float(i['average_sss']) for i in data }	
-        
-    except Exception as e:
+        return {i['event']: float(i['average_sss']) for i in data}
+
+    except Exception:
         return None
 
+
 def getfile(refresh=False):
-    fn_events ='events.json'
+    fn_events = 'events.json'
     if refresh:
         data = get('https://images.parkrun.com/events.json')
         json.dump(data.json(), open(fn_events, 'w'))
@@ -91,30 +96,31 @@ def getfile(refresh=False):
     with open(fn_events, 'r') as fin:
         return json.load(fin)
 
+
 def getevents_by_filter(filter_str, countrycode='97', method='startswith', centre_on='bromley'):
     data = getfile(False)
-    
+
     c_events = getevents(data, int(countrycode), cADULT)
-    
+
     if method == 'startswith':
-       return [Event(i,centre_on) for i in c_events if i['properties']['eventname'].startswith(filter_str)]
+        return [Event(i, centre_on) for i in c_events if i['properties']['eventname'].startswith(filter_str)]
     else:
-        return [Event(i,centre_on) for i in c_events if filter_str in i['properties']['eventname']]
+        return [Event(i, centre_on) for i in c_events if filter_str in i['properties']['eventname']]
 
 
 def getevents(js, countrycode, seriesid):
     events = [x for x in js['events']['features'] if
-            x['properties']['countrycode'] == countrycode and x['properties']['seriesid'] == seriesid]
+              x['properties']['countrycode'] == countrycode and x['properties']['seriesid'] == seriesid]
     anni = get_anniversaries()
     sss = get_sss_scores()
-    
+
     for e in events:
         try:
-            first_run = [x['First Run'] for x in anni if x['Event']==e['properties']['EventLongName']][0]
+            first_run = [x['First Run'] for x in anni if x['Event'] == e['properties']['EventLongName']][0]
         except:
-            first_run='n/a'
+            first_run = 'n/a'
 
-        e['properties']['first_run']=first_run	
+        e['properties']['first_run'] = first_run
 
         try:
             e['properties']['sss_score'] = sss[e['properties']['EventShortName']]
@@ -123,6 +129,7 @@ def getevents(js, countrycode, seriesid):
 
     return events
 
+
 def get_last_newruns(lastlimit=10, country_code=97, centre_on='bromley'):
     js = getfile(False)
 
@@ -130,6 +137,6 @@ def get_last_newruns(lastlimit=10, country_code=97, centre_on='bromley'):
 
     subset = []
     for ev in sorted(cc_ev, key=lambda k: k['id'])[-lastlimit:]:
-        subset.append(Event(ev,centre_on))
+        subset.append(Event(ev, centre_on))
 
     return subset

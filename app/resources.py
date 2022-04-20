@@ -1,30 +1,35 @@
 try:
     from app.models import Location, Country
-except:
+except ModuleNotFoundError:
     from models import Location, Country
-    
+except Exception as e:
+    raise e
+
+
 def get_countries():
     countries = Country.query.all()
-    d={}
+    d = {}
     for c in countries:
-       d[c.cy_code] = {
+        d[c.cy_code] = {
             'id': c.cy_id,
             'name': c.cy_name,
             'base': c.cy_base_url
-           }
+        }
     return d
+
 
 def get_centres():
     locations = Location.query.all()
-    d={}
+    d = {}
     for c in locations:
-       d[c.ln_name] = (c.ln_lat, c.ln_long)
+        d[c.ln_name] = (c.ln_lat, c.ln_long)
     return d
 
-centres      = get_centres()
+
+centres = get_centres()
 country_dict = get_countries()
 
-#country_dict = {
+# country_dict = {
 #    'au': {'id': 3,  'name': 'Australia','base': 'parkrun.com.au'},
 #    'ca': {'id': 14, 'name': 'Canada', 'base': 'parkrun.ca'},
 #    'dk': {'id': 23, 'name': 'Denmark', 'base': 'parkrun.dk'},
@@ -45,18 +50,15 @@ country_dict = get_countries()
 #    'se': {'id': 88, 'name': 'Sweden', 'base': 'parkrun.se'},
 #    'uk': {'id': 97, 'name': 'UK', 'base': 'parkrun.org.uk'},
 #    'us': {'id': 98, 'name': 'USA', 'base': 'parkrun.us'}
-#}
+# }
 
 
-#centres = {
-#        'bromley': (51.386539,0.022874),
-#        'bushy': (51.410992,-0.335791),
-#		'banstead': (51.307648, -0.184225),
-#		'lloyd':    (51.364807,-0.079973),
-#		'wepre': (53.205552,-3.056846),
-#		'woking': (51.311708,-0.556204),
-#		'southnorwood' : (51.396111, -0.059908)
-#        }
-
-    
-    
+# centres = {
+#           'bromley': (51.386539,0.022874),
+#           'bushy': (51.410992,-0.335791),
+#           'banstead': (51.307648, -0.184225),
+#           'lloyd':    (51.364807,-0.079973),
+#           'wepre': (53.205552,-3.056846),
+#           'woking': (51.311708,-0.556204),
+#          'southnorwood' : (51.396111, -0.059908)
+#         }
