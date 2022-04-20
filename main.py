@@ -250,7 +250,7 @@ def r_headtohead(params=None):
     crid.get_runs('',False,'Date')
     
     data = {}
-    lastsat = utils.lastSaturday()
+    lastsat = utils.last_saturday()
     for i in range(20):
         dt = lastsat - datetime.timedelta(days=i*7)
         fdt = dt.strftime('%d/%m/%Y')
