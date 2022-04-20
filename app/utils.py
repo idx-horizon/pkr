@@ -59,24 +59,24 @@ class Runner:
         self.run_count = 0
 
     def get_runs(self, filter_by=None, refresh=True, sort_by='Date'):
-        local_fname = '{}.pkr'.format(self.rid)
+        local_filename = '{}.pkr'.format(self.rid)
 
         def save_local(payload):
-            with open(local_fname, 'w', encoding='utf-8') as fh:
+            with open(local_filename, 'w', encoding='utf-8') as fh:
                 fh.write(payload)
 
         def get_local():
-            with open(local_fname, 'r', encoding='utf-8') as fh:
+            with open(local_filename, 'r', encoding='utf-8') as fh:
                 return json.loads(fh.read())
 
         print('** Filter: {} Refresh: {} - File {} in {} **'.format(
             filter_by, refresh,
-            local_fname,
+            local_filename,
             os.getcwd()
         )
         )
 
-        if refresh or not os.path.exists(local_fname):
+        if refresh or not os.path.exists(local_filename):
             page = get(self.url).text
             print(self.url)
             data = extract.extract_tables(page)[3]
@@ -88,13 +88,13 @@ class Runner:
             countries, data = get_local()
             self.cached = 'cached'
 
-        self.updated_dt = get_file_details(local_fname)
+        self.updated_dt = get_file_details(local_filename)
         self.run_count = len(data['runs'])
         print(data['title'])
         self.fullname = data['title']
         self.name = self.fullname[:self.fullname.index(' ')]
 
-        # add number of occurences event has been run and
+        # add number of occurrences event has been run and
         # add timeSecs to represent Time in seconds
         ev_counter = Counter([ev['Event'] for ev in data['runs']])
         for ev in data['runs']:
@@ -180,7 +180,7 @@ class Runner:
         challenges['💹 Primes series'] = self.num_series('Prime')
         challenges['🐮 Cowell Club'] = self.cowell()
         challenges['🔒 Lockdown'] = self.lockdown()
-        challenges['✳️ Total parkrun distance'] = '{:0,}km'.format(self.run_count * 5)
+        challenges['✳️ Total distance'] = '{:0,}km'.format(self.run_count * 5)
 
         key = max({x for x in self.stats if x.startswith('_YR_')}, key=lambda ky: self.stats[ky])
 
@@ -293,15 +293,15 @@ class Runner:
             events)
 
     def medal_years(self):
-        def get_selected(years, label, lower, upper):
-            s = sorted(['{} ({})'.format(x[0], x[1]) for x in years if x[1] > lower and x[1] < upper])
+        def get_selected(yrs, label, lower, upper):
+            s = sorted(['{} ({})'.format(x[0], x[1]) for x in yrs if (x[1] > lower) and (x[1] < upper)])
             if len(s) > 0:
                 s = [label] + s + ['~']
 
             return s
 
         years = [(x.replace('_YR_', ''), self.stats[x]) for x in self.stats if x.startswith('_YR_')]
-        gold = get_selected(years, '🥇 (50+): ', 49, 9999)
+        gold = get_selected(years, '🥇 (50+): ', 49, 99)
         silver = get_selected(years, '🥈 (40+): ', 39, 50)
         bronze = get_selected(years, '🥉 (30+): ', 29, 40)
 
@@ -409,9 +409,9 @@ class Runner:
         else:
             return levels[math.floor(evs / 25)]
 
-    def regex_test(self, pattern, attribute, returntype):
+    def regex_test(self, pattern, attribute, return_type):
         lst = sorted(set([x[attribute] for x in self.runs if re.search(pattern, x['Event'], re.IGNORECASE)]))
-        if returntype == 'single':
+        if return_type == 'single':
             return lst[0] if len(lst) > 0 else '-'
         else:
             return '~'.join(lst) if len(lst) > 0 else '-'
@@ -423,8 +423,8 @@ class Runner:
             ix += 1
             yield self.runs[ix]
 
-    def convert_date(self, strdate, to_format='%d/%m/%Y'):
-        return datetime.datetime.strptime(strdate, to_format)
+    def convert_date(self, date_string, to_format='%d/%m/%Y'):
+        return datetime.datetime.strptime(date_string, to_format)
 
     def current_series(self):
         try:
@@ -434,6 +434,7 @@ class Runner:
             first_run = next(seq)
             current_run = first_run
             current_dt = self.convert_date(current_run['Run Date'])
+            prev_dt = current_dt
 
             while diff < 8:
                 num_runs += 1
@@ -502,8 +503,8 @@ def get(url):
     return session.get(url)
 
 
-def get_file_details(fname):
-    t = os.path.getmtime(fname)
+def get_file_details(filename):
+    t = os.path.getmtime(filename)
     return datetime.datetime.fromtimestamp(t)
 
 
