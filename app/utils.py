@@ -318,9 +318,18 @@ class Runner:
             resp.most_common(1)[0][0],
             resp.most_common(1)[0][1])
 
+    def atoz(self):
+      x = {}
+      for i in range(65,91):
+        x[chr(i)] = []
+        for i in self.runs:
+          if i['Event'] not in x[i['Event'][0]]: x[i['Event'][0]].append(i['Event'])
+      return x
+    
+
     def milestones(self):
         resp = ''
-        for ms in [10, 25, 50, 100, 250, 500]:
+        for ms in [10, 25, 50, 100, 250, 300, 350, 400, 450, 500]:
             if ms <= len(self.runs):
                 txt = '{} Club on {} at {}~'. \
                     format(ms,
