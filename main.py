@@ -250,7 +250,7 @@ def runner_stats():
 def r_atoz():
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
-
+    rid.get_runs(None,False)
     data = rid.atoz()
     return render_template('atoz.html', 
                             data=data)    
