@@ -245,7 +245,7 @@ def runner_stats():
                            data=rid)
 
 
-@app.route('/atoz', methods=['POST'])
+@app.route('/atoz', methods=['GET'])
 @login_required
 def r_atoz():
     SELECTEDRUNNER = session['SELECTEDRUNNER']
