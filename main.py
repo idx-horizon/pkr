@@ -245,6 +245,16 @@ def runner_stats():
                            data=rid)
 
 
+@app.route('/atoz', methods=['POST'])
+@login_required
+def r_atoz():
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
+    rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
+
+    data = rid.atoz()
+    return render_template('atoz.html', 
+                            data=data)    
+
 @app.route('/headtohead', methods=['POST', 'GET'])
 @app.route('/headtohead', methods=['POST', 'GET'])
 @login_required
