@@ -322,8 +322,9 @@ class Runner:
       x = {}
       for i in range(65,91):
         x[chr(i)] = []
-        for i in self.runs:
-          if i['Event'] not in x[i['Event'][0]]: x[i['Event'][0]].append(i['Event'])
+      for i in self.runs:
+        if i['Event'] not in x[i['Event'][0]]: x[i['Event'][0]].append(i['Event'])
+        
       return x
     
 
