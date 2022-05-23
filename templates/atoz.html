@@ -7,9 +7,14 @@
 <table class="table table-hover table-light table-striped">
         <thead>
         <tr>
-            <th width="5%">Letter</th>
-            <th width="5%">#</th>
-            <th width="90%">Events</th>
+            <th width="6%">Letter</th>
+            <th width="6%">#</th>
+            <th width="38%">Events</th>
+            {% if cid_data %}
+                <th width="6%">#</th>
+                <th width="38%">Me</th>
+		    {% endif %}	
+                        
         </tr>
         </thead>
         {% for item in sid_data %}
@@ -27,6 +32,14 @@
                 {{ sid_data[item] | sort | join('; ') | replace('~','<BR/>') }}
                 {% endautoescape %}
                 </td>
+                {% if cid_data %}
+                    <td class="text-left">{{ cid_data[item] }}</td>
+                    <td>{% autoescape false %}   
+                    {{ cid_data[item] | sort | join('; ') | replace('~','<BR/>') }}
+                    {% endautoescape %}
+                    </td>
+				{% endif %}	
+
             </tr>
         {% endfor %}
     <P>
