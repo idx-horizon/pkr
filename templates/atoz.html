@@ -8,13 +8,21 @@
         <thead>
         <tr>
             <th width="5%">Letter</th>
-            <th width="5%">Count</th>
+            <th width="5%">#</th>
             <th width="75%">Events</th>
         </tr>
         </thead>
         {% for item in data %}
             <tr>
                 <td><B>{{ item }}</B></td>
+                {% if data[item] | length == 0 %}
+					<td>
+					<span class="badge badge-pill badge-danger">none</span></td>
+				{% else %}
+					<td class="text-left">
+					<span class="badge badge-pill badge-success">{{ data[item] }}</span></td>
+				{% endif %}	
+
                 <td>{{ data[item] | length }}</td>
                 <td>{% autoescape false %}   
                 {{ data[item] | sort | join(', ') | replace('~','<BR/>') }}
