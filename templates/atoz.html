@@ -20,10 +20,9 @@
 					<span class="badge badge-pill badge-danger">none</span></td>
 				{% else %}
 					<td class="text-left">
-					<span class="badge badge-pill badge-success">{{ data[item] }}</span></td>
+					<span class="badge badge-pill badge-success">{{ data[item] | length }}</span></td>
 				{% endif %}	
 
-                <td>{{ data[item] | length }}</td>
                 <td>{% autoescape false %}   
                 {{ data[item] | sort | join(', ') | replace('~','<BR/>') }}
                 {% endautoescape %}
