@@ -17,7 +17,7 @@
                 <td><B>{{ item }}</B></td>
                 <td>{{ data[item] | length }}</td>
                 <td>{% autoescape false %}   
-                {{ data[item] | join(', ') | replace('~','<BR/>') }}
+                {{ data[item] | sort | join(', ') | replace('~','<BR/>') }}
                 {% endautoescape %}
                 </td>
             </tr>
