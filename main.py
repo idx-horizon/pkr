@@ -250,19 +250,22 @@ def runner_stats():
 def r_atoz():
     cid_data = None
     sid_data = None
+    runner_names = []
     
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     sid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     sid.get_runs(None,False)
     sid_data = sid.atoz()
+    runner_names.append(sid.name)
     
     if current_user.rid != SELECTEDRUNNER['rid']:
         cid = utils.Runner(current_user.rid)
         cid.get_runs(None, False)
         cid_data = cid.atoz()
+        runner_names.append(cid.name)
         
     return render_template('atoz.html', 
-                            runner_names=[sid.name, cid.name],
+                            runner_names=runner_names,
                             cid_data=cid_data,
                             sid_data=sid_data)
 
