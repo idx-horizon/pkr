@@ -246,6 +246,7 @@ def runner_stats():
 
 
 @app.route('/atoz', methods=['GET'])
+@app.route('/atoz/', methods=['GET'])
 @login_required
 def r_atoz():
     cid_data = None

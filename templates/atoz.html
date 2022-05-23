@@ -25,7 +25,9 @@
 					<span class="badge badge-pill badge-danger">none</span></td>
 				{% else %}
 					<td class="text-left">
-					<span class="badge badge-pill badge-success">{{ sid_data[item] | length }}</span></td>
+					<a class="text-decoration-none" href="/runs/^{{ sid_data[item] }}">
+					<span class="badge badge-pill badge-success">{{ sid_data[item] | length }}</span>
+					</a></td>
 				{% endif %}	
 
                 <td>{% autoescape false %}   
