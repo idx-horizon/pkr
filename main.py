@@ -256,12 +256,13 @@ def r_atoz():
     sid.get_runs(None,False)
     sid_data = sid.atoz()
     
-    if current_user.rid != sid:
+    if current_user.rid != SELECTEDRUNNER['rid']:
         cid = utils.Runner(current_user.rid)
         cid.get_runs(None, False)
         cid_data = cid.atoz()
         
     return render_template('atoz.html', 
+                            runner_names=[sid.name, cid.name],
                             cid_data=cid_data,
                             sid_data=sid_data)
 
