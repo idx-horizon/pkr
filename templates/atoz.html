@@ -9,22 +9,22 @@
         <tr>
             <th width="5%">Letter</th>
             <th width="5%">#</th>
-            <th width="75%">Events</th>
+            <th width="90%">Events</th>
         </tr>
         </thead>
-        {% for item in data %}
+        {% for item in sid_data %}
             <tr>
-                <td><B>{{ item }}</B></td>
-                {% if data[item] | length == 0 %}
+                <td class="text-center"><B>{{ item }}</B></td>
+                {% if sid_data[item] | length == 0 %}
 					<td>
 					<span class="badge badge-pill badge-danger">none</span></td>
 				{% else %}
 					<td class="text-left">
-					<span class="badge badge-pill badge-success">{{ data[item] | length }}</span></td>
+					<span class="badge badge-pill badge-success">{{ sid_data[item] | length }}</span></td>
 				{% endif %}	
 
                 <td>{% autoescape false %}   
-                {{ data[item] | sort | join(', ') | replace('~','<BR/>') }}
+                {{ sid_data[item] | sort | join('; ') | replace('~','<BR/>') }}
                 {% endautoescape %}
                 </td>
             </tr>
