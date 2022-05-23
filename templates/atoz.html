@@ -33,7 +33,13 @@
                 {% endautoescape %}
                 </td>
                 {% if cid_data %}
-                    <td class="text-left">{{ cid_data[item] }}</td>
+                    {% if cid_data[item] | length == 0 %}
+    					<td>
+    					<span class="badge badge-pill badge-danger">none</span></td>
+    				{% else %}
+    					<td class="text-left">
+    					<span class="badge badge-pill badge-success">{{ cid_data[item] | length }}</span></td>
+    				{% endif %}	
                     <td>{% autoescape false %}   
                     {{ cid_data[item] | sort | join('; ') | replace('~','<BR/>') }}
                     {% endautoescape %}
