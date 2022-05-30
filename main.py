@@ -131,8 +131,9 @@ def r_graph1():
     rid.get_runs(None, False)
 
 #    graph = pygal.Line(style=pygal.style.LightGreenStyle)
-    graph = pygal.Bar()
-    graph.x_labels = ['Apple','Banana','Carrot', 'Danish']
+    graph = pygal.Bar(style=pygal.style.LightGreenStyle)
+    graph.x_labels = [chr(x) for x in range(ord('A'),ord('Z')+1)]
+
     graph.title = 'Test Graph'
     current_series = [10,21,13,16]
     graph.add(SELECTEDRUNNER['username'].title(),
