@@ -122,6 +122,26 @@ def apilog():
     else:
         return render_template('apilog.html', payload=payload)
 
+@app.route('/graphbar')
+def r_graph1():
+
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
+    rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
+
+    rid.get_runs(None, False)
+
+    graph = pygal.Line(style=pygal.style.LightGreenStyle)
+
+    graph.title = 'Test Graph'
+    current.series = [10,21,13,16]
+    graph.add(SELECTEDRUNNER['username'].title(),
+                  current_series,
+                  dots_size=1)
+    
+    graph_data = graph.render_data_uri()
+    return render_template("graph.html",
+                           graph_title=graph.title,
+                           graph_data=graph_data)
 
 @app.route('/graph')
 @app.route('/graph/')

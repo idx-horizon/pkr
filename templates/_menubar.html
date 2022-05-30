@@ -70,6 +70,7 @@
           <a class="dropdown-item" href="/newevents">New events</a>
         </div>
       </li>
+      
 {# commenting out the settings section     
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -82,7 +83,8 @@
           <a class="dropdown-item" href="#">Help</a>
         </div>
       </li>      
-#}      
+#}    
+  
       {% if current_user.is_admin %}
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
