@@ -133,7 +133,7 @@ def r_graph1():
     graph = pygal.Line(style=pygal.style.LightGreenStyle)
 
     graph.title = 'Test Graph'
-    current.series = [10,21,13,16]
+    current_series = [10,21,13,16]
     graph.add(SELECTEDRUNNER['username'].title(),
                   current_series,
                   dots_size=1)
