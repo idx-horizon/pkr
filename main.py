@@ -134,8 +134,9 @@ def r_graph1():
     graph = pygal.Bar(style=pygal.style.LightGreenStyle)
     graph.x_labels = [chr(x) for x in range(ord('A'),ord('Z')+1)]
 
-    graph.title = 'Test Graph'
-    current_series = [10,21,13,16]
+    graph.title = 'A to Z'
+    atoz_data = rid.atoz()
+    current_series = [len(atoz_data[x]) for x in atoz_data]
     graph.add(SELECTEDRUNNER['username'].title(),
                   current_series,
                   dots_size=1)
