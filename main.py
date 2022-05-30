@@ -137,6 +137,8 @@ def r_graph1():
     graph.title = 'A to Z'
     atoz_data = rid.atoz()
     current_series = [len(atoz_data[x]) for x in atoz_data]
+    current_series = [{'value': len(atoz_data[x]),
+                        'label': x} for x in atoz_data]
     graph.add(SELECTEDRUNNER['username'].title(),
                   current_series,
                   dots_size=1)
