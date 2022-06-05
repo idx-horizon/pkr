@@ -4,4 +4,8 @@
 
 <img alt="graphic" width="80%" src="{{ graph_data | safe }}"/>	
 
+<div id="chart">
+   <embed type="image/svg+xml" src= {{ graph_data | safe }} />
+</div>
+
 {% include "_footer.html" %}

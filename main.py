@@ -130,14 +130,12 @@ def r_graph1():
 
     rid.get_runs(None, False)
 
-#    graph = pygal.Line(style=pygal.style.LightGreenStyle)
     graph = pygal.Bar(print_values=True, style=pygal.style.LightGreenStyle)
     graph.x_labels = [chr(x) for x in range(ord('A'),ord('Z')+1)]
 
     graph.title = 'A to Z'
     atoz_data = rid.atoz()
     current_series = [len(atoz_data[x]) for x in atoz_data]
-#    current_series = [{'value': len(atoz_data[x]) if len(atoz_data)>0 else None, 'label': str(len(x))} for x in atoz_data]
 
     graph.add(SELECTEDRUNNER['username'].title(),
                   current_series,
