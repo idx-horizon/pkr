@@ -166,10 +166,13 @@ class Runner:
         challenges['Number of PBs'] = self.stats['_PB']
 
         last_pb_ix = find_in_list_dict(self.runs, 'PB?', 'PB') or 0
-        challenges['Last PB'] = '{} at {} ({} runs ago)'.format(
-            fdate(self.runs[last_pb_ix]['Run Date']),
-            self.runs[last_pb_ix]['Event'],
-            last_pb_ix)
+        if last_pb_ix == 0:
+            challenges['Last PB'] = 'No PB events'
+        else:
+            challenges['Last PB'] = '{} at {} ({} runs ago)'.format(
+                fdate(self.runs[last_pb_ix]['Run Date']),
+                self.runs[last_pb_ix]['Event'],
+                last_pb_ix)
 
         challenges['✳️ Total number of runs'] = self.run_count
         challenges['✳️ Events run'] = len([x for x in self.stats if x.startswith('_EVENT_')])
