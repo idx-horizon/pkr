@@ -2,7 +2,7 @@
 {% include "_menubar.html" %}
 
 <div class="container-fluid p-3 bg-dark text-white">
-<H2>Head to Head - last 20 Saturday runs</H2>
+<H2>Head to Head - last {{ limit }} Saturday runs</H2>
 
 <form class="form-inline" action='/headtohead' method="POST" name="form" autocomplete="off">
 

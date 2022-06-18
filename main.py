@@ -316,7 +316,8 @@ def r_headtohead(params=None):
 
     data = {}
     lastsat = utils.last_saturday()
-    for i in range(20):
+    limit = min(max(len(srid.runs),len(crid.runs)), 20)
+    for i in range(limit):
         dt = lastsat - datetime.timedelta(days=i * 7)
         fdt = dt.strftime('%d/%m/%Y')
         c1 = [(e['Event'], e['Time']) for e in crid.runs if e['Run Date'] == fdt]
@@ -329,6 +330,7 @@ def r_headtohead(params=None):
 
     return render_template('headtohead.html',
                            data=data,
+                           limit=limit,
                            runner_names=[crid.name, srid.name],
                            selectedrunner=against_rid,
                            )
