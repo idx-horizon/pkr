@@ -307,12 +307,12 @@ def r_headtohead(params=None):
         against_rid = session['FRIENDS'][0]['f_rid']
 
     # get selectd against_rid runner's detail
-    print(f'** DEBUG srid' [{against_rid}])
+    print(f'** DEBUG srid [{against_rid}]')
     srid = utils.Runner(against_rid)
     srid.get_runs('', False, 'Date')
 
     # get currently logged in user details
-    print(f'** DEBUG crid' [{against_rid}])
+    print(f'** DEBUG crid [{against_rid}]')
     crid = utils.Runner(current_user.rid)
     crid.get_runs('', False, 'Date')
 
