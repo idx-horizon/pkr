@@ -1,9 +1,6 @@
-[
-"Alice Holt", "Aberdeen",
-"Bromley", "Beckenham Place", "Bush",
-"Cardiff", "Chester",
-"Deal", "Dover",
-"Edinburgh", "East Grinstead",
-"Foots Cray Meadow",
-"Greenwich", "Gunnersbury"
+[ 'Alice Holt', 'Aberdeen', 'Bromley', 'Beckenham Place', 'Bushy',
+'Cardiff', 'Chester', 'Deal', 'Dover',
+'Edinburgh', 'East Grinstead',
+'Foots Cray Meadow',
+'Greenwich', 'Gunnersbury'
 ]
