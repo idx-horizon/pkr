@@ -1,1 +1,0 @@
-https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js

@@ -1,5 +1,5 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='typeahead11.1.js') }}"></script>
 
 <script>
 $(document).ready(function(){
@@ -7,8 +7,6 @@ $(document).ready(function(){
     var courses = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        // The url points to a json file that contains an array of country names
-//        prefetch: '/examples/data/countries.json'
         prefetch: '{{ url_for('static', filename='courses.json') }}'
     });
     
