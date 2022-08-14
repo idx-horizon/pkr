@@ -3,22 +3,22 @@
 <script>
 $(document).ready(function(){
     // Sonstructs the suggestion engine
-    var countries = new Bloodhound({
+    var courses = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         // The url points to a json file that contains an array of country names
 //        prefetch: '/examples/data/countries.json'
-        prefetch: {{ url_for('static', filename='countries.json') }}
+        prefetch: {{ url_for('static', filename='courses.json') }}
     });
     
     // Initializing the typeahead with remote dataset
     $('.typeahead').typeahead(null, {
-        name: 'countries',
-        source: countries,
+        name: 'courses',
+        source: courses,
         limit: 10 /* Specify maximum number of suggestions to be displayed */
     });
 });  
 </script>
 <div id="prefetch">
-  <input class="typeahead" type="text" placeholder="Countries">
+  <input class="typeahead" type="text" placeholder="Courses">
 </div>
