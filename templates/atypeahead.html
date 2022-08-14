@@ -8,7 +8,7 @@ $(document).ready(function(){
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         // The url points to a json file that contains an array of country names
 //        prefetch: '/examples/data/countries.json'
-        prefetch: {{ url_for('static', filename='courses.json') }}
+        prefetch: '{{ url_for('static', filename='courses.json') }}'
     });
     
     // Initializing the typeahead with remote dataset
