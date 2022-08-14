@@ -12,13 +12,20 @@ $(document).ready(function(){
     });
     
     // Initializing the typeahead with remote dataset
-    $('.typeahead').typeahead(null, {
+    $('.typeahead').typeahead({
+      hint: true,
+      highlight: true,
+      minLength: 1
+     },
+     {
         name: 'courses',
         source: courses,
         limit: 10 /* Specify maximum number of suggestions to be displayed */
     });
 });  
 </script>
+<BODY>
 <div id="prefetch">
   <input class="typeahead" type="text" placeholder="Courses">
 </div>
+</BODY>
