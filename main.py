@@ -108,6 +108,10 @@ def error(code=None):
 def index():
     return redirect('/home/')
 
+@app.route('/atype')
+def r_atype():
+    return render_template("atypeahead.html")
+
 
 @app.route('/api/v1/meta', methods=['POST', 'GET'])
 def apilog():
