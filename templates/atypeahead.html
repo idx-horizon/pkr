@@ -30,8 +30,9 @@ $(document).ready(function(){
         source: courses,
         limit: 10 /* Specify maximum number of suggestions to be displayed */
     });
-    
-    courses.initialise()
+
+courses.clearPrefetchCache();    
+courses.initialise()
 });  
 </script>
 <BODY>
