@@ -4,10 +4,14 @@
 <script>
 $(document).ready(function(){
     // Sonstructs the suggestion engine
+    
+    var courses = ['Audi', 'BMW', 'Bugatti', 'Ferrari', 'Ford', 'Lamborghini', 'Mercedes Benz', 'Porsche', 'Rolls-Royce', 'Volkswagen'];
+    
     var courses = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        prefetch: '{{ url_for('static', filename='courses.json') }}'
+        local: courses
+//        prefetch: '{{ url_for('static', filename='courses.json') }}'
     });
     
     // Initializing the typeahead with remote dataset
@@ -25,7 +29,6 @@ $(document).ready(function(){
 </script>
 <BODY>
 <div id="prefetch">
-Name of course:
-  <input class="typeahead" type="text" placeholder="Courses">
+Name of course: <input class="typeahead" type="text" placeholder="Courses">
 </div>
 </BODY>
