@@ -5,13 +5,18 @@
 $(document).ready(function(){
     // Sonstructs the suggestion engine
     
-//    var courses = ['Audi', 'BMW', 'Bugatti', 'Ferrari', 'Ford', 'Lamborghini', 'Mercedes Benz', 'Porsche', 'Rolls-Royce', 'Volkswagen'];
+    var courses = [ 'Alice Holt', 'Aberdeen', 'Bromley', 'Beckenham Place', 'Bushy',
+                    'Cardiff', 'Chester', 'Deal', 'Dover',
+                    'Edinburgh', 'East Grinstead',
+                    'Foots Cray Meadow',
+                    'Greenwich', 'Gunnersbury'
+                ];
     
     var courses = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-//        local: courses
-        prefetch: '{{ url_for("static", filename="courses.json") }}'
+        local: courses
+//        prefetch: '{{ url_for("static", filename="courses.json") }}'
     });
     
     // Initializing the typeahead with remote dataset
