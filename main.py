@@ -2,6 +2,8 @@ import os
 from flask import Flask, jsonify, abort, flash, make_response, render_template, redirect, request, url_for, session
 from flask_login import login_user, logout_user, current_user, login_required, UserMixin
 
+from flask_googlemaps import Map
+
 from operator import attrgetter
 from werkzeug.urls import url_parse
 from collections import Counter
