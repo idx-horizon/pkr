@@ -20,7 +20,11 @@ app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 app.config.from_object(Config)
 
-#print(app.config['GOOGLEMAPS_KEY'][0:10])
+try:
+    print(app.config['GOOGLEMAPS_KEY'][0:10])
+except:
+    print('Unable to print GM key')
+     
 #GoogleMaps(app)
 
 db = SQLAlchemy(app)
