@@ -114,7 +114,8 @@ def r_atype():
 
 
 @app.route("/mapview")
-def mapview():
+def r_mapview():
+    print('** in mapview')
     # creating a map in the view
     mymap = Map(
         identifier="view-side",
@@ -141,7 +142,7 @@ def mapview():
           }
         ]
     )
-    return render_template('map.html', mymap=mymap, sndmap=sndmap)
+    return render_template('mapview.html', mymap=mymap, sndmap=sndmap)
 
 
 
