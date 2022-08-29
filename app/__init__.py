@@ -14,7 +14,7 @@ from flask_bootstrap import Bootstrap
 try:
     from flask_googlemaps import GoogleMaps
 except: 
-    print('** error: Unable to import flash_googlemaps')
+    print('** error: Unable to import flask_googlemaps')
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
@@ -25,7 +25,7 @@ try:
 except:
     print('Unable to print GM key')
      
-#GoogleMaps(app)
+GoogleMaps(app)
 
 db = SQLAlchemy(app)
 try:
