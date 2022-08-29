@@ -11,13 +11,16 @@ except:
     
 from flask_bootstrap import Bootstrap
 
-#from flask_googlemaps import GoogleMaps
+try:
+    from flask_googlemaps import GoogleMaps
+except: 
+    print('** error: Unable to import flash_googlemaps')
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 app.config.from_object(Config)
 
-print(app.config['GOOGLEMAPS_KEY'][0:10])
+#print(app.config['GOOGLEMAPS_KEY'][0:10])
 #GoogleMaps(app)
 
 db = SQLAlchemy(app)
