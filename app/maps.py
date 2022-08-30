@@ -6,11 +6,11 @@ def make_infobox(d):
    
    return info
    
-def get_map_markers(filter='')
+def get_map_markers(filterby=''):
    max_events = 10
    icon = "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
 
-   all_events = nr.getevents_by_filter(filter)
+   all_events = nr.getevents_by_filter(filterby)
       
    data = sorted(all_events, key=attrgetter('distance'))[0:max_events]
    
