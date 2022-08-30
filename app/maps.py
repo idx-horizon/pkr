@@ -47,10 +47,10 @@ def get_map_markers(filterby='',
                       })
    return markers
 
-def getmap(current_user, session):
-   style="height:60%;width:90%;margin:5%"
+def getmap(centre, current_user, session):
+   style="height:50%;width:90%;margin:5%"
    markers=get_map_markers(
-            centre='bromley',
+            centre=centre,
             current_user=current_user, 
             session=session)
                 
