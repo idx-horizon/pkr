@@ -118,7 +118,30 @@ def r_atype():
 @app.route("/mapview")
 def r_mapview():
     print('** in mapview')
-    return render_template('mapview.html')
+    
+    
+    mymap = Map(
+        identifier="map", 
+        lat=51.386539, 
+        lng=0.022874, 
+        zoom=10, 
+        style="height:50%;width:80%;margin:5%",
+        region="UK",
+        markers=[
+            {'lat': 51.386539,
+             'lng': 0.022874,
+             'label': "X",
+             'infobox': "<b>Bromley</b>"
+            },
+            {'lat': 51.385332,
+             'lng': -0.029969,
+             'label': "Y",
+             'infobox': "<b>Bethlam Hospital</b>"
+            }
+        ]
+    )     
+    
+    return render_template('mapview.html', mymap=mymap)
 
 
 @app.route('/api/v1/meta', methods=['POST', 'GET'])
