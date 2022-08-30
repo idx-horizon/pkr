@@ -2,13 +2,25 @@
 {% include "_menubar.html" %}
 
 {{googlemap("map", 
-      lat=51.386539, lng=0.022874, 
+      lat=51.386539, 
+      lng=0.022874, 
       zoom=10, 
       style="height:50%;width:80%;margin:5%",
+      region="UK",
       markers=[
-            (51.386539, 0.022874, "<P><B>Bromley</B><P>Home run", "https://maps.google.com/mapfiles/ms/icons/green-dot.png", "170"),
-            (51.385332, -0.029969, "<P><B>Bethlem Royal Hospital</B><P>3 runs", "https://maps.google.com/mapfiles/ms/icons/green-dot.png", "3")
-      ], region='UK')
+            {'lat': 51.386539,
+             'lon': 0.022874,
+             'label': "1"
+            },
+            {'lat': 51.385332,
+             'lon': -0.029969,
+             'label': "2"
+            }
+      ])
 }}
+
+
+            (51.386539, 0.022874, "<P><B>Bromley</B><P>Home run", "https://maps.google.com/mapfiles/ms/icons/green-dot.png", "1"),
+            (51.385332, -0.029969, "<P><B>Bethlem Royal Hospital</B><P>3 runs", "https://maps.google.com/mapfiles/ms/icons/green-dot.png", "3")
 
 {% include "_footer.html" %}
