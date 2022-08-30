@@ -10,10 +10,6 @@ def make_infobox(d):
    return info
    
 def get_map_markers(data): 
-                     #filterby='', 
-                     #centre='bromley',
-                     #current_user=None,
-                     #session=None):
    iconbase = "https://maps.google.com/mapfiles/ms/icons"
 
    markers = []
@@ -30,18 +26,16 @@ def get_map_markers(data):
                       })
    return markers
 
-def getmap(data, centre, current_user, session):
+def getmap(data, centres, centre, current_user, session):
    style="height:45%;width:100%;margin:0%"
    markers=get_map_markers(data)
-#            data=data,
-#            centre=centre,
-#            current_user=current_user, 
-#            session=session)
-                
+
+   centre_lat, centre_lng = centres[centre]             
+
    mymap = Map(
         identifier="mymap", 
-        lat=51.386539, # currently set to Bromley
-        lng=0.022874, 
+        lat=centre_lat, # 51.386539, # currently set to Bromley
+        lng=centre_lng, # 0.022874, 
         zoom=9, 
         style=style,
         region="UK",

@@ -275,7 +275,7 @@ def r_events():
         elif this_has_run == 'any':
             data = [d for d in data if d.occurrences > 0]
 
-    mymap = app.maps.getmap(data, this_centre_on, current_user, session)
+    mymap = app.maps.getmap(data, centres, this_centre_on, current_user, session)
     
     return render_template('events.html',
                            filter=this_filter,
