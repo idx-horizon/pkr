@@ -18,6 +18,7 @@ def get_map_markers(data):
       icon = 'green-dot.png' if d.hasrun else 'red-dot.png'
       if idx == 0:
          icon = 'blue-dot.png'
+         print('** Centre: ', d)
          
       markers.append({'lat': d.latitude,
                       'lng': d.longitude,
@@ -26,17 +27,17 @@ def get_map_markers(data):
                       })
    return markers
 
-def getmap(data, centres, centre, current_user, session):
+def getmap(data, centres, centre_on, current_user, session):
    style="height:45%;width:100%;margin:0%"
    markers=get_map_markers(data)
 
-   centre_lat, centre_lng = centres[centre]             
+   centre_lat, centre_lng = centres[centre_on]
 
    mymap = Map(
         identifier="mymap", 
         lat=centre_lat, # 51.386539, # currently set to Bromley
         lng=centre_lng, # 0.022874, 
-        zoom=9, 
+        zoom=10, 
         style=style,
         region="UK",
         markers= markers
