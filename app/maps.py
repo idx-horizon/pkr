@@ -1,24 +1,7 @@
 from operator import attrgetter
 import app.newruns as nr
 import app.utils as utils
-
-def getmap(current_user, session):
-   style="height:60%;width:90%;margin:5%"
-   markers=get_map_markers(
-            centre='bromley',
-            current_user=current_user, 
-            session=session)
-                
-   mymap = Map(
-        identifier="mymap", 
-        lat=51.386539, # currently set to Bromley
-        lng=0.022874, 
-        zoom=9, 
-        style=style,
-        region="UK",
-        markers= markers
-   )     
-   return mymap
+from flask_googlemaps import Map
 
 
 def make_infobox(d):
@@ -63,5 +46,25 @@ def get_map_markers(filterby='',
                       'infobox': make_infobox(d)
                       })
    return markers
+
+def getmap(current_user, session):
+   style="height:60%;width:90%;margin:5%"
+   markers=get_map_markers(
+            centre='bromley',
+            current_user=current_user, 
+            session=session)
+                
+   mymap = Map(
+        identifier="mymap", 
+        lat=51.386539, # currently set to Bromley
+        lng=0.022874, 
+        zoom=9, 
+        style=style,
+        region="UK",
+        markers= markers
+   )     
+   return mymap
+
+
                       
 #{evid': 2352, 'evname': 'bethlemroyalhospital', 'evshortname': 'Bethlem Royal Hospital', 'evlongname': 'Bethlem Royal Hospital parkrun', 'first_run': '2019-05-25', 'sss_score': 4.2, 'latitude': 51.385332, 'longitude': -0.029969, 'domain': 'https://parkrun.org.uk/', 'url_latestresults': 'https://parkrun.org.uk/bethlemroyalhospital/results/latestresults/', 'url_course': 'https://parkrun.org.uk/bethlemroyalhospital/course/', 'distance': 2.29, 'hasrun': None, 'occurrences': None}
