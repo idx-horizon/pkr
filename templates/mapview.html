@@ -2,13 +2,15 @@
 {% include "_menubar.html" %}
 
 {{mymap.js}}
-
-    <h2>Picture</h2>
-
- <img src="https://pkr-redslow.s3.eu-west-2.amazonaws.com/random.jpeg" class="img-fluid float-right" alt="random" width="30%"> 
-
+ 
 
     <h2>Map generated in view</h2>
     {{mymap.html}}
+    <h2>end map</h2>
+
+    <h2>Second map</h2>
+
+{{googlemap("my_good_map", lat=0.23234234, lng=0.234234234, markers=[(0.12,-0.45345)] }}
+    <h2>end map</h2>
 
 {% include "_footer.html" %}
