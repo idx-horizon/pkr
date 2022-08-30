@@ -9,28 +9,29 @@ def make_infobox(d):
    
    return info
    
-def get_map_markers(filterby='', 
+def get_map_markers(data, 
+                     #filterby='', 
                      centre='bromley',
                      current_user=None,
                      session=None):
-   max_events = 1000
+#   max_events = 1000
    iconbase = "https://maps.google.com/mapfiles/ms/icons"
 
-   all_events = nr.getevents_by_filter(filterby, centre_on=centre)
+#   all_events = nr.getevents_by_filter(filterby, centre_on=centre)
       
-   data = sorted(all_events, key=attrgetter('distance'))[0:max_events]
+#   data = sorted(all_events, key=attrgetter('distance'))[0:max_events]
 
-   if not current_user.is_anonymous:
-        SELECTEDRUNNER = session['SELECTEDRUNNER']
-        base_runner = SELECTEDRUNNER['rid'] or current_user.rid
-        rid = utils.Runner(str(base_runner).lower())
-        rid.get_runs(filterby, False)
+ #  if not current_user.is_anonymous:
+ #       SELECTEDRUNNER = session['SELECTEDRUNNER']
+ #       base_runner = SELECTEDRUNNER['rid'] or current_user.rid
+ #       rid = utils.Runner(str(base_runner).lower())
+ #       rid.get_runs(filterby, False)
 
-        for d in data:
-            occ = len([x for x in rid.runs if x['Event'] == d.evshortname])
-            d.set_occurrences(occ)
-            if occ != 0:
-                d.set_hasrun('Yes')
+ #       for d in data:
+ #           occ = len([x for x in rid.runs if x['Event'] == d.evshortname])
+ #           d.set_occurrences(occ)
+ #           if occ != 0:
+ #               d.set_hasrun('Yes')
 
    
    markers = []
@@ -47,9 +48,10 @@ def get_map_markers(filterby='',
                       })
    return markers
 
-def getmap(centre, current_user, session):
+def getmap(data, centre, current_user, session):
    style="height:50%;width:90%;margin:5%"
    markers=get_map_markers(
+            data=data,
             centre=centre,
             current_user=current_user, 
             session=session)
