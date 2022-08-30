@@ -1,7 +1,8 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-{{googlemap("map", 
+{{googlemap(
+      identifier="map", 
       lat=51.386539, 
       lng=0.022874, 
       zoom=10, 
@@ -10,11 +11,11 @@
       markers=[
             {'lat': 51.386539,
              'lng': 0.022874,
-             'label': 1
+             'label': "X"
             },
             {'lat': 51.385332,
              'lng': -0.029969,
-             'label': 2
+             'label': "Y"
             }
       ])
 }}
