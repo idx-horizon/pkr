@@ -5,11 +5,9 @@ from flask_googlemaps import Map
 
 
 def make_infobox(d):
-   style = '<style>.infobox { background-color: lightgreen; color:black; }</style><div class="infobox">'
+   style = '<style>.infobox { background-color: lightgreen; color:black; font-size: 12px}</style><div class="infobox">'
    
-   info = f'<h4 style="background-color:green">{d.evshortname}</h3><P>Test:'
-   
-#   <P><P><B>{d.evshortname}</B><P>Difficulty: <B>{d.sss_score}</#B><P>Times run: <B>{d.occurrences}</B></div>'
+   info = f'<b>{d.evshortname}</b><P>Difficulty: <B>{d.sss_score}</#B><P>Times run: <B>{d.occurrences}</B></div>'
    
    return style + info
    
