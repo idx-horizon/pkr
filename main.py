@@ -121,7 +121,7 @@ def r_mapview():
     
     
     mymap = Map(
-        identifier="map", 
+        identifier="mymap", 
         lat=51.386539, 
         lng=0.022874, 
         zoom=10, 
