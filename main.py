@@ -17,6 +17,8 @@ from app.resources import country_dict, centres
 
 import app.newruns as NR
 import app.utils as utils
+import app.maps
+
 import app.summaries as summaries
 
 import datetime
@@ -119,7 +121,7 @@ def r_atype():
 
 @app.route("/mapview")
 def r_mapview():
-    import app.maps 
+    #import app.maps 
 
     style="height:60%;width:90%;margin:5%"
     markers=app.maps.get_map_markers(
