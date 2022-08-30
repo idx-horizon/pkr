@@ -3,7 +3,7 @@ import app.newruns as nr
 import app.utils as utils
 
 def make_infobox(d):
-   info = f'<P><B>{d.evshortname}</B><P>Difficulty: <B>{d.sss_score}</B><P>Times run: <B>d.occurrences</B>'
+   info = f'<P><B>{d.evshortname}</B><P>Difficulty: <B>{d.sss_score}</B><P>Times run: <B>{d.occurrences}</B>'
    
    return info
    
