@@ -7,7 +7,7 @@ def make_infobox(d):
    
    return info
    
-def get_map_markers(filterby='',current_user=None):
+def get_map_markers(filterby='',current_user=None,session=None):
    max_events = 50
    iconbase = "https://maps.google.com/mapfiles/ms/icons"
 

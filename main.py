@@ -129,7 +129,7 @@ def r_mapview():
         zoom=10, 
         style=style,
         region="UK",
-        markers= app.maps.get_map_markers(current_user=current_user)
+        markers= app.maps.get_map_markers(current_user=current_user, session=session)
     )     
     
     return render_template('mapview.html', mymap=mymap)
