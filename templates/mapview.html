@@ -3,7 +3,11 @@
 
 <h2>Map</h2>
 
-{{googlemap("my_good_map", lat=51.386539, lng=0.022874, markers=[(51.386539, 0.022874)]) }}
+{{googlemap("map", lat=51.386539, lng=0.022874, 
+markers=[
+      (51.386539, 0.022874, "Bromley", "http://maps.google.com/mapfiles/ms/icons/green-dot.png", "my green"),
+      (51.385332, 0.029969, "Bethlem", "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", "my blue")
+], region='UK') }}
 <h2>end map</h2>
 
 {% include "_footer.html" %}
