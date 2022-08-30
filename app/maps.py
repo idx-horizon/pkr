@@ -3,15 +3,18 @@ import app.newruns as nr
 import app.utils as utils
 
 def make_infobox(d):
-   info = f'<P><B>{d.evshortname}</B><P>Difficulty: <B>{d.sss_score}</B>'
+   info = f'<P><B>{d.evshortname}</B><P>Difficulty: <B>{d.sss_score}</B><P>Times run: <B>d.occurrences</B>'
    
    return info
    
-def get_map_markers(filterby='',current_user=None,session=None):
-   max_events = 50
+def get_map_markers(filterby='', 
+                     centre='bromley',
+                     current_user=None,
+                     session=None):
+   max_events = 1000
    iconbase = "https://maps.google.com/mapfiles/ms/icons"
 
-   all_events = nr.getevents_by_filter(filterby)
+   all_events = nr.getevents_by_filter(filterby, centre_on=centre)
       
    data = sorted(all_events, key=attrgetter('distance'))[0:max_events]
 
@@ -30,12 +33,14 @@ def get_map_markers(filterby='',current_user=None,session=None):
    
    markers = []
    
-   for d in data:
-      colour = 'green' if d.hasrun else 'red'
-      
+   for idx, d in enumerate(data):
+      icon = 'green-dot.png' if d.hasrun else 'red-dot.png'
+      if idx == 0:
+         icon = 'blue-dot.png'
+         
       markers.append({'lat': d.latitude,
                       'lng': d.longitude,
-                      'icon': f'{iconbase}/{colour}-dot.png',
+                      'icon': f'{iconbase}/{icon}',
                       'infobox': make_infobox(d)
                       })
    return markers

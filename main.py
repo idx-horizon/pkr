@@ -121,7 +121,11 @@ def r_mapview():
     import app.maps 
     
     style="height:50%;width:80%;margin:5%"
-        
+    markers=app.maps.get_map_markers(
+            centre='bromley',
+            current_user=current_user, 
+            session=session)
+                
     mymap = Map(
         identifier="mymap", 
         lat=51.386539, # currently set to Bromley
@@ -129,7 +133,7 @@ def r_mapview():
         zoom=10, 
         style=style,
         region="UK",
-        markers= app.maps.get_map_markers(current_user=current_user, session=session)
+        markers= markers
     )     
     
     return render_template('mapview.html', mymap=mymap)
