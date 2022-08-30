@@ -1,16 +1,10 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 
-{{mymap.js}}
- 
-
-    <h2>Map generated in view</h2>
-    {{mymap.html}}
-    <h2>end map</h2>
-
-    <h2>Second map</h2>
+<h2>Map</h2>
 
 {{googlemap("my_good_map", lat=0.23234234, lng=0.234234234, markers=[(0.12,-0.45345)]) }}
-    <h2>end map</h2>
+
+<h2>end map</h2>
 
 {% include "_footer.html" %}

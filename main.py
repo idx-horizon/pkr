@@ -118,14 +118,7 @@ def r_atype():
 @app.route("/mapview")
 def r_mapview():
     print('** in mapview')
-    # creating a map in the view
-    mymap = Map(
-        identifier="view-side",
-        lat=37.4419,
-        lng=-122.1419,
-        markers=[(37.4419, -122.1419)]
-    )
-    return render_template('mapview.html', mymap=mymap)
+    return render_template('mapview.html')
 
 
 @app.route('/api/v1/meta', methods=['POST', 'GET'])
