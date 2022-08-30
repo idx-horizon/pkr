@@ -2,6 +2,25 @@ from operator import attrgetter
 import app.newruns as nr
 import app.utils as utils
 
+def getmap(current_user, session):
+    style="height:60%;width:90%;margin:5%"
+    markers=get_map_markers(
+            centre='bromley',
+            current_user=current_user, 
+            session=session)
+                
+    mymap = Map(
+        identifier="mymap", 
+        lat=51.386539, # currently set to Bromley
+        lng=0.022874, 
+        zoom=9, 
+        style=style,
+        region="UK",
+        markers= markers
+    )     
+   return mymap
+
+
 def make_infobox(d):
    info = f'<P><B>{d.evshortname}</B><P>Difficulty: <B>{d.sss_score}</B><P>Times run: <B>{d.occurrences}</B>'
    

@@ -234,6 +234,8 @@ def home():
 
 @app.route('/events/', methods=['POST', 'GET'])
 def r_events():
+    import app.maps
+    
     this_country = 'uk'
     this_filter = ''
     this_method = 'startswith'
@@ -273,6 +275,8 @@ def r_events():
         elif this_has_run == 'any':
             data = [d for d in data if d.occurrences > 0]
 
+    mymap = app.maps.getmap(current_user, session)
+    
     return render_template('events.html',
                            filter=this_filter,
                            filter_method=this_method,
@@ -282,7 +286,8 @@ def r_events():
                            centres=centres.keys(),
                            centre_on=this_centre_on,
                            has_run=this_has_run,
-                           data=data)
+                           data=data,
+                           mymap=mymap)
 
 
 @app.route('/stats', methods=['POST', 'GET'])
