@@ -130,7 +130,7 @@ def r_mapview():
         zoom=10, 
         style=style,
         region="UK",
-        markers= app.maps.get_markers()
+        markers= app.maps.get_map_markers()
 #        [
 #            {'lat': 51.386539,
 #             'lng': 0.022874,
