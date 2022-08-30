@@ -118,6 +118,7 @@ def r_atype():
 @app.route("/mapview")
 def r_mapview():
     print('** in mapview')
+    import app.maps 
     
     icon = "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
     style="height:50%;width:80%;margin:5%"
@@ -129,20 +130,21 @@ def r_mapview():
         zoom=10, 
         style=style,
         region="UK",
-        markers=[
-            {'lat': 51.386539,
-             'lng': 0.022874,
-             'label': "X",
-             'icon': icon,
-             'infobox': "<b>Bromley</b>"
-            },
-            {'lat': 51.385332,
-             'lng': -0.029969,
-             'icon': icon,
-             'label': "Y",
-             'infobox': "<b>Bethlam Hospital</b>"
-            }
-        ]
+        markers= app.maps.get_markers()
+#        [
+#            {'lat': 51.386539,
+#             'lng': 0.022874,
+#             'label': "X",
+#             'icon': icon,
+#             'infobox': "<b>Bromley</b>"
+#            },
+#            {'lat': 51.385332,
+#             'lng': -0.029969,
+#             'icon': icon,
+#             'label': "Y",
+#             'infobox': "<b>Bethlam Hospital</b>"
+#            }
+#        ]
     )     
     
     return render_template('mapview.html', mymap=mymap)
