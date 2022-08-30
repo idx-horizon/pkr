@@ -2,7 +2,7 @@ from operator import attrgetter
 import app.newruns as nr
 
 def make_infobox(d):
-   info = f'<P>{d["evshortname"]}<P>Difficulty: {d["sss_score"]}'
+   info = f'<P>{d.evshortname}<P>Difficulty: {d.sss_score}'
    
    return info
    
@@ -17,8 +17,8 @@ def get_map_markers(filterby=''):
    markers = []
    
    for d in data:
-      markers.append({'lat': d['latitude'],
-                      'lng': d['longitude'],
+      markers.append({'lat': d.latitude,
+                      'lng': d.longitude,
                       'icon': icon,
                       'infobox': make_infobox(d)
                       })
