@@ -17,7 +17,6 @@ from app.resources import country_dict, centres
 
 import app.newruns as NR
 import app.utils as utils
-import app.maps
 
 import app.summaries as summaries
 
@@ -121,10 +120,10 @@ def r_atype():
 
 @app.route("/mapview")
 def r_mapview():
-    #import app.maps 
+    import app.maps as m
 
     style="height:60%;width:90%;margin:5%"
-    markers=app.maps.get_map_markers(
+    markers=m.get_map_markers(
             centre='bromley',
             current_user=current_user, 
             session=session)
