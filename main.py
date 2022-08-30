@@ -122,7 +122,7 @@ def r_mapview():
     
     style="height:50%;width:80%;margin:5%"
     markers=app.maps.get_map_markers(
-            centre='bromley',
+            centre='banstead',
             current_user=current_user, 
             session=session)
                 
@@ -130,7 +130,7 @@ def r_mapview():
         identifier="mymap", 
         lat=51.386539, # currently set to Bromley
         lng=0.022874, 
-        zoom=10, 
+        zoom=8, 
         style=style,
         region="UK",
         markers= markers
