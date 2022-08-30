@@ -24,7 +24,6 @@ import pandas as pd
 
 import pygal
 
-
 @app.route("/xltables")
 def show_tables():
     data = pd.read_excel('static/dummy.xlsx')
@@ -75,8 +74,9 @@ def inject_context():
 
 
 @app.template_filter()
-def format_datetime(
-        value, format_src='%d/%m/%Y', format_out='%d-%b-%Y'):
+def format_datetime(value, 
+                    format_src='%d/%m/%Y', 
+                    format_out='%d-%b-%Y'):
     try:
         x = datetime.datetime.strptime(value, format_src)
         return x.strftime(format_out)
