@@ -5,15 +5,16 @@ from flask_googlemaps import Map
 
 
 def make_infobox(d):
-   style = '<style>.infobox { background-color: white; color:black; font-size: 12px}</style><div class="infobox">'
+   style = '<style>.infobox { background-color: white; color:black; font-size: 12px} .tdr {text-align: right;}</style>'
    
    info = f'<b>{d.evshortname}</b><P>Difficulty: <B>{d.sss_score}</B><P>Times run: <B>{d.occurrences}</B></div>'
    
-   table = f'<table>' + \
-      f'<th><td><B><U>{d.evshortname}</U></B></td><td></td></th>' + \
-      f'<tr><td>Difficulty</td><td>{d.sss_score}</td></tr>' + \
+   table = f'<div class="infobox"><table>' + \
+      f'<tr><th><B><U>{d.evshortname}</U></B></th><th></th></tr>' + \
+      f'<tr><td>Difficulty</td><td class=tdr>{d.sss_score}</td></tr>' + \
       f'<tr><td>Times run</td><td>{d.occurrences}</td></tr>' + \
       f'</table></div>'
+      
    return style + table
    
 def get_map_markers(data): 
