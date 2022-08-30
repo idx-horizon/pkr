@@ -14,10 +14,10 @@ from app.track import Tracker
 from app.models import User, Country, Location, LoginLog, Friend
 from app.forms import LoginForm
 from app.resources import country_dict, centres
+
 import app.newruns as NR
 import app.utils as utils
 import app.summaries as summaries
-import app.maps 
 
 import datetime
 import pandas as pd
@@ -119,10 +119,11 @@ def r_atype():
 
 @app.route("/mapview")
 def r_mapview():
-    
+    import app.maps 
+
     style="height:60%;width:90%;margin:5%"
     markers=app.maps.get_map_markers(
-            centre='banstead',
+            centre='bromley',
             current_user=current_user, 
             session=session)
                 
