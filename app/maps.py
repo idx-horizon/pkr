@@ -5,11 +5,14 @@ from flask_googlemaps import Map
 
 
 def make_infobox(d):
-   style = '<style>.infobox { background-color: lightgreen; color:black; font-size: 12px}</style><div class="infobox">'
+   style = '<style>.infobox { background-color: white; color:black; font-size: 12px}</style><div class="infobox">'
    
    info = f'<b>{d.evshortname}</b><P>Difficulty: <B>{d.sss_score}</B><P>Times run: <B>{d.occurrences}</B></div>'
-   
-   return style + info
+   table = f'<b>{d.evshortname}</b><table><tr>' +
+      f'<tr><td>Difficulty</td><td>{d.sss_score}</td></tr>' +
+      f'<tr><td>Times run</td><td>{d.occurrences}</td></tr>' +
+      f'</table></div>'
+   return style + table
    
 def get_map_markers(data): 
    iconbase = "https://maps.google.com/mapfiles/ms/icons"
