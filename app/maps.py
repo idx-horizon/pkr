@@ -9,7 +9,8 @@ def make_infobox(d):
    
    info = f'<b>{d.evshortname}</b><P>Difficulty: <B>{d.sss_score}</B><P>Times run: <B>{d.occurrences}</B></div>'
    
-   table = f'<b>{d.evshortname}</b><table><tr>' + \
+   table = f'Details<table>' + \
+      f'<th><td>{d.evshortname}</td></th>' + \
       f'<tr><td>Difficulty</td><td>{d.sss_score}</td></tr>' + \
       f'<tr><td>Times run</td><td>{d.occurrences}</td></tr>' + \
       f'</table></div>'
