@@ -5,7 +5,7 @@ from flask_googlemaps import Map
 
 
 def make_infobox(d):
-   info = f'<P><B>{d.evshortname}</B><P>Difficulty: <B>{d.sss_score}</B><P>Times run: <B>{d.occurrences}</B>'
+   info = f'Summary:<P><P><B>{d.evshortname}</B><P>Difficulty: <B>{d.sss_score}</B><P>Times run: <B>{d.occurrences}</B>'
    
    return info
    
@@ -18,7 +18,7 @@ def get_map_markers(data):
       icon = 'green-dot.png' if d.hasrun else 'red-dot.png'
       if idx == 0:
          icon = 'blue-dot.png'
-         print('** Centre: ', d)
+         print('** Centre: ', type(d), d, '\n', make_infobox(d))
          
       markers.append({'lat': d.latitude,
                       'lng': d.longitude,
