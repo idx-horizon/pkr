@@ -17,6 +17,8 @@ from app.resources import country_dict, centres
 import app.newruns as NR
 import app.utils as utils
 import app.summaries as summaries
+import app.maps 
+
 import datetime
 import pandas as pd
 
@@ -117,10 +119,8 @@ def r_atype():
 
 @app.route("/mapview")
 def r_mapview():
-    print('** in mapview')
-    import app.maps 
     
-    style="height:50%;width:80%;margin:5%"
+    style="height:60%;width:90%;margin:5%"
     markers=app.maps.get_map_markers(
             centre='banstead',
             current_user=current_user, 
@@ -130,7 +130,7 @@ def r_mapview():
         identifier="mymap", 
         lat=51.386539, # currently set to Bromley
         lng=0.022874, 
-        zoom=8, 
+        zoom=9, 
         style=style,
         region="UK",
         markers= markers
