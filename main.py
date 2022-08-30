@@ -119,22 +119,26 @@ def r_atype():
 def r_mapview():
     print('** in mapview')
     
-    
+    icon = "https://maps.google.com/mapfiles/ms/icons/green-dot.png"
+    style="height:50%;width:80%;margin:5%"
+        
     mymap = Map(
         identifier="mymap", 
         lat=51.386539, 
         lng=0.022874, 
         zoom=10, 
-        style="height:50%;width:80%;margin:5%",
+        style=style,
         region="UK",
         markers=[
             {'lat': 51.386539,
              'lng': 0.022874,
              'label': "X",
+             'icon': icon,
              'infobox': "<b>Bromley</b>"
             },
             {'lat': 51.385332,
              'lng': -0.029969,
+             'icon': icon,
              'label': "Y",
              'infobox': "<b>Bethlam Hospital</b>"
             }
