@@ -27,8 +27,6 @@ def get_map_markers(data):
                       'icon': f'{iconbase}/{icon}',
                       'infobox': make_infobox(d)
                       })
-   print(markers[0])
-   print(markers[1])   
    return markers
 
 def getmap(data, centres, centre_on, current_user, session):
