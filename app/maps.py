@@ -3,13 +3,13 @@ import app.newruns as nr
 import app.utils as utils
 
 def getmap(current_user, session):
-    style="height:60%;width:90%;margin:5%"
-    markers=get_map_markers(
+   style="height:60%;width:90%;margin:5%"
+   markers=get_map_markers(
             centre='bromley',
             current_user=current_user, 
             session=session)
                 
-    mymap = Map(
+   mymap = Map(
         identifier="mymap", 
         lat=51.386539, # currently set to Bromley
         lng=0.022874, 
@@ -17,7 +17,7 @@ def getmap(current_user, session):
         style=style,
         region="UK",
         markers= markers
-    )     
+   )     
    return mymap
 
 
