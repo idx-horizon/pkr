@@ -5,6 +5,9 @@
   border-radius: 50%;
 }
 
+.infobox {
+  background-colour: rgba(0,128,0,0.871)
+}
 .text-center {
     text-align: center !important;
 }
