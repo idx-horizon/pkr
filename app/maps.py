@@ -37,6 +37,8 @@ def get_map_markers(data):
       if idx == 0:
          icon = f'centre.png'
       
+      print(f'** looking for: {iconbase}/{icon}')
+
       if not os.path.exists(f'{iconbase}/{icon}'):
          icon = f'{colour}0.png'
       else:
