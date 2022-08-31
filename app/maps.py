@@ -12,7 +12,7 @@ def make_infobox(d):
    table = f'<div class="infobox"><table>' + \
       f'<tr><th class="thl"><B><U>{d.evshortname}</U></B></th><th></th></tr>' + \
       f'<tr><td>Difficulty</td><td class="tdr">{d.sss_score}</td></tr>' + \
-      f'<tr><td>Times run</td><td class="tdr">{d.occurrences}</td></tr>' + \
+      f'<tr><td>Times run</td><td class="tdr">{d.occurrences or "Never"}</td></tr>' + \
       f'</table></div>'
       
    return style + table
