@@ -30,9 +30,9 @@ def get_map_markers(data):
    markers = []
    
    for idx, d in enumerate(data):
-      icon = 'green1.png' if d.hasrun else 'red1.png'
+      icon = 'green1.jpeg' if d.hasrun else 'red1.jpeg'
       if idx == 0:
-         icon = 'green0.png'
+         icon = 'green0.jpeg'
          
       markers.append({'lat': d.latitude,
                       'lng': d.longitude,
