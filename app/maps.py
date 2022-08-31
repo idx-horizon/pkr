@@ -2,7 +2,7 @@ from operator import attrgetter
 import app.newruns as nr
 import app.utils as utils
 from flask_googlemaps import Map
-
+from flask import url_for
 
 def make_infobox(d):
    if d.occurrences:
@@ -26,6 +26,7 @@ def make_infobox(d):
 def get_map_markers(data): 
    iconbase = "https://maps.google.com/mapfiles/ms/icons"
 #   iconbase = url_for('static')
+   print('** Static URL', url_for('static'))
    markers = []
    
    for idx, d in enumerate(data):
