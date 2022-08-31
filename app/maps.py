@@ -3,6 +3,7 @@ import app.newruns as nr
 import app.utils as utils
 from flask_googlemaps import Map
 from flask import url_for
+import os
 
 def make_infobox(d):
    if d.occurrences:
@@ -30,10 +31,15 @@ def get_map_markers(data):
    markers = []
    
    for idx, d in enumerate(data):
-      icon = 'green1.jpeg' if d.hasrun else 'red1.jpeg'
+      colour = 'green' if d.hasrun else 'red'
+      
+      icon = f'{colour}{idx}.png'
       if idx == 0:
-         icon = 'green0.jpeg'
-         
+         icon = f'centre.png'
+      
+      if not os.path.exists(f'{iconbase}/{icon}'):
+         icon = f'{colour}0.png'
+            
       markers.append({'lat': d.latitude,
                       'lng': d.longitude,
                       'icon': f'{iconbase}/{icon}',
