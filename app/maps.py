@@ -39,6 +39,8 @@ def get_map_markers(data):
       
       if not os.path.exists(f'{iconbase}/{icon}'):
          icon = f'{colour}0.png'
+      else:
+         print(f'** Not found {iconbase}/{icon}')
             
       markers.append({'lat': d.latitude,
                       'lng': d.longitude,
