@@ -25,13 +25,13 @@ def make_infobox(d):
    
 def get_map_markers(data): 
    iconbase = "https://maps.google.com/mapfiles/ms/icons"
-   iconbase = url_for('static')
+#   iconbase = url_for('static')
    markers = []
    
    for idx, d in enumerate(data):
-      icon = 'green1.png' if d.hasrun else 'red1.png'
+      icon = 'green-dot.png' if d.hasrun else 'red-dot.png'
       if idx == 0:
-         icon = 'green0.png'
+         icon = 'blue-dot.png'
          
       markers.append({'lat': d.latitude,
                       'lng': d.longitude,
