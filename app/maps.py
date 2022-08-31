@@ -26,7 +26,7 @@ def make_infobox(d):
 def get_map_markers(data): 
    iconbase = "https://maps.google.com/mapfiles/ms/icons"
 #   iconbase = url_for('static')
-   print('** Static URL', url_for('static'))
+#   print('** Static URL', url_for('static'))
    markers = []
    
    for idx, d in enumerate(data):
