@@ -5,6 +5,12 @@ from flask_googlemaps import Map
 
 
 def make_infobox(d):
+   if d.occurrences:
+      badge = '<span  class="badge badge-pill badge success">{d.occurrences}</span>'
+   else:
+      badge = '<span  class="badge badge-pill badge danger">never</span>'
+   
+    
    style = '<style>.infobox { background-color: white; color:black; font-size: 12px} .tdr {text-align: right;} .thl {text-align:left; }</style>'
    
    info = f'<b>{d.evshortname}</b><P>Difficulty: <B>{d.sss_score}</B><P>Times run: <B>{d.occurrences}</B></div>'
@@ -12,7 +18,7 @@ def make_infobox(d):
    table = f'<div class="infobox"><table>' + \
       f'<tr><th class="thl"><B><U>{d.evshortname}</U></B></th><th></th></tr>' + \
       f'<tr><td>Difficulty</td><td class="tdr">{d.sss_score}</td></tr>' + \
-      f'<tr><td>Times run</td><td class="tdr">{d.occurrences or "Never"}</td></tr>' + \
+      f'<tr><td>Times run</td><td class="tdr">' + badge + '</td></tr>' + \
       f'</table></div>'
       
    return style + table
