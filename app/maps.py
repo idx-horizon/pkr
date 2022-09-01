@@ -26,25 +26,20 @@ def make_infobox(d):
    
 def get_map_markers(data): 
    iconbase = "https://maps.google.com/mapfiles/ms/icons"
-   iconbase = '/static/mapicons' #url_for('static')
-   print('** Static URL', url_for('static', filename='mapicons/_stub.txt'))
-   print(f'** stub exists:', os.path.exists(url_for('static', filename='mapicons/_stub.txt')))
+#   iconbase = '/static/mapicons' #url_for('static')
+#   print('** Static URL', url_for('static', filename='mapicons/_stub.txt'))
+#   print(f'** stub exists:', os.path.exists(url_for('static', filename='mapicons/_stub.txt')))
    
    markers = []
    
    for idx, d in enumerate(data):
-      colour = 'green' if d.hasrun else 'red'
+      icon = 'green-dot.png' if d.hasrun else 'red-dot.png'
       
-      icon = f'{colour}{idx}.png'
       if idx == 0:
-         icon = f'centre.png'
+         icon = f'blue-dot.png'
       
-      print(f'** looking for: {iconbase}/{icon}')
-
-      if not os.path.exists(f'{iconbase}/{icon}'):
-         icon = f'{colour}0.png'
-      else:
-         print(f'** Not found {iconbase}/{icon}')
+#      if not os.path.exists(f'{iconbase}/{icon}'):
+#         icon = f'{colour}0.png'
             
       markers.append({'lat': d.latitude,
                       'lng': d.longitude,
