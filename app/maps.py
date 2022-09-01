@@ -28,6 +28,8 @@ def get_map_markers(data):
    iconbase = "https://maps.google.com/mapfiles/ms/icons"
    iconbase = '/static/mapicons' #url_for('static')
    print('** Static URL', url_for('static', filename='mapicons/_stub.txt'))
+   print(f'** stub exists:', os.path.exist(url_for('static', filename='mapicons/_stub.txt')))
+   
    markers = []
    
    for idx, d in enumerate(data):
