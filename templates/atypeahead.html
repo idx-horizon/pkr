@@ -15,12 +15,12 @@ $(document).ready(function(){
     var courses = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-      local: courses
-#        prefetch: '{{ url_for("static", filename="courses.json") }}'
+      //local: courses
+        prefetch: '{{ url_for("static", filename="courses.json") }}'
     });
     
     // Initializing the typeahead with remote dataset
-    $('.typeahead').typeahead({
+    $('#prefetch .typeahead').typeahead({
       hint: true,
       highlight: true,
       minLength: 1
@@ -35,6 +35,8 @@ courses.clearPrefetchCache();
 courses.initialise()
 });  
 </script>
+
+
 <BODY>
 <div id="coursename">
 <B>Venue</B> <input type="text" class="typeahead form-inline"  autocomplete="false" autocapitalize="off"
