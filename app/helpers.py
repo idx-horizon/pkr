@@ -23,7 +23,7 @@ def seticon_all():
              ('caroline', '✨', 50.0, 'av_caroline.jpg'),
              ('norm', '🏃‍♂️', 50.0, 'av_default.jpg'),
              ('cat', '😼', 50.0, 'av_cat.jpg'),
-             ('paddy','🏃‍♂️', 50.0, 'av_default.jpg')
+             ('jenna','🙎‍♀️', 40.0, 'av_default.jpg')
              ]
 
     for u in users:
