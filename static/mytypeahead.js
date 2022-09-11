@@ -1,0 +1,38 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='typeahead11.1.js') }}"></script>
+
+<script>
+$(document).ready(function(){
+    // Sonstructs the suggestion engine
+    
+//    var courses = [ 'Alice Holt', 'Aberdeen', 'Bromley', 'Beckenham Place', 'Bushy',
+//                    'Cardiff', 'Chester', 'Deal', 'Dover',
+//                    'Edinburgh', 'East Grinstead',
+//                    'Foots Cray Meadow',
+//                    'Greenwich', 'Gunnersbury'
+//                ];
+    
+    var courses = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+      //local: courses
+      //  prefetch: '{{ url_for("static", filename="courses.json") }}'
+        prefetch: '/static/courses.json'
+    });
+    
+    // Initializing the typeahead with remote dataset
+    $('#prefetch .typeahead').typeahead({
+      hint: true,
+      highlight: true,
+      minLength: 1
+     },
+     {
+        name: 'courses',
+        source: courses,
+        limit: 10 /* Specify maximum number of suggestions to be displayed */
+    });
+
+courses.clearPrefetchCache();    
+courses.initialise()
+});  
+</script>

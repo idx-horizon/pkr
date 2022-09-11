@@ -231,6 +231,65 @@ def home():
     return render_template('home.html',
                            file_modified_date=NR.get_last_update())
 
+@app.route('/events2/', methods=['POST', 'GET'])
+def r_events():
+    import app.maps
+    
+    this_country = 'uk'
+    this_filter = ''
+    this_method = 'startswith'
+    this_has_run = 'all'
+
+    if not current_user.is_anonymous:
+        this_centre_on = current_user.home_run
+    else:
+        this_centre_on = 'bushy'
+
+    if request.method.upper() == 'POST':
+        this_filter = str(request.form['filter_str']).lower()
+        this_method = str(request.form['filter_method'])
+        this_country = str(request.form['country_code'])
+        this_centre_on = str(request.form['centre_on_code'])
+        this_has_run = str(request.form['has_run'])
+
+    data = NR.getevents_by_filter(this_filter, country_dict[this_country]['id'], this_method, this_centre_on)
+    data = sorted(data, key=attrgetter('distance'))
+
+    if not current_user.is_anonymous:
+        SELECTEDRUNNER = session['SELECTEDRUNNER']
+        base_runner = SELECTEDRUNNER['rid'] or current_user.rid
+        rid = utils.Runner(str(base_runner).lower())
+        rid.get_runs(this_filter, False)
+
+        for d in data:
+            occ = len([x for x in rid.runs if x['Event'] == d.evshortname])
+            d.set_occurrences(occ)
+            if occ != 0:
+                d.set_hasrun('Yes')
+
+        if this_has_run == 'never':
+            data = [d for d in data if d.occurrences == 0]
+        elif this_has_run == 'singleton':
+            data = [d for d in data if d.occurrences == 1]
+        elif this_has_run == 'any':
+            data = [d for d in data if d.occurrences > 0]
+
+    mymap = app.maps.getmap(data, centres, this_centre_on, current_user, session)
+    
+    return render_template('events-new.html',
+                           filter=this_filter,
+                           filter_method=this_method,
+                           file_modified_date=NR.get_last_update(),
+                           countries=country_dict,
+                           country=this_country,
+                           centres=centres.keys(),
+                           centre_on=this_centre_on,
+                           has_run=this_has_run,
+                           data=data,
+                           mymap=mymap)
+
+
+
 
 @app.route('/events/', methods=['POST', 'GET'])
 def r_events():

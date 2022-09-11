@@ -1,0 +1,94 @@
+{% include "_header.html" %}
+{% include "_menubar.html" %}
+<script type="text/javascript" src="{{ url_for('static', filename='mytypeahead.js') }}"></script>
+
+
+<div class="container-fluid p-3 bg-dark text-white">
+
+    <H2>{{ data|length }} events-new</H2>
+
+{# <form class="form-inline" action="/events-new/{{ country_code }}/{{ filter_str }}/{{ centre_on_code }}?filter={{ has_run }}{{ country_code}}" method="POST" name="form"> #}
+
+<form class="form-inline" action="/events/" method="POST" name="form">
+
+          <select class="form-control" style="width:125px" name="filter_method">
+            <option {% if request.form['filter_method']=='startswith' %}selected{% endif %}
+                    value="startswith">
+                    Startswith</option>
+            <option {% if request.form['filter_method']=='contains' %}
+                    selected
+                    {% endif %}
+                    value="contains">Contains</option>
+          </select>
+ 		<input class="form-inline" type="text" style="width:125px" autocomplete="off"
+               autocapitalize="off"
+               spellcheck="off"
+               name="filter_str"
+               placeholder="(filter by)"
+               value="{{ request.form['filter_str'] }}"></input>
+
+          <select class="form-control" style="width:150px" name="country_code">
+            {% for c in countries|sort %}
+                <option {% if c==country %}selected{% endif %}
+                  value={{ c }}>{{ countries[c]['name'] }}</option>
+            {% endfor %}
+          </select>
+
+          <select class="form-control" style="width:150px" name="centre_on_code">
+          {% for con in centres|sort %}
+                <option {% if con==centre_on %}selected{% endif %}
+                  value={{ con }}>{{ con }}</option>
+          {% endfor %}
+          </select>
+        {% if not current_user.is_anonymous %}  
+          <select class="form-control" style="width:100px" name="has_run">
+          {% for opt in ['all','any','never','singleton'] %}
+                  <option {% if opt==has_run %}selected{% endif %}             
+                  value={{ opt }}>{{ opt | title }}</option>
+          {% endfor %}
+        {% endif %}
+        </select>
+		<button type="submit" class="btn btn-success" name="filter_btn" value="Filter">Filter</button>
+
+</form>
+<div class="infobox">
+    {{mymap.js}}
+    {{mymap.html}}
+</div>
+
+<table class="table table-hover table-light table-striped text-left">
+    <tr>
+        {% if not current_user.is_anonymous %}
+             <th width="10%">Run?</th>
+        {% endif %}
+        <th width="45%">Name</th>
+        <th width="10%">Difficulty</th>
+        <th width="15%">First Event</th>
+        <th width="10%">Distance</th>
+        <th width="10%">Map</th>
+ 
+    </tr>
+
+     {% for item in data %}
+        <tr>
+            {% if not current_user.is_anonymous %}
+                 <td>{%if item.hasrun == "Yes" %}
+               <a href="/runs/{{ item.evshortname }}"><span  class="badge badge-pill badge-success">{{item.occurrences }}</span></a>
+                    {% else %}
+               <span class="badge badge-pill badge-danger">Never</span>
+          
+                    {% endif %}</td>
+            {% endif %}   
+            <td><a target="_blank" href="{{ item.url_course }}">{{ item.evshortname }}</td>
+            <td>{{ item.sss_score }}</td>
+            <td>{{ item.first_run | format_datetime('%Y-%m-%d') }}</td>
+            <td>{{ item.distance|round(1,'floor') }}</td>
+            <td><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
+        </tr>
+    {% endfor %}
+    <P>
+</table>
+<P>
+Events data as at {{ file_modified_date }}
+</div>
+{% include "_footer.html" %}
