@@ -232,7 +232,7 @@ def home():
                            file_modified_date=NR.get_last_update())
 
 @app.route('/events2/', methods=['POST', 'GET'])
-def r_events():
+def r_events2():
     import app.maps
     
     this_country = 'uk'
