@@ -34,6 +34,11 @@
             {% endfor %}
           </select>
 
+     <div id="prefetch">
+          <input type="text" class="typeahead form-inline"  autocomplete="false" autocapitalize="off" spellcheck="false" placeholder="Courses">
+     </div>
+
+
           <select class="form-control" style="width:150px" name="centre_on_code">
           {% for con in centres|sort %}
                 <option {% if con==centre_on %}selected{% endif %}
