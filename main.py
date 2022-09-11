@@ -231,8 +231,8 @@ def home():
     return render_template('home.html',
                            file_modified_date=NR.get_last_update())
 
-@app.route('/events2/', methods=['POST', 'GET'])
-def r_events2():
+@app.route('/eventsnew/', methods=['POST', 'GET'])
+def r_events_new():
     import app.maps
     
     this_country = 'uk'
@@ -287,9 +287,6 @@ def r_events2():
                            has_run=this_has_run,
                            data=data,
                            mymap=mymap)
-
-
-
 
 @app.route('/events/', methods=['POST', 'GET'])
 def r_events():
