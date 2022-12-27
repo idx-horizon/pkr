@@ -13,7 +13,8 @@
         <th width="30%">Event</th>
         <th width="10%">PB</th>
         <th width="10%">Average</th>
-        <th width="50%">Slowest</th>
+        <th width="10%">Slowest</th>
+        <th width="40%">Years</th>
         </tr>
     </thead>
     {% for item in data %}
@@ -23,6 +24,7 @@
             <td>{{ item.times[1] | replace('00:','') }}</td>
             <td>{{ item.times[0] | replace('00:','') }}</td>
             <td>{{ item.times[2] | replace('00:','') }}</td>            
+            <td>{{ item.years  }}</td>            
 
         </tr>
    {% endfor %}
