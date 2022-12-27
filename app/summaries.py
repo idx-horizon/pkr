@@ -47,12 +47,29 @@ def year_summary(runs):
 
 def event_summary(runs):
     c = Counter()
+    d = {}
     for r in runs: 
         c[r['Event']] += 1
-
+        if r['Event'] not in d.keys():
+          d[r['Event']]=set()
+        d[r['Event']].add(r['Run Date'][-4:])
+        
     data = [{'event': k,
              'count': v,
              'times': get_estat_times(runs, k), 
+             'years': ', '.join(sorted(d[k])), 
              } for k, v in c.items()]
 
     return sorted(data, key=lambda x: x['count'], reverse=True)
+    
+    
+#def junk():
+#  for r in me.runs:
+#    if r['Event'] not in d.keys():
+#      d[r['Event']]=set()
+#    d[r['Event']].add(r['Run Date'][-4:])
+  
+
+#  for e in d: 
+#  	print(f'{e:<30} - First: {min(d[e])} # years: {len(d[e])} - {", #".join(sorted(d[e]))}')
+ 
