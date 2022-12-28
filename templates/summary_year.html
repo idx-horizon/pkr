@@ -1,16 +1,22 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 </div>
+
+{% set most_count  = data | max(attribute='count') %}
+{% set least_count = data | min(attribute='count') %}
+{% set num_ev      = data | sum(attribute='new_events') %}
+
 <div class="container-fluid p-3 bg-dark text-white">
 <H2>
 	<span class="badge badge-pill badge-success">
 		{{ data | length }} years
 	</span>	
+	<span class="badge badge-pill badge-success">
+		{{ num_ev }} events
+	</span>	
+	
 </H2>
 
-{% set most_count  = data | max(attribute='count') %}
-{% set least_count = data | min(attribute='count') %}
-{% set num_ev      = data | sum(attribute='new_events') %}
 
 <table class="table table-hover table-light table-striped">
     <thead class="thead-light text-left">
@@ -41,6 +47,5 @@
 </table>
 <P>
 Year: most {{ most_count.year }} least {{ least_count.year }}
-Events: {{ num_ev }}
 </div>
 {% include "_footer.html" %}
