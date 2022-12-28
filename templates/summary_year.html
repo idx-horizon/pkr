@@ -10,6 +10,7 @@
 
 {% set most_count  = data | max(attribute='count') %}
 {% set least_count = data | min(attribute='count') %}
+{% set num_ev      = data | sum(attribute='new_events') %}
 
 <table class="table table-hover table-light table-striped">
     <thead class="thead-light text-left">
@@ -40,5 +41,6 @@
 </table>
 <P>
 Year: most {{ most_count.year }} least {{ least_count.year }}
+Events: {{ num_ev }}
 </div>
 {% include "_footer.html" %}
