@@ -34,6 +34,9 @@
     {% for item in data %}
         <tr>
             <td><a class="text-decoration-none" href="/runs/year={{ item.year }}"><span class="badge badge-pill badge-success">{{ item.count }}</span> {{ item.year }}</a>
+            {% if item.year == most_count.year %}
+                ⭐️
+            {% endif %}
             </td>
             <td>{{ item.times[1] | replace('00:','') }}</td>
             <td>{{ item.times[0] | replace('00:','') }}</td>
