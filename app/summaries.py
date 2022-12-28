@@ -35,8 +35,9 @@ def year_summary(runs):
         x['Run Date'][-4:] + '-' + x['Event'] for x in runs
     )    
     
+    d = get_event_years(runs)
     new_counter = Counter(
-        [min(d[x]) for x in get_event_years(runs)]
+        [min(d[x]) for x in d]
     )
     
     different = 0
