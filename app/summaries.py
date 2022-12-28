@@ -35,24 +35,38 @@ def year_summary(runs):
         x['Run Date'][-4:] + '-' + x['Event'] for x in runs
     )    
     
+    new_counter = Counter(
+        [min(d[x]) for x in get_event_year(runs)]
+    )
+    
     different = 0
     data = [{'year': k,
              'count': v,
              'different_events': uniq_year(uniq_counter, k),
              'times': get_ystat_times(runs, k), 
+             'new_events': new_counter[k],
              } for k, v in c.items()]
 
     return sorted(data, key=lambda x: x['year'], reverse=True)
 
+def get_event_years(runs):
+    d = {}
+    for r in runs:
+        if r['Event'] not in d.keys():
+            d[r['Event']]=set()
+        d[r['Event']].add(r['Run Date'][-4:])
+
+    return d    
 
 def event_summary(runs):
     c = Counter()
-    d = {}
+    d = get_event_years(runs)
+    
     for r in runs: 
         c[r['Event']] += 1
-        if r['Event'] not in d.keys():
-          d[r['Event']]=set()
-        d[r['Event']].add(r['Run Date'][-4:])
+        #if r['Event'] not in d.keys():
+        #  d[r['Event']]=set()
+        #d[r['Event']].add(r['Run Date'][-4:])
         
     data = [{'event': k,
              'count': v,
