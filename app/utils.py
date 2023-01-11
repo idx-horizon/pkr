@@ -19,8 +19,7 @@ EVENT_URL = 'https://images.parkrun.com/events.json'
 
 
 def last_saturday(dt=None):
-    if not dt:
-        dt = datetime.datetime.now().date()
+    dt = dt or datetime.datetime.now().date()
         
     return dt - datetime.timedelta(days=((dt.isoweekday() + 1) % 7))
 
