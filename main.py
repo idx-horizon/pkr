@@ -500,7 +500,8 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data.lower()).first()
-        print(f'**DEBUG-230114: {user is None} {user}')
+        print(f'**DEBUG-230114: {user} : {form.password.data}')
+        print(f'**DEBUG-230114: {user.check_password(form.password.data)}')
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             LoginLog.add('***' + form.username.data.lower(), request.headers['X-Real-IP'])
