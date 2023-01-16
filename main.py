@@ -113,6 +113,10 @@ def error(code=None):
 def index():
     return redirect('/home/')
 
+@app.route('health')
+def r_health():
+    return {'status': 'ok', 'version': '1.9'}
+    
 @app.route('/atype')
 def r_atype():
     return render_template("atypeahead.html")
