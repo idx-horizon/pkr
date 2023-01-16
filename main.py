@@ -113,7 +113,7 @@ def error(code=None):
 def index():
     return redirect('/home/')
 
-@app.route('health')
+@app.route('/health')
 def r_health():
     return {'status': 'ok', 'version': '1.9'}
     
