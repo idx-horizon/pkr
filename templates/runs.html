@@ -68,7 +68,9 @@
 						id="hilite-good"
 					{% endif %}>
 				{{ item['AgeGrade'] }}</td>
-				<td>{{ '%4s' % item['Run Number'] }}</td>
+				<td><a href="{{ item[''] }}">
+					{{ '%4s' % item['Run Number'] }}</a>
+				</td>
 				<td>{{ '%4s' % item['Pos'] }}</td>
 	{% endfor %}
 		<P>
