@@ -183,6 +183,16 @@ def r_graph1():
                            graph_title=graph.title,
                            graph_data=graph_data)
 
+@app.route('/cloud')
+@app.route('/cloud/')
+def r_cloud():
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
+    rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
+
+    return render_template("cloud.html",
+                               id=rid)
+
+
 @app.route('/graph')
 @app.route('/graph/')
 def r_graph():

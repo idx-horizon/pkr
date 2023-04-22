@@ -1,6 +1,5 @@
 from math import sin, cos, sqrt, atan2, radians
 
-
 def measure(from_loc, to_loc):
 	earth_radius = 6373
 
