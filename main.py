@@ -190,7 +190,7 @@ def r_cloud():
     rid = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
 
     return render_template("cloud.html",
-                               id=rid)
+                               rid=rid)
 
 
 @app.route('/graph')
