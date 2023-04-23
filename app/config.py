@@ -10,6 +10,7 @@ class Config(object):
     APPNAME = 'PKR' # os.environ.get('RR_NAME') or 'Unknown'
 
     GOOGLEMAPS_KEY = os.environ.get('GOOGLEMAPS_KEY')
+    SEND_FILE_MAX_AGE_DEFAULT = 300
     
     REPOSITORY = APPNAME + '_static.db'
 

@@ -19,7 +19,6 @@ except:
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
 app.config.from_object(Config)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 5
 
 try:
     print(app.config['GOOGLEMAPS_KEY'][0:10])
