@@ -2,9 +2,7 @@
 {% include "_menubar.html" %}
 <H2>Word Cloud for {{ rid }}</H2>
 
-<h3>Image passed to template: {{ rid }}.png</h3>
-
-<img alt="word cloud" width="80%" src="{{ url_for('static', filename='184594.png') }}"/>	
+<img alt="word cloud" width="80%" src="{{ url_for('static', filename=rid+'.png') }}"/>	
 	
 
 {% include "_footer.html" %}
