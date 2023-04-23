@@ -192,7 +192,8 @@ def r_cloud():
     who.get_runs(None,False)
     
     return render_template("cloud.html",
-                               who=who)
+                               who=who,
+                               timestamp=datetime.datetime.now())
 
 
 @app.route('/graph')
