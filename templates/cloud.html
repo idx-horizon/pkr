@@ -2,7 +2,11 @@
 {% include "_menubar.html" %}
 <H2>Word Cloud for {{ rid }}</H2>
 
-
+<h3>Image passed to template</h3>
+{{ rid }}.png
 <img alt="word cloud" width="80%" src="{{ rid }}.png"/>	
+
+<h3>Hardcodes</h3>
+<img alt="word cloud" width="80%" src="184594.png"/>	
 
 {% include "_footer.html" %}
