@@ -1,8 +1,11 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
-<H2>Word Cloud for {{ rid }}</H2>
+<H2>Word Cloud: {{ rid | safe }}</H2>	
 
-<img alt="word cloud" width="80%" src="{{ url_for('static', filename=rid+'.png') }}"/>	
+<img alt="word cloud" 
+	width="100%" 
+	src="{{ url_for('static', filename=rid+'.png') }}">
+</img>	
 	
 
 {% include "_footer.html" %}
