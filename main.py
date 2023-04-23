@@ -187,10 +187,12 @@ def r_graph1():
 @app.route('/cloud/')
 def r_cloud():
     SELECTEDRUNNER = session['SELECTEDRUNNER']
-    me = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
-
+    who = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
+    
+    who.get_runs(None,False)
+    
     return render_template("cloud.html",
-                               rid=me.rid)
+                               who=me)
 
 
 @app.route('/graph')
