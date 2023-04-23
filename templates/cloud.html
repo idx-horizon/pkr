@@ -1,11 +1,12 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
-<H2>Word Cloud: {{ rid | safe }}</H2>	
+
+<div class="container-fluid p-3 bg-dark text-white">
 
 <img alt="word cloud" 
 	width="100%" 
 	src="{{ url_for('static', filename=rid+'.png') }}">
 </img>	
-	
+</div>	
 
 {% include "_footer.html" %}
