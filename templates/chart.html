@@ -1,6 +1,12 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 <H2>{{ graph_title }}</H2>
+<div class="btn-group">
+  <a href="/chart" class="btn btn-primary active" aria-current="page">Year</a>
+  <a href="/chart?Month" class="btn btn-primary">Month</a>
+  <a href="/chart?Letter" class="btn btn-primary">Letter</a>
+</div>
+
 <img alt="chart" width="80%" src="{{ graph_data | safe }}"/>	
 
 {% include "_footer.html" %}
