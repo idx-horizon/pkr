@@ -187,13 +187,16 @@ def r_graph1():
 
 @app.route('/chart')
 @app.route('/chart/')
+@login_required
 def r_chart():
+    chart = request.args.get(c,'Year')
+    
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     who = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     
     who.get_runs(None,False)
 
-    graph_data = chart.make_chart(who)    
+    graph_data = chart.make_chart(chart, who)    
     return render_template("chart.html",
                                graph_data=graph_data)
 

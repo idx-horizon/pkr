@@ -132,8 +132,8 @@ def produce_graph(graph_name, data):
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return f"data:image/png;base64,{data}"
 
-def make_chart(who):
+def make_chart(chart, who):
     print('** in make_chart**')
-    return produce_graph('Year',who.runs)
+    return produce_graph(chart, who.runs)
     
     
