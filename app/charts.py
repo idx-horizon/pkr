@@ -22,28 +22,28 @@ opts = {
         'key': 'Run Date', 
         'start': 3, 'end': 5, 
         'title': 'By Month', 'xlabel': 'Month',
-        'include_vals': ['01','02','03','04','05','06','07','08','09','10','11','12'],
+#        'include_vals': ['01','02','03','04','05','06','07','08','09','10','11','12'],
         'bubble_factor': 2
     },
     'Time': {
         'key': 'Time', 
         'start': -5, 'end': -3, 
         'title': 'Run time (minutes)', 'xlabel': 'Minutes (m)',
-        'include_vals': range(25,40),
+#        'include_vals': range(25,40),
         'bubble_factor': 2
     },
     'AgeGrade': { 
         'key': 'AgeGrade' ,
         'start': 0, 'end': 2, 
         'title': 'Age Grading (%)', 'xlabel': '%',
-        'include_vals': range(45,50),
+#        'include_vals': range(45,50),
         'bubble_factor': 2
     },
     'Letter': {
         'key': 'Event', 
         'start': 0, 'end': 1, 
         'title': 'Event Letters', 'xlabel': 'Letter',
-        'include_vals': list(string.ascii_uppercase),
+#        'include_vals': list(string.ascii_uppercase),
         'bubble_factor': 1.7
     },
 #    'Event': {
@@ -54,17 +54,13 @@ opts = {
 #    }
 }
 
-#def getdata(fn):
-#    with open(fn,'r',encoding='utf-8') as f:
-#        return json.loads(f.read())[1]['runs']
-
 
 def produce_graph(graph_name, data):
     g = opts[graph_name]
     t = sorted([x[g['key']][g['start'] : g['end']] for x in data])
 
-    c=Counter(t)
-    #c.update(t)
+    c=Counter()
+    c.update(t)
     if g.get('include_vals', None):
         for i in [str(x) for x in g['include_vals']]:
             if i not in c.keys():
