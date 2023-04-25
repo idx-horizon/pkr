@@ -186,9 +186,10 @@ def r_graph1():
                            graph_data=graph_data)
 
 @app.route('/chart')
+@app.route('/chart/')
 def r_chart():
     SELECTEDRUNNER = session['SELECTEDRUNNER']
-    print('**', SELECTEDRUNNEER)
+    print('**', SELECTEDRUNNER)
     who = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     
     who.get_runs(None,False)
