@@ -71,8 +71,8 @@ def produce_graph(graph_name, data):
                 c[i]=0
     N = len(c)
 
-    counts = [c[v] for v in sorted(c)]
-    values = [str(v) for v in sorted(c)]
+    counts = [c[v] for v in c]
+    values = [str(v) for v in c]
 
     colors = np.random.rand(N)
 
@@ -94,8 +94,8 @@ def produce_graph(graph_name, data):
                  linewidth=3,
                  data=df)
 
-    plt.xlabel(g['xlabel'], size=16)
-    plt.ylabel("# runs", size=16)
+    plt.xlabel(g['xlabel'], size=14)
+    plt.ylabel("# runs", size=14)
     plt.ylim(ymin=0, ymax=max([c[_] for _ in c])+5)
     #plt.xlim([int(min(c)),int(max(c))])
 
