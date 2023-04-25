@@ -44,7 +44,7 @@ opts = {
         'start': 0, 'end': 1, 
         'title': 'Event Letters', 'xlabel': 'Letter',
         'include_vals': list(string.ascii_uppercase),
-        'bubble_factor': 1.5
+        'bubble_factor': 1.7
     },
     'Event': {
         'key': 'Event', 
@@ -72,7 +72,7 @@ def produce_graph(graph_name, data):
     N = len(c)
 
     counts = [c[v] for v in sorted(c)]
-    values = [v for v in c]
+    values = [v for v in sorted(c)]
 
     colors = np.random.rand(N)
 
@@ -121,21 +121,19 @@ def produce_graph(graph_name, data):
     plt.grid(color = 'green', linestyle = ':', linewidth = 0.8)
 
     plt.tight_layout()
-#    plt.savefig("timebubbles.jpg", bbox_inches="tight")
-    print('** returning from produce_graph')
-    return get_chart_data(plt)
-    #return plt
 
-def get_chart_data(plt):
+#    return get_chart_data(plt)
+#    #return plt
+#
+#def get_chart_data(plt):
     
     buf = io.BytesIO()
     plt.savefig(buf, format="png", bbox_inches="tight")
-    # Embed the result in the html output.
     data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return f"data:image/png;base64,{data}"
 
 def make_chart(who):
     print('** in make_chart**')
-    return produce_graph('Event-Initial',who.runs)
+    return produce_graph('Year',who.runs)
     
     

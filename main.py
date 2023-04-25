@@ -192,11 +192,9 @@ def r_chart():
     who = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     
     who.get_runs(None,False)
-    print('** got runs for ', who)
-    graph_data = chart.make_chart(who)
-    
+
+    graph_data = chart.make_chart(who)    
     return render_template("chart.html",
-                               graph_title='Test',
                                graph_data=graph_data)
 
 
