@@ -187,8 +187,10 @@ def r_graph1():
 
 @app.route('/chart')
 @app.route('/chart/')
+@app.route('/chart?')
 @login_required
 def r_chart():
+    print('**',request)
     chart = request.args.get(c,'Year')
     
     SELECTEDRUNNER = session['SELECTEDRUNNER']
