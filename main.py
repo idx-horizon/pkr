@@ -192,6 +192,7 @@ def r_graph1():
 def r_chart():
     print('**',request)
     chart_name = request.args.get('c','Year')
+    chart_list = chart.opts.keys()
     
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     who = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
@@ -200,6 +201,7 @@ def r_chart():
 
     graph_data = chart.make_chart(chart_name, who)    
     return render_template("chart.html",
+                               chart_list=chart_list,
                                graph_data=graph_data)
 
 

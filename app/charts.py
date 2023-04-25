@@ -39,7 +39,7 @@ opts = {
         'include_vals': range(45,50),
         'bubble_factor': 2
     },
-    'Event-Initial': {
+    'Letter': {
         'key': 'Event', 
         'start': 0, 'end': 1, 
         'title': 'Event Letters', 'xlabel': 'Letter',
