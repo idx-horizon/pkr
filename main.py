@@ -24,7 +24,7 @@ import datetime
 import pandas as pd
 
 import pygal
-import app.chart as chart
+import app.charts as chart
 
 
 #@app.route("/xltables")
