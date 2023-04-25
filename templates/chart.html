@@ -2,6 +2,7 @@
 {% include "_menubar.html" %}
 **{{ graph_data }}**
 <H2>{{ graph_title }}</H2>
+<img alt="chart" width="80%" src='data:image/svg;base64,{{graph_data | safe}}"/>
 
 <img alt="chart" width="80%" src="{{ graph_data | safe }}"/>	
 
