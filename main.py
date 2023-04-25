@@ -197,7 +197,7 @@ def r_chart():
     
     return render_template("chart.html",
                                graph_title='Test',
-                               graph_data=chart.make_chart(who))
+                               graph_data=chart.make_chart(who.rid))
 
 
 @app.route('/cloud')
