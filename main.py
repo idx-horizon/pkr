@@ -191,7 +191,7 @@ def r_graph1():
 @login_required
 def r_chart():
     print('**',request)
-    chart = request.args.get(c,'Year')
+    chart = request.args.get('c','Year')
     
     SELECTEDRUNNER = session['SELECTEDRUNNER']
     who = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
