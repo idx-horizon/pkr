@@ -135,6 +135,6 @@ def get_chart_data(plt):
 def make_chart(rid):
 #    d = getdata(f'{rid}.pkr')
     print('** in make_chart**')
-    return produce_graph('Year',who.rid.runs)
+    return produce_graph('Year',rid.runs)
     
     
