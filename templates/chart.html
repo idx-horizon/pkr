@@ -3,9 +3,11 @@
 <H2>{{ graph_title }}</H2>
 
 <div class="btn-group">
-  Select: 
+  <B>Select</B>: 
   {% for ch in chart_list %}
-    <a href="/chart?c={{ch}}" class="btn btn-success">{{ch}}</a>
+    <a href="/chart?c={{ch}}" class="btn btn-success
+    {% if ch=={{chart_name}} %} active {% endif %}
+    ">{{ch}}</a>
   {% endfor %}
 </div>
 

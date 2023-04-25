@@ -46,17 +46,17 @@ opts = {
         'include_vals': list(string.ascii_uppercase),
         'bubble_factor': 1.7
     },
-    'Event': {
-        'key': 'Event', 
-        'start': 0, 'end': None, 
-        'title': 'Events', 'xlabel': 'Events',
-        'bubble_factor': 1
-    }
+#    'Event': {
+#        'key': 'Event', 
+#        'start': 0, 'end': None, 
+#        'title': 'Events', 'xlabel': 'Events',
+#        'bubble_factor': 1
+#    }
 }
 
-def getdata(fn):
-    with open(fn,'r',encoding='utf-8') as f:
-        return json.loads(f.read())[1]['runs']
+#def getdata(fn):
+#    with open(fn,'r',encoding='utf-8') as f:
+#        return json.loads(f.read())[1]['runs']
 
 
 def produce_graph(graph_name, data):
