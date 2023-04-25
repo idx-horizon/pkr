@@ -189,15 +189,15 @@ def r_graph1():
 @app.route('/chart/')
 def r_chart():
     SELECTEDRUNNER = session['SELECTEDRUNNER']
-    print('**', SELECTEDRUNNER)
     who = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     
     who.get_runs(None,False)
     print('** got runs for ', who)
+    graph_data = chart.make_chart(who)
     
     return render_template("chart.html",
                                graph_title='Test',
-                               graph_data=chart.make_chart(who))
+                               graph_data=graph_data)
 
 
 @app.route('/cloud')

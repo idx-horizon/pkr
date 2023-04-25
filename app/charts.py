@@ -122,7 +122,7 @@ def produce_graph(graph_name, data):
 
     plt.tight_layout()
 #    plt.savefig("timebubbles.jpg", bbox_inches="tight")
-
+    print('** returning from produce_graph')
     return get_chart_data(plt)
     #return plt
 
@@ -130,10 +130,10 @@ def get_chart_data(plt):
     stream = io.BytesIO()
     plt.savefig(stream, format='jpg')
     stream.seek(0)
+    print('** returning from get_chart_data')
     return base64.b64encode(stream.read()).decode()
 
 def make_chart(who):
-#    d = getdata(f'{rid}.pkr')
     print('** in make_chart**')
     return produce_graph('Year',who.runs)
     
