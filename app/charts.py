@@ -132,9 +132,9 @@ def get_chart_data(plt):
     stream.seek(0)
     return base64.b64encode(stream.read()).decode()
 
-def make_chart(rid):
+def make_chart(who):
 #    d = getdata(f'{rid}.pkr')
     print('** in make_chart**')
-    return produce_graph('Year',rid.runs)
+    return produce_graph('Year',who.runs)
     
     
