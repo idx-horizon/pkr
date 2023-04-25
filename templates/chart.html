@@ -6,7 +6,7 @@
   <B>Select</B>: 
   {% for ch in chart_list %}
     <a href="/chart?c={{ch}}" class="btn btn-success
-    {% if ch == {{chart_name}} %} active {% endif %}
+    {% if ch == chart_name %} active {% endif %}
     ">{{ch}}</a>
   {% endfor %}
 </div>
