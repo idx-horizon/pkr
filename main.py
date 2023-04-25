@@ -202,6 +202,7 @@ def r_chart():
     graph_data = chart.make_chart(chart_name, who)    
     return render_template("chart.html",
                                chart_list=chart_list,
+                               chart_name=chart_name,
                                graph_data=graph_data)
 
 
