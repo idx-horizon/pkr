@@ -9,3 +9,8 @@ src='data:image/svg+xml;charset=utf-8;base64,{{graph_data | safe}}"/>
 
 {% include "_footer.html" %}
 
+buf = BytesIO()
+    fig.savefig(buf, format="png")
+    # Embed the result in the html output.
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return f"<img src='data:image/png;base64,{data}'/>"
