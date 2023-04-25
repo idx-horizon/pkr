@@ -128,7 +128,7 @@ def produce_graph(graph_name, data):
 
 def get_chart_data(plt):
     stream = io.BytesIO()
-    plt.savefig(stream, format='jpg')
+    plt.savefig(stream, format='svg')
     stream.seek(0)
     print('** returning from get_chart_data')
     return base64.b64encode(stream.read()).decode()
