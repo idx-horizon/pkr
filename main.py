@@ -188,9 +188,11 @@ def r_graph1():
 @app.route('/chart')
 def r_chart():
     SELECTEDRUNNER = session['SELECTEDRUNNER']
+    print('**', SELECTEDRUNNEER)
     who = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
     
     who.get_runs(None,False)
+    print('** got runs for ', who)
     
     return render_template("chart.html",
                                graph_title='Test',
