@@ -135,6 +135,6 @@ def get_chart_data(plt):
 
 def make_chart(who):
     print('** in make_chart**')
-    return produce_graph('Year',who.runs)
+    return produce_graph('Event-Initial',who.runs)
     
     
