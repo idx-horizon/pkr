@@ -24,6 +24,8 @@ import datetime
 import pandas as pd
 
 import pygal
+import app.chart as chart
+
 
 #@app.route("/xltables")
 #def show_tables():
@@ -182,6 +184,18 @@ def r_graph1():
     return render_template("graph.html",
                            graph_title=graph.title,
                            graph_data=graph_data)
+
+@app.route('/chart')
+def r_chart():
+    SELECTEDRUNNER = session['SELECTEDRUNNER']
+    who = utils.Runner(SELECTEDRUNNER['rid'] or current_user.rid)
+    
+    who.get_runs(None,False)
+    
+    return render_template("chart.html",
+                               graph_title='Test',
+                               graph_data=chart.make_chart(who))
+
 
 @app.route('/cloud')
 @app.route('/cloud/')
