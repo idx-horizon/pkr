@@ -1,15 +1,13 @@
 {% include "_header.html" %}
 {% include "_menubar.html" %}
 <H2>{{ graph_title }}</H2>
-<div class="btn-group">
-  <a href="/chart?c=Year" class="btn btn-success active" aria-current="year">Year</a>
-  <a href="/chart?c=Month" class="btn btn-success">Month</a>
-  <a href="/chart?c=Time" class="btn btn-success">Time</a>
-  <a href="/chart?c=AgeGrade" class="btn btn-success">Age Grade</a>
-  <a href="/chart?c=Letter" class="btn btn-success">Letter</a>
-</div>
 
-{{ chart_list }}
+<div class="btn-group">
+  Select: 
+  {% for ch in chart_list %}
+    <a href="/chart?c={{ch}}" class="btn btn-success">{{ch}}</a>
+  {% endfor %}
+</div>
 
 <img alt="chart" width="80%" src="{{ graph_data | safe }}"/>	
 
