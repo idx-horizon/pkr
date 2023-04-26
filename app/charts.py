@@ -43,7 +43,7 @@ opts = {
         'key': 'Event', 
         'start': 0, 'end': 1, 
         'title': 'Event Letters', 'xlabel': 'Letter',
-#        'include_vals': list(string.ascii_uppercase),
+        'include_vals': list(string.ascii_uppercase),
         'bubble_factor': 1.7
     },
 #    'Event': {
@@ -66,7 +66,8 @@ def produce_graph(graph_name, data):
             if i not in c.keys():
                 c[i]=0
     N = len(c)
-
+    
+    c = sorted(c.items())
     counts = [c[v] for v in c]
     values = [str(v) for v in c]
 
@@ -129,7 +130,6 @@ def produce_graph(graph_name, data):
     return f"data:image/png;base64,{data}"
 
 def make_chart(chart, who):
-    print('** in make_chart**')
     return produce_graph(chart, who.runs)
     
     
