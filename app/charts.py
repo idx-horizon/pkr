@@ -43,7 +43,7 @@ opts = {
         'key': 'Event', 
         'start': 0, 'end': 1, 
         'title': 'Event Letters', 'xlabel': 'Letter',
-        'include_vals': list(string.ascii_uppercase),
+#        'include_vals': list(string.ascii_uppercase),
         'bubble_factor': 1.7
     },
 #    'Event': {
@@ -67,7 +67,7 @@ def produce_graph(graph_name, data):
                 c[i]=0
     N = len(c)
     
-    c = sorted(c.items())
+#    c = sorted(c.items())
     counts = [c[v] for v in c]
     values = [str(v) for v in c]
 
