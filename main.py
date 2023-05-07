@@ -221,7 +221,7 @@ def r_cloud():
 
 @app.route('/cancellations')
 @app.route('/cancellations/')
-def r_cloud():
+def r_cancellations():
     
     return render_template("cancellations.html",
                                timestamp=str(datetime.datetime.now()))
