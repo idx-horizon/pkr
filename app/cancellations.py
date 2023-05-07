@@ -22,5 +22,4 @@ def get_cancellations():
                               'reason': reason, 
                               'link': e.find('a').get('href')
                              })
-
-​   return title, d
+    return title, d  
