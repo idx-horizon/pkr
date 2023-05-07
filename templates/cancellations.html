@@ -7,7 +7,7 @@
 
 </div>
      {% for item in cancellations %}
-     <h2> {{item}} - {{ len(cancellations[item]) }}	
+     <h2> {{item}} - {{ cancellations[item] | length }} cancellations	
     <table class="table table-hover table-light table-striped text-left">
         <tr>
             <th width="35%">Event</th>
