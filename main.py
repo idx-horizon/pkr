@@ -19,6 +19,7 @@ import app.newruns as NR
 import app.utils as utils
 
 import app.summaries as summaries
+from app.cancellations import get_cancellations
 
 import datetime
 import pandas as pd
@@ -222,8 +223,11 @@ def r_cloud():
 @app.route('/cancellations')
 @app.route('/cancellations/')
 def r_cancellations():
+    title, cancellations = get_cancellations()
     
     return render_template("cancellations.html",
+                               title=title,
+                               cancellations=cancellations,
                                timestamp=str(datetime.datetime.now()))
 
 
