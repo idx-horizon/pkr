@@ -6,7 +6,7 @@ def get_cancellations():
     url ='https://www.parkrun.org.uk/cancellations'
     page = app.utils.get(url)
 
-    soup = BeautifulSoup(c.text)
+    soup = BeautifulSoup(page.text)
     ul = soup.find_all('ul')
     h2 = soup.find_all('h2')
 
