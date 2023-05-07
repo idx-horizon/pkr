@@ -1,3 +1,5 @@
+from bs4 import BeautifulSoup
+
 import app.utils
 
 def get_cancellations():
