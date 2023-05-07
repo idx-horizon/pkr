@@ -219,6 +219,16 @@ def r_cloud():
                                timestamp=str(datetime.datetime.now()))
 
 
+@app.route('/cancellations')
+@app.route('/cancellations/')
+def r_cloud():
+    
+    return render_template("cancellations.html",
+                               timestamp=str(datetime.datetime.now()))
+
+
+
+
 @app.route('/graph')
 @app.route('/graph/')
 def r_graph():
