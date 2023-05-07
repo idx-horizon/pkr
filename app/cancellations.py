@@ -2,7 +2,7 @@ import app.utils
 
 def get_cancellations():
     url ='https://www.parkrun.org.uk/cancellations'
-    page = utils.get(url)
+    page = app.utils.get(url)
 
     soup = BeautifulSoup(c.text)
     ul = soup.find_all('ul')
