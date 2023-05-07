@@ -3,13 +3,13 @@ import app.utils
 def get_cancellations():
     url ='https://www.parkrun.org.uk/cancellations'
     page = utils.get(url)
-    
+
     soup = BeautifulSoup(c.text)
     ul = soup.find_all('ul')
     h2 = soup.find_all('h2')
-​
+
     title = h2[0].text
-​
+
     d = {}
     for idx, header in enumerate(h2):
         dt = header.text
