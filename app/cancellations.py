@@ -1,4 +1,4 @@
-import utils
+import app.utils
 
 def get_cancellations():
     url ='https://www.parkrun.org.uk/cancellations'
