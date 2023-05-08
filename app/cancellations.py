@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import datetime
 
 import app.utils
 
@@ -6,6 +7,8 @@ def get_cancellations():
     url ='https://www.parkrun.org.uk/cancellations'
     page = app.utils.get(url)
 
+    as_at_dt = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=+1))))
+    
     soup = BeautifulSoup(page.text)
     ul = soup.find_all('ul')
     h2 = soup.find_all('h2')
@@ -24,4 +27,4 @@ def get_cancellations():
                               'reason': reason, 
                               'link': e.find('a').get('href')
                              })
-    return title, d  
+    return title, d, as_at_dt
