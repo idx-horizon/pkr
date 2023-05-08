@@ -4,14 +4,14 @@
 <div width="100%" class="container-fluid p-3 bg-dark text-white">
 
 <h2>{{ title }} as at {{ timestamp }}</h2>
-
+<h4>As at {{ timestamp }}</h4>
 </div>
      {% for item in cancellations %}
      <h3> {{item}} - {{ cancellations[item] | length }} cancellations</h2>	
     <table class="table table-hover table-light table-striped text-left">
         <tr>
-            <th width="35%">Event</th>
-            <th width="65%">Reason</th>
+            <th width="30%">Event</th>
+            <th width="70%">Cancellation reason</th>
      
         </tr>
         
