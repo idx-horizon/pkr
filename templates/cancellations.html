@@ -3,8 +3,8 @@
 
 <div width="100%" class="container-fluid p-3 bg-dark text-white">
 
-<h2>{{ title }} as at {{ timestamp }}</h2>
-<h4>As at {{ timestamp }}</h4>
+<h2>{{ title }}</h2>
+<h4>(as at {{ timestamp }})</h4>
 </div>
      {% for item in cancellations %}
      <h3> {{item}} - {{ cancellations[item] | length }} cancellations</h2>	
