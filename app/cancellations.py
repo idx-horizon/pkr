@@ -7,8 +7,8 @@ def get_cancellations():
     url ='https://www.parkrun.org.uk/cancellations'
     page = app.utils.get(url)
 
-    as_at_dt = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=+1))))
-    
+    as_at_dt = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=+1)))
+
     soup = BeautifulSoup(page.text)
     ul = soup.find_all('ul')
     h2 = soup.find_all('h2')
