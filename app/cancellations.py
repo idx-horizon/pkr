@@ -9,7 +9,7 @@ def get_cancellations():
 
     as_at_dt = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=+1)))
     
-    dt_update = as_dt_dt.strftime('%a %d-%b-%Y at %-I:%m%p')
+    dt_update = as_at_dt.strftime('%a %d-%b-%Y at %-I:%m%p')
 
     soup = BeautifulSoup(page.text)
     ul = soup.find_all('ul')
@@ -29,5 +29,5 @@ def get_cancellations():
                               'reason': reason, 
                               'link': e.find('a').get('href')
                              })
-                             
+                                
     return title, d, dt_update
