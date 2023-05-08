@@ -3,7 +3,7 @@
 
 <div width="100%" class="container-fluid p-3 bg-dark text-white">
 
-{{ title }} as at {{ timestamp }}
+<h2>{{ title }} as at {{ timestamp }}</h2>
 
 </div>
      {% for item in cancellations %}
@@ -17,8 +17,8 @@
         
         {% for c in cancellations[item] %}
         <tr>
-            <td>{{ c['event'] }}</td>
-            <td><a target="_blank" href="{{ c['link'] }}">{{ c['reason'] }}</a></td>
+            <td><a target="_blank" href="{{ c['link'] }}">{{ c['event'] }}</a></td>
+            <td>{{ c['reason'] }}</td>
      
         </tr>
         
