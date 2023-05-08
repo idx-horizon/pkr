@@ -18,7 +18,7 @@
         {% for c in cancellations[item] %}
         <tr>
             <td>{{ c['event'] }}</td>
-            <td>{{ c['reason'] }}</td>
+            <td><a target="_blank" href="{{ c['link'] }}">{{ c['reason'] }}</a></td>
      
         </tr>
         
