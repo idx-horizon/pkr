@@ -2,17 +2,18 @@
 {% include "_menubar.html" %}
 
 <h2>{{title}}</h2>
+<div width="100%" class="container-fluid p-3 bg-dark text-white">
 
 <p>
-  <a class="btn btn-success" data-toggle="collapse" href="#bromleymore" role="button" aria-expanded="false" aria-controls="collapseExample">Bromley</a>
+  <li>Bromley<a data-toggle="collapse" href="#bromleymore" role="button" aria-expanded="false" aria-controls="collapseExample">...</a>
 </p>
 <div class="collapse" id="bromleymore">
   <div class="card card-body">
       more detail about bromley  </div>
 </div>
-  <a class="btn btn-success" data-toggle="collapse" href="#catfordmore" role="button" aria-expanded="false" aria-controls="collapseExample">Bromley</a>
+  <li>Catford<a data-toggle="collapse" href="#catfordmore" role="button" aria-expanded="false" aria-controls="collapseExample">...</a>
 </p>
-<div class="collapse" id="catforddmore">
+<div class="collapse" id="catfordmore">
   <div class="card card-body">
       more detail about catford  </div>
 </div>
