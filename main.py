@@ -192,7 +192,12 @@ def r_chart():
 @app.route('/pilot')
 @app.route('/pilot/')
 def r_pilot():
+    data = {
+        'Average time': 29,
+        'Average runners': 400
+    }
     return render_template('pilot.html',
+                    data=data,
                     title='Pilot form')
                     
 @app.route('/cloud')

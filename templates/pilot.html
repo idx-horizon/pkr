@@ -23,6 +23,9 @@
         </button>
       </div>
       <div class="modal-body">
+        {% for line in data %}
+          {{ line }} - {{ data[line] }}
+        {% endfor %}
         extra details here
       </div>
       <div class="modal-footer">
