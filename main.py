@@ -190,7 +190,7 @@ def r_chart():
                                graph_data=graph_data)
 
 @app.route('/pilot')
-@app.route('/pilot/)
+@app.route('/pilot/')
 def r_pilot():
     return render_template('pilot.html',
                     title='Pilot form')
