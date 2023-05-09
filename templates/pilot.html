@@ -23,10 +23,14 @@
         </button>
       </div>
       <div class="modal-body">
+      <table>
         {% for line in data %}
-          {{ line }} - {{ data[line] }}
+          <tr>
+          <td>{{ line }}</td>
+          <td>{{ data[line] }}</td>
+          </tr>
         {% endfor %}
-        extra details here
+      </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
