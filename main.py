@@ -189,7 +189,12 @@ def r_chart():
                                chart_name=chart_name,
                                graph_data=graph_data)
 
-
+@app.route('/pilot')
+@app.route('/pilot/)
+def r_pilot():
+    return render_template('pilot.html',
+                    title='Pilot form')
+                    
 @app.route('/cloud')
 @app.route('/cloud/')
 def r_cloud():
