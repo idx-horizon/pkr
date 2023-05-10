@@ -189,11 +189,22 @@ def r_chart():
                                chart_name=chart_name,
                                graph_data=graph_data)
 
+@app.route('/pilot5')
+@app.route('/pilot5/')
+def r_pilot():
+    data = {
+        'Average time': '25.1',
+        'Average runners': 500
+    }
+    return render_template('pilot5.html',
+                    data=data,
+                    title='Pilot5 form')
+
 @app.route('/pilot')
 @app.route('/pilot/')
 def r_pilot():
     data = {
-        'Average time': 29,
+        'Average time': 4,
         'Average runners': 400
     }
     return render_template('pilot.html',
