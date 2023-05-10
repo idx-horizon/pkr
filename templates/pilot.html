@@ -7,17 +7,16 @@
 <p>
   <li>Bromley&nbsp<a class="badge badge-pill badge-success" data-toggle="collapse" href="#bromleymore" >more</a>
 <div class="collapse" id="bromleymore">
+  <div class="card card-body">
       <table width="50%" class="table table-hover table-light table-striped text-left">
         {% for line in data %}
           <tr>
-          <td width="30%">{{ line }}</td>
-          <td width="20%">{{ data[line] }}</td>
+          <td width="60%">{{ line }}</td>
+          <td width="40%">{{ data[line] }}</td>
           </tr>
         {% endfor %}
       </table>
-
-  <div class="card card-body">
-      more detail about bromley  </div>
+  </div>
 </div>
   <li>Catford&nbsp<a class="badge badge-pill badge-success" data-toggle="collapse" href="#catfordmore" >more</a>
 <div class="collapse" id="catfordmore">
