@@ -68,7 +68,7 @@
 
 <HR>
 
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever={{ data[0] }} >Open {{ data[0] }}</button>
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="{{ data[0] }}" >Open {{ data[0] }}</button>
 
 
 
@@ -116,6 +116,8 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   // and then do the updating in a callback.
   //
   // Update the modal's content.
+  console.log("in exampleModel script")
+  console.log(data)
   var modalTitle = exampleModal.querySelector('.modal-title')
   var modalBodyInput = exampleModal.querySelector('.modal-body input')
 
