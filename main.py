@@ -114,9 +114,10 @@ def index():
 @app.route('/refresh')
 @app.route('/refresh/')
 def r_refresh():
-    d = refresh_events('events-230510-try.json')
+    d = refresh_events('events.json')
     if d.ok:
-        return {'Success': d.ok, 'version': os.environ['PKR_VERSION']}
+        return {'Success': d.ok, 
+                'Version': 'v' + os.environ['PKR_VERSION']}
     else:
         return {'Status Code': d.status_code}
 
