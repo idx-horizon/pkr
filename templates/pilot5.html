@@ -2,7 +2,7 @@
 
 {% include "_menubar.html" %}
 
-<h1>{{ env('PKR_VERSION') }} <h1>
+<h1>{{ 'PKR_VERSION' | get_os_var }} <h1>
 
 <h2>{{title}}</h2>
 <div>

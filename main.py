@@ -27,15 +27,15 @@ import pandas as pd
 import pygal
 import app.charts as chart
 
-from jinja2 import contextfunction
+#from jinja2 import contextfunction
 
 app_TRACKER = Tracker()
 
-@contextfunction
-def env(ctx,name):
-    return os.environ.get(name,'n/a')
-
-__all__ = ['env']
+#@contextfunction
+#def env(ctx,name):
+#    return os.environ.get(name,'n/a')
+#
+#__all__ = ['env']
 
 def reset_session_selectedrunner():
     session['SELECTEDRUNNER'] = {
@@ -67,7 +67,10 @@ def inject_context():
         session['FRIENDS'] = None
         return redirect(url_for('home'))
 
-
+@app.template_filter()
+def get_os_var(var):
+    return os.environ.get(var,'n/a')
+    
 @app.template_filter()
 def format_datetime(value, 
                     format_src='%d/%m/%Y', 
