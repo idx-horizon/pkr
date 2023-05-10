@@ -37,10 +37,7 @@ def get_map_markers(data):
       
       if idx == 0:
          icon = f'blue-dot.png'
-      
-#      if not os.path.exists(f'{iconbase}/{icon}'):
-#         icon = f'{colour}0.png'
-            
+                  
       markers.append({'lat': d.latitude,
                       'lng': d.longitude,
                       'icon': f'{iconbase}/{icon}',
@@ -49,7 +46,7 @@ def get_map_markers(data):
    return markers
 
 def getmap(data, centres, centre_on, current_user, session):
-   style="height:45%;width:100%;margin:0%"
+   style="height:50%;width:100%;margin:0%"
    markers=get_map_markers(data)
 
    centre_lat, centre_lng = centres[centre_on]
