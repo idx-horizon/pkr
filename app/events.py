@@ -18,5 +18,5 @@ def getevents(saveto=None):
 	json.dump(data.json(),open(saveto,'w'))
 	print('** Refreshed: {saveto}')
 
-	return d, data.json()
+	return data, data.json()
 	
