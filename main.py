@@ -191,7 +191,7 @@ def r_chart():
 
 @app.route('/pilot5')
 @app.route('/pilot5/')
-def r_pilot():
+def r_pilot5():
     data = {
         'Average time': '25.1',
         'Average runners': 500
