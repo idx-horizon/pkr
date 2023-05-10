@@ -108,10 +108,17 @@ def error(code=None):
 def index():
     return redirect('/home/')
 
+
+@app.route('/refresh')
+@app.route('/refresh/')
+def r_refresh():
+    return {'refresh': 'TODO', 'version': os.environ['PKR_VERSION']}
+
+
 @app.route('/health')
 @app.route('/health/')
 def r_health():
-    return {'status': 'ok', 'version': '1.9'}
+    return {'status': 'ok', 'version': os.environ['PKR_VERSION']}
     
 @app.route('/atype')
 def r_atype():
