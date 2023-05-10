@@ -1,7 +1,7 @@
 import requests
 import json
 
-def getevents(saveto=None):
+def refresh_events(saveto=None):
 	EVENT_URL = 'https://images.parkrun.com/events.json'
 
 	headers  =  {
@@ -15,7 +15,5 @@ def getevents(saveto=None):
 	if data.ok:	
 		json.dump(data.json(),open(saveto,'w'))
 		print(f'** Refreshed: {saveto}')
-		return data.json()
-	else:
-	 	return None
-	
+		
+	return data

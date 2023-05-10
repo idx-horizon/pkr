@@ -27,6 +27,8 @@ import pandas as pd
 import pygal
 import app.charts as chart
 
+from app.events import refresh_events
+
 #from jinja2 import contextfunction
 
 app_TRACKER = Tracker()
@@ -112,8 +114,11 @@ def index():
 @app.route('/refresh')
 @app.route('/refresh/')
 def r_refresh():
-    return {'refresh': 'TODO', 'version': os.environ['PKR_VERSION']}
-
+    d = refresh_events('events-230510-try.json')
+    if d.ok:
+        return {'Success': d.ok, 'version': os.environ['PKR_VERSION']}
+    else:
+        return {'Status Code': d.status_code}
 
 @app.route('/health')
 @app.route('/health/')
