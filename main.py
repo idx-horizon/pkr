@@ -33,7 +33,7 @@ app_TRACKER = Tracker()
 
 @contextfunction
 def env(ctx,name):
-    return os.environ(name,'n/a')
+    return os.environ[name,'n/a')]
 
 def reset_session_selectedrunner():
     session['SELECTEDRUNNER'] = {
