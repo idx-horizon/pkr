@@ -12,11 +12,10 @@ def getevents(saveto=None):
 	session.headers.update(headers)
 	
 	data = session.get(EVENT_URL)
-	print(data)
-
-	#data = get(EVENT_URL)
-	json.dump(data.json(),open(saveto,'w'))
-	print('** Refreshed: {saveto}')
-
-	return data, data.json()
+	if data.ok:	
+		json.dump(data.json(),open(saveto,'w'))
+		print(f'** Refreshed: {saveto}')
+		return data.json()
+	else:
+	 	return None
 	
