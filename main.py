@@ -27,9 +27,13 @@ import pandas as pd
 import pygal
 import app.charts as chart
 
+from jinja2 import contextfunction
 
 app_TRACKER = Tracker()
 
+@contextfunction
+def env(ctx,name):
+    return os.environ(name,'n/a')
 
 def reset_session_selectedrunner():
     session['SELECTEDRUNNER'] = {
