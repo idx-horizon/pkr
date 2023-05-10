@@ -60,7 +60,7 @@
       </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bas-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -96,8 +96,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
+        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -122,6 +121,6 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
   var modalBodyInput = exampleModal.querySelector('.modal-body input')
 
   modalTitle.textContent = data
-  modalBodyInput.value = recipient
+  modalBodyInput.value = data
 })
 </script>
