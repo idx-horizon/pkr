@@ -7,15 +7,11 @@
 <p>
   <li>Bromley&nbsp<a class="badge badge-pill badge-success" data-toggle="collapse" href="#bromleymore" >more</a>
 <div class="collapse" id="bromleymore">
-      <table class="table table-hover table-light table-striped text-left">
-        <tr>
-          <th width="60%">Stat</th>
-          <th width="40%">Value</th>
-        </tr>
+      <table width="50%" class="table table-hover table-light table-striped text-left">
         {% for line in data %}
           <tr>
-          <td>{{ line }}</td>
-          <td>{{ data[line] }}</td>
+          <td width="30%">{{ line }}</td>
+          <td width="20%">{{ data[line] }}</td>
           </tr>
         {% endfor %}
       </table>
