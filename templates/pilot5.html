@@ -68,8 +68,9 @@
 
 <HR>
 
-<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="{{ data[0] }}" >Open {{ data[0] }}</button>
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="{{ data }}" >Open1 "{{ data }}"</button>
 
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever={{ data }}>Open2 {{ data }}</button>
 
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
