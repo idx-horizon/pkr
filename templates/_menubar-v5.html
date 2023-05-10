@@ -1,0 +1,113 @@
+{# #4CAF50 (green) #}
+
+
+{% if not current_user.is_anonymous %}	
+<div class="text-left active" style="background-color: black;color:white">
+  &nbsp {{ current_user.icon or '🏃‍♂️' }} 
+  {{ current_user.username | title }} logged in &nbsp
+  <a class="badge badge-pill badge-success" role="button" 
+    href="/logout">❎ Logout</a>  
+</div>
+{% endif %}    
+<nav class="navbar sticky-top navbar-expand-lg text-dark navbar-light" style="background-color: #4CAF50;">
+  <a class="navbar-brand" href="/home">
+    <img src="{{url_for('static', filename='pkr.jpg')}}" width="35" height="35" alt="PKR"> 
+  </a>
+   
+ <div class="navbar" id="navbarUserLogin">
+  <ul class="navbar-nav">
+ 	{% if current_user.is_anonymous %}	
+  	  <li class="nav-item active">
+	   	  <a href="/login" class="nav-link">Login</a>
+	  </li>  
+    {% else %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" href="#" id="navbarDDMenuRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ selected_runner.username | title }} (A{{ selected_runner.rid | safe }})
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDDMenuRunner">
+          <a class="dropdown-item" href="/stats">✅ &nbsp Stats & challenges</a>
+          <a class="dropdown-item" href="/runs">🏃 &nbsp Runs</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/summaries/year">📅 &nbsp Year summary</a>
+          <a class="dropdown-item" href="/summaries/event">❇️ &nbsp Event summary</a>
+          <a class="dropdown-item" href="/atoz">🔤 &nbsp A-Z events</a>
+          <a class="dropdown-item" href="/headtohead">👥 &nbsp Head to Head</a>  
+          <a class="dropdown-item" href="/cloud">☁️ Event cloud</a>  
+          <a class="dropdown-item" href="/chart">📊 Charts</a>  
+        {#
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout">❎ &nbsp Logout</a>
+        #}
+        </div>
+      </li>
+    {% endif %}
+  </ul>
+</div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+        {% if (friends) and (friends | length > 0) %}
+          <a class="nav-link dropdown-toggle dropright" href="#" id="navbarDDSwitchRunner" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          🔄 &nbsp Switch</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDDSwitchRunner">
+          <a class="dropdown-item" href="/switch?page={{ request.endpoint }}">⭐️ &nbsp (self)</a>
+          {% for f in friends %}
+            <a class="dropdown-item" href="/switch/{{ f.f_username}}?page={{ request.endpoint }}">{{ f.f_icon }} &nbsp {{ f.f_username | title}}</a>
+          {% endfor %}
+          </div>
+          <div class="dropdown-divider"></div>
+        {% endif %}
+          
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDDEventLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Events
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDDEventLink">
+          <a class="dropdown-item" href="/events">All events</a>
+          <a class="dropdown-item" href="/newevents">New events</a>
+          <a class="dropdown-item" href="/cancellations">Cancellations 🆕</a>
+
+        </div>
+      </li>
+      
+{# commenting out the settings section     
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Settings
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/user">Runner profile</a>
+          <a class="dropdown-item" href="#">About</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Help</a>
+        </div>
+      </li>      
+#}    
+  
+      {% if current_user.is_admin %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Admin
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+        <a class="nav-link dropdown-toggle" href="#" id="dropdownSubMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">📈 Graphs</a>
+              <div class="dropdown-menu" aria-labelledby="dropdownSubMenu">
+                  <a class="dropdown-item" href="/graph?graphtype=agegrading">Age Grading</a>
+                  <a class="dropdown-item" href="/graph?graphtype=runtime">Run time</a>
+              </div>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">📍 Locations</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="/loginlog">🔑 Login logs</a>
+        </div>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
