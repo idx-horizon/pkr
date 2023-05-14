@@ -2,6 +2,19 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
+def add_anniversary_info():
+	basic_events = refresh_events(None).json()
+	anni = get_anniversary_date(false)
+	
+	for ev in basic_events:
+		a = [a for a in anni if a['Event'] == ev['properties']['EventLongName']]
+		if len(a)==0:
+			ev['anniversary'] = {}
+		else:
+			ev['annivesary']=a[0]
+			
+	return basis_events	
+
 def myget(url):
 	headers  =  {
 		'User-Agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36'
