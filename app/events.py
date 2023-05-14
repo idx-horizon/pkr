@@ -1,6 +1,6 @@
 import requests
 import json
-
+from bs4 import BeautifulSoup
 
 def myget(url):
 	headers  =  {
@@ -17,13 +17,13 @@ def refresh_events(saveto=None):
 	EVENT_URL = 'https://images.parkrun.com/events.json'
 	
 	data = myget(EVENT_URL)
-	if data.ok:	
+	if data.ok and saveto:	
 		json.dump(data.json(),open(saveto,'w'))
 		print(f'** Refreshed: {saveto}')
 		
 	return data
 
-def get_anniverary_data(refresh=False):
+def get_anniversary_data(refresh=False):
 	ANNIVERSARY_URL = 'https://wiki.parkrun.com/index.php/Anniversaries'
 	data = myget(ANNIVERSARY_URL)
 	if data.ok:
@@ -44,7 +44,7 @@ def get_anniverary_data(refresh=False):
 		return anniveraries
 
 def get_anniversaries():
-	anni = get_anniverary_data()
+	anni = get_anniversary_data()
 	data = json.dumps(anni)
 	local_fname = os.environ['HOME'] + r'/Documents/idx/anniversaries.json'	
 	with open(local_fname, 'w', encoding='utf-8') as fh:
