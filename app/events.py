@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 def add_anniversary_info():
 	basic_events = refresh_events(None).json()
-	anni = get_anniversary_date(false)
+	anni = get_anniversary_data(false)
 	
 	for ev in basic_events:
 		a = [a for a in anni if a['Event'] == ev['properties']['EventLongName']]
