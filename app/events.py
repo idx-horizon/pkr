@@ -6,7 +6,7 @@ def add_anniversary_info():
 	basic_events = refresh_events(None).json()
 	anni = get_anniversary_data(False)
 	
-	for ev in basic_events:
+	for ev in basic_events['events']:
 		a = [x for x in anni if x['Event'] == ev['properties']['EventLongName']]
 		if len(a)==0:
 			ev['anniversary'] = {}
