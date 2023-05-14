@@ -7,7 +7,7 @@ def add_anniversary_info():
 	anni = get_anniversary_data(False)
 	
 	for ev in basic_events:
-		a = [a for a in anni if a['Event'] == ev['properties']['EventLongName']]
+		a = [x for x in anni if a['Event'] == ev['properties']['EventLongName']]
 		if len(a)==0:
 			ev['anniversary'] = {}
 		else:
