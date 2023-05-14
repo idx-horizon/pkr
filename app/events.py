@@ -3,17 +3,17 @@ import json
 from bs4 import BeautifulSoup
 
 def add_anniversary_info():
-	basic_events = refresh_events(None).json()
+	events = refresh_events(None).json()
 	anni = get_anniversary_data(False)
 	
-	for ev in basic_events['events']:
+	for ev in events['events']['features']:
 		a = [x for x in anni if x['Event'] == ev['properties']['EventLongName']]
 		if len(a)==0:
 			ev['anniversary'] = {}
 		else:
 			ev['annivesary']=a[0]
 			
-	return basis_events	
+	return events	
 
 def myget(url):
 	headers  =  {
