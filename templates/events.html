@@ -78,7 +78,9 @@
           
                     {% endif %}</td>
             {% endif %}   
-            <td><a target="_blank" href="{{ item.url_course }}">{{ item.evshortname }}</td>
+            <td><a target="_blank" href="{{ item.url_course }}">{{ item.evshortname }}
+            <a class="badge badge-pill badge-success" data-toggle="collapse" href="#" >...</a>
+            </td>
             <td>{{ item.sss_score }}</td>
             <td>{{ item.stats["Average finish time"] }}</td>
             <td>{{ item.first_run | format_datetime('%Y-%m-%d') }}</td>
