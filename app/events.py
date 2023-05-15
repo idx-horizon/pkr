@@ -21,6 +21,7 @@ def add_anniversary_and_stats_info(saveto=None):
 
 	if saveto:	
 		json.dump(data.json(),open(saveto,'w', encoding='utf-8'))
+		json.dump(events,open(saveto,'w', encoding='utf-8'))
 		print(f'** Refreshed: {saveto}')
 			
 	return events	
