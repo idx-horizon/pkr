@@ -37,7 +37,7 @@ def myget(url):
 def get_stats_data(ev_name):
 	STATS_DB = 'event_stats.db'
 	results = {}
-	return 
+	
 	db = sqlite3.connect(STATSDB)
 	r = db.execute('select lastupdate, data from event where ev_name = ?',(ev_name,))
 	r.fetchall()
