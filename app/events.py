@@ -1,8 +1,10 @@
 import requests
 import json
+import sqlite3
+
 from bs4 import BeautifulSoup
 
-def add_anniversary_info(saveto=None):
+def add_anniversary_and_stats_info(saveto=None):
 	events = refresh_events(None).json()
 	anni = get_anniversary_data(False)
 	
@@ -12,9 +14,11 @@ def add_anniversary_info(saveto=None):
 			ev['anniversary'] = {}
 		else:
 			ev['annivesary']=a[0]
+			
+		ev['stats'] = get_stats_data(ev['properties']['EventLongName'])	
 
 	if saveto:	
-		json.dump(data.json(),open(saveto,'w'))
+		json.dump(data.json(),open(saveto,'w', encoding='utf-8'))
 		print(f'** Refreshed: {saveto}')
 			
 	return events	
@@ -30,6 +34,19 @@ def myget(url):
 	data = session.get(url)
 	return data
 
+def get_stats_data(ev_name):
+	STATS_DB = 'event_stats.db'
+	results = {}
+	return 
+	db = sqlite3.connect(STATSDB)
+	r = db.execute('select lastupdate, data from event where ev_name = ?',(ev_name,))
+	r.fetchall()
+	
+	if len(r) == 1:
+		results.update({'stats_lastupdate']: r[0][0]}, **json.loads(r[0][1]))
+	
+	return results
+	
 def refresh_events(saveto=None):
 	EVENT_URL = 'https://images.parkrun.com/events.json'
 	
