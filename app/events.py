@@ -1,28 +1,36 @@
 import requests
 import json
 import sqlite3
+from datetime import datetime
 
 from bs4 import BeautifulSoup
 
 def add_anniversary_and_stats_info(saveto=None):
+	STATS_DB = '../event_stats.db'
+	db_conn = sqlite3.connect(STATS_DB)
+
+	print(f'{datetime.now()} - basic events')
 	events = refresh_events(None).json()
+	print(f'{datetime.now()} - anniversaries')
 	anni = get_anniversary_data(False)
 	
+	print(f'{datetime.now()} - adding anniversary and stats')
 	for ev in events['events']['features']:
 		a = [x for x in anni if x['Event'] == ev['properties']['EventLongName']]
 		if len(a)==0:
 			ev['anniversary'] = {}
 		else:
-			ev['anniversary']=a[0]
+			ev['anniversary'] = a[0]
 			
 		ev['stats'] = {}	
 		if ev['properties']['countrycode']==97:	
-			ev['stats'] = get_stats_data(ev['properties']['EventLongName'])	
+			ev['stats'] = get_stats_data(db_conn, ev['properties']['EventLongName'])
 
 	if saveto:	
-#		json.dump(data.json(),open(saveto,'w', encoding='utf-8'))
-		json.dump(events,open(saveto,'w', encoding='utf-8'))
-		print(f'** Refreshed: {saveto}')
+		print(f'{datetime.now()} - saving to {saveto}')
+		json.dump(events, open(saveto,'w', encoding='utf-8'))
+
+	print(f'{datetime.now()} - end of Refresh')
 			
 	return events	
 
@@ -37,12 +45,10 @@ def myget(url):
 	data = session.get(url)
 	return data
 
-def get_stats_data(ev_name):
-	STATS_DB = '../event_stats.db'
+def get_stats_data(db_conn, ev_name):
 	results = {}
 	
-	db = sqlite3.connect(STATS_DB)
-	cur = db.execute('select lastupdate, data from events where ev_name = ?',(ev_name,))
+	cur = db_conn.execute('select lastupdate, data from events where ev_name = ?',(ev_name,))
 	r = cur.fetchall()
 	
 	if len(r) == 1:
