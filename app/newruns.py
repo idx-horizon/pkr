@@ -23,6 +23,7 @@ class Event():
         self.evlongname = event['properties']['EventLongName']
         self.first_run = event['properties']['first_run']
         self.sss_score = event['properties']['sss_score']
+        self.anniversary = event['anniversary']
         try:
             self.stats = event['stats']
         except:

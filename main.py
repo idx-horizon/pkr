@@ -107,8 +107,8 @@ def index():
 @app.route('/refresh')
 @app.route('/refresh/')
 def r_refresh():
-    d = refresh_events('events.json')
-    d = add_anniversary_and_stats_info('events_plus.json')
+#    d = refresh_events('events.json')
+    d = add_anniversary_and_stats_info('events.json')
     if d.ok:
         return {'Success': d.ok, 
                 'Version': 'v' + os.environ['PKR_VERSION']}
