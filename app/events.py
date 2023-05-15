@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 import sqlite3
@@ -6,7 +7,8 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 def add_anniversary_and_stats_info(saveto=None):
-	STATS_DB = '../event_stats.db'
+	print(f'{os.getcwd()} - in directory')
+	STATS_DB = 'event_stats.db'
 	db_conn = sqlite3.connect(STATS_DB)
 
 	print(f'{datetime.now()} - basic events')
