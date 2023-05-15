@@ -27,17 +27,10 @@ import pandas as pd
 import pygal
 import app.charts as chart
 
-from app.events import refresh_events
+from app.events import refresh_events, add_anniversary_and_stats_info
 
-#from jinja2 import contextfunction
 
 app_TRACKER = Tracker()
-
-#@contextfunction
-#def env(ctx,name):
-#    return os.environ.get(name,'n/a')
-#
-#__all__ = ['env']
 
 def reset_session_selectedrunner():
     session['SELECTEDRUNNER'] = {
@@ -115,6 +108,7 @@ def index():
 @app.route('/refresh/')
 def r_refresh():
     d = refresh_events('events.json')
+    d = add_anniversary_and_stats_info('events_plus.json')
     if d.ok:
         return {'Success': d.ok, 
                 'Version': 'v' + os.environ['PKR_VERSION']}
