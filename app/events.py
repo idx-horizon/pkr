@@ -2,7 +2,7 @@ import requests
 import json
 from bs4 import BeautifulSoup
 
-def add_anniversary_info():
+def add_anniversary_info(saveto=None):
 	events = refresh_events(None).json()
 	anni = get_anniversary_data(False)
 	
@@ -12,6 +12,10 @@ def add_anniversary_info():
 			ev['anniversary'] = {}
 		else:
 			ev['annivesary']=a[0]
+
+	if saveto:	
+		json.dump(data.json(),open(saveto,'w'))
+		print(f'** Refreshed: {saveto}')
 			
 	return events	
 
