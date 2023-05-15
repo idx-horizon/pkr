@@ -15,7 +15,9 @@ def add_anniversary_and_stats_info(saveto=None):
 		else:
 			ev['annivesary']=a[0]
 			
-		ev['stats'] = get_stats_data(ev['properties']['EventLongName'])	
+		ev['stats']= {}	
+		if ev['properties']['countrycode']==97:	
+			ev['stats'] = get_stats_data(ev['properties']['EventLongName'])	
 
 	if saveto:	
 		json.dump(data.json(),open(saveto,'w', encoding='utf-8'))
