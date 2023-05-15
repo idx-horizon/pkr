@@ -24,7 +24,7 @@ class Event():
         self.first_run = event['properties']['first_run']
         self.sss_score = event['properties']['sss_score']
         try:
-            self.stats = event['properties']['stats']
+            self.stats = event['stats']
         except:
             self.stats = {}
              
@@ -145,3 +145,4 @@ def get_last_newruns(lastlimit=10, country_code=97, centre_on='bromley'):
         subset.append(Event(ev, centre_on))
 
     return subset
+    
