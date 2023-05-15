@@ -13,9 +13,9 @@ def add_anniversary_and_stats_info(saveto=None):
 		if len(a)==0:
 			ev['anniversary'] = {}
 		else:
-			ev['annivesary']=a[0]
+			ev['anniversary']=a[0]
 			
-		ev['stats']= {}	
+		ev['stats'] = {}	
 		if ev['properties']['countrycode']==97:	
 			ev['stats'] = get_stats_data(ev['properties']['EventLongName'])	
 
