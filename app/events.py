@@ -35,10 +35,10 @@ def myget(url):
 	return data
 
 def get_stats_data(ev_name):
-	STATS_DB = 'event_stats.db'
+	STATS_DB = '../event_stats.db'
 	results = {}
 	
-	db = sqlite3.connect(STATSDB)
+	db = sqlite3.connect(STATS_DB)
 	r = db.execute('select lastupdate, data from event where ev_name = ?',(ev_name,))
 	r.fetchall()
 	
