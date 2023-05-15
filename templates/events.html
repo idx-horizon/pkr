@@ -79,7 +79,7 @@
                     {% endif %}</td>
             {% endif %}   
             <td><a target="_blank" href="{{ item.url_course }}">{{ item.evshortname }}
-            <a class="badge badge-success" data-toggle="collapse" href="#more_{{ item.id }}" >🚥</a>
+            <a class="badge badge-secondary" data-toggle="collapse" href="#more_{{ item.evid }}" >🚥</a>
             </td>
             <td>{{ item.sss_score }}</td>
             <td>{{ item.stats["Average finish time"] }}</td>
@@ -87,7 +87,7 @@
             <td>{{ item.distance|round(1,'floor') }}</td>
             <td><a href ="https://www.google.co.uk/maps/search/{{ item.latitude }}, {{ item.longitude }}">🗺</td>
         </tr>
-          <div class="collapse" id="more_{{ item.id }}">
+          <div class="collapse" id="more_{{ item.evid }}">
             <div class="card card-body">
                 more detail about {{ item.evshortname }}  </div>
           </div>
