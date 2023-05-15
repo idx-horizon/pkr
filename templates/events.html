@@ -83,13 +83,13 @@
           <div class="collapse" id="more_{{ item.evid }}">
             <div class="card card-body">
 
-               <table class="table table-hover table-light table-striped text-left">
+               <table class="table table-sm table-light text-left">
                 {% for line in ['Average finish time',
                                 'Average finishers per week',
                                 'Finishes']  %}
                     <tr>
-                      <td width="60%">{{ line }}</td>
-                      <td width="40%">{{ item.stats[line] }}</td>
+                      <td width="70%">{{ line }}</td>
+                      <td width="30%">{{ item.stats[line] }}</td>
                     </tr>
                  {% endfor %}
                </table>
