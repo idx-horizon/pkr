@@ -79,7 +79,11 @@
                     {% endif %}</td>
             {% endif %}   
             <td><a target="_blank" href="{{ item.url_course }}">{{ item.evshortname }}
-            <a class="badge badge-pill badge-success" data-toggle="collapse" href="#" >...</a>
+            <a class="badge badge-pill badge-success" data-toggle="collapse" href="#more_{{ item.evshortname }}" >🚥</a>
+          <div class="collapse" id="more_{{ item.evshortname }}">
+            <div class="card card-body">
+                more detail about {{ item.evshortname }}  </div>
+          </div>
             </td>
             <td>{{ item.sss_score }}</td>
             <td>{{ item.stats["Average finish time"] }}</td>
