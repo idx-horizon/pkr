@@ -84,7 +84,9 @@
             <div class="card card-body">
 
       <table class="table table-hover table-light table-striped text-left">
-        {% for line in item.stats %}
+        {% for line in ['Average finish time',
+                        'Average finisher per week',
+                        'Finishes']  %}
           <tr>
           <td width="60%">{{ line }}</td>
           <td width="40%">{{ item.stats[line] }}</td>
