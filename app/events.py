@@ -43,7 +43,7 @@ def get_stats_data(ev_name):
 	r.fetchall()
 	
 	if len(r) == 1:
-		results.update({'stats_lastupdate']: r[0][0]}, **json.loads(r[0][1]))
+		results.update({'stats_lastupdate': r[0][0]}, **json.loads(r[0][1]))
 	
 	return results
 	
