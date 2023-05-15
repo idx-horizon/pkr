@@ -82,6 +82,16 @@
             <a class="badge badge-info" data-toggle="collapse" href="#more_{{ item.evid }}" >more</a>
           <div class="collapse" id="more_{{ item.evid }}">
             <div class="card card-body">
+
+      <table class="table table-hover table-light table-striped text-left">
+        {% for line in item.stats %}
+          <tr>
+          <td width="60%">{{ line }}</td>
+          <td width="40%">{{ item.stats[line] }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+
                 more detail about {{ item.evshortname }}  </div>
           </div>
             </td>
