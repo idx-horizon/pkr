@@ -24,6 +24,7 @@ def get_cancellations():
             d[dt] = []
             li = ul[idx+4].find_all('li')
             for e in li:
+                print(e)
                 ev, reason =  e.text.split(':')
                 d[dt].append({'event': ev, 
                               'reason': reason, 
