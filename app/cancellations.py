@@ -19,7 +19,7 @@ def get_cancellations():
     title = h2[0].text
 
     d = {}
-    for idx, header in enumerate(h2[1:):
+    for idx, header in enumerate(h2[1:]):
         dt = header.text
         if 'Saturday' in dt:
             d[dt] = []
