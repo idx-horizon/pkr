@@ -12,7 +12,7 @@ def get_cancellations():
     dt_update = as_at_dt.strftime('%a %d-%b-%Y at %-I:%M%p')
 
     pg = BeautifulSoup(page.text)
-    soup = pg.find_all('div', attrs={'id': 'primary'})
+    soup = pg.find('div', attrs={'id': 'primary'})
     ul = soup.find_all('ul')
     h2 = soup.find_all('h2')
 
