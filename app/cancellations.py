@@ -19,11 +19,11 @@ def get_cancellations():
     title = h2[0].text
 
     d = {}
-    for idx, header in enumerate(h2):
+    for idx, header in enumerate(h2[1:):
         dt = header.text
         if 'Saturday' in dt:
             d[dt] = []
-            li = ul[idx-1].find_all('li')
+            li = ul[idx].find_all('li')
             for e in li:
                 try:
                     ev, reason =  e.text.split(':',1)
