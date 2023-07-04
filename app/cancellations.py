@@ -16,7 +16,7 @@ def get_cancellations():
     ul = soup.find_all('ul')
     h2 = soup.find_all('h2')
 
-    title = h2[0].text
+    pg_title = h2[0].text
 
     d = {}
     for idx, header in enumerate(h2[1:]):
@@ -35,4 +35,4 @@ def get_cancellations():
                               'link': e.find('a').get('href')
                              })
                                 
-    return title, d, dt_update
+    return pg_title, d, dt_update

@@ -246,7 +246,7 @@ def r_cancellations():
     title, cancellations, as_at_dt = get_cancellations()
     
     return render_template("cancellations.html",
-                               title=title,
+                               pg_title=title,
                                cancellations=cancellations,
                                timestamp=str(as_at_dt))
 

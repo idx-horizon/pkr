@@ -3,7 +3,7 @@
 
 <div width="100%" class="container-fluid p-3 bg-dark text-white">
 
-<h2>{{ title }}</h2>
+<h2>{{ pg_title }}</h2>
 <h4>(as at {{ timestamp }})</h4>
 </div>
      {% for item in cancellations %}
@@ -12,7 +12,6 @@
         <tr>
             <th width="30%">Event</th>
             <th width="70%">Cancellation reason</th>
-     
         </tr>
         
         {% for c in cancellations[item] %}
