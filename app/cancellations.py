@@ -23,7 +23,7 @@ def get_cancellations():
         dt = header.text
         if 'Saturday' in dt:
             d[dt] = []
-            li = ul[idx+4].find_all('li')
+            li = ul[idx-1].find_all('li')
             for e in li:
                 try:
                     ev, reason =  e.text.split(':',1)
