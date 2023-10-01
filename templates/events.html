@@ -86,7 +86,8 @@
                <table class="table table-sm text-left">
                 {% for line in ['Average finish time',
                                 'Average finishers per week',
-                                'Finishes']  %}
+                                'Finishes',
+                                'lastupdate']  %}
                     <tr>
                       <td width="70%">{{ line }}</td>
                       <td width="30%">{{ item.stats[line] }}</td>
