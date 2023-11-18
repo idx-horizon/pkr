@@ -260,7 +260,7 @@ class Runner:
         challenges['Longest tourism streak'] = 'tbc'
         challenges['Total distance travelled'] = 'tbc'
         
-        flagged = [f'{x} {FLAGS[x}' for x in self.countries]
+        flagged = [f'{x} {FLAGS{x}' for x in self.countries]
         challenges['🌍 Countries visited'] = '{} ({})'.format(len(self.countries), ', '.join(flagged))
 
         for k, v in [('Time', '⏱ Time'), ('AgeGrade', '🎂 Age grading'), ('Pos', '🏅 Position')]:
