@@ -26,7 +26,7 @@
                value="{{ request.form['filter_str'] }}"></input>
 
           <select class="form-control" style="width:150px" name="country_code">
-            {% for c in countries|sort %}
+            {% for c in countries %}
                 <option {% if c==country %}selected{% endif %}
                   value={{ c }}>{{ countries[c]['name'] }}</option>
             {% endfor %}
