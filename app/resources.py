@@ -7,7 +7,7 @@ except Exception as e:
 
 
 def get_countries():
-    countries = Country.query.all()
+    countries = Country.query.order_by(Country.cy_name).all()
     d = {}
     for c in countries:
         d[c.cy_code] = {
