@@ -9,7 +9,7 @@ import re
 import datetime
 import math
 
-from flags import FLAGS
+from app.flags import FLAGS
 try:
     import app.extract as extract
 except Exception as e:
