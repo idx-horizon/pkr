@@ -1,6 +1,7 @@
 FLAGS = {'Austria':     '🇦🇹',
         'Australia':    '🇦🇺',
         'Canada':       '🇨🇦',
+        'Denmark':      '🇩🇰',
         'Germany':      '🇩🇪',
         'Finland':      '🇫🇮',
         'France':       '🇫🇷',
