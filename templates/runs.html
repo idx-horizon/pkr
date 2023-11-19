@@ -4,6 +4,9 @@
 <div class="container-fluid p-3 bg-dark text-white">
 
 <H2>	
+	<span class="badge badge-pill badge-success">
+		{{ data.flags | join(' ') }}
+	</span>
 	{% if data.run_count == data.runs | length %}
 		<span class="badge badge-pill badge-success">
 			All {{ data.run_count }} runs
@@ -14,9 +17,6 @@
 		</span>	
 		<a href="/runs" class="btn btn-success">Clear filter</a>	
 	{% endif %}
-	<span class="badge badge-pill badge-success">
-		{{ data.flags | join(' ') }}
-	</span>
 </H2>
 <H3>
 
