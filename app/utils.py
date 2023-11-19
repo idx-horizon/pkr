@@ -56,6 +56,7 @@ class Runner:
         self.fullname = None
         self.name = None
         self.countries = None
+        self.flags = None
         self.stats = None
         self.challenges = None
         self.caption = None
@@ -127,6 +128,7 @@ class Runner:
 
         self.caption = data['caption']
         self.countries = countries
+        self.flags = [FLAGS[x] for x in self.countries]
 
         self.stats = self.get_stats()
         self.challenges = self.get_challenges()
