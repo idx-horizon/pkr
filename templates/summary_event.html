@@ -21,15 +21,19 @@
     {% for item in data %}
         <tr>
             <td><a class="text-decoration-none" href="/runs/{{ item.event }}"><span class="badge badge-pill badge-success">{{ item.count }}</span> {{ item.event }}</a>
-            {% if '2024' in item.years %}
-             <span class="badge badge-pill badge-success">2024</span> 
-            {% endif %}
             </td>
             <td>{{ item.times[1] | replace('00:','') }}</td>
             <td>{{ item.times[0] | replace('00:','') }}</td>
             <td>{{ item.times[2] | replace('00:','') }}</td>
-            <td>{{ item.latest_year }}</td>
-            <td>{{ item.years  }}</td>            
+            <td>
+            {% if '2024' in item.years %}
+             <span class="badge badge-pill badge-success">
+            {% else %}
+             <span class="badge badge-pill badge-warning">
+            {% endif %}
+            {{ item.latest_year }}
+            </span>
+            <td>{{ item.years }}</td>            
 
         </tr>
    {% endfor %}
