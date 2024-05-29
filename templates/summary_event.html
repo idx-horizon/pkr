@@ -14,7 +14,8 @@
         <th width="10%">PB</th>
         <th width="10%">Average</th>
         <th width="10%">Slowest</th>
-        <th width="40%">Years</th>
+        <th width="10%">Latest</th>
+        <th width="30%">Years</th>
         </tr>
     </thead>
     {% for item in data %}
@@ -26,7 +27,8 @@
             </td>
             <td>{{ item.times[1] | replace('00:','') }}</td>
             <td>{{ item.times[0] | replace('00:','') }}</td>
-            <td>{{ item.times[2] | replace('00:','') }}</td>            
+            <td>{{ item.times[2] | replace('00:','') }}</td>
+            <td>{{ item.latest_year }}</td>
             <td>{{ item.years  }}</td>            
 
         </tr>

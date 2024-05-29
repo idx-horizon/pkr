@@ -72,7 +72,8 @@ def event_summary(runs):
     data = [{'event': k,
              'count': v,
              'times': get_estat_times(runs, k), 
-             'years': ', '.join(sorted(d[k])), 
+             'years': ', '.join(sorted(d[k])),
+             'latest_year': max(d[k]), 
              } for k, v in c.items()]
 
     return sorted(data, key=lambda x: x['count'], reverse=True)
