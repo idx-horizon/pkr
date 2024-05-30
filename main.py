@@ -500,8 +500,8 @@ def r_headtohead(params=None):
             c2 = [('', '')]
         data[fdt] = [c1[0], c2[0]]
     
-    srid_results = set([x['Run Date'] for x in srid_runs])
-    crid_results = set([x['Run Date'] for x in crid_runs])
+    srid_results = set([x['Run Date'] for x in srid.runs])
+    crid_results = set([x['Run Date'] for x in crid.runs])
         
     common_runs = {
       'same_event': len(srid_results.intersection(crid_results)),
