@@ -60,6 +60,9 @@ class Event():
 
     def set_occurrences(self, value):
         self.occurrences = value
+        
+    def set_last_run(self, value):
+        self.last_run = value 
 
 
 def get(url):
