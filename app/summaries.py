@@ -74,18 +74,8 @@ def event_summary(runs):
              'times': get_estat_times(runs, k), 
              'years': ', '.join(sorted(d[k])),
              'latest_year': max(d[k]), 
+             'year_count': len(d),
              } for k, v in c.items()]
 
     return sorted(data, key=lambda x: x['count'], reverse=True)
     
-    
-#def junk():
-#  for r in me.runs:
-#    if r['Event'] not in d.keys():
-#      d[r['Event']]=set()
-#    d[r['Event']].add(r['Run Date'][-4:])
-  
-
-#  for e in d: 
-#  	print(f'{e:<30} - First: {min(d[e])} # years: {len(d[e])} - {", #".join(sorted(d[e]))}')
- 
