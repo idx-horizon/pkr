@@ -31,7 +31,7 @@
   </thead>
   {% for item in common_runs.details %}
 	<tr>
-		<td>{{ item[0] | formay_datetime }}</td>
+		<td>{{ item[0] | format_datetime }}</td>
 		<td>{{ item[2] }}</td>
     </tr>
   {% endfor%}   
