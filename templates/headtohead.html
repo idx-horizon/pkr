@@ -2,7 +2,7 @@
 {% include "_menubar.html" %}
 
 <div class="container-fluid p-3 bg-dark text-white">
-<H2>Head to Head - last {{ limit }} Saturday runs</H2>
+<H2>Head to Head</H2>
 
 <form class="form-inline" action='/headtohead' method="POST" name="form" autocomplete="off">
 
@@ -38,6 +38,11 @@
 </table>
 </div> 
 
+<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#LastLimitEvents" aria-expanded="false" aria-controls="LastLimitEvents">
+    Show the last {{ limit }} events... 
+  </button>
+
+<div class="collapse" id="LastLimitEvents">
 <table class="table table-hover table-light table-striped" style="width:90%">
     <thead class="thead-light text-left">
 	<tr>
@@ -81,7 +86,6 @@
 		<P>
 
 </table>
-{{ common_runs }}
 </div>
 
 {% include "_footer.html" %}
