@@ -471,6 +471,10 @@ def r_atoz():
 @app.route('/headtohead', methods=['POST', 'GET'])
 @login_required
 def r_headtohead(params=None):
+
+    def date_key(item):
+        return datetime.strptime(item[0], "%d/%m/%Y")
+        
     try:
         against_rid = str(request.form['against'])
     except:
@@ -500,17 +504,21 @@ def r_headtohead(params=None):
             c2 = [('', '')]
         data[fdt] = [c1[0], c2[0]]
     
-    srid_results = set([(x['results_link'],
-                         x['Run Date'], 
+    srid_results = set([(x['Run Date'],
+                         x['results_link'], 
                          x['Event']) for x in srid.runs])
                          
-    crid_results = set([(x['results_link'],
-                         x['Run Date'], 
+    crid_results = set([(x['Run Date'],
+                         x['results_link'], 
                          x['Event']) for x in crid.runs])
+
+sorted_data = sorted(data, key=date_key)
+
+
         
     common_runs = {
       'same_event': len(srid_results.intersection(crid_results)),
-      'details': srid_results.intersection(crid_results),
+      'details': sorted(srid_results.intersection(crid_results), key=date_key),
       'metrics': [
            (crid.name, len(crid_results), len(crid_results - srid_results)),
            (srid.name, len(srid_results), len(srid_results - crid_results))        

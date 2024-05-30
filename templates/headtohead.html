@@ -18,12 +18,25 @@
 </form>
 
 <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#sameEvents" aria-expanded="false" aria-controls="collapseExample">
-    Ran {{ common_runs.same_event}} identical events 
+    Ran the same event {{ common_runs.same_event}} times... 
   </button>
  
 <div class="collapse" id="SameEvents">
+<table class="table table-hover table-light table-striped" style="width:50%">
+   <thead class="thead-light text-left">
+	<tr>
+		<th width="40%">Date</th>
+		<th width="60%">Event</th>
+    </tr>
+  </thead>
+  {% for item in common_runs.details %}
+	<tr>
+		<td>{{ item[0] | formay_datetime }}</td>
+		<td>{{ item[2] }}</td>
+    </tr>
+  {% endfor%}   
   <div class="card card-body">
-     {{common_runs }}
+     {{ common_runs.details }}
   </div>
 </div> 
 
