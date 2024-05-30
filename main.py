@@ -488,7 +488,7 @@ def r_headtohead(params=None):
 
     data = {}
     lastsat = utils.last_saturday()
-    limit = min(max(len(srid.runs),len(crid.runs)), 20)
+    limit = min(max(len(srid.runs),len(crid.runs)), 50)
     for i in range(limit):
         dt = lastsat - datetime.timedelta(days=i * 7)
         fdt = dt.strftime('%d/%m/%Y')
@@ -499,13 +499,26 @@ def r_headtohead(params=None):
         if len(c2) == 0:
             c2 = [('', '')]
         data[fdt] = [c1[0], c2[0]]
-
+    
+    srid_results = set([x['Run Date'] for x in srid_runs)
+    crid_results = set([x['Run Date'] for x in crid_runs)
+        
+    common_runs = {
+      'same_event': len(srid_results.intersection(crid_results)),
+      'different': [
+           (crid.name, len(srid_results - crid_results)),
+           (srid.name, len(crid_results - srid_results))        
+      ],
+      'totals': (len(srid_results), len(crid_results))
+    }
+    
     return render_template('headtohead.html',
                            data=data,
                            limit=limit,
                            runner_names=[crid.name, srid.name],
                            selectedrunner=against_rid,
-                           )
+                           common_runs=common_runs
+            )
 
 
 @app.route('/runs', methods=['POST', 'GET'])
