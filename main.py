@@ -514,7 +514,7 @@ def r_headtohead(params=None):
         
     common_runs = {
       'same_event': len(srid_results.intersection(crid_results)),
-      'details': sorted(srid_results.intersection(crid_results), key=date_key),
+      'details': sorted(srid_results.intersection(crid_results), key=date_key, reverse=True),
       'metrics': [
            (crid.name, len(crid_results), len(crid_results - srid_results)),
            (srid.name, len(srid_results), len(srid_results - crid_results))        
