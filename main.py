@@ -511,10 +511,6 @@ def r_headtohead(params=None):
     crid_results = set([(x['Run Date'],
                          x['results_link'], 
                          x['Event']) for x in crid.runs])
-
-sorted_data = sorted(data, key=date_key)
-
-
         
     common_runs = {
       'same_event': len(srid_results.intersection(crid_results)),
