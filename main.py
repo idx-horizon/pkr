@@ -396,7 +396,7 @@ def r_events():
         for d in data:
             occ = len([x for x in rid.runs if x['Event'] == d.evshortname])
             d.set_occurrences(occ)
-            last_run = max([x['Run Date'][-4:] for x in rid.runs])
+            last_run = max([x['Run Date'][-4:] for x in rid.runs if x['Event'] == d.evshortname])
             d.set_last_run(last_run)
             if occ != 0:
                 d.set_hasrun('Yes')

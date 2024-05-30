@@ -60,11 +60,12 @@
              <th width="10%">Run?</th>
         {% endif %}
         <th width="35%">Name</th>
-        <th width="10%">Difficulty</th>
+        <th width="7%">Last Year</th>
+        <th width="7%">Difficulty</th>
         <th width="10%">Average Time</th>
         <th width="15%">First Event</th>
         <th width="10%">Distance</th>
-        <th width="10%">Map</th>
+        <th width="6%">Map</th>
  
     </tr>
 
@@ -79,7 +80,7 @@
                     {% endif %}</td>
             {% endif %}   
             <td><a target="_blank" href="{{ item.url_course }}">{{ item.evshortname }}
-            <a class="badge badge-info" data-toggle="collapse" href="#more_{{ item.evid }}" >more</a> {{ item.last_run }}
+            <a class="badge badge-info" data-toggle="collapse" href="#more_{{ item.evid }}" >more</a>
           <div class="collapse" id="more_{{ item.evid }}">
             <div class="card card-body">
 
@@ -97,6 +98,7 @@
             </div>
           </div>
             </td>
+            <td>{{ item.last_run }}</td>
             <td>{{ item.sss_score }}</td>
             <td>{{ item.stats["Average finish time"] }}</td>
             <td>{{ item.first_run | format_datetime('%Y-%m-%d') }}</td>
