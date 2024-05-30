@@ -473,7 +473,7 @@ def r_atoz():
 def r_headtohead(params=None):
 
     def date_key(item):
-        return datetime.strptime(item[0], "%d/%m/%Y")
+        return datetime.datetime.strptime(item[0], "%d/%m/%Y")
         
     try:
         against_rid = str(request.form['against'])
