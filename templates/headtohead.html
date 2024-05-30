@@ -17,6 +17,16 @@
 	<button type="submit" class="btn btn-success" name="go_btn" value="Go">Go</button>
 </form>
 
+<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#sameEvents" aria-expanded="false" aria-controls="collapseExample">
+    Ran {{ common_runs.same_event}} identical events 
+  </button>
+ 
+<div class="collapse" id="SameEvents">
+  <div class="card card-body">
+     {{common_runs }}
+  </div>
+</div> 
+
 <table class="table table-hover table-light table-striped" style="width:90%">
     <thead class="thead-light text-left">
 	<tr>
