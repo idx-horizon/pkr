@@ -17,10 +17,10 @@
 	<button type="submit" class="btn btn-success" name="go_btn" value="Go">Go</button>
 </form>
 
-<table class="table table-hover table-light table-striped" style="width:40%">
+<table class="table table-hover table-light table-striped" style="width:30%">
    <thead class="thead-light text-left">
 	<tr>
-		<th width="60%"></th>
+		<th width="60%">Summary</th>
 		<th width="20%">{{ runner_names[0] }}</th>
 		<th width="20%">{{ runner_names[1] }}</th>
     </tr>
@@ -39,11 +39,11 @@
   </tr>
 </table>
 
-<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#SameEvents" aria-expanded="true" aria-controls="SameEvents">
+<button class="btn btn-success" type="button" data-toggle="collapse" data-target="#SameEvents" aria-expanded="false" aria-controls="SameEvents">
     Ran the same event {{ common_runs.same_event}} times...
 </button>
  
-<div class="collapse show" id="SameEvents">
+<div class="collapse" id="SameEvents">
 <table class="table table-hover table-light table-striped" style="width:90%">
    <thead class="thead-light text-left">
 	<tr>
