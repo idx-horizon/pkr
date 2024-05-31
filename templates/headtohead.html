@@ -22,19 +22,19 @@
   </button>
  
 <div class="collapse show" id="SameEvents">
-<table class="table table-hover table-light table-striped" style="width:50%">
+<table class="table table-hover table-light table-striped" style="width:90%">
    <thead class="thead-light text-left">
 	<tr>
-		<th width="40%">Date</th>
-		<th width="60%">Event</th>
-		<th width="60%">{{ runner_names[0] }}</th>
-		<th width="60%">{{ runner_names[1] }}</th>
+		<th width="15%">Date</th>
+		<th width="25%">Event</th>
+		<th width="10%">{{ runner_names[0] }}</th>
+		<th width="10%">{{ runner_names[1] }}</th>
     </tr>
   </thead>
   {% for item in common_runs.details %}
 	<tr>
 		<td>{{ item[0] | format_datetime }}</td>
-		<td><a target="_blank" href="{{ item[1] }}">{{ item[2] }}</td>
+		<td><a target="_blank" href="{{ item[1] }}">{{ item[2] }}</a></td>
 		<td>-</td>
 		<td>-</td>
     </tr>
