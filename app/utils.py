@@ -24,7 +24,9 @@ def last_saturday(dt=None):
         
     return dt - datetime.timedelta(days=((dt.isoweekday() + 1) % 7))
 
-
+def secs_to_time(secs):
+    return datetime.timedelta(seconds=secs)
+    
 def time_to_secs(runtime):
     if runtime.count(':') == 2:
         weights = [3600, 60, 1]

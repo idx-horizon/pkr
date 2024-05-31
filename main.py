@@ -518,15 +518,15 @@ def r_headtohead(params=None):
       'same_event': len(same_runs_list),
       'details': sorted(same_runs_list, key=date_key, reverse=True),
       'metrics': [
-        {'tot_runs': len(srid.runs),
+        {'tot_runs': len(crid.runs),
          'tot_different': len(crid_results - srid_results),
          'tot_same': len(same_runs_list),
-         'PB': min([x['Time'] for x in srid.runs])
+         'PB': utils.secs_to_time(min([x['TimeSecs'] for x in crid.runs]))
         },
-        {'tot_runs': len(crid.runs),
+        {'tot_runs': len(srid.runs),
          'tot_different': len(srid_results - crid_results),
          'tot_same': len(same_runs_list),
-         'PB': min([x['Time'] for x in crid.runs])
+         'PB': utils.secs_to_time(min([x['TimeSecs'] for x in srid.runs]))
         }
        ] 
     }
