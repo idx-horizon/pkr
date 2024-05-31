@@ -17,36 +17,23 @@
 	<button type="submit" class="btn btn-success" name="go_btn" value="Go">Go</button>
 </form>
 
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card text-bg-light mb-3" style="max-width: 30rem;">
-    <div class="card-header">{{ runner_names[0] }}</div>
-      <div class="card-body">
-        <p class="card-text">Number of runs...</p>
-        <button type="button" class="btn btn-success">
-  Total <span class="badge badge-light w-150">{{ common_runs.metrics[0][1] }}</span>
-</button>
-        <button type="button" class="btn btn-success">
-  Different <span class="badge badge-light w-150">{{ common_runs.metrics[0][2] }}</span>
-</button>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card text-bg-light mb-3" style="max-width: 30rem;">
-    <div class="card-header">{{ runner_names[1] }}</div>
-      <div class="card-body">
-        <p class="card-text">Number of runs...</p>
-        <button type="button" class="btn btn-success">
-  Total <span class="badge badge-light w-150">{{ common_runs.metrics[0][1] }}</span>
-</button>
-        <button type="button" class="btn btn-success">
-  Different <span class="badge badge-light w-150">{{ common_runs.metrics[0][2] }}</span>
-</button>
-      </div>
-    </div>
-  </div>
-</div>
+<table class="table table-hover table-light table-striped" style="width:90%">
+   <thead class="thead-light text-left">
+	<tr>
+		<th width="60%"></th>
+		<th width="20%">{{ runner_names[0] }}</th>
+		<th width="20%">{{ runner_names[1] }}</th>
+    </tr>
+  </thead>
+  <tr><td>Total runs</td>
+      <td>{{ common_runs.metrics[0][1] }}</td>
+      <td>{{ common_runs.metrics[1][1] }}</td>
+  </tr>
+  <tr><td>Different</td>
+      <td>{{ common_runs.metrics[0][2] }}</td>
+      <td>{{ common_runs.metrics[1][2] }}</td>
+  </tr>
+</table>
 
 <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#SameEvents" aria-expanded="true" aria-controls="SameEvents">
     Ran the same event {{ common_runs.same_event}} times...
