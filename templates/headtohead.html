@@ -17,21 +17,24 @@
 	<button type="submit" class="btn btn-success" name="go_btn" value="Go">Go</button>
 </form>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">runner_names[0]</h5>
-    <h6 class="card-subtitle mb-2 text-muted">tbd</h6>
-    <p class="card-text">{{ common_runs.metrics[0] }}</p>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ runner_names[0] }}</h5>
+        <p class="card-text">{{ common_runs.metrics[0] }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ runner_names[1] }}</h5>
+        <p class="card-text">{{ common_runs.metrics[1] }}</p>
+      </div>
+    </div>
   </div>
 </div>
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">runner_names[1]</h5>
-    <h6 class="card-subtitle mb-2 text-muted">PB: </h6>
-    <p class="card-text"> {{ common_runs.metrics[1] }}</p>
-  </div>
-</div>
-
 
 <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#SameEvents" aria-expanded="true" aria-controls="SameEvents">
     Ran the same event {{ common_runs.same_event}} times...
