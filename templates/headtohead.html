@@ -19,27 +19,27 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+    <div class="card text-black bg-success mb-3" style="max-width: 18rem;">
     <div class="card-header">{{ runner_names[0] }}</div>
       <div class="card-body">
         <h5 class="card-title"></h5>
         <p class="card-text">Number of runs...</p>
        <ul class="list-group list-group-flush">
          <li class="list-group-item text-black">Total: {{ common_runs.metrics[0][1] }}</li>
-         <li class="list-group-item text-black">Different: {{ common_runs.metrics[0][1] }}</li>
+         <li class="list-group-item text-black">Different: {{ common_runs.metrics[0][2] }}</li>
        </ul> 
       </div>
     </div>
   </div>
   <div class="col-sm-6">
-    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+    <div class="card text-black bg-success mb-3" style="max-width: 18rem;">
     <div class="card-header">{{ runner_names[1] }}</div>
       <div class="card-body">
         <h5 class="card-title">{{ runner_names[1] }}</h5>
-        <p class="card-text">{{ common_runs.metrics[1] }}</p>
+        <p class="card-text">Number of runs...</p>
        <ul class="list-group list-group-flush">
          <li class="list-group-item text-black">Total: {{ common_runs.metrics[1][1] }}</li>
-         <li class="list-group-item text-black">Different: {{ common_runs.metrics[1][1] }}</li>
+         <li class="list-group-item text-black">Different: {{ common_runs.metrics[1][2] }}</li>
        </ul> 
       </div>
     </div>
