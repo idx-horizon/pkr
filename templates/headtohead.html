@@ -25,8 +25,8 @@
         <h5 class="card-title"></h5>
         <p class="card-text">Number of runs...</p>
        <ul class="list-group list-group-flush">
-         <li class="list-group-item">Total runs: common_runs.metrics[0][1]</li>
-         <li class="list-group-item">Different runs: common_runs.metrics[0][1]</li>
+         <li class="list-group-item text-black">Total: {{ common_runs.metrics[0][1] }}</li>
+         <li class="list-group-item text-black">Different: {{ common_runs.metrics[0][1] }}</li>
        </ul> 
       </div>
     </div>
@@ -37,6 +37,10 @@
       <div class="card-body">
         <h5 class="card-title">{{ runner_names[1] }}</h5>
         <p class="card-text">{{ common_runs.metrics[1] }}</p>
+       <ul class="list-group list-group-flush">
+         <li class="list-group-item text-black">Total: {{ common_runs.metrics[1][1] }}</li>
+         <li class="list-group-item text-black">Different: {{ common_runs.metrics[1][1] }}</li>
+       </ul> 
       </div>
     </div>
   </div>
