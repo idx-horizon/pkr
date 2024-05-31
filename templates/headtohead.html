@@ -17,7 +17,7 @@
 	<button type="submit" class="btn btn-success" name="go_btn" value="Go">Go</button>
 </form>
 
-<table class="table table-hover table-light table-striped" style="width:90%">
+<table class="table table-hover table-light table-striped" style="width:40%">
    <thead class="thead-light text-left">
 	<tr>
 		<th width="60%"></th>
@@ -32,6 +32,10 @@
   <tr><td>Different</td>
       <td>{{ common_runs.metrics[0][2] }}</td>
       <td>{{ common_runs.metrics[1][2] }}</td>
+  </tr>
+  <tr><td>Ran the same event</td>
+      <td>{{ common_runs.metrics[0][3] }}</td>
+      <td>{{ common_runs.metrics[1][3] }}</td>
   </tr>
 </table>
 

@@ -518,8 +518,8 @@ def r_headtohead(params=None):
       'same_event': len(same_runs_list),
       'details': sorted(same_runs_list, key=date_key, reverse=True),
       'metrics': [
-           (crid.name, len(crid_results), len(crid_results - srid_results)),
-           (srid.name, len(srid_results), len(srid_results - crid_results))        
+           (crid.name, len(crid_results), len(crid_results - srid_results), len(same_runs_list)),
+           (srid.name, len(srid_results), len(srid_results - crid_results), len(same_runs_list))        
        ] 
     }
     
