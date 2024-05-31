@@ -23,11 +23,11 @@
     <div class="card-header">{{ runner_names[0] }}</div>
       <div class="card-body">
         <p class="card-text">Number of runs...</p>
-        <button type="button" class="btn btn-primary">
-  Total <span class="badge badge-light">{{ common_runs.metrics[0][1] }}</span>
+        <button type="button" class="btn btn-success">
+  Total <span class="badge badge-light w-100">{{ common_runs.metrics[0][1] }}</span>
 </button>
-        <button type="button" class="btn btn-primary">
-  Different <span class="badge badge-light">{{ common_runs.metrics[0][2] }}</span>
+        <button type="button" class="btn btn-success">
+  Different <span class="badge badge-light w-100">{{ common_runs.metrics[0][2] }}</span>
 </button>
       </div>
     </div>
@@ -37,10 +37,12 @@
     <div class="card-header">{{ runner_names[1] }}</div>
       <div class="card-body">
         <p class="card-text">Number of runs...</p>
-       <ul class="list-group list-group-flush">
-         <li class="list-group-item text-black">Total: {{ common_runs.metrics[1][1] }}</li>
-         <li class="list-group-item text-black">Different: {{ common_runs.metrics[1][2] }}</li>
-       </ul> 
+        <button type="button" class="btn btn-success">
+  Total <span class="badge badge-light w-100">{{ common_runs.metrics[0][1] }}</span>
+</button>
+        <button type="button" class="btn btn-success">
+  Different <span class="badge badge-light w-100">{{ common_runs.metrics[0][2] }}</span>
+</button>
       </div>
     </div>
   </div>
