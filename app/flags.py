@@ -25,7 +25,7 @@ FLAGS = {
         'England, UK':  '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
         'Scotland, UK': '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
         'Wales, UK':    '🏴󠁧󠁢󠁷󠁬󠁳󠁿',
-        'Northern Ireland, UK': '🇬🇧 (NI)',
+        'Northern Ireland, UK': 'NI',
         'St Brelade, Jersey': '🇯🇪',
         'Vale, Guernsey': '🇬🇬',
         'Douglas, Isle of Man': '🇮🇲' 
