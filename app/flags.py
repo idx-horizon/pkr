@@ -22,4 +22,11 @@ FLAGS = {
         'South Africa': '🇮🇹', 
         'UK':           '🇬🇧', 
         'USA':          '🇺🇸',
+        'England, UK':  '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+        'Scotland, UK': '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+        'Wales, UK':    '🏴󠁧󠁢󠁷󠁬󠁳󠁿',
+        'Northern Ireland, UK': '🇬🇧 (NI)',
+        'St Brelade, Jersey': '🇯🇪',
+        'Vale, Guernsey': '🇬🇬',
+        'Douglas, Isle of Man': '🇮🇲' 
 }
