@@ -14,7 +14,9 @@
 	<span class="badge badge-pill badge-success">
 		{{ num_ev }} events
 	</span>	
-	
+	<span class="badge badge-pill badge-success">
+    	{{ data | sum(attribute='count') }} runs
+	</span>	
 </H2>
 
 
