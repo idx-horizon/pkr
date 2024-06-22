@@ -284,7 +284,7 @@ class Runner:
         challenges['🎵 Bee Gees'] = self.ev_pattern_challenge({'^B': 3, '^G': 3}, '(3B & 3G)')
         challenges['🏴‍☠️ Pirates'] = self.ev_pattern_challenge({'^C': 7, '^R': 1}, '(7C & 1R)')
         challenges['🧭 Compass'] = self.ev_pattern_challenge(
-            {'north': 1, 'west': 1, 'south': 1, 'east': 1},
+            {'north|nord': 1, 'west': 1, 'south': 1, 'east': 1},
             '(Go North, South, East & West)')
         challenges['👤 Full Ponty'] = self.ev_pattern_challenge({'ponty': 4}, '(All the Ponty\'s)')
 
