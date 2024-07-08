@@ -100,6 +100,7 @@ class Runner:
         print(data['title'])
         self.fullname = data['title']
         self.name = self.fullname[:self.fullname.index(' ')]
+        self.last_seen_age = data['last_seen_age']
 
         # add number of occurrences event has been run and
         # add timeSecs to represent Time in seconds
