@@ -151,7 +151,8 @@ class Runner:
 
     def get_card_summary(self):
         pb = min([t['TimeSecs'] for t in self.runs])
-        return 'PB: {}~{} runs @ {} events~Latest: {} at {} on {}'.format(
+        return 'Age band: {}~PB: {}~{} runs @ {} events~Latest: {} at {} on {}'.format(
+            self.last_seen_age,
             str(datetime.timedelta(seconds=pb)),
             self.run_count,
             len([x for x in self.stats if x.startswith('_EVENT_')]),
