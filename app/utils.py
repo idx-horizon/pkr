@@ -63,6 +63,7 @@ class Runner:
         self.challenges = None
         self.caption = None
         self.run_count = 0
+        self.last_seen_age = None
 
     def get_runs(self, filter_by=None, refresh=True, sort_by='Date'):
         local_filename = '{}.pkr'.format(self.rid)
