@@ -1,0 +1,83 @@
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#mymap {
+    height: 50%;
+    width: 100%;
+}
+
+.infobox {
+  background-colour: rgba(0,128,0,0.871)
+}
+.text-center {
+    text-align: center !important;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.form-inline {
+    padding:5px;
+}
+
+.form-inline > * {
+    margin:10px 5px !important;
+}
+
+#demo-ignore img {
+    width: 100%;
+    height: auto;
+    max-height: 100px;
+}
+
+.active {
+    font-weight: bold;
+    text-decoration: none;    
+}
+
+ a { 
+    text-decoration: none !important;
+ }
+
+.btn-success {
+    background-color: #4CAF50 !important;
+}
+#hilite-good {
+    font-weight: bold;
+    color: green
+}
+#hilite-bad {
+    font-weight: bold;
+    color: orange;
+}
+img {
+  display: block;
+  max-width: 80%;
+  height: auto;
+}
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}
+
+      

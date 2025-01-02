@@ -56,7 +56,7 @@ def getmap(data, centres, centre_on, current_user, session):
         lat=centre_lat, # 51.386539, # currently set to Bromley
         lng=centre_lng, # 0.022874, 
         zoom=10, 
-        style=style,
+#        style=style,
         region="UK",
         fullscreen_control=True,
         markers= markers
