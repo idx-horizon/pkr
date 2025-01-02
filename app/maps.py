@@ -53,8 +53,8 @@ def getmap(data, centres, centre_on, current_user, session):
 
    mymap = Map(
         identifier="mymap", 
-        lat=centre_lat, # 51.386539, # currently set to Bromley
-        lng=centre_lng, # 0.022874, 
+        lat=centre_lat, 
+        lng=centre_lng, 
         zoom=10, 
 #        style=style,
         region="UK",
@@ -63,6 +63,3 @@ def getmap(data, centres, centre_on, current_user, session):
    )     
    return mymap
 
-
-                      
-#{evid': 2352, 'evname': 'bethlemroyalhospital', 'evshortname': 'Bethlem Royal Hospital', 'evlongname': 'Bethlem Royal Hospital parkrun', 'first_run': '2019-05-25', 'sss_score': 4.2, 'latitude': 51.385332, 'longitude': -0.029969, 'domain': 'https://parkrun.org.uk/', 'url_latestresults': 'https://parkrun.org.uk/bethlemroyalhospital/results/latestresults/', 'url_course': 'https://parkrun.org.uk/bethlemroyalhospital/course/', 'distance': 2.29, 'hasrun': None, 'occurrences': None}
