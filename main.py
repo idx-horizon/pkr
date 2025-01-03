@@ -109,7 +109,7 @@ def r_awslogin():
     return oauth.oidc.authorize_redirect(return_uri)
 
 @app.route('/authorize')
-def r_authorize():
+def authorize():
     print('** [authorize]')
     token = oauth.oidc.authorize_access_token()
     user = token['userinfo']
