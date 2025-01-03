@@ -102,11 +102,14 @@ def error(code=None):
 @app.route('/awslogin')
 @app.route('/awslogin/')
 def r_awslogin():
-    return_url = url_for('authorize', _external=True)
-    return oauth.oidc.authorize_redirect(return_url)
+    print('** [awslogin]')
+    print(oauth)
+    return_uri = url_for('authorize', _external=True)
+    return oauth.oidc.authorize_redirect(return_uri)
 
 @app.route('/authorize')
 def r_authorize():
+    print('** [authorize]')
     token = oauth.oidc.authorize_access_token()
     user = token['userinfo']
     session['user'] = user
