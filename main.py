@@ -100,10 +100,19 @@ def error(code=None):
 
 
 @app.route('/awslogin')
+@app.route('/awslogin/')
 def r_awslogin():
-    return_url = url_for('home', _external=True)
-    return oauth.oidc.authorize_redirect(page)
-    
+    return_url = url_for('authorize', _external=True)
+    return oauth.oidc.authorize_redirect(return_url)
+
+@app.route('/authorize')
+def r_authorize():
+    token = oauth.oidc.authorize_access_token()
+    user = token['userinfo']
+    session['user'] = user
+    print('** AWS login:',user)
+    return redirect(url_for('home'))
+        
 @app.route('/')
 def index():
     return redirect('/home/')
