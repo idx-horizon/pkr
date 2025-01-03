@@ -101,7 +101,7 @@ def error(code=None):
 
 @app.route('/awslogin')
 def r_awslogin():
-    page='/home'
+    page='/home/'
     return oauth.oidc.authorize_redirect(page)
     
 @app.route('/')
