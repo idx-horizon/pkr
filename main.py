@@ -8,7 +8,7 @@ from operator import attrgetter
 from werkzeug.urls import url_parse
 from collections import Counter
 
-from app import app, login, db
+from app import app, login, db, oauth
 
 from app.track import Tracker
 from app.models import User, Country, Location, LoginLog, Friend
@@ -99,6 +99,11 @@ def error(code=None):
     return render_template('error.html', error_code=code)
 
 
+@app.route('awslogin')
+def r_awslogin():
+    page='https://idx.eu.pythonanywhere.com/home'
+    return oauth.oidc.authorize_redirect(page)
+    
 @app.route('/')
 def index():
     return redirect('/home/')
