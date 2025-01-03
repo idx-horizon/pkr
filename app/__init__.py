@@ -39,7 +39,7 @@ oauth.register(
     authority=authority,
     client_id=client_id,
     client_secret=client_secret,
-    server_metadata_url=metadata
+    server_metadata_url=metadata,
     client_kwargs={'scope': 'email openid phone'}
 )
 
