@@ -32,6 +32,8 @@ GoogleMaps(app)
 
 oauth = OAuth(app)
 pool=os.environ['MY_COG_POOL']
+client_id=os.environ['MY_COG_CLIENT']
+client_secret=os.environ['MY_COG_SECRET']
 authority=f'https://cognito-idp.eu-west-2.amazonaws.com/{pool}',
 metadata=f'{authority}/.well-known/openid-configuration'
 
