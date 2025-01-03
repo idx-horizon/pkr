@@ -56,7 +56,7 @@ def getmap(data, centres, centre_on, current_user, session):
         lat=centre_lat, 
         lng=centre_lng, 
         zoom=10, 
-#        style=style,
+        style=style,
         region="UK",
         fullscreen_control=True,
         markers= markers
