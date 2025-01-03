@@ -99,7 +99,7 @@ def error(code=None):
     return render_template('error.html', error_code=code)
 
 
-@app.route('awslogin')
+@app.route('/awslogin')
 def r_awslogin():
     page='https://idx.eu.pythonanywhere.com/home'
     return oauth.oidc.authorize_redirect(page)
