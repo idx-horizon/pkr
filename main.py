@@ -105,6 +105,7 @@ def r_awslogin():
     print('** [awslogin]')
     print(oauth)
     return_uri = url_for('authorize', _external=True)
+    print(return_uri)
     return oauth.oidc.authorize_redirect(return_uri)
 
 @app.route('/authorize')

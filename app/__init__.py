@@ -38,7 +38,7 @@ authority=f'https://cognito-idp.eu-west-2.amazonaws.com/{pool}',
 metadata=f'{authority}/.well-known/openid-configuration'
 
 oauth.register(
-    name='odic',
+    name='oidc',
     authority=authority,
     client_id=client_id,
     client_secret=client_secret,
