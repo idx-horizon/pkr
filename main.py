@@ -108,7 +108,7 @@ def r_awslogin():
     print(return_uri)
     try:
         return oauth.oidc.authorize_redirect(return_uri)
-    exception Exception as e:
+    except Exception as e:
         print('** Error at authorize_redirect:',e)
         raise
          
