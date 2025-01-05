@@ -43,7 +43,7 @@ oauth.register(
     client_id=client_id,
     client_secret=client_secret,
     server_metadata_url=metadata,
-    client_kwargs={'scope': 'email openid phone'}
+    client_kwargs={'scope': 'openid email profile'}
 )
 
 db = SQLAlchemy(app)

@@ -105,7 +105,7 @@ def r_awslogin():
     print('** [awslogin]')
     print(oauth)
     return_uri = url_for('authorize', _external=True)
-    print(return_uri)
+    print('Return_URL:',return_uri)
     try:
         return oauth.oidc.authorize_redirect(return_uri)
     except Exception as e:
