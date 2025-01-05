@@ -37,6 +37,8 @@ client_secret=os.environ['MY_COG_SECRET']
 authority=f'https://cognito-idp.eu-west-2.amazonaws.com/{pool}',
 metadata=f'{authority}/.well-known/openid-configuration'
 
+print('** Metadata_URL:',metadata)
+
 oauth.register(
     name='oidc',
     authority=authority,
