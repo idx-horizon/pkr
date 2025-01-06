@@ -117,13 +117,25 @@ def authorize():
     token = oauth.oidc.authorize_access_token()
     user = token['userinfo']
     session['user'] = user
+    session['SELECTED_RUNNER'] = {
+        'username': user['cognito:username'], 
+        'rid': user['profile'],
+        'threshold': 50,
+        'icon': 'X',
+        'avatar': 'av_ian.jpg',
+        'friend_list': None,
+        'runner': None,
+        'me.summary': None
+    }
     print('** AWS login:',user)
     return redirect(url_for('home'))
 
 @app.route('/awslogout')
 @app.route('/awslogout/')
 def r_awslogout():
+    print('** [awslogout]')
     session.pop('user', None)
+    session.pop('SELECTED_USER', None)
     return redirect(url_for('home'))
             
 @app.route('/')
