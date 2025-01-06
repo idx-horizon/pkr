@@ -151,8 +151,14 @@ def r_gallery():
 
 @app.route('/refresh')
 @app.route('/refresh/')
+@login_required
 def r_refresh():
     d = add_anniversary_and_stats_info('events.json')
+    try:
+        print('** data keys:', d.keys)
+    except Exception as e:
+        pass
+         
     flash(f'Events updated: {len(d)} - Version: {os.environ["PKR_VERSION"]}')
     return redirect('/home/')
 
