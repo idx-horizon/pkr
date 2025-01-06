@@ -144,6 +144,7 @@ def index():
     return redirect('/home/')
 
 @app.route('/gallery')
+@app.route('/gallery/')
 def r_gallery():
     return render_template('gallery.html')
 
