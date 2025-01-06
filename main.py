@@ -159,7 +159,7 @@ def r_refresh():
     except Exception as e:
         pass
          
-    flash(f'Events updated: {len(d)} - Version: {os.environ["PKR_VERSION"]}')
+    flash(f'Events updated: {len(d["events"])} - Version: {os.environ["PKR_VERSION"]}')
     return redirect('/home/')
 
 @app.route('/health')
