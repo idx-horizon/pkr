@@ -4,15 +4,8 @@
 <div class="container-fluid">
   <h1>{{ title }}</h1>
 
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li style="color: red">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
+  {% include "_menubar.html" %}
+
 
 {% block content %}
     <form action="" method="post" novalidate autocomplete="off">
