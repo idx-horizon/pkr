@@ -155,7 +155,7 @@ def r_gallery():
 def r_refresh():
     d = add_anniversary_and_stats_info('events.json')
     try:
-        print('** data keys:', d.keys)
+        print('** data keys:', d.keys())
     except Exception as e:
         pass
          
