@@ -10,6 +10,18 @@
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac tortor bibendum lobortis. Quisque felis diam, tincidunt non volutpat quis, dapibus a mauris. Fusce eget vulputate lorem. Donec malesuada mi in congue suscipit. Proin tellus diam, sodales sed finibus ac, porta vitae quam. Phasellus fringilla ipsum at lacus ultricies, eget venenatis mauris tempus. Sed nec interdum velit, sit amet dignissim purus. In vel lacinia ante. Aliquam a nunc convallis, mattis augue eu, auctor dolor. Vestibulum cursus vel quam sed auctor. Aenean ut arcu eget neque fringilla dapibus in non tortor. Duis eleifend eros ac commodo auctor.
 <P>
 {% else %}
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li style="color: red">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+
+
 <div class="container-fluid p-3 bg-dark text-white">
   <h1>Home</h1>
 </div>
