@@ -128,6 +128,7 @@ def authorize():
         'me.summary': None
     }
     print('** AWS login:',user)
+    print('** Session': session)
     return redirect(url_for('home'))
 
 @app.route('/awslogout')
