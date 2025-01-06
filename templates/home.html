@@ -11,19 +11,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a neque ac t
 <P>
 {% else %}
 
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-            <li style="color: red">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
-
-
 <div class="container-fluid p-3 bg-dark text-white">
   <h1>Home</h1>
+  {% include "_flash_messages.html" %}
+
 </div>
   <ul>
   <li><a class="text-decoration-none" href="/runs">Runs</a></li>
