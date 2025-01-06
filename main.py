@@ -102,10 +102,8 @@ def error(code=None):
 @app.route('/awslogin')
 @app.route('/awslogin/')
 def r_awslogin():
-    print('** [awslogin]')
-    print(oauth)
     return_uri = url_for('authorize', _external=True)
-    print('Return_URL:',return_uri)
+
     try:
         return oauth.oidc.authorize_redirect(return_uri)
     except Exception as e:
@@ -121,7 +119,13 @@ def authorize():
     session['user'] = user
     print('** AWS login:',user)
     return redirect(url_for('home'))
-        
+
+@app.route('/awslogout')
+@app.route('/awslogout/')
+def r_awslogout():
+    session.pop('user', None)
+    return redirect(url_for('home'))
+            
 @app.route('/')
 def index():
     return redirect('/home/')

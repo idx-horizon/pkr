@@ -53,6 +53,7 @@ try:
     migrate = Migrate(app, db)
 except:
     print('** error: Unable to migrate db')
+    
 # bootstrap = Bootstrap(app)
 
 login = LoginManager(app)
