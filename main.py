@@ -143,6 +143,10 @@ def r_awslogout():
 def index():
     return redirect('/home/')
 
+@app.route('/gallery')
+def r_gallery():
+    return render_template('gallery.html')
+
 
 @app.route('/refresh')
 @app.route('/refresh/')
@@ -150,8 +154,10 @@ def r_refresh():
 #    d = refresh_events('events.json')
     d = add_anniversary_and_stats_info('events.json')
 #    if d.ok:
-    return {'Success': len(d), 
-            'Version': 'v' + os.environ['PKR_VERSION']}
+    flash(f'Events updated: {len(d)} - Version: {os.environ['PKR_VERSION']}'
+    return redirect('/home/')
+#    return {'Success': len(d), 
+#            'Version': 'v' + os.environ['PKR_VERSION']}
 #    else:
 #        return {'Status Code': d.status_code}
 
