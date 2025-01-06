@@ -136,7 +136,7 @@ def r_awslogout():
     print('** [awslogout]')
     session.pop('user', None)
     session.pop('SELECTED_USER', None)
-    return redirect(url_for('home'))
+    return redirect(url_for('logout'))
             
 @app.route('/')
 def index():
