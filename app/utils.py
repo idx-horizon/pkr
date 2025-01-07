@@ -8,6 +8,7 @@ import statistics
 import re
 import datetime
 import math
+import app.calendarbingo as calendarbingo
 
 from app.flags import FLAGS
 try:
@@ -328,11 +329,15 @@ class Runner:
 
     def bingo(self):
         resp = Counter([datetime.datetime.strptime(x['Run Date'], '%d/%m/%Y').strftime('%d-%b') for x in self.runs])
-        return '{:0.0%} - {} out of 365 - most common {} ({} times)'.format(
+        
+        missing_details = calendarbingo.get_next_saturday_list(self.runs)
+        
+        return '{:0.0%} - {} out of 365 - most common {} ({} times) - Next: {}'.format(
             len(resp) / 365,
             len(resp),
             resp.most_common(1)[0][0],
-            resp.most_common(1)[0][1])
+            resp.most_common(1)[0][1],
+            missing_details['next'])
 
     def atoz(self):
       x = {}
