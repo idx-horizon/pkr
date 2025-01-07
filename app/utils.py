@@ -331,13 +331,16 @@ class Runner:
         resp = Counter([datetime.datetime.strptime(x['Run Date'], '%d/%m/%Y').strftime('%d-%b') for x in self.runs])
         
         missing_details = calendarbingo.get_next_saturday_list(self.runs)
+        next_5_missing = [d.strftime('%d-%b-%Y') for d in missing_details['all'][0:5]
         
-        return '{:0.0%} - {} out of 365 - most common {} ({} times) - Next: {}'.format(
+        return '{:0.0%} - {} out of 365 - most common {} ({} times) - ~Missing: {}~Next 5: {}~Last: {}'.format(
             len(resp) / 365,
             len(resp),
             resp.most_common(1)[0][0],
             resp.most_common(1)[0][1],
-            missing_details['next'])
+            missing_details['count'],
+            ', '.join(next_5_missing),
+            missing_details['last'])
 
     def atoz(self):
       x = {}
