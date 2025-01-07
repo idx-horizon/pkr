@@ -331,7 +331,7 @@ class Runner:
         resp = Counter([datetime.datetime.strptime(x['Run Date'], '%d/%m/%Y').strftime('%d-%b') for x in self.runs])
         
         missing_details = calendarbingo.get_next_saturday_list(self.runs)
-        next_5_missing = [d.strftime('%d-%b-%Y') for d in missing_details['all'][0:5]
+        next_5_missing = [d.strftime('%d-%b-%Y') for d in missing_details['all'][0:5]]
         
         return '{:0.0%} - {} out of 365 - most common {} ({} times) - ~Missing: {}~Next 5: {}~Last: {}'.format(
             len(resp) / 365,
