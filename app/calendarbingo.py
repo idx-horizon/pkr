@@ -22,10 +22,12 @@ def calculate_next_saturday_for_date(dd, mm, start_year):
     while True:
         try:
             d = datetime(yr, mm, dd)
+            if d.weekday() == 5:     # 5 is Saturday
+                return d
         except ValueError:
-            raise ValueError(f'Invalid date {dd}/{mm}/{yr}')
-        if d.weekday() == 5:     # 5 is Saturday
-            return d
+            #raise ValueError(f'Invalid date {dd}/{mm}/{yr}')
+            pass
+            
         yr += 1
 
 def get_next_saturday_list(runs, initial_year=None):
