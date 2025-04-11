@@ -19,10 +19,12 @@ def get_all_days():
 
 def calculate_next_saturday_for_date(dd, mm, start_year):
     yr = start_year
+    today = datetime.today()
+    
     while True:
         try:
             d = datetime(yr, mm, dd)
-            if d.weekday() == 5:     # 5 is Saturday
+            if d.weekday() == 5 and d > today:     # 5 is Saturday
                 return d
         except ValueError:
             #raise ValueError(f'Invalid date {dd}/{mm}/{yr}')
