@@ -1,5 +1,5 @@
 import os
-import datetime
+from datetime import datetime
 
 from flask import Flask, redirect, url_for, session
 from flask_login import LoginManager
