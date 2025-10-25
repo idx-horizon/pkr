@@ -19,7 +19,7 @@ FLAGS = {
         'Russia':       '🇷🇺',
         'Sweden':       '🇸🇪',
         'Singapore':    '🇸🇬',
-        'South Africa': '🇮🇹', 
+        'South Africa': '🇿🇦', 
         'UK':           '🇬🇧', 
         'USA':          '🇺🇸',
         'England, UK':  '🏴󠁧󠁢󠁥󠁮󠁧󠁿',

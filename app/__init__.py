@@ -1,4 +1,6 @@
 import os
+import datetime
+
 from flask import Flask, redirect, url_for, session
 from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
@@ -20,6 +22,8 @@ except:
     print('** error: Unable to import flask_googlemaps')
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
+
+app.jinja_env.globals['now'] = datetime.now
 
 app.config.from_object(Config)
 
