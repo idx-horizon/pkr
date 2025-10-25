@@ -30,7 +30,7 @@
             <td>{{ item.times[0] | replace('00:','') }}</td>
             <td>{{ item.times[2] | replace('00:','') }}</td>
             <td>
-            {% if now().year in item.years %}
+            {% if str(now().year) in item.years %}
              <span class="badge badge-pill badge-success">
             {% else %}
              <span class="badge badge-pill badge-warning">
