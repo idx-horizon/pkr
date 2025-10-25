@@ -30,10 +30,12 @@
             <td>{{ item.times[0] | replace('00:','') }}</td>
             <td>{{ item.times[2] | replace('00:','') }}</td>
             <td>
-            {% if now().year | string in item.years %}
+            {% if (now().year | string) in item.years %}
              <span class="badge badge-pill badge-success">
-            {% else %}
+            {% elif ((now().year - 1) | string) in item.years %}
              <span class="badge badge-pill badge-warning">
+            {% else %}
+             <span class="badge badge-pill badge-danger">
             {% endif %}
             {{ item.latest_year }}
             </span>
